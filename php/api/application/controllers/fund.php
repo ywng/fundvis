@@ -22,8 +22,8 @@ class Fund extends REST_Controller {
 
 	public function getAllFunds_get(){
 		$this->load->model('fund_model'); 
-		//$funds = $this->fund_model->getAllFunds();
-		//$this->core_controller->add_return_data('funds', $funds); 
+		$funds = $this->fund_model->getAllFunds();
+		$this->core_controller->add_return_data('funds', $funds); 
 		$this->core_controller->successfully_processed();
 
 	}
