@@ -48,7 +48,7 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = '5374f2014382eccbfa000001@fundvis-ywng.rhcloud.com:56436';
+$db['default']['hostname'] = '5374f24d5973ca75ab0001ca-ywng.rhcloud.com:57751';
 $db['default']['username'] = 'adminpM9MT4J';
 $db['default']['password'] = 'JQl6RGRX3gAD';
 $db['default']['database'] = 'fundvis';
