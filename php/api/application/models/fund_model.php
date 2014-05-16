@@ -24,7 +24,7 @@ class Fund_model extends CI_Model{
      */
 
     public function getAllFunds(){
-        return $this->db->get($this->Table_Name);
+        return $this->db->get($this->Table_Name)->result_array();
     }
     
     
