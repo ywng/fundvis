@@ -67,12 +67,10 @@ class Extracter extends REST_Controller {
 		$data=explode(" ",$raw_str);
 		$price=preg_replace("/[\t]/", '',$data[16]);
 		$date_str=preg_replace("/[\t]/", '',$data[2]);
+		$date_arr=explode(".",$date_str);
+		$date_str="20".$date_arr[2]."-".$date_arr[1]."-".$date_arr[0];
 
-		$this->core_controller->add_return_data('fu', $price); 
-		$this->core_controller->add_return_data('funds', $date_str); 
-		$this->core_controller->successfully_processed();
-
-		$this->fund_model->insert_fund_daily_price($fund[$this->fund_model->KEY_fund_id],$raw_str,"2014-05-16");
+		$this->fund_model->insert_fund_daily_price($fund[$this->fund_model->KEY_fund_id],$price,$date_str);
 	}
 
 	
