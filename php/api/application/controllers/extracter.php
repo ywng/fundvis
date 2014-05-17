@@ -48,7 +48,7 @@ class Extracter extends REST_Controller {
 
 		// Find all spans
 		foreach($html->find('span[class=price]') as $element) 
-		       echo $element->src . '<br>';
+		       echo $element . '<br>';
 
 		/*// Find all links 
 		foreach($html->find('a') as $element) 
