@@ -70,7 +70,7 @@ class Extracter extends REST_Controller {
 	    } 
 
 	    if (preg_match('/([0-9]+)(\.)([0-9]+)/',$raw_str, $regs_price)) {
-			$price = $regs_price[0];
+			$price = $regs_price[1];
 	    } 
 
 		$this->fund_model->insert_fund_daily_price($fund[$this->fund_model->KEY_fund_id],$price,$date_str);
