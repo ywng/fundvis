@@ -46,9 +46,14 @@ class Extracter extends REST_Controller {
 		// Create DOM from URL or file
 		$html = file_get_html($url);
 
-		// Find all spans
+		// price span
 		$price_e=$html->find('span[class=price]')[0];
 		$price=preg_replace("/[^0-9.]/", '',$price_e->plaintext);
+
+		//date span
+		$date_e=$html->find('span[class=fine_print]')[0];
+		echo $date_e->plaintext;
+		//$date=preg_replace("/[^0-9.]/", '',$price_e->plaintext);
 
 		      
 		/*// Find all links 
