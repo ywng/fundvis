@@ -67,7 +67,7 @@ class Extracter extends REST_Controller {
 		
 		echo $raw_str;
 		
-		//$this->fund_model->insert_fund_daily_price($fund[$this->fund_model->KEY_fund_id],$data_arr[0],$data_arr[1]);
+		$this->fund_model->insert_fund_daily_price($fund[$this->fund_model->KEY_fund_id],$raw_str,date());
 		
 	}
 
