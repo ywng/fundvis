@@ -24,7 +24,7 @@ class Extracter extends REST_Controller {
 	public function extract_get(){
 
 		$this->load->model('fund_model'); 
-		$funds = $this->fund_model->getAllFunds();
+		$funds = $this->fund_model->get_all_funds();
 
 		foreach ($funds as $fund){
 
