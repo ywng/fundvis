@@ -65,7 +65,7 @@ class Extracter extends REST_Controller {
 		$element_div=$html->find('div[class=daily_price_box]')[0];
 		$raw_str=$element_div->children(1)->children(0)->children(0)->plaintext;
 		$data=explode(" ",$raw_str);
-		for($i,$i<count($data);$i++){
+		for($i;$i<count($data);$i++){
 			if($data[i]!=""){
 				$this->core_controller->add_return_data($i, $data[$i]); 
 			}
