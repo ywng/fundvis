@@ -63,6 +63,7 @@ class Extracter extends REST_Controller {
 	private function JPM_extract($html,$fund){
 
 		$element_div=$html->find('div[class=daily_price_box]')[0];
+		echo "in JPM extract";
 		echo $element_div->children(1);
 
 
