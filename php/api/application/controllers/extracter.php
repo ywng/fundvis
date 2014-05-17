@@ -32,16 +32,12 @@ class Extracter extends REST_Controller {
 			$html = file_get_html($fund[$this->fund_model->KEY_link]);
 			if (strlen(strstr($fund[$this->fund_model->KEY_link],"http://www.jpmorganam.com.hk/jpm/am/"))>0) {
 				// JPM webpages
-				$this->JPM_extract($html,$price,$date_str);
+				$this->JPM_extract($html,$fund);
 
 			}else if (strlen(strstr($fund[$this->fund_model->KEY_link],"http://www.bloomberg.com/quote/"))>0){
 				// Bloomberg webpages
-				$this->bloomberg_extract($html,$price,$date_str);
+				$this->bloomberg_extract($html,$fund);
 			}
-
-			$this->fund_model->insert_fund_daily_price($price,$date_str);
-			echo $price;
-
 
 		}
 
@@ -49,7 +45,7 @@ class Extracter extends REST_Controller {
 	}
 	
 
-	private function bloomberg_extract($html,$price,$date_str){
+	private function bloomberg_extract($html,$fund){
 		// price span
 		$price_e=$html->find('span[class=price]')[0];
 		$price=preg_replace("/[^0-9.]/", '',$price_e->plaintext);
@@ -59,6 +55,8 @@ class Extracter extends REST_Controller {
 		if (preg_match('/(0[1-9]|1[012])[\/](0[1-9]|[12][0-9]|3[01])[\/](19|20)[0-9]{2}/',$date_e->plaintext, $regs)) {
 			$date_str = $regs[0];
 	    } 
+
+	    $this->fund_model->insert_fund_daily_price($fund[$this->fund_model->KEY_fund_id],$price,$date_str);
 	}
 
 	private function JPM_extract($url){
@@ -66,7 +64,6 @@ class Extracter extends REST_Controller {
 
 		
 	}
-	
 
 	
 
