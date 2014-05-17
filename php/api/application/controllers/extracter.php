@@ -63,7 +63,7 @@ class Extracter extends REST_Controller {
 	private function JPM_extract($html,$fund){
 
 		$element_div=$html->find('div[class=daily_price_box]')[0];
-		$raw_str=preg_replace("/[^0-9.]/",$element_div->children(1)->children(0)->children(0)->plaintext);
+		$raw_str=preg_replace("/[^0-9.]/",'',$element_div->children(1)->children(0)->children(0)->plaintext);
 		
 		echo $raw_str;
 		
