@@ -64,11 +64,10 @@ class Extracter extends REST_Controller {
 
 		$element_div=$html->find('div[class=daily_price_box]')[0];
 		$raw_str=preg_replace("/[^0-9.]/",$element_div->children(1)->children(0)->children(0)->plaintext);
-		$data_arr=explode(" ",$raw_str);
-		echo $data_arr[0];
-		echo $data_arr[1];
 		
-		$this->fund_model->insert_fund_daily_price($fund[$this->fund_model->KEY_fund_id],$data_arr[0],$data_arr[1]);
+		echo $raw_str;
+		
+		//$this->fund_model->insert_fund_daily_price($fund[$this->fund_model->KEY_fund_id],$data_arr[0],$data_arr[1]);
 		
 	}
 
