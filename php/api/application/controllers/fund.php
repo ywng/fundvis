@@ -27,6 +27,14 @@ class Fund extends REST_Controller {
 		$this->core_controller->successfully_processed();
 
 	}
+
+	public fuction getAllPrice_get(){
+		$this->load->model('fund_model'); 
+		$price_arr = $this->fund_model->getAllFundPrice();
+		$this->core_controller->add_return_data('fund_price', $price_arr); 
+		$this->core_controller->successfully_processed();
+
+	}
 	
 	
 

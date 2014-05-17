@@ -11,7 +11,7 @@ class CORE_Controller {
     
     protected $current_user_obj = null;
     private $white_list_uri = array(
-	'fund/getAllFunds','extracter/extract'); // this will indicate the script not to run security check
+	'fund/getAllFunds','extracter/extract','fund/getAllPrice'); // this will indicate the script not to run security check
     private $session = null;
     private $response_data = array();
     private $CI = null;
