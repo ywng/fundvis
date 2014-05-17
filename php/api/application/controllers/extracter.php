@@ -43,13 +43,11 @@ class Extracter extends REST_Controller {
 	
 
 	private function bloomberg_extract($url){
-		echo "bloomberg ex";
-		/*
 		// Create DOM from URL or file
-		$html = file_get_html('http://www.google.com/');
+		$html = file_get_html($url);
 
-		// Find all images 
-		foreach($html->find('img') as $element) 
+		// Find all spans
+		foreach($html->find('span') as $element) 
 		       echo $element->src . '<br>';
 
 		// Find all links 
