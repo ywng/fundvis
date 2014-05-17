@@ -41,6 +41,7 @@ class Extracter extends REST_Controller {
 
 		}
 
+		//$this->core_controller->successfully_processed();
 
 	}
 	
@@ -59,9 +60,13 @@ class Extracter extends REST_Controller {
 	    $this->fund_model->insert_fund_daily_price($fund[$this->fund_model->KEY_fund_id],$price,$date_str);
 	}
 
-	private function JPM_extract($url){
+	private function JPM_extract($html,$fund){
+
+		$element_div=$html->find('div[class=daily_price_box]')[0];
+		echo $element_div;
 
 
+	    //$this->fund_model->insert_fund_daily_price($fund[$this->fund_model->KEY_fund_id],$price,$date_str);
 		
 	}
 
