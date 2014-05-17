@@ -29,7 +29,7 @@ class Extracter extends REST_Controller {
 		foreach ($funds as $fund){
 
 			// Create DOM from URL or file
-			$html = file_get_html($fund[$this->fund_model->KEY_link);
+			$html = file_get_html($fund[$this->fund_model->KEY_link]);
 			if (strlen(strstr($fund[$this->fund_model->KEY_link],"http://www.jpmorganam.com.hk/jpm/am/"))>0) {
 				// JPM webpages
 				$this->JPM_extract($html,$price,$date_str);
@@ -41,7 +41,7 @@ class Extracter extends REST_Controller {
 
 			$this->fund_model->insert_fund_daily_price($price,$date_str);
 			echo $price;
-			
+
 
 		}
 
