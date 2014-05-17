@@ -1,10 +1,2 @@
-# Logs
-logs
-*.log
 
-# Runtime data
-pids
-*.pid
-*.seed
-.DS_Store
 
