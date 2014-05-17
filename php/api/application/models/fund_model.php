@@ -34,15 +34,14 @@ class Fund_model extends CI_Model{
     }
 
     public function insert_fund_daily_price($id, $price,$date_str){
-
+        $date = new DateTime($date_str);
         $this->db->where($this->KEY_price_fund_id,$id);
-        $this->db->where($this->KEY_datetime,$date);
+        $this->db->where($this->KEY_datetime,date_format($date, 'Y-m-d H:i:s'));
         $q = $this->db->get($this->Table_name_price);
         if ( $q->num_rows() > 0 ) {
             return;
         }
 
-        $date = new DateTime($date_str);
         $data = array(
            $this->KEY_price_fund_id => $id,
            $this->KEY_price => $price ,
