@@ -40,7 +40,7 @@ class Fund_model extends CI_Model{
 
     public function get_fund_price_by_id($id){
         $this->db->order_by($this->KEY_datetime, "desc"); 
-        $this->db->select($this->KEY_price,$this->KEY_datetime);
+        $this->db->select($this->KEY_price.",".$this->KEY_datetime);
         $this->db->where($this->KEY_price_fund_id,$id);
         return $this->db->get($this->Table_name_price)->result_array();
     }
