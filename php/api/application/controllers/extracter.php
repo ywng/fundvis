@@ -51,7 +51,7 @@ class Extracter extends REST_Controller {
 		$price=preg_replace("/[^0-9.]/", '',$price_e->plaintext);
 
 		//date span
-		$date_e=$html->find('span[class=fine_print]')[0];
+		$date_e=$html->find('p[class=fine_print]')[0];
 		echo $date_e->plaintext;
 		//$date=preg_replace("/[^0-9.]/", '',$price_e->plaintext);
 
