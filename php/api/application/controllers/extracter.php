@@ -65,7 +65,7 @@ class Extracter extends REST_Controller {
 		$element_div=$html->find('div[class=daily_price_box]')[0];
 		$raw_str=$element_div->children(1)->children(0)->children(0)->plaintext;
 		$data=explode(" ",$raw_str);
-		$this->core_controller->add_return_data('funds', $data[1]."pr:".$data[2]); 
+		$this->core_controller->add_return_data('funds', $data[2]."pr:".$data[3]); 
 		$this->core_controller->successfully_processed();
 
 		$this->fund_model->insert_fund_daily_price($fund[$this->fund_model->KEY_fund_id],$raw_str,"2014-05-16");
