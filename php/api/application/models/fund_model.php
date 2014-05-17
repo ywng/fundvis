@@ -46,7 +46,7 @@ class Fund_model extends CI_Model{
         $data = array(
            $this->KEY_price_fund_id => $id,
            $this->KEY_price => $price ,
-           $this->KEY_datetime => date_format($date, 'Y-m-d H:i:s');
+           $this->KEY_datetime => date_format($date, 'Y-m-d H:i:s')
         );
 
         $this->db->insert($this->Table_name_price, $data); 
