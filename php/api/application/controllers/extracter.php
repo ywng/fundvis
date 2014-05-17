@@ -27,14 +27,21 @@ class Extracter extends REST_Controller {
 		$funds = $this->fund_model->getAllFunds();
 
 		foreach ($funds as $fund){
+
+			// Create DOM from URL or file
+			$html = file_get_html($fund[$this->fund_model->KEY_link);
 			if (strlen(strstr($fund[$this->fund_model->KEY_link],"http://www.jpmorganam.com.hk/jpm/am/"))>0) {
 				// JPM webpages
-				$this->JPM_extract($fund[$this->fund_model->KEY_link]);
+				$this->JPM_extract($html,$price,$date_str);
 
 			}else if (strlen(strstr($fund[$this->fund_model->KEY_link],"http://www.bloomberg.com/quote/"))>0){
 				// Bloomberg webpages
-				$this->bloomberg_extract($fund[$this->fund_model->KEY_link]);
+				$this->bloomberg_extract($html,$price,$date_str);
 			}
+
+			$this->fund_model->insert_fund_daily_price($price,$date_str);
+			echo $price;
+			
 
 		}
 
@@ -42,10 +49,7 @@ class Extracter extends REST_Controller {
 	}
 	
 
-	private function bloomberg_extract($url){
-		// Create DOM from URL or file
-		$html = file_get_html($url);
-
+	private function bloomberg_extract($html,$price,$date_str){
 		// price span
 		$price_e=$html->find('span[class=price]')[0];
 		$price=preg_replace("/[^0-9.]/", '',$price_e->plaintext);
@@ -55,16 +59,6 @@ class Extracter extends REST_Controller {
 		if (preg_match('/(0[1-9]|1[012])[\/](0[1-9]|[12][0-9]|3[01])[\/](19|20)[0-9]{2}/',$date_e->plaintext, $regs)) {
 			$date_str = $regs[0];
 	    } 
-		echo $date_str;
-		//$date=preg_replace("/[^0-9.]/", '',$price_e->plaintext);
-
-		      
-		/*// Find all links 
-		foreach($html->find('a') as $element) 
-		       echo $element->href . '<br>';*/
-		
-
-
 	}
 
 	private function JPM_extract($url){

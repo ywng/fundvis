@@ -11,7 +11,8 @@ class Fund_model extends CI_Model{
     var $KEY_name = 'name';
     var $KEY_link = 'link';
     var $KEY_remark = 'remark';
-    var $Table_Name = 'Fund';
+    var $Table_name_fund = 'Fund';
+    var $Table_name_price = 'Price';
     
 
     function __construct() {
@@ -24,7 +25,12 @@ class Fund_model extends CI_Model{
      */
 
     public function getAllFunds(){
-        return $this->db->get($this->Table_Name)->result_array();
+        return $this->db->get($this->Table_name_fund)->result_array();
+    }
+
+    public function insert_fund_daily_price($price,$date){
+
+
     }
     
     
