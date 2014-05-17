@@ -36,7 +36,7 @@ class Fund extends REST_Controller {
 		
 		foreach($funds as $fund){
 			$fund_price_object = array(
-               "price" => $this->fund_model->get_fund_price_by_id($fund[$this->fund_model->KEY_fund_id]),
+               "price_array" => $this->fund_model->get_fund_price_by_id($fund[$this->fund_model->KEY_fund_id]),
                "id" =>$fund[$this->fund_model->KEY_fund_id],
                "name"=> $fund[$this->fund_model->KEY_name]
             );
