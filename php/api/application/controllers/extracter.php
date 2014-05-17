@@ -52,7 +52,7 @@ class Extracter extends REST_Controller {
 
 		//date span
 		$date_e=$html->find('p[class=fine_print]')[0];
-		if (preg_match('/(0[1-9]|1[012])[-](0[1-9]|[12][0-9]|3[01])[-](19|20)[0-9]{2}/',$date_e->plaintext, $regs)) {
+		if (preg_match('/(0[1-9]|1[012])[/](0[1-9]|[12][0-9]|3[01])[/](19|20)[0-9]{2}/',$date_e->plaintext, $regs)) {
 			$date_str = $regs[0];
 	    } 
 		echo $date_str;
