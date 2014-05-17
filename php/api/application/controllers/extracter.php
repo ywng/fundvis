@@ -52,7 +52,7 @@ class Extracter extends REST_Controller {
 
 		// Find all links 
 		foreach($html->find('a') as $element) 
-		       echo $element->href . '<br>';*/
+		       echo $element->href . '<br>';
 		
 
 
