@@ -63,12 +63,17 @@ class Extracter extends REST_Controller {
 	private function JPM_extract($html,$fund){
 
 		$element_div=$html->find('div[class=daily_price_box]')[0];
-		$raw_str=preg_replace("/[^0-9.]/",'',$element_div->children(1)->children(0)->children(0)->plaintext);
-		
-		echo $raw_str;
-		
-		$this->fund_model->insert_fund_daily_price($fund[$this->fund_model->KEY_fund_id],$raw_str,new DateTime("2014-05-17"));
-		
+		$raw_str=$element_div->children(1)->children(0)->children(0)->plaintext;
+
+		if (preg_match('/(0[1-9]|[12][0-9]|3[01])[\.](0[1-9]|1[012])[\.]([0-9]{2})/',$raw_str, $regs_date)) {
+			$date_str = $regs_date[0];
+	    } 
+
+	    if (preg_match('/([0-9]+)(\.)([0-9]+)/',$raw_str, $regs_price)) {
+			$price = $regs_price[0];
+	    } 
+
+		$this->fund_model->insert_fund_daily_price($fund[$this->fund_model->KEY_fund_id],$price,$date_str);
 	}
 
 	
