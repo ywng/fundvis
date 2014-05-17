@@ -32,12 +32,14 @@ class Fund extends REST_Controller {
 		$this->load->model('fund_model'); 
 		$funds = $this->fund_model->get_all_funds();
 
-		$funds_price=new array();
+		$funds_price= new array();
 		foreach($funds as $fund){
-			$fund_price_object=new object();
-			$fund_price_object["price"] = $this->fund_model->get_fund_price_by_id($fund[$this->fund_model->KEY_id]);
-			$fund_price_object["id"]=$fund[$this->fund_model->KEY_id];
-			$fund_price_object["name"]=$fund[$this->fund_model->KEY_name];
+			$fund_price_object = array(
+               "price" => $this->fund_model->get_fund_price_by_id($fund[$this->fund_model->KEY_id]),
+               "id" =>$fund[$this->fund_model->KEY_id],
+               "name"=> $fund[$this->fund_model->KEY_name]
+            );
+			
 			array_push($funds_price,$fund_price_object);
 		}
 
