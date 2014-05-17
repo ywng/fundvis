@@ -50,6 +50,7 @@ class Extracter extends REST_Controller {
 		$price_e=$html->find('span[class=price]')[0];
 		$price=preg_replace("/[^0-9.]/", '',$price_e->plaintext);
 
+		echo $price
 		//date span
 		$date_e=$html->find('p[class=fine_print]')[0];
 		echo $date_e->plaintext;
