@@ -48,8 +48,8 @@ class Extracter extends REST_Controller {
 
 		// Find all spans
 		$price_e=$html->find('span[class=price]')[0];
+		$price=preg_replace("/[^0-9.]/", '',$price_e->plaintext);
 
-		echo $price_e->plaintext;
 		      
 		/*// Find all links 
 		foreach($html->find('a') as $element) 
