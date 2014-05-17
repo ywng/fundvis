@@ -66,7 +66,7 @@ class Extracter extends REST_Controller {
 		$raw_str=$element_div->children(1)->children(0)->children(0)->plaintext;
 		$data=explode(" ",$raw_str);
 		for($i;$i<count($data);$i++){
-			if($data[i]!=""){
+			if($data[$i]!=""){
 				$this->core_controller->add_return_data($i, $data[$i]); 
 			}
 		}
