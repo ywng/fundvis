@@ -22,7 +22,30 @@ class Extracter extends REST_Controller {
 
 
 	public function extract_get(){
-				// Create DOM from URL or file
+
+		$this->load->model('fund_model'); 
+		$funds = $this->fund_model->getAllFunds();
+
+		foreach ($funds as $fund){
+			if (strlen(strstr($fund[$this->fund_model->KEY_link],"http://www.jpmorganam.com.hk/jpm/am/"))>0) {
+				// JPM webpages
+				$this->JPM_extract($fund[$this->fund_model->KEY_link]);
+
+			}else if (strlen(strstr($fund[$this->fund_model->KEY_link],"http://www.bloomberg.com/quote/"))>0){
+				// Bloomberg webpages
+				$this->bloomberg_extract($fund[$this->fund_model->KEY_link]);
+			}
+
+		}
+
+
+	}
+	
+
+	private function bloomberg_extract($url){
+		echo "bloomberg ex";
+		/*
+		// Create DOM from URL or file
 		$html = file_get_html('http://www.google.com/');
 
 		// Find all images 
@@ -31,11 +54,17 @@ class Extracter extends REST_Controller {
 
 		// Find all links 
 		foreach($html->find('a') as $element) 
-		       echo $element->href . '<br>';
+		       echo $element->href . '<br>';*/
 		
 
+
 	}
-	
+
+	private function JPM_extract($url){
+
+
+		
+	}
 	
 
 	
