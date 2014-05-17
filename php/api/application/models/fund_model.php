@@ -34,6 +34,14 @@ class Fund_model extends CI_Model{
     }
 
     public function insert_fund_daily_price($id, $price,$date){
+
+        $this->db->where($this->KEY_price_fund_id,$id);
+        $this->db->where($this->KEY_datetime,$date);
+        $q = $this->db->get($this->Table_name_price);
+        if ( $q->num_rows() > 0 ) {
+            return;
+        }
+
         $data = array(
            $this->KEY_price_fund_id => $id,
            $this->KEY_price => $price ,
