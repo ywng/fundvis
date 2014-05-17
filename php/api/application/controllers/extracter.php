@@ -41,7 +41,7 @@ class Extracter extends REST_Controller {
 
 		}
 
-		//$this->core_controller->successfully_processed();
+		$this->core_controller->successfully_processed();
 
 	}
 	
