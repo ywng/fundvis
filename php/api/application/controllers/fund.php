@@ -44,7 +44,7 @@ class Fund extends REST_Controller {
 			array_push($funds_price,$fund_price_object);
 		}
 
-		$this->core_controller->add_return_data('fund_price', $funds_price); 
+		$this->core_controller->add_return_data('funds', $funds_price); 
 		$this->core_controller->successfully_processed();
 
 	}
