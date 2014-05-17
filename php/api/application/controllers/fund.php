@@ -28,7 +28,7 @@ class Fund extends REST_Controller {
 
 	}
 
-	public fuction getAllPrice_get(){
+	public function getAllPrice_get(){
 		$this->load->model('fund_model'); 
 		$price_arr = $this->fund_model->getAllFundPrice();
 		$this->core_controller->add_return_data('fund_price', $price_arr); 
