@@ -29,15 +29,21 @@ class Fund_model extends CI_Model{
      * 
      */
 
-    public function getAllFunds(){
+    public function get_all_funds(){
         return $this->db->get($this->Table_name_fund)->result_array();
     }
 
-    public function getAllFundPrice(){
+    public function get_all_prices(){
         $this->db->order_by($this->KEY_datetime, "desc"); 
         return $this->db->get($this->Table_name_price)->result_array();
     }
 
+    public function get_fund_price_by_id($id){
+        $this->db->order_by($this->KEY_datetime, "desc"); 
+        $this->db->select($this->KEY_price,$this->KEY_datetime);
+        $this->db->where($this->KEY_price_fund_id,$id);
+        return $this->db->get($this->Table_name_price)->result_array();
+    }
 
     public function insert_fund_daily_price($id, $price,$date_str){
         $date = new DateTime($date_str);

@@ -22,7 +22,7 @@ class Fund extends REST_Controller {
 
 	public function getAllFunds_get(){
 		$this->load->model('fund_model'); 
-		$funds = $this->fund_model->getAllFunds();
+		$funds = $this->fund_model->get_all_funds();
 		$this->core_controller->add_return_data('funds', $funds); 
 		$this->core_controller->successfully_processed();
 
@@ -30,9 +30,23 @@ class Fund extends REST_Controller {
 
 	public function getAllPrice_get(){
 		$this->load->model('fund_model'); 
-		$price_arr = $this->fund_model->getAllFundPrice();
-		$this->core_controller->add_return_data('fund_price', $price_arr); 
+		$funds = $this->fund_model->get_all_funds();
+
+		$funds_price=new array();
+		foreach($funds as $fund){
+			$fund_price_object["price"] = $this->fund_model->get_fund_price_by_id($fund[$this->fund_model->KEY_id]);
+			$fund_price_object["id"]=$fund[$this->fund_model->KEY_id];
+			$fund_price_object["name"]=$fund[$this->fund_model->KEY_name];
+			array_push($funds_price,$fund_price_object);
+		}
+
+		$this->core_controller->add_return_data('fund_price', $funds_price); 
 		$this->core_controller->successfully_processed();
+
+	}
+
+	public function getFundPrice_post(){
+
 
 	}
 	
