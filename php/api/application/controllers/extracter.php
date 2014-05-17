@@ -64,7 +64,7 @@ class Extracter extends REST_Controller {
 
 		$element_div=$html->find('div[class=daily_price_box]')[0];
 		echo "in JPM extract";
-		echo $element_div->children(1);
+		echo $element_div->children(1)->children(0)->children(0);
 
 
 	    //$this->fund_model->insert_fund_daily_price($fund[$this->fund_model->KEY_fund_id],$price,$date_str);

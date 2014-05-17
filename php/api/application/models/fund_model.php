@@ -38,17 +38,15 @@ class Fund_model extends CI_Model{
         $this->db->where($this->KEY_price_fund_id,$id);
         $this->db->where($this->KEY_datetime,date_format($date, 'Y-m-d H:i:s'));
         $q = $this->db->get($this->Table_name_price);
-        if ( $q->num_rows() > 0 ) {
-            return;
+        if ( $q->num_rows() == 0 ) {
+            $data = array(
+               $this->KEY_price_fund_id => $id,
+               $this->KEY_price => $price ,
+               $this->KEY_datetime => date_format($date, 'Y-m-d H:i:s')
+            );
+
+            $this->db->insert($this->Table_name_price, $data); 
         }
-
-        $data = array(
-           $this->KEY_price_fund_id => $id,
-           $this->KEY_price => $price ,
-           $this->KEY_datetime => date_format($date, 'Y-m-d H:i:s')
-        );
-
-        $this->db->insert($this->Table_name_price, $data); 
 
     }
     
