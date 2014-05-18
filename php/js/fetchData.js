@@ -44,37 +44,26 @@ function _init(){
 		async: false,
 		success: function(data, textStatus, jqXHR){
 			data2=new Array();
-			for(var i=0; i < data.length; i++) {
+			var funds_arr=data.funds;
+			for(var i=0; i < funds_arr.length; i++) {
 				var fund=new Object();
 				fund.vis="0";
-				fund.name=data[i][0].name;
-				fundName[i]=fund.name;
+				fund.name=funds_arr[i].name;
+				fundName[funds_arr[i].id]=fund.name;
 				fund.priceList=new Array();
-				var fundData = new Array();
-				fundData=data[i][1].data;
-				for(var j=0;j<fundData.length;j++){
+			
+				for(var j=0;j<funds_arr[i].price_array.length;j++){
 					var dailyPrice=new Object();
-					dailyPrice.price=parseFloat(fundData[j].price);
-					var Str="";
-					Str+=fundData[j].year;
-					if(fundData[j].month<10){
-						Str+="0"+fundData[j].month;
-					}else{
-						Str+=fundData[j].month;
-					}
-					if(fundData[j].day<10){
-						Str+="0"+fundData[j].day;
-					}else{
-						Str+=fundData[j].day;
-					}
+					dailyPrice.price=parseFloat(funds_arr[i].price_array[j].price);
+					
 					
 					//construct the map for mapping date to array index
 					//only do it once for first series is okay
 					if(i==0){
-						DateMapIndex.set(Str,j);
+						DateMapIndex.set(funds_arr[i].price_array[j].datetime,j);
 					}
 					
-					dailyPrice.date= parseDate(Str);
+					dailyPrice.date= parseDate(funds_arr[i].price_array[j].datetime);
 					fund.priceList[j]=dailyPrice;
 				}
 				data2[i]=fund;
