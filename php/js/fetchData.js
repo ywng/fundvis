@@ -36,7 +36,7 @@ function _init(){
 	// fetch data from database
 	//should have some sort of API for getting the data
 	$.ajax({
-		url: "http://mpf.vis.ywng.cloudbees.net/AllUnitPrice",
+		url: serverDomain+"api/fund/getAllPrice",
 		context: document.body,
 		dataType: "json", 
 		headers : {Accept : "application/json","Access-Control-Allow-Origin" : "*"},
