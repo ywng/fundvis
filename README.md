@@ -1,4 +1,4 @@
-citifeel-server
+fund performance visualisation
 =======
 for server side code & web page
 
@@ -167,34 +167,4 @@ $this->core_controller->add_return_data($key1, $value1)->add_return_data($key2, 
 <p>
 On the call of fail_response(), all added return data <b>will be dropped and will not be included</b> in the return message.
 </p>
-
-
-Working on OpenShift
-========================
-
-Below is how you modify and update the code in OpenShift as well as source control in our git repo
-
-First time:
---------------------
-- clone to your local github folder (just as what you do for normal git repo)
-- cd into this repo's folder
-- using git command line:
-  add remote
-  $ git remote add openshift ssh://533c363e5973ca54d20002f3@server-citifeel.rhcloud.com/~/git/server.git/
-
-  now you have 2 remote (one is openshift, and one is origin), check this to make sure:
-  $ git remote -v
-
-Routine modification:
---------------------
-- before you can push to openshift, you need to pull from it first (to sync first)
-  $git pull openshift master
-
-- after modify the code:
-  $git add *
-  $git commit -m "mess"
-  $git push openshift master.
-
-
-
 
