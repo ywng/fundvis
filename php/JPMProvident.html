@@ -107,7 +107,7 @@ text {
 
 	var price_array_one_of_fund=funds[0].price_array;
 	x.domain([price_array_one_of_fund[price_array_one_of_fund.length-1].datetime,price_array_one_of_fund[0].datetime]); 
-	y.domain([0,d3.max(price_array_one_of_fund, function(d) { console.log(d.price); return parseFloat(d.price); })]);
+	y.domain([0,d3.max(price_array_one_of_fund, function(d) { console.log(parseFloat(d.price)); return parseFloat(d.price); })]);
 	x2.domain(x.domain());//the domain axis for the bar at the bottom
 	
 	var line = d3.svg.line()
