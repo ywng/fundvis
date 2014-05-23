@@ -28,7 +28,7 @@
 
 body {
   margin:10px 5px 30px 40px;
-  width: 1060px;
+  width: 900px;
 }
 
 text {
@@ -66,14 +66,22 @@ text {
 <div id="graph" class="graph" style="position:relative;width:100%;height:630px"></div>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
-<script src="js/fetchData.js"></script>
+<script src="js/fund.js"></script>
 <script src="js/color.js"></script>
 <script src="js/picker.js"></script>
+<script src="js/brush.js"></script>
 <script src="config/config.js"></script>
 
 <script>
 
-	_init(); 
+	$( document ).ready(function() {
+  		
+  		_init_funds(); 
+
+
+	});
+
+	
 	var margin = {top: 15, right: 50, bottom: 100, left: 50},
 		margin2 = {top: 500, right: 50, bottom: 50, left: 50},
 		width = 1300 - margin.left - margin.right,
@@ -311,23 +319,6 @@ text {
 
 	//end of mouse picker related, hover line-------------------------------------------------------------------
 	
-//************************************************* Supporting Functions***********************************************
-	//for brusher of the slider bar at the bottom
-	function brushed() {
-		x.domain(brush.empty() ? x2.domain() : brush.extent());
-		fund.select("path").transition()//update curve 
-			.attr("d", function(d) { if(d.vis=="1"){return line(d.priceList);} else{ return null;} })
-		focus.select(".x.axis").call(xAxis);
-	}
-	
-	//this function is mainly for accessing the colors
-	function getFundID(fundName){
-		for(var i=0; i < data2.length; i++) {
-			if(data2[i].name==fundName)
-			  return i;
-		}
-	}
-	
-//************************************************End of Supporting Functions******************************************
+
 
 </script>
