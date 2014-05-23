@@ -155,7 +155,7 @@ text {
 	fund.append("text")
 		.attr("class", "fundNameLabel")
 		.attr("x", function(d) { return width-175; })
-		.attr("y", function(d) { return getFundID(d.name)*35; })
+		.attr("y", function(d) { return d.ID*35;})//return getFundID(d.name)*35; })
 		.text( function (d) { return d.name; })
 		.attr("font-family", "sans-serif")
 		.attr("font-size", "10px")
