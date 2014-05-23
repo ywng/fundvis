@@ -178,7 +178,7 @@ text {
 						d.vis="True";
 					} 
 				
-					y.domain([0,d3.max(d.price_array, function(d) { return parseFloat(d.price); })]);
+					y.domain([0,d3.max(d.price_array, function(d) { console.log(d.price);return parseFloat(d.price); })]);
 					focus.select(".y.axis").call(yAxis);
 					
 					fund.select("path").transition()//update curve 

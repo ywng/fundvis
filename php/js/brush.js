@@ -52,8 +52,8 @@ function brushed() {
 
 //this function is mainly for accessing the colors
 function getFundID(fundName){
-	for(var i=0; i < data2.length; i++) {
+	/*for(var i=0; i < data2.length; i++) {
 		if(data2[i].name==fundName)
 		  return i;
-	}
+	}*/
 }
