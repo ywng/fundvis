@@ -221,7 +221,7 @@ text {
 	pickerValue.append("text")
 		.attr("class", "valuesLabel")
 		.attr("x", function(d) { return width-205; })
-		.attr("y", function(d) { return getFundID(d.name)*35+15; })
+		.attr("y", function(d) { return d.ID*35+15;})//return getFundID(d.name)*35+15; })
 		.text( function (d) { 
 			var dateStr="";
 			//console.log(mousePickerDate);
@@ -248,7 +248,7 @@ text {
 	valueChange.append("text")
 		.attr("class", "valuesLabel")
 		.attr("x", function(d) { return width-170; })
-		.attr("y", function(d) { return getFundID(d.name)*35+15; })
+		.attr("y", function(d) { return d.ID*35+15;})//return getFundID(d.name)*35+15; })
 		.text( function (d) { 
 		/*	var percentChange=(d.priceList[currIndex].price-d.priceList[currIndex-1].price)/d.priceList[currIndex-1].price*100;
 			if(percentChange<0){
