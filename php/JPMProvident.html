@@ -166,7 +166,7 @@ text {
 		.attr("height",10)
 		.attr("width", 25)
 		.attr("x",width-205)
-		.attr("y",function(d) {return getFundID(d.name)*35-8;})
+		.attr("y",function(d) { return d.ID*35;})//return getFundID(d.name)*35-8;})
 		.attr("stroke", function(d) {return colors(d.name);})
 		.attr("fill",function(d) {if(d.vis=="True"){return colors(d.name);}else{return "white";}})
 		.on("click", function(d) { 
