@@ -46,7 +46,7 @@
 function brushed() {
 	x.domain(brush.empty() ? x2.domain() : brush.extent());
 	fund.select("path").transition()//update curve 
-		.attr("d", function(d) { if(d.vis=="1"){return line(d.priceList);} else{ return null;} })
+		.attr("d", function(d) { if(d.vis=="True"){return line(d.price_array);} else{ return null;} })
 	focus.select(".x.axis").call(xAxis);
 }
 
