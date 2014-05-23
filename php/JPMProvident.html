@@ -84,14 +84,13 @@ text {
 	
 	var margin = {top: 15, right: 50, bottom: 100, left: 50},
 		margin2 = {top: 500, right: 50, bottom: 50, left: 50},
-		width = 1300 - margin.left - margin.right,
+		width = 900 - margin.left - margin.right,
 		height = 570 - margin.top - margin.bottom,
 		height2 = 570 - margin2.top - margin2.bottom;
 
-	var maxY=findMaxY();
-	var minY=findMinY();
-	var mousePickerDate;
-	var currIndex=data2[0].priceList.length-1;
+
+	//var mousePickerDate;
+	//var currIndex=data2[0].priceList.length-1;
 	
 	var x = d3.time.scale()
 		.range([0, width-210]),
@@ -112,11 +111,16 @@ text {
 	var yAxis = d3.svg.axis()
 		.scale(y)
 		.orient("left");
+
+	var price_array_one_of_fund=funds[0].price_array;
+	x.domain([price_array_one_of_fund[price_array_one_of_fund.length-1].datetime,price_array_one_of_fund[0].datetime]); 
+	y.domain([0,d3.max(price_array_one_of_fund, function(d) { return parseFloat(d.price); })]);
+	x2.domain(x.domain());//the domain axis for the bar at the bottom
 	
 	var line = d3.svg.line()
 		.interpolate("linear")
-		.x(function(d) { return x(d.date); })
-		.y(function(d) { return y(d.price); });
+		.x(function(d) { return x(parseDate(d.datetime)); })
+		.y(function(d) { return y(parseFloat(d.price));   });
 
 	var svg = d3.select("#graph").append("svg")
 		.attr("width", width + margin.left + margin.right)
@@ -125,51 +129,6 @@ text {
 	//the main graphic component of the plot
 	var focus=svg.append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-	
-	//for slider part-----------------------------------------------------------------------------------
-	var brush = d3.svg.brush()//for slider bar at the bottom
-    .x(x2)
-    .on("brush", brushed);
-	
-	var context = svg.append("g")
-    .attr("transform", "translate(" + margin2.left + "," + margin2.top + ")");
-	
-	//append click path for controlling the sliding of curve, clip those part out of bounds
-	svg.append("defs").append("clipPath") 
-	.attr("id", "clip")
-	.append("rect")
-	.attr("width", width-210)
-	.attr("height", height); 
-
-	x.domain([data2[0].priceList[0].date,data2[0].priceList[data2[0].priceList.length-1].date]); 
-	y.domain([minY-0.2,maxY+0.2]);
-	x2.domain(x.domain());//the domain axis for the bar at the bottom
-  
-	context.append("g")
-      .attr("class", "x axis")
-      .attr("transform", "translate(0," + height2 + ")")
-      .call(xAxis2);
-	  
-	var contextArea = d3.svg.area()
-		.interpolate("monotone")
-		.x(function(d) { return x2(d.date); })
-		.y0(height2)
-		.y1(0);
-	
-	//plot the rect as the bar at the bottom
-	context.append("path")
-		.attr("class", "area")
-		.attr("d", contextArea(data2[0].priceList))
-		.attr("fill", "LightYellow ");
-		
-	//append the brush for the selection of subsection  
-	context.append("g")
-		.attr("class", "x brush")
-		.call(brush)
-		.selectAll("rect")
-		.attr("height", height2)
-	    .attr("fill", "SkyBlue");  
-	//end slider part-----------------------------------------------------------------------------------
 	
 	//x,y-axis for the plot
 	focus.append("g")
@@ -185,18 +144,18 @@ text {
 		.attr("y", 6)
 		.attr("dy", ".71em")
 		.style("text-anchor", "end")
-		.text("Price HK$");
+		.text("Price $");
 	
 	//curving part of those funds------------------------------------------------------------------------
 	var fund = focus.selectAll(".fund")
-			.data(data2)
+			.data(funds)
 			.enter().append("g")
 			.attr("class", "fund");
 
 	fund.append("path")
 		.attr("class", "line")
 		.attr("clip-path", "url(#clip)")//use clip path to make irrelevant part invisible
-		.attr("d", function(d) { if(d.vis=="1"){return line(d.priceList);} else{ return null;} })
+		.attr("d", function(d) { if(d.vis=="True"){return line(d.price_array);} else{ return null;} })
 		.style("stroke", function(d) { return colors(d.name); });
 
 	//fund name label
@@ -218,33 +177,32 @@ text {
 		.attr("stroke", function(d) {return colors(d.name);})
 		.attr("fill",function(d) {if(d.vis=="1"){return colors(d.name);}else{return "white";}})
 		.on("click", function(d) { 
-					if(d.vis=="1"){
-						d.vis="0";
+					if(d.vis=="True"){
+						d.vis="False";
 					}
 					else{
-						d.vis="1";
+						d.vis="True";
 					} 
-					maxY=findMaxY();
-					minY=findMinY();
-					y.domain([minY-0.2,maxY+0.2]);
+				
+					y.domain([0,d3.max(d.price_array, function(d) { return parseFloat(d.price); })]);
 					focus.select(".y.axis").call(yAxis);
 					
 					fund.select("path").transition()//update curve 
-						.attr("d", function(d) { if(d.vis=="1"){return line(d.priceList);} else{ return null;} })
+						.attr("d", function(d) { if(d.vis=="True"){return line(d.price_array);} else{ return null;} })
 				
 					fund.select("rect").transition()//update legend 
-						.attr("fill",function(d) {if(d.vis=="1"){return colors(d.name);}else{return "white";}});
+						.attr("fill",function(d) {if(d.vis=="True"){return colors(d.name);}else{return "white";}});
 			});  
 	//end of curving part of those funds-------------------------------------------------------------	
 			
 	//mouse picker related, hover line---------------------------------------------------------------
 	var pickerValue = focus.selectAll(".pickerValue")//for displaying fund unit price 
-		.data(data2)
+		.data(funds)
 		.enter().append("g")
 		.attr("class", "pickerValue");
 		
 	var valueChange = focus.selectAll(".valueChange")//for displaying unit price percentage change
-		.data(data2)
+		.data(funds)
 		.enter().append("g")
 		.attr("class", "valueChange");
 		
@@ -265,7 +223,7 @@ text {
 		//console.log("mouse move on graph");
 	})		
 	
-	mousePickerDate=getValueForPositionXFromData(width-210);//initial pick date is the last day of the plot
+	//mousePickerDate=getValueForPositionXFromData(width-210);//initial pick date is the last day of the plot
 	//for displaying fund unit price
 	pickerValue.append("text")
 		.attr("class", "valuesLabel")
@@ -274,7 +232,7 @@ text {
 		.text( function (d) { 
 			var dateStr="";
 			//console.log(mousePickerDate);
-			dateStr+=mousePickerDate.getFullYear();
+		/*	dateStr+=mousePickerDate.getFullYear();
 			if(mousePickerDate.getMonth()+1<10){
 				dateStr+="0"+(mousePickerDate.getMonth()+1);
 			}else{
@@ -287,7 +245,7 @@ text {
 			}
 			//console.log(dateStr);
 			currIndex=DateMapIndex.get(dateStr);
-			return d.priceList[currIndex].price; 
+			return d.priceList[currIndex].price; */
 		})
            .attr("font-family", "sans-serif")
            .attr("font-size", "15px")
@@ -299,22 +257,22 @@ text {
 		.attr("x", function(d) { return width-170; })
 		.attr("y", function(d) { return getFundID(d.name)*35+15; })
 		.text( function (d) { 
-			var percentChange=(d.priceList[currIndex].price-d.priceList[currIndex-1].price)/d.priceList[currIndex-1].price*100;
+		/*	var percentChange=(d.priceList[currIndex].price-d.priceList[currIndex-1].price)/d.priceList[currIndex-1].price*100;
 			if(percentChange<0){
 				return "(-"+percentChange.toFixed(2)+"%)" 
 			}else{
 				return "(+"+percentChange.toFixed(2)+"%)" 
-			}
+			}*/
 		})
         .attr("font-family", "sans-serif")
         .attr("font-size", "15px")
         .attr("fill", function (d) {
-			var percentChange=(d.priceList[currIndex].price-d.priceList[currIndex-1].price)/d.priceList[currIndex-1].price*100;
+			/*var percentChange=(d.priceList[currIndex].price-d.priceList[currIndex-1].price)/d.priceList[currIndex-1].price*100;
 			if(percentChange<0){
 				return "red" 
 			}else{
 				return "black" 
-			}
+			}*/
 		});  
 
 	//end of mouse picker related, hover line-------------------------------------------------------------------

@@ -26,7 +26,7 @@
 		var mouseX = event.pageX-90;
 		var mouseY = event.pageY-34;
 	
-		if(mouseX >= 0 && mouseX <=990 && mouseY >= 0 && mouseY <= 500) {
+		/*if(mouseX >= 0 && mouseX <=990 && mouseY >= 0 && mouseY <= 500) {
 			//console.log(mouseX+"  "+mouseY);
 			// show the hover line
 			hoverLineGroup.select('line').remove();
@@ -40,7 +40,7 @@
 		} else {
 			//out of the bounds that we want
 			handleMouseOutGraph(event);
-		}
+		}*/
 	}
 	
 	
@@ -50,7 +50,7 @@
 		
 		//Set the value labels to whatever the latest data point is.
 		//when the user is not scanning through the graph
-		displayDateForPositionX(width-210);
+		//displayDateForPositionX(width-210);
 	}
 	
 	/**
@@ -58,7 +58,7 @@
 	*/
 	var displayDateForPositionX = function(xPosition) {
 		//console.log("xPos:"+xPosition);
-		var dateToShow=getValueForPositionXFromData(xPosition);
+		/*var dateToShow=getValueForPositionXFromData(xPosition);
 		mousePickerDate=dateToShow;
 		DateLbl.select('text').remove();
 		DateLbl.append("text")
@@ -121,7 +121,7 @@
 					}
 				});
 		}
-		
+		*/
 	}
 	
 	/**
@@ -130,8 +130,8 @@
 	*/
 	function getValueForPositionXFromData(xPosition) {
 		// get the date on x-axis for the current location
-		var xValue = x.invert(xPosition);
+		//var xValue = x.invert(xPosition);
 		//console.log(xValue);
-		return xValue;
+		//return xValue;
 	}
 
