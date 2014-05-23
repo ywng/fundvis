@@ -293,14 +293,14 @@ text {
 	  
 	var contextArea = d3.svg.area()
 		.interpolate("monotone")
-		.x(function(d) { return x2(d.date); })
+		.x(function(d) { return x2(d.datetime); })
 		.y0(height2)
 		.y1(0);
 	
 	//plot the rect as the bar at the bottom
 	context.append("path")
 		.attr("class", "area")
-		.attr("d", contextArea(data2[0].priceList))
+		.attr("d", contextArea(funds[0].price_array))
 		.attr("fill", "LightYellow ");
 		
 	//append the brush for the selection of subsection  
