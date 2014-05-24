@@ -69,8 +69,8 @@ function _init_funds(){
 }
 
 function find_max_min_selected_funds(){
-	var max=parseFloat(funds[0].price_array[0].price);
-	var min=parseFloat(funds[0].price_array[0].price);
+	var max=-999999;
+	var min=999999;
 	for(var i=0;i<funds.length;i++){
 		if(funds[i].vis=="True"){
 			for(var j=0;j<funds[i].price_array.length;j++){
