@@ -167,17 +167,17 @@ text {
 		.attr("width", 25)
 		.attr("x",function(d) { 
 			if(d.id<=13){
-				return width-200+(d.id%3)*35;
+				return width-200+((d.id-1)%3)*35;
 			}else{
-				return width-200+((d.id-13)%3)*30;
+				return width-200+((d.id-14)%3)*30;
 			}
 			
 		})
 		.attr("y",function(d) { 
 			if(d.id<=13){
-				return (d.id/3)*35;
+				return ((d.id-1)/3)*35;
 			}else{
-				return (d.id/3+2)*35;
+				return ((d.id-1)/3+2)*35;
 			}
 			
 		})
