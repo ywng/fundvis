@@ -31,7 +31,7 @@ class Fund_model extends CI_Model{
     public function get_max_min_date(){
         $this->db->select_max($this->KEY_datetime);
         $this->db->select_min($this->KEY_datetime);
-        return $this->db->get($this->Table_name_fund)->result_array();
+        return $this->db->get($this->Table_name_fund)->result();
     }
 
     public function get_all_funds(){
