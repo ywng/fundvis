@@ -27,6 +27,8 @@
 
 var parseDate = d3.time.format("%Y-%m-%d %H:%M:%S").parse;
 var funds=new Array();
+var maxDate;
+var minDate;
 
 function _init_funds(){
 	// fetch data from database
@@ -39,6 +41,9 @@ function _init_funds(){
 		async: false,
 		success: function(data, textStatus, jqXHR){
 			funds=data.funds;
+			maxDate=parseDate(data.max_date);
+			minDate=parseDate(data.min_date);
+
 			for(var i=0; i < funds.length; i++) {
 
 
