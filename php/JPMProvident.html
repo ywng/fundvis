@@ -155,6 +155,23 @@ text {
 		.attr("dy", ".71em")
 		.style("text-anchor", "end")
 		.text("Price $");
+
+	focus.append("text")
+		.attr("class", "fundCategory")
+		.attr("x", function(d) { return width-100; })
+		.attr("y", 80)
+		.text( "JPMorgan Funds")
+		.attr("font-family", "sans-serif")
+		.attr("font-size", "10px")
+		.attr("fill", "black");  
+	focus.append("text")
+		.attr("class", "fundCategory")
+		.attr("x", function(d) { return width-100; })
+		.attr("y", 275)
+		.text( "Fidelity Funds")
+		.attr("font-family", "sans-serif")
+		.attr("font-size", "10px")
+		.attr("fill", "black");  
 	
 	//curving part of these funds------------------------------------------------------------------------
 	var fund = focus.selectAll(".fund")
