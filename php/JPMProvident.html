@@ -120,9 +120,8 @@ text {
 		.scale(y)
 		.orient("left");
 
-	var price_array_one_of_fund=funds[0].price_array;
 	x.domain([parseDate(minDate),parseDate(maxDate)]); 
-	y.domain([d3.min(price_array_one_of_fund, function(d) {return parseFloat(d.price); })-1,d3.max(price_array_one_of_fund, function(d) {return parseFloat(d.price); })+1]);
+	y.domain([find_max_min_selected_funds().min-1,find_max_min_selected_funds().max+1]);
 	x2.domain(x.domain());//the domain axis for the bar at the bottom
 	
 	var line = d3.svg.line()
