@@ -67,6 +67,7 @@ function _init_funds(){
 
 }
 
+/*
 function find_max_min_selected_funds(){
 	var max=-99999999999999;
 	var min=99999999999999;
@@ -89,5 +90,5 @@ function find_max_min_selected_funds(){
 	max_min_price.max=max;
 	max_min_price.min=min;
 	return max_min_price;
-}
+}*/
 
