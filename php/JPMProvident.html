@@ -175,9 +175,9 @@ text {
 		})
 		.attr("y",function(d) { 
 			if(d.id<=13){
-				return (d.id%3)*35;
+				return (d.id/3)*35;
 			}else{
-				return ((d.id-13)%3)*35;
+				return ((d.id-13)/3)*35;
 			}
 			
 		})
