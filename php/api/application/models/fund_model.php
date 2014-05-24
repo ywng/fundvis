@@ -28,8 +28,12 @@ class Fund_model extends CI_Model{
     /*
      * 
      */
-    public function get_max_min_date(){
+    public function get_max_date(){
         $this->db->select_max($this->KEY_datetime);
+        return $this->db->get($this->Table_name_price)->result();
+    }
+
+    public function get_min_date(){
         $this->db->select_min($this->KEY_datetime);
         return $this->db->get($this->Table_name_price)->result();
     }
