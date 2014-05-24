@@ -329,12 +329,14 @@ text {
 		.y1(0);
 	
 	//plot the rect as the bar at the bottom
-	var dummyObjToIncludeMindate=new object();
-	dummyObjToIncludeMindate.datetime=maxDate;
-	dummyObjToIncludeMindate.price=0;
-	var dummyObjToIncludeMaxdate=new object;
-	dummyObjToIncludeMaxdate.datetime=maxDate;
-	dummyObjToIncludeMaxdate.price=0;
+	var dummyObjToIncludeMindate={
+		datetime:minDate,
+		price:"0"
+	};
+	var dummyObjToIncludeMaxdate={
+		datetime:maxDate,
+		price:"0"
+	};
 	var sampleFundPriceArray=funds[0].price_array.slice();
 	sampleFundPriceArray.push(dummyObjToIncludeMaxdate);
 	sampleFundPriceArray.push(dummyObjToIncludeMindate);
