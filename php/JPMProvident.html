@@ -121,7 +121,7 @@ text {
 		.orient("left");
 
 	var price_array_one_of_fund=funds[0].price_array;
-	x.domain([parseDate(minDate),parseDate(maxDate)]); 
+	x.domain([parseDate(price_array_one_of_fund[price_array_one_of_fund.length-1].datetime),parseDate(price_array_one_of_fund[0].datetime)]); 
 	y.domain([d3.min(price_array_one_of_fund, function(d) {return parseFloat(d.price); })-1,d3.max(price_array_one_of_fund, function(d) {return parseFloat(d.price); })+1]);
 	x2.domain(x.domain());//the domain axis for the bar at the bottom
 	
