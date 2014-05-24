@@ -59,13 +59,6 @@ text {
 
 </style>
 
-<script src="http://d3js.org/d3.v3.min.js"></script>
-<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
-<script src="js/fund.js"></script>
-<script src="js/color.js"></script>
-<script src="js/picker.js"></script>
-<script src="config/config.js"></script>
-
 <h4>JP Morgan Provident Scheme</h4>
 <body> 
 
@@ -85,6 +78,13 @@ text {
 </footer>
 
 </body>
+
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script src="js/fund.js"></script>
+<script src="js/color.js"></script>
+<script src="js/picker.js"></script>
+<script src="config/config.js"></script>
 
 <script>
 
@@ -120,8 +120,9 @@ text {
 		.scale(y)
 		.orient("left");
 
-	x.domain([parseDate(minDate),parseDate(maxDate)]); 
-	y.domain([find_max_min_selected_funds().min-1,find_max_min_selected_funds().max+1]);
+	var price_array_one_of_fund=funds[0].price_array;
+	x.domain([parseDate(price_array_one_of_fund[price_array_one_of_fund.length-1].datetime),parseDate(price_array_one_of_fund[0].datetime)]); 
+	y.domain([d3.min(price_array_one_of_fund, function(d) {return parseFloat(d.price); })-1,d3.max(price_array_one_of_fund, function(d) {return parseFloat(d.price); })+1]);
 	x2.domain(x.domain());//the domain axis for the bar at the bottom
 	
 	var line = d3.svg.line()
@@ -205,7 +206,7 @@ text {
 						d.vis="True";
 					} 
 
-					y.domain([find_max_min_selected_funds().min-1,find_max_min_selected_funds().max+1]);
+					y.domain([d3.min(d.price_array, function(d) {return parseFloat(d.price); })-1,d3.max(d.price_array, function(d) {return parseFloat(d.price); })+1]);
 					focus.select(".y.axis").call(yAxis);
 					
 					fund.select("path").transition()//update curve 

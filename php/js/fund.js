@@ -27,8 +27,6 @@
 
 var parseDate = d3.time.format("%Y-%m-%d %H:%M:%S").parse;
 var funds=new Array();
-var maxDate;
-var minDate;
 
 function _init_funds(){
 	// fetch data from database
@@ -41,8 +39,6 @@ function _init_funds(){
 		async: false,
 		success: function(data, textStatus, jqXHR){
 			funds=data.funds;
-			maxDate=data.max_date;
-			minDate=data.min_date;
 			for(var i=0; i < funds.length; i++) {
 
 
@@ -65,30 +61,5 @@ function _init_funds(){
 
 	 }); // end of the ajax call
 
-}
-
-
-function find_max_min_selected_funds(){
-	var max=-999999;
-	var min=999999;
-	for(var i=0;i<funds.length;i++){
-		if(funds[i].vis=="True"){
-			for(var j=0;j<funds[i].price_array.length;j++){
-				var price=parseFloat(funds[i].price_array[j].price);
-				if(price>max){
-					max=price;
-				}
-				if(price<min){
-					min=price;
-				}
-			}
-		}
-		
-	}
-
-	var max_min_price;
-	max_min_price.max=max;
-	max_min_price.min=min;
-	return max_min_price;
 }
 
