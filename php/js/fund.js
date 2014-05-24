@@ -42,29 +42,18 @@ function _init_funds(){
 			for(var i=0; i < funds.length; i++) {
 
 
-				/*var fund=new Object();
-				fund.vis="0";
-				fund.name=funds_arr[i].name;
-				fundName[funds_arr[i].id]=fund.name;
-				fund.priceList=new Array();
-			
-				for(var j=0;j<funds_arr[i].price_array.length;j++){
-					var dailyPrice=new Object();
-					dailyPrice.price=parseFloat(funds_arr[i].price_array[j].price);
-					
+				/*
+
 					
 					//construct the map for mapping date to array index
 					//only do it once for first series is okay
 					if(i==0){
 						DateMapIndex.set(funds_arr[i].price_array[j].datetime,j);
 					}
-					
-					dailyPrice.date= parseDate(funds_arr[i].price_array[j].datetime);
-					fund.priceList[j]=dailyPrice;
-				}
-				data2[i]=fund;*/
+				
+				*/
 			}
-			funds[0].vis="True";//when start, only visible the first one, other let user set it.	
+			funds[0].vis="True";//when start, only visible the first one, other funds, let user set it later.	
 		},
 		error: function(jqHXR, textStatus, errorThrown) {
 			console.log('ajax error in get survey ID call:' +textStatus + ' ' + errorThrown);
