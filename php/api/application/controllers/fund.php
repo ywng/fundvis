@@ -46,9 +46,9 @@ class Fund extends REST_Controller {
 		$this->core_controller->add_return_data('funds', $funds_price); 
 
 		$max_date=$this->fund_model->get_max_date();
-		$this->core_controller->add_return_data('max_date', $max_date); 
+		$this->core_controller->add_return_data('max_date', $max_date[0]); 
 		$min_date=$this->fund_model->get_min_date();
-		$this->core_controller->add_return_data('min_date', $min_date); 
+		$this->core_controller->add_return_data('min_date', $min_date[0]); 
 
 		$this->core_controller->successfully_processed();
 
