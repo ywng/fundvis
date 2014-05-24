@@ -41,8 +41,8 @@ function _init_funds(){
 		async: false,
 		success: function(data, textStatus, jqXHR){
 			funds=data.funds;
-			maxDate=parseDate(data.max_date.datetime);
-			minDate=parseDate(data.min_date.datetime);
+			maxDate=data.max_date.datetime;
+			minDate=data.min_date.datetime;
 
 			for(var i=0; i < funds.length; i++) {
 

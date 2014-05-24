@@ -59,7 +59,7 @@ text {
 
 </style>
 
-<h4>JP Morgan Provident Scheme</h4>
+<h4>JPMorgan Provident Scheme</h4>
 <body> 
 
 <!--
@@ -123,7 +123,7 @@ text {
 		.orient("left");
 
 	var price_array_one_of_fund=funds[0].price_array;
-	x.domain([minDate,maxDate]); 
+	x.domain([parseDate(minDate),parseDate(maxDate)]); 
 	y.domain([d3.min(price_array_one_of_fund, function(d) {return parseFloat(d.price); })-1,d3.max(price_array_one_of_fund, function(d) {return parseFloat(d.price); })+1]);
 	x2.domain(x.domain());//the domain axis for the bar at the bottom
 	
@@ -329,9 +329,19 @@ text {
 		.y1(0);
 	
 	//plot the rect as the bar at the bottom
+	var dummyObjToIncludeMindate;
+	dummyObjToIncludeMindate.datetime=maxDate;
+	dummyObjToIncludeMindate.price=0;
+	var dummyObjToIncludeMaxdate;
+	dummyObjToIncludeMaxdate.datetime=maxDate;
+	dummyObjToIncludeMaxdate.price=0;
+	var sampleFundPriceArray=funds[0].price_array;
+	sampleFundPriceArray.push(dummyObjToIncludeMaxdate);
+	sampleFundPriceArray.push(dummyObjToIncludeMindate);
+
 	context.append("path")
 		.attr("class", "area")
-		.attr("d", contextArea(funds[0].price_array))
+		.attr("d", contextArea(sampleFundPriceArray))
 		.attr("fill", "LightYellow ");
 		
 	//append the brush for the selection of subsection  
