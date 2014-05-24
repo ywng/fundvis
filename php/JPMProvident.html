@@ -159,18 +159,18 @@ text {
 	focus.append("text")
 		.attr("class", "fundCategory")
 		.attr("x", function(d) { return width-100; })
-		.attr("y", 80)
+		.attr("y", 70)
 		.text( "JPMorgan Funds")
 		.attr("font-family", "sans-serif")
-		.attr("font-size", "10px")
+		.attr("font-size", "20px")
 		.attr("fill", "black");  
 	focus.append("text")
 		.attr("class", "fundCategory")
 		.attr("x", function(d) { return width-100; })
-		.attr("y", 275)
+		.attr("y", 280)
 		.text( "Fidelity Funds")
 		.attr("font-family", "sans-serif")
-		.attr("font-size", "10px")
+		.attr("font-size", "20px")
 		.attr("fill", "black");  
 	
 	//curving part of these funds------------------------------------------------------------------------
@@ -209,9 +209,9 @@ text {
 		})
 		.attr("y",function(d) { 
 			if(d.id<=13){
-				return 100+Math.floor((d.id-1)/3)*35;
+				return 70+Math.floor((d.id-1)/3)*35;
 			}else{
-				return 100+(Math.floor((d.id-14)/3)+2)*35+Math.floor((13-1)/3)*35;
+				return 70+(Math.floor((d.id-14)/3)+2)*35+Math.floor((13-1)/3)*35;
 			}
 			
 		})
