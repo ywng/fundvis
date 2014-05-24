@@ -33,7 +33,7 @@
 body {
   padding-bottom: 40px;
   margin:10px 5px 30px 40px;
-  width: 1050px;
+  width: 1200px;
 }
 
 text {
@@ -92,7 +92,7 @@ text {
 	
 	var margin = {top: 15, right: 50, bottom: 100, left: 50},
 		margin2 = {top: 500, right: 50, bottom: 50, left: 50},
-		width = 1050 - margin.left - margin.right,
+		width = 1200 - margin.left - margin.right,
 		height = 570 - margin.top - margin.bottom,
 		height2 = 570 - margin2.top - margin2.bottom;
 
@@ -101,9 +101,9 @@ text {
 	//var currIndex=data2[0].priceList.length-1;
 	
 	var x = d3.time.scale()
-		.range([0, width-210]),
+		.range([0, width-100]),
 		x2 = d3.time.scale()      //for the time selection bar at the bottom
-		.range([0, width-210]);
+		.range([0, width-100]);
 
 	var y = d3.scale.linear()
 		.range([height, 0]),
@@ -182,9 +182,9 @@ text {
 		.attr("width", 25)
 		.attr("x",function(d) { 
 			if(d.id<=13){
-				return width-100+((d.id-1)%3)*40;
+				return width-50+((d.id-1)%3)*40;
 			}else{
-				return width-100+((d.id-14)%3)*40;
+				return width-50+((d.id-14)%3)*40;
 			}
 			
 		})
