@@ -206,7 +206,7 @@ text {
 						d.vis="True";
 					} 
 
-					y.domain([d3.min(d.price_array, function(d) {return parseFloat(d.price); })-1,d3.max(d.price_array, function(d) {return parseFloat(d.price); })+1]);
+					y.domain([find_max_min_selected_funds()["min"],find_max_min_selected_funds()["max"]]);
 					focus.select(".y.axis").call(yAxis);
 					
 					fund.select("path").transition()//update curve 
