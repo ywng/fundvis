@@ -206,7 +206,8 @@ text {
 						d.vis="True";
 					} 
 
-					y.domain([find_max_min_selected_funds()["min"],find_max_min_selected_funds()["max"]]);
+					var price=find_max_min_selected_funds();
+					y.domain([price["min"],price["max"]]);
 					focus.select(".y.axis").call(yAxis);
 					
 					fund.select("path").transition()//update curve 
