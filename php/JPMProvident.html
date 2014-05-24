@@ -192,9 +192,9 @@ text {
 		})
 		.attr("y",function(d) { 
 			if(d.id<=13){
-				return Math.floor((d.id-1)/3)*35;
+				return 200+Math.floor((d.id-1)/3)*35;
 			}else{
-				return (Math.floor((d.id-14)/3)+2)*35+Math.floor((13-1)/3)*35;
+				return 200+(Math.floor((d.id-14)/3)+2)*35+Math.floor((13-1)/3)*35;
 			}
 			
 		})
