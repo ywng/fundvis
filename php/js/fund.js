@@ -25,7 +25,7 @@
   *
   */
 
-var parseDate = d3.time.format("%Y%m%d").parse;
+var parseDate = d3.time.format("%Y-%m-%d %H:%M:%S").parse;
 var funds=new Array();
 
 function _init_funds(){
