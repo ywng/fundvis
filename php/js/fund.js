@@ -67,28 +67,3 @@ function _init_funds(){
 
 }
 
-
-function find_max_min_selected_funds(){
-	var max=-999999;
-	var min=999999;
-	for(var i=0;i<funds.length;i++){
-		if(funds[i].vis=="True"){
-			for(var j=0;j<funds[i].price_array.length;j++){
-				var price=parseFloat(funds[i].price_array[j].price);
-				if(price>max){
-					max=price;
-				}
-				if(price<min){
-					min=price;
-				}
-			}
-		}
-		
-	}
-
-	var max_min_price;
-	max_min_price.max=max;
-	max_min_price.min=min;
-	return max_min_price;
-}
-
