@@ -166,7 +166,7 @@ text {
 		.attr("class", "line")
 		.attr("clip-path", "url(#clip)")//use clip path to make irrelevant part invisible
 		.attr("d", function(d) { if(d.vis=="True"){return line(d.price_array);} else{ return null;} })
-		.style("stroke", function(d) { return colors(d.name); });
+		.style("stroke", function(d) { return colors(d.id-1); });
 
 	//fund name label
 	/*fund.append("text")
@@ -198,8 +198,8 @@ text {
 			}
 			
 		})
-		.attr("stroke", function(d) {return colors(d.name);})
-		.attr("fill",function(d) {if(d.vis=="True"){return colors(d.name);}else{return "white";}})
+		.attr("stroke", function(d) {return colors(d.id-1);})
+		.attr("fill",function(d) {if(d.vis=="True"){return colors(d.id-1);}else{return "white";}})
 		.on("click", function(d) { 
 					if(d.vis=="True"){ //show the curve or not 
 						d.vis="False";
