@@ -167,9 +167,9 @@ text {
 		.attr("width", 25)
 		.attr("x",function(d) { 
 			if(d.id<=13){
-				return width-200+((d.id-1)%3)*40;
+				return width-100+((d.id-1)%3)*40;
 			}else{
-				return width-200+((d.id-14)%3)*40;
+				return width-100+((d.id-14)%3)*40;
 			}
 			
 		})
@@ -177,7 +177,7 @@ text {
 			if(d.id<=13){
 				return Math.floor((d.id-1)/3)*35;
 			}else{
-				return Math.floor((d.id-1)/3+2)*35;
+				return Math.floor((d.id-1)/3)+2*35;
 			}
 			
 		})
