@@ -87,12 +87,12 @@ text {
 	
 	var x = d3.time.scale()
 		.range([0, width-210]),
-		x2 = d3.time.scale()
+		x2 = d3.time.scale()      //for the time selection bar at the bottom
 		.range([0, width-210]);
 
 	var y = d3.scale.linear()
 		.range([height, 0]),
-		y2 = d3.scale.linear()
+		y2 = d3.scale.linear()   //for the time selection bar at the bottom
 		.range([height2, 0]);
 
 	var xAxis = d3.svg.axis()
@@ -137,9 +137,9 @@ text {
 		.attr("y", 6)
 		.attr("dy", ".71em")
 		.style("text-anchor", "end")
-		.text("Price $");
+		.text("Price HKD/USD $");
 	
-	//curving part of those funds------------------------------------------------------------------------
+	//curving part of these funds------------------------------------------------------------------------
 	var fund = focus.selectAll(".fund")
 			.data(funds)
 			.enter().append("g")
