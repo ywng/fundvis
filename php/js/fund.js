@@ -45,7 +45,7 @@ function _init_funds(){
 			maxDate=data.max_date.datetime;
 			minDate=data.min_date.datetime;
 
-			for(var i=0; i < funds.length; i++) {
+			for(var i=0; i < funds_actual.length; i++) {
 
 
 				/*
