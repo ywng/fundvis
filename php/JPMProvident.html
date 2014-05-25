@@ -108,10 +108,10 @@ text {
 		  console.log(state); // true | false
 
 		  if(state){//state true means that $ is selected , else % is selected
-		  	yAxis.select().transition().attr("text", "Price $");//update axis label
+		  	//yAxis.select().transition().attr("text", "Price $");//update axis label
 
 		  }else{
-		  	yAxis.select().transition().attr("text", "Percentage %");//update axis label
+		  	//yAxis.select().transition().attr("text", "Percentage %");//update axis label
 
 		  }
 
@@ -188,7 +188,7 @@ text {
 	focus.append("text")
 		.attr("class", "fundCategory")
 		.attr("x", function(d) { return width-100; })
-		.attr("y", 60)
+		.attr("y", 65)
 		.text( "JPMorgan Funds")
 		.attr("font-family", "sans-serif")
 		.attr("font-size", "30px")
@@ -196,7 +196,7 @@ text {
 	focus.append("text")
 		.attr("class", "fundCategory")
 		.attr("x", function(d) { return width-100; })
-		.attr("y", 305)
+		.attr("y", 275)
 		.text( "Fidelity Funds")
 		.attr("font-family", "sans-serif")
 		.attr("font-size", "30px")
@@ -240,7 +240,7 @@ text {
 			if(d.id<=13){
 				return 80+Math.floor((d.id-1)/3)*35;
 			}else{
-				return 80+(Math.floor((d.id-14)/3)+3)*35+Math.floor((13-1)/3)*35;
+				return 80+(Math.floor((d.id-14)/3)+2)*35+Math.floor((13-1)/3)*35;
 			}
 			
 		})
