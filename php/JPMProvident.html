@@ -189,7 +189,7 @@ text {
 		.orient("left");
 
 	x.domain([parseDate(minDate),parseDate(maxDate)]); 
-	y.domain([find_max_min_selected_funds().min-1,find_max_min_selected_funds().max+1]);
+	y.domain([find_max_min_selected_funds(funds_actual).min-1,find_max_min_selected_funds(funds_actual).max+1]);
 	x2.domain(x.domain());//the domain axis for the bar at the bottom
 	
 	var line = d3.svg.line()
