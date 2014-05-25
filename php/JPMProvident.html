@@ -109,10 +109,22 @@ text {
 
 		  if(state=="true"){//state true means that $ is selected , else % is selected
 		  	console.log("actual price is selected to display");
-		  	focus.select(".y.axis").text("Price $");//update axis label
+		  	focus.select(".y.axis").call(yAxis)
+				.append("text")
+				.attr("transform", "rotate(-90)")
+				.attr("y", 6)
+				.attr("dy", ".71em")
+				.style("text-anchor", "end")
+				.text("Price $");//update axis label
 
 		  }else{
-		  	focus.select(".y.axis").text("Percentage %");//update axis label
+		  	focus.select(".y.axis").call(yAxis)
+				.append("text")
+				.attr("transform", "rotate(-90)")
+				.attr("y", 6)
+				.attr("dy", ".71em")
+				.style("text-anchor", "end")
+				.text("percentage %");//update axis label
 
 		  }
 
