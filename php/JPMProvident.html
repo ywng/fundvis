@@ -108,10 +108,10 @@ text {
 		  console.log(state); // true | false
 
 		  if(state){//state true means that $ is selected , else % is selected
-		  	//yAxis.select().transition().attr("text", "Price $");//update axis label
+		  	focus.select(".y axis").text("Price $");//update axis label
 
 		  }else{
-		  	//yAxis.select().transition().attr("text", "Percentage %");//update axis label
+		  	focus.select(".y axis").text("Percentage %");//update axis label
 
 		  }
 
@@ -175,7 +175,7 @@ text {
 		.attr("transform", "translate(0," + height + ")")
 		.call(xAxis);
 
-	var yAxis=focus.append("g")
+	focus.append("g")
 		.attr("class", "y axis")
 		.call(yAxis)
 		.append("text")
@@ -261,7 +261,7 @@ text {
 						.attr("d", function(d) { if(d.vis=="True"){return line(d.price_array);} else{ return null;} });
 				
 					fund.select("rect").transition()//update legend 
-						.attr("fill",function(d) {if(d.vis=="True"){return colors(d.name);}else{return "white";}});
+						.attr("fill",function(d) {if(d.vis=="True"){return colors(d.id-1);}else{return "white";}});
 			});  
 	//end of curving part of those funds-------------------------------------------------------------	
 			
