@@ -39,7 +39,7 @@ body {
 }
 
 .fundCategory{
-	font: 80px sans-serif;
+	font: 30px sans-serif;
 }
 
 text {
@@ -102,6 +102,11 @@ text {
 <script>
 	$(function() {
 		$("[name='my-checkbox']").bootstrapSwitch();
+		$('input[name="my-checkbox"]').on('switchChange.bootstrapSwitch', function(event, state) {
+		  console.log(this); // DOM element
+		  console.log(event); // jQuery event
+		  console.log(state); // true | false
+		});
 		
 	});
 
