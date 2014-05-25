@@ -196,7 +196,7 @@ text {
 	focus.append("text")
 		.attr("class", "fundCategory")
 		.attr("x", function(d) { return width-100; })
-		.attr("y", 270)
+		.attr("y", 305)
 		.text( "Fidelity Funds")
 		.attr("font-family", "sans-serif")
 		.attr("font-size", "30px")
@@ -238,9 +238,9 @@ text {
 		})
 		.attr("y",function(d) { 
 			if(d.id<=13){
-				return 70+Math.floor((d.id-1)/3)*35;
+				return 80+Math.floor((d.id-1)/3)*35;
 			}else{
-				return 70+(Math.floor((d.id-14)/3)+2)*35+Math.floor((13-1)/3)*35;
+				return 80+(Math.floor((d.id-14)/3)+3)*35+Math.floor((13-1)/3)*35;
 			}
 			
 		})
