@@ -63,7 +63,7 @@ text {
 
 
 <body> 
-	
+
 <h4>JPMorgan Provident Scheme</h4>
 <input type="checkbox" name="my-checkbox" checked>
 <!--
@@ -94,8 +94,12 @@ text {
 <script src="config/config.js"></script>
 
 <script>
+	$(function() {
+		$("[name='my-checkbox']").bootstrapSwitch();
+		_init_funds(); 
+	});
 
-	_init_funds(); 
+	
 	
 	var margin = {top: 15, right: 50, bottom: 100, left: 50},
 		margin2 = {top: 500, right: 50, bottom: 50, left: 50},
