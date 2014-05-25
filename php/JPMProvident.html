@@ -102,7 +102,7 @@ text {
 <script>
 	$(function() {
 
-		update(funds);
+		update(funds_actual);
 
 		$("[name='my-checkbox']").bootstrapSwitch();
 		$('input[name="my-checkbox"]').on('switchChange.bootstrapSwitch', function(event, state) {
@@ -114,6 +114,7 @@ text {
 		  	//console.log("actual price is selected to display");
 		  	focus.select(".y.axis").select(".yaxisLabel").transition()
 				.text("Actual Price $");//update axis label
+			update(funds_actual);
 
 		  }else{
 		  	focus.select(".y.axis").select(".yaxisLabel").transition()
@@ -129,7 +130,7 @@ text {
 			}
 
 			//update the funds path
-
+			update(funds_percent);
 
 		  }
 
