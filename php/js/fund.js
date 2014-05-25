@@ -69,13 +69,13 @@ function _init_funds(){
 
 }
 
-function find_max_min_selected_funds(){
+function find_max_min_selected_funds(data){
 	var max=-999999;
 	var min=999999;
-	for(var i=0;i<funds_actual.length;i++){
-		if(funds_actual[i].vis=="True"){
-			for(var j=0;j<funds_actual[i].price_array.length;j++){
-				var price=parseFloat(funds_actual[i].price_array[j].price);
+	for(var i=0;i<data.length;i++){
+		if(data[i].vis=="True"){
+			for(var j=0;j<data[i].price_array.length;j++){
+				var price=parseFloat(data[i].price_array[j].price);
 				if(price>max){
 					max=price;
 				}

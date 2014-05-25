@@ -286,7 +286,7 @@ text {
 							d.vis="True";
 						} 
 
-						y.domain([find_max_min_selected_funds().min-1,find_max_min_selected_funds().max+1]);
+						y.domain([find_max_min_selected_funds(data).min-1,find_max_min_selected_funds(data).max+1]);
 						focus.select(".y.axis").call(yAxis);
 						
 						fund.select("path").transition()//update curve 
