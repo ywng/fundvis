@@ -225,8 +225,9 @@ text {
 	function update(data) {
 		//curving part of these funds------------------------------------------------------------------------
 		var fund = focus.selectAll(".fund")
-				.data(data)
-				.enter().append("g")
+				.data(data);
+		
+		fund.enter().append("g")
 				.attr("class", "update");
 
 		fund.append("path")
@@ -367,8 +368,10 @@ text {
 
 	//end of mouse picker related, hover line-------------------------------------------------------------------
 	
+	
 
-	//for slider part-----------------------------------------------------------------------------------
+	//**************** Slider part & Brush *******************************************//
+	//********************************************************************************//
 	var brush = d3.svg.brush()//for slider bar at the bottom
     .x(x2)
     .on("brush", brushed);
@@ -391,7 +394,7 @@ text {
 	var contextArea = d3.svg.area()
 		.interpolate("monotone")
 		.x(function(d) { return x2(parseDate(d.datetime)); })
-		.y0(height2)
+		.y0(height2)//the height is always max height, just to plot a rectangle rather than an actual path of the data
 		.y1(0);
 	
 	//plot the rect as the bar at the bottom
@@ -419,12 +422,8 @@ text {
 		.selectAll("rect")
 		.attr("height", height2)
 	    .attr("fill", "SkyBlue");  
-	//end slider part-----------------------------------------------------------------------------------
-
-
 
 	//for brusher of the slider bar at the bottom
-
 	function brushed() {
 		x.domain(brush.empty() ? x2.domain() : brush.extent());
 		fund.select("path").transition()//update curve 
@@ -432,13 +431,8 @@ text {
 		focus.select(".x.axis").call(xAxis);
 	}
 
-	//this function is mainly for accessing the colors
-	function getFundID(fundName){
-		/*for(var i=0; i < data2.length; i++) {
-			if(data2[i].name==fundName)
-			  return i;
-		}*/
-	}
+	//********************************************************************************//
+	//**************End of Slider part & Brush****************************************//
 
 
 </script>
