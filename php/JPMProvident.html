@@ -129,7 +129,7 @@ text {
 					vis:funds_actual[i].vis
 				}
 				var priceObj={
-					datetime:funds_actual[i].price_array[0],
+					datetime:funds_actual[i].price_array[0].datetime,
 					price:"0"
 				};
 				funds_percent.push(fundObj);
@@ -139,7 +139,7 @@ text {
 					console.log(funds_actual[i].price_array[j-1].price);
 					var percentageChange=parseFloat(funds_actual[i].price_array[j].price)/parseFloat(funds_actual[i].price_array[j-1].price)-1;
 					var priceObj={
-						datetime:funds_actual[i].price_array[j],
+						datetime:funds_actual[i].price_array[j].datetime,
 						price:percentageChange.toString()
 					};
 					funds_percent[i].price_array.push(priceObj);
