@@ -246,11 +246,11 @@ text {
 		focus.select(".y.axis").call(yAxis);
 
 		//remove old data/plot
-		//focus.selectAll(".fund").enter().remove();
+		focus.selectAll(".fund").remove();
 
 		//curving part of these funds------------------------------------------------------------------------
 		fund = focus.selectAll(".fund")
-				.data(data);
+				.data(data,function(d) { return d; });
 		
 		fund.attr("class", "update");
 
@@ -307,7 +307,7 @@ text {
 
 		  // EXIT
 		  // Remove old elements as needed.
-		  fund.exit().remove();
+		 // fund.exit().remove();
 	}
 	
 			
