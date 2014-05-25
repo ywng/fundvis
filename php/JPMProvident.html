@@ -110,11 +110,11 @@ text {
 		  if(state==true){//state true means that $ is selected , else % is selected
 		  	console.log("actual price is selected to display");
 		  	focus.select(".y.axis").select(".yaxisLabel").transition()
-				.text("Price $");//update axis label
+				.text("Actual Price $");//update axis label
 
 		  }else{
 		  	focus.select(".y.axis").select(".yaxisLabel").transition()
-				.text("Percentage %");//update axis label
+				.text("Percentage Change %");//update axis label
 
 		  }
 
@@ -187,7 +187,7 @@ text {
 		.attr("y", 6)
 		.attr("dy", ".71em")
 		.style("text-anchor", "end")
-		.text("Price $");
+		.text("Actual Price $");
 
 	focus.append("text")
 		.attr("class", "fundCategory")
