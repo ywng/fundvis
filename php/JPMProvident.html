@@ -120,13 +120,18 @@ text {
 		  	focus.select(".y.axis").select(".yaxisLabel").transition()
 				.text("Percentage Change %");//update axis label
 
-			funds_percent=funds_actual;//swallow copy first, then we deep copy / change the fund.price_array
+			funds_percent=new Array();
 			for(var i=0;i<funds_actual.length;i++){
+				var fundObj={
+					id:funds_actual[i].id,
+					name:funds_actual[i].name,
+					price_array:new Array()
+				}
 				var priceObj={
 					datetime:funds_actual[i].price_array[0],
 					price:"0"
 				};
-				funds_percent[i].price_array=new Array();
+				funds_percent.push(fundObj);
 				funds_percent[i].price_array.push(priceObj);
 				for(var j=1;i<funds_actual[i].price_array.length;j++){
 					console.log(funds_actual[i].price_array[j].price);
