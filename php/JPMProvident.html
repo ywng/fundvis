@@ -101,20 +101,35 @@ text {
 
 <script>
 	$(function() {
+
+		update(funds);
+		
 		$("[name='my-checkbox']").bootstrapSwitch();
 		$('input[name="my-checkbox"]').on('switchChange.bootstrapSwitch', function(event, state) {
-		  console.log(this); // DOM element
-		  console.log(event); // jQuery event
-		  console.log(state); // true | false
+		  //console.log(this); // DOM element
+		  //console.log(event); // jQuery event
+		  //console.log(state); // true | false
 
 		  if(state==true){//state true means that $ is selected , else % is selected
-		  	console.log("actual price is selected to display");
+		  	//console.log("actual price is selected to display");
 		  	focus.select(".y.axis").select(".yaxisLabel").transition()
 				.text("Actual Price $");//update axis label
 
 		  }else{
 		  	focus.select(".y.axis").select(".yaxisLabel").transition()
 				.text("Percentage Change %");//update axis label
+
+			funds_percent=funds;//swallow copy first, then we deep copy / change the fund.price_array
+			for(var i=0;i<funds.length;i++){
+				funds_percent[i].price_array=funds[i].price_array.slice();
+				funds_percent[i].price_array[0].price=0;
+				for(var j=1;i<funds_percent[i].price_array.length;j++){
+					funds_percent[i].price_array[j].price=parseFloat(funds_percent[i].price_array[j].price)/parseFloat(funds_percent[i].price_array[j-1].price)-1;
+				}
+			}
+
+			//update the funds path
+
 
 		  }
 
@@ -206,68 +221,69 @@ text {
 		.attr("font-size", "30px")
 		.attr("fill", "black");  
 	
-	//curving part of these funds------------------------------------------------------------------------
-	var fund = focus.selectAll(".fund")
-			.data(funds)
-			.enter().append("g")
-			.attr("class", "fund");
 
-	fund.append("path")
-		.attr("class", "line")
-		.attr("clip-path", "url(#clip)")//use clip path to make irrelevant part invisible
-		.attr("d", function(d) { if(d.vis=="True"){return line(d.price_array);} else{ return null;} })
-		.style("stroke", function(d) { return colors(d.id-1); });
+	function update(data) {
+		//curving part of these funds------------------------------------------------------------------------
+		var fund = focus.selectAll(".fund")
+				.data(data)
+				.enter().append("g")
+				.attr("class", "update");
 
-	//fund name label
-	/*fund.append("text")
-		.attr("class", "fundNameLabel")
-		.attr("x", function(d) { return width-175; })
-		.attr("y", function(d) { return d.id*35;})//return getFundID(d.name)*35; })
-		.text( function (d) { return d.name; })
-		.attr("font-family", "sans-serif")
-		.attr("font-size", "10px")
-		.attr("fill", "black");   */
+		fund.append("path")
+			.attr("class", "line")
+			.attr("clip-path", "url(#clip)")//use clip path to make irrelevant part invisible
+			.attr("d", function(d) { if(d.vis=="True"){return line(d.price_array);} else{ return null;} })
+			.style("stroke", function(d) { return colors(d.id-1); });
+
 	
-	//fund select or dis-select btn
-	fund.append("rect")
-		.attr("height",10)
-		.attr("width", 25)
-		.attr("x",function(d) { 
-			if(d.id<=13){
-				return width-100+((d.id-1)%3)*40;
-			}else{
-				return width-100+((d.id-14)%3)*40;
-			}
-			
-		})
-		.attr("y",function(d) { 
-			if(d.id<=13){
-				return 80+Math.floor((d.id-1)/3)*35;
-			}else{
-				return 80+(Math.floor((d.id-14)/3)+2)*35+Math.floor((13-1)/3)*35;
-			}
-			
-		})
-		.attr("stroke", function(d) {return colors(d.id-1);})
-		.attr("fill",function(d) {if(d.vis=="True"){return colors(d.id-1);}else{return "white";}})
-		.on("click", function(d) { 
-					if(d.vis=="True"){ //show the curve or not 
-						d.vis="False";
-					}
-					else{
-						d.vis="True";
-					} 
-
-					y.domain([find_max_min_selected_funds().min-1,find_max_min_selected_funds().max+1]);
-					focus.select(".y.axis").call(yAxis);
-					
-					fund.select("path").transition()//update curve 
-						.attr("d", function(d) { if(d.vis=="True"){return line(d.price_array);} else{ return null;} });
+		
+		//fund select or dis-select btn
+		fund.append("rect")
+			.attr("height",10)
+			.attr("width", 25)
+			.attr("x",function(d) { 
+				if(d.id<=13){
+					return width-100+((d.id-1)%3)*40;
+				}else{
+					return width-100+((d.id-14)%3)*40;
+				}
 				
-					fund.select("rect").transition()//update legend 
-						.attr("fill",function(d) {if(d.vis=="True"){return colors(d.id-1);}else{return "white";}});
-			});  
-	//end of curving part of those funds-------------------------------------------------------------	
+			})
+			.attr("y",function(d) { 
+				if(d.id<=13){
+					return 80+Math.floor((d.id-1)/3)*35;
+				}else{
+					return 80+(Math.floor((d.id-14)/3)+2)*35+Math.floor((13-1)/3)*35;
+				}
+				
+			})
+			.attr("stroke", function(d) {return colors(d.id-1);})
+			.attr("fill",function(d) {if(d.vis=="True"){return colors(d.id-1);}else{return "white";}})
+			.on("click", function(d) { 
+						if(d.vis=="True"){ //show the curve or not 
+							d.vis="False";
+						}
+						else{
+							d.vis="True";
+						} 
+
+						y.domain([find_max_min_selected_funds().min-1,find_max_min_selected_funds().max+1]);
+						focus.select(".y.axis").call(yAxis);
+						
+						fund.select("path").transition()//update curve 
+							.attr("d", function(d) { if(d.vis=="True"){return line(d.price_array);} else{ return null;} });
+					
+						fund.select("rect").transition()//update legend 
+							.attr("fill",function(d) {if(d.vis=="True"){return colors(d.id-1);}else{return "white";}});
+				});  
+		//end of curving part of those funds-------------------------------------------------------------	
+
+
+		  // EXIT
+		  // Remove old elements as needed.
+		  text.exit().remove();
+	}
+	
 			
 	//mouse picker related, hover line---------------------------------------------------------------
 	var pickerValue = focus.selectAll(".pickerValue")//for displaying fund unit price 

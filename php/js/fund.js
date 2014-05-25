@@ -27,6 +27,7 @@
 
 var parseDate = d3.time.format("%Y-%m-%d %H:%M:%S").parse;
 var funds=new Array();
+var funds_percent=new Array();
 var maxDate;
 var minDate;
 
