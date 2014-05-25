@@ -64,8 +64,8 @@ text {
 
 <body> 
 
-<h4>JPMorgan Provident Scheme</h4>
-<input type="checkbox" name="my-checkbox" checked>
+<h4>JPMorgan Provident Scheme     <input type="checkbox" name="my-checkbox" checked></h4>
+
 <!--
  * The fork me on Github picture is designed by D3.org     Here I used it by acknowledging the source
  * If the use is inappropriate or any copyright is infringed, please inform to amend.
@@ -96,11 +96,11 @@ text {
 <script>
 	$(function() {
 		$("[name='my-checkbox']").bootstrapSwitch();
-		_init_funds(); 
+		
 	});
 
 	
-	
+	_init_funds(); 
 	var margin = {top: 15, right: 50, bottom: 100, left: 50},
 		margin2 = {top: 500, right: 50, bottom: 50, left: 50},
 		width = 1200 - margin.left - margin.right,
@@ -131,7 +131,6 @@ text {
 		.scale(y)
 		.orient("left");
 
-	var price_array_one_of_fund=funds[0].price_array;
 	x.domain([parseDate(minDate),parseDate(maxDate)]); 
 	y.domain([find_max_min_selected_funds().min-1,find_max_min_selected_funds().max+1]);
 	x2.domain(x.domain());//the domain axis for the bar at the bottom
