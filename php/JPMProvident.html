@@ -251,7 +251,7 @@ text {
 		
 		fund.attr("class", "update");
 
-		fund.selectAll("path").remove();
+		fund.select("path").remove();
 		fund.enter().append("path")
 			.attr("class", "line")
 			.attr("clip-path", "url(#clip)")//use clip path to make irrelevant part invisible
@@ -259,7 +259,7 @@ text {
 			.style("stroke", function(d) { return colors(d.id-1); });
 
 	
-		fund.selectAll("rect").remove();
+		fund.select("rect").remove();
 		//fund select or dis-select btn
 		fund.enter().append("rect")
 			.attr("height",10)
