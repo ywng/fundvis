@@ -108,10 +108,10 @@ text {
 		  console.log(state); // true | false
 
 		  if(state){//state true means that $ is selected , else % is selected
-		  	yAxis.transition().attr("text", "Price $");//update axis label
+		  	yAxis.select().transition().attr("text", "Price $");//update axis label
 
 		  }else{
-		  	yAxis.transition().attr("text", "Percentage %");//update axis label
+		  	yAxis.select().transition().attr("text", "Percentage %");//update axis label
 
 		  }
 
