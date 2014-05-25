@@ -245,6 +245,9 @@ text {
 		y.domain([find_max_min_selected_funds(data).min-1,find_max_min_selected_funds(data).max+1]);
 		focus.select(".y.axis").call(yAxis);
 
+		//remove old data/plot
+		focus.selectAll(".fund").remove();
+
 		//curving part of these funds------------------------------------------------------------------------
 		fund = focus.selectAll(".fund")
 				.data(data);
@@ -304,7 +307,7 @@ text {
 
 		  // EXIT
 		  // Remove old elements as needed.
-		  fund.exit().remove();
+		  //fund.exit().remove();
 	}
 	
 			
