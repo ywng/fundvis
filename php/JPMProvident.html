@@ -245,13 +245,13 @@ text {
 		y.domain([find_max_min_selected_funds(data).min-1,find_max_min_selected_funds(data).max+1]);
 		focus.select(".y.axis").call(yAxis);
 
+		svg.selectAll(".fund").remove();
 		//curving part of these funds------------------------------------------------------------------------
 		fund = focus.selectAll(".fund")
 				.data(data,function(d) { return d; });
 		
 		fund.attr("class", "update");
 
-		fund.select("path").remove();
 		fund.enter().append("path")
 			.attr("class", "line")
 			.attr("clip-path", "url(#clip)")//use clip path to make irrelevant part invisible
@@ -259,7 +259,7 @@ text {
 			.style("stroke", function(d) { return colors(d.id-1); });
 
 	
-		fund.select("rect").remove();
+	
 		//fund select or dis-select btn
 		fund.enter().append("rect")
 			.attr("height",10)
