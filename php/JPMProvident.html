@@ -64,7 +64,7 @@ text {
 
 <body> 
 
-<h4>JPMorgan Provident Scheme               <input type="checkbox" name="my-checkbox" checked></h4>
+<h4>JPMorgan Provident Scheme               <input type="checkbox" name="my-checkbox" checked data-size="mini" data-on-text="$" data-off-text="%"></h4>
 
 <!--
  * The fork me on Github picture is designed by D3.org     Here I used it by acknowledging the source
@@ -96,11 +96,11 @@ text {
 <script>
 	$(function() {
 		$("[name='my-checkbox']").bootstrapSwitch();
-		$("[name='my-checkbox']").fn.bootstrapSwitch.defaults.size = 'mini';
-		$("[name='my-checkbox']").fn.bootstrapSwitch.defaults.onColor = 'primary';
-		$("[name='my-checkbox']").fn.bootstrapSwitch.defaults.offColor = 'success';
-		$("[name='my-checkbox']").fn.bootstrapSwitch.defaults.onText = '$';
-		$("[name='my-checkbox']").fn.bootstrapSwitch.defaults.offText = '%';
+		$.fn.bootstrapSwitch.defaults.size = 'small';
+		$.fn.bootstrapSwitch.defaults.onColor = 'primary';
+		$.fn.bootstrapSwitch.defaults.offColor = 'success';
+		$.fn.bootstrapSwitch.defaults.onText = '$';
+		$.fn.bootstrapSwitch.defaults.offText = '%';
 		
 	});
 
