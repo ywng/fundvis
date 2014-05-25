@@ -107,24 +107,14 @@ text {
 		  console.log(event); // jQuery event
 		  console.log(state); // true | false
 
-		  if(state=="true"){//state true means that $ is selected , else % is selected
+		  if(state==true){//state true means that $ is selected , else % is selected
 		  	console.log("actual price is selected to display");
-		  	focus.select(".y.axis").call(yAxis)
-				.append("text")
-				.attr("transform", "rotate(-90)")
-				.attr("y", 6)
-				.attr("dy", ".71em")
-				.style("text-anchor", "end")
+		  	focus.select(".y.axis").select(".yaxisLabel").transition()
 				.text("Price $");//update axis label
 
 		  }else{
-		  	focus.select(".y.axis").call(yAxis)
-				.append("text")
-				.attr("transform", "rotate(-90)")
-				.attr("y", 6)
-				.attr("dy", ".71em")
-				.style("text-anchor", "end")
-				.text("percentage %");//update axis label
+		  	focus.select(".y.axis").select(".yaxisLabel").transition()
+				.text("Percentage %");//update axis label
 
 		  }
 
@@ -192,6 +182,7 @@ text {
 		.attr("class", "y axis")
 		.call(yAxis)
 		.append("text")
+		.attr("class", "yaxisLabel")
 		.attr("transform", "rotate(-90)")
 		.attr("y", 6)
 		.attr("dy", ".71em")
