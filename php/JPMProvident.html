@@ -125,6 +125,8 @@ text {
 				funds_percent[i].price_array=funds_actual[i].price_array.slice();
 				funds_percent[i].price_array[0].price=0;
 				for(var j=1;i<funds_percent[i].price_array.length;j++){
+					console.log(funds_percent[i].price_array[j].price);
+					console.log(funds_percent[i].price_array[j-1].price);
 					funds_percent[i].price_array[j].price=parseFloat(funds_percent[i].price_array[j].price)/parseFloat(funds_percent[i].price_array[j-1].price)-1;
 				}
 			}
@@ -289,12 +291,12 @@ text {
 			
 	//mouse picker related, hover line---------------------------------------------------------------
 	var pickerValue = focus.selectAll(".pickerValue")//for displaying fund unit price 
-		.data(funds)
+		.data(funds_actual)
 		.enter().append("g")
 		.attr("class", "pickerValue");
 		
 	var valueChange = focus.selectAll(".valueChange")//for displaying unit price percentage change
-		.data(funds)
+		.data(funds_actual)
 		.enter().append("g")
 		.attr("class", "valueChange");
 		
