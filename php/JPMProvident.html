@@ -221,10 +221,10 @@ text {
 		.attr("font-size", "30px")
 		.attr("fill", "black");  
 	
-
+	var fund;
 	function update(data) {
 		//curving part of these funds------------------------------------------------------------------------
-		var fund = focus.selectAll(".fund")
+		fund = focus.selectAll(".fund")
 				.data(data);
 		
 		fund.enter().append("g")
