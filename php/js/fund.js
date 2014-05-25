@@ -46,7 +46,7 @@ function _init_funds(){
 			minDate=data.min_date.datetime;
 
 			for(var i=0; i < funds_actual.length; i++) {
-
+				funds_actual[i].vis="False";
 
 				/*
 
