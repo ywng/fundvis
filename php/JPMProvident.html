@@ -131,16 +131,18 @@ text {
 					price_array:new Array(),
 					vis:funds_actual[i].vis
 				}
+
 				var priceObj={
 					datetime:funds_actual[i].price_array[funds_actual[i].price_array.length-1].datetime,
 					price:"0"
 				};
+
 				funds_percent.push(fundObj);
 				funds_percent[i].price_array.push(priceObj);
+
+				var basePrice=parseFloat(funds_actual[i].price_array[funds_actual[i].price_array.length-1].price);
 				for(var j=0;j<funds_actual[i].price_array.length;j++){
-					console.log(funds_actual[i].price_array[j].price);
-					console.log(funds_actual[i].price_array[j-1].price);
-					var percentageChange=(parseFloat(funds_actual[i].price_array[j].price)/parseFloat(funds_actual[i].price_array[j-1].price)-1)*100;
+					var percentageChange=(parseFloat(funds_actual[i].price_array[j].price)/basePrice)-1)*100;
 					var priceObj={
 						datetime:funds_actual[i].price_array[j].datetime,
 						price:percentageChange.toString()
