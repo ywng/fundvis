@@ -114,6 +114,9 @@ text {
 		  	//console.log("actual price is selected to display");
 		  	focus.select(".y.axis").select(".yaxisLabel").transition()
 				.text("Actual Price $");//update axis label
+			for(var i=0;i<funds_actual.length;i++){
+				funds_actual[i].vis=funds_percent[i].vis;
+			}
 			update(funds_actual);
 
 		  }else{
