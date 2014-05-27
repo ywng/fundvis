@@ -137,7 +137,7 @@ text {
 				for(var j=1;j<funds_actual[i].price_array.length;j++){
 					console.log(funds_actual[i].price_array[j].price);
 					console.log(funds_actual[i].price_array[j-1].price);
-					var percentageChange=parseFloat(funds_actual[i].price_array[j].price)/parseFloat(funds_actual[i].price_array[j-1].price)-1;
+					var percentageChange=(parseFloat(funds_actual[i].price_array[j].price)/parseFloat(funds_actual[i].price_array[j-1].price)-1)*100;
 					var priceObj={
 						datetime:funds_actual[i].price_array[j].datetime,
 						price:percentageChange.toString()
