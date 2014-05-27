@@ -254,9 +254,8 @@ text {
 		fund = focus.selectAll(".fund")
 				.data(data);
 		
-		fund.attr("class", "update");
 
-		fund.enter().append("path")
+		fund.append("path")
 			.attr("class", "line")
 			.attr("clip-path", "url(#clip)")//use clip path to make irrelevant part invisible
 			.attr("d", function(d) { if(d.vis=="True"){return line(d.price_array);} else{ return null;} })
@@ -265,7 +264,7 @@ text {
 	
 		
 		//fund select or dis-select btn
-		fund.enter().append("rect")
+		fund.append("rect")
 			.attr("height",10)
 			.attr("width", 25)
 			.attr("x",function(d) { 
