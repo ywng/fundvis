@@ -298,10 +298,10 @@ text {
 						y.domain([find_max_min_selected_funds(data).min-1,find_max_min_selected_funds(data).max+1]);
 						focus.select(".y.axis").call(yAxis);
 						
-						fund.select("path").transition()//update curve 
+						fund.enter().select("path").transition()//update curve 
 							.attr("d", function(d) { if(d.vis=="True"){return line(d.price_array);} else{ return null;} });
 					
-						fund.select("rect").transition()//update legend 
+						fund.enter().select("rect").transition()//update legend 
 							.attr("fill",function(d) {if(d.vis=="True"){return colors(d.id-1);}else{return "white";}});
 				});  
 		//end of curving part of those funds-------------------------------------------------------------	
