@@ -248,8 +248,9 @@ text {
 		focus.select(".y.axis").call(yAxis);
 
 		//remove old data/plot
-		//focus.selectAll(".fund").enter().remove();
+	
 
+		fund.remove();
 		//curving part of these funds------------------------------------------------------------------------
 		fund = focus.selectAll(".fund")
 			.data(data)
