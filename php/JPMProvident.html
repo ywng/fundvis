@@ -130,13 +130,7 @@ text {
 					vis:funds_actual[i].vis
 				}
 
-				var priceObj={
-					datetime:funds_actual[i].price_array[funds_actual[i].price_array.length-1].datetime,
-					price:"0"
-				};
-
 				funds_percent.push(fundObj);
-				funds_percent[i].price_array.push(priceObj);
 
 				var basePrice=parseFloat(funds_actual[i].price_array[funds_actual[i].price_array.length-1].price);
 				for(var j=0;j<funds_actual[i].price_array.length;j++){
@@ -296,8 +290,7 @@ text {
 							d.vis="False";
 						}
 						else{
-							d.vis="True"; 
-
+							
 							//this enforce that user can select one fund to display when showing actual price
 							//because the actual price is of different range, hard or almost impossible to show all the curve meaningfully at the same time
 
@@ -305,9 +298,11 @@ text {
 							//so, we enable to display all the funds at the same time within same plot axis
 							if(data==funds_actual){ 
 								for(var i=0;i<funds_actual.length;i++){
-									funds_actual[i].vis=funds_percent[i].vis;
+									funds_actual[i].vis="False";
 								}
 							}
+
+							d.vis="True"; 
 						} 
 
 						y.domain([find_max_min_selected_funds(data).min-1,find_max_min_selected_funds(data).max+1]);
