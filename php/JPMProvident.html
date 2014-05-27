@@ -66,7 +66,7 @@ text {
 
 #ex1Slider .slider-selection {
 	background: #BABABA;
-	display:none;
+
 }
 
 </style>
@@ -122,6 +122,7 @@ text {
 			}
 		});
 
+		$("#ex1").slider("disable");
 		$("#ex1").on('slide', function(slideEvt) {
 			console.log(slideEvt.value);
 		});
@@ -137,12 +138,15 @@ text {
 
 		  if(state==true){//state true means that $ is selected , else % is selected
 		  	//console.log("actual price is selected to display");
+		  	$("#ex1").slider("disable");
+		  	
 		  	focus.select(".y.axis").select(".yaxisLabel").transition()
 				.text("Actual Price $");//update axis label
 		
 			update(funds_actual);
 
 		  }else{
+		  	$("#ex1").slider("enable");
 		  	focus.select(".y.axis").select(".yaxisLabel").transition()
 				.text("Percentage Change %");//update axis label
 
