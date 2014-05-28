@@ -121,7 +121,7 @@ text {
 
 		$("#ex1").on('slideStop', function(slideEvt) {
 			console.log(slideEvt.value);
-			console.log(x.invert(slideEvt.value));
+			findIndexGivenDateTime(x.invert(slideEvt.value));
 		});
 
 		//set slider width (for selecting base price date)
