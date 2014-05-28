@@ -90,7 +90,7 @@ text {
 <!--
  * Slider bar for selecting the base price date
  * -->
- <div id="basePriceSliderDiv" style="position:relative;width:100%;margin-left:50px;margin-top:-97px;margin-bottom:70px">
+ <div id="basePriceSliderDiv" style="position:relative;width:100%;margin-left:50px;margin-top:-147px;margin-bottom:150px">
 <input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="950" data-slider-step="1" data-slider-value="1" data-slider-tooltip="hide" />
 </div>
 
@@ -481,7 +481,7 @@ text {
   
 	context.append("g")
       .attr("class", "x axis")
-      .attr("transform", "translate(0," + height2 + ")")
+      .attr("transform", "translate(0," + height2+50 + ")")
       .call(xAxis2);
 	  
 	var contextArea = d3.svg.area()
