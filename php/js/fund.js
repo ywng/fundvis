@@ -95,7 +95,7 @@ function find_max_min_selected_funds(data){
 }
 
 function findIndexGivenDateTime(date){
-	console.log(date.gwtMonth());
+	console.log(date);
 	return -1;
 	var selectedDate=Date.parse(date);
 	for(var i=0;i<funds_actual[0].price_array.length;i++){
