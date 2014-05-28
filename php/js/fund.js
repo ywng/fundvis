@@ -94,16 +94,14 @@ function find_max_min_selected_funds(data){
 	return max_min_price;
 }
 
-function findIndexGivenDateTime(date){
+function findIndexGivenDateTime(xAxisPos){
 	
-	date=date.substr(4, date.length-4);
-	console.log(date);
-	var selectedDate=Date.parse(date);
 	for(var i=0;i<funds_actual[0].price_array.length;i++){
-		var date=Date.parse(funds_actual[0].price_array[i].datetime);
-		console.log(selectedDate);
+		var date=parseDate(funds_actual[0].price_array[i].datetime);
+		
 		console.log(date);
-		var diff=selectedDate-date;
+		console.log(x(date));
+		var diff=xAxisPos-x(date);
 		//console.log(diff);
 		if(diff<0){
 			return i;

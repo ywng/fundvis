@@ -121,7 +121,7 @@ text {
 
 		$("#ex1").on('slideStop', function(slideEvt) {
 			console.log(slideEvt.value);
-			var index=findIndexGivenDateTime(x.invert(slideEvt.value));
+			var index=findIndexGivenDateTime(slideEvt.value);
 			console.log(index);
 		});
 
