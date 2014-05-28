@@ -215,7 +215,7 @@ text {
 		.scale(y)
 		.orient("left");
 
-	x.domain([parseDate(minDate),parseDate(maxDate)]).nice(d3.time.day); 
+	x.domain([parseDate(minDate),parseDate(maxDate)]).nice(d3.time.day).ticks(d3.time.day, 1); 
 	y.domain([find_max_min_selected_funds(funds_actual).min-1,find_max_min_selected_funds(funds_actual).max+1]);
 	x2.domain(x.domain());//the domain axis for the bar at the bottom
 	
