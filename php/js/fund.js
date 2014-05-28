@@ -108,6 +108,7 @@ function findIndexGivenDateTime(xAxisPos,price_array){
 		}
 
 	}
+	return 0; // no date throughout the price array is greater than the selected date, so return the index of the greatest date
 
 }
 
