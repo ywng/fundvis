@@ -99,6 +99,8 @@ function findIndexGivenDateTime(date){
 	var selectedDate=Date.parse(date);
 	for(var i=0;i<funds_actual[0].price_array.length;i++){
 		var date=Date.parse(funds_actual[0].price_array[i].datetime);
+		console.log(selectedDate);
+		console.log(date);
 		var diff=selectedDate-date;
 		//console.log(diff);
 		if(diff<0){
