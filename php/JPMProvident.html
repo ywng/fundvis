@@ -175,6 +175,8 @@ text {
 				.text("Percentage Change %");//update axis label
 
 			funds_percent=new Array();
+			var sliderXPos=$("#ex1Slider").slider('getValue');
+
 			for(var i=0;i<funds_actual.length;i++){
 				var fundObj={
 					id:funds_actual[i].id,
@@ -185,7 +187,9 @@ text {
 
 				funds_percent.push(fundObj);
 
-				var basePrice=parseFloat(funds_actual[i].price_array[funds_actual[i].price_array.length-1].price);
+				var basePriceIndex=findIndexGivenDateTime(sliderXPos,funds_actual[i].price_array);
+				var basePrice=parseFloat(funds_actual[i].price_array[basePriceIndex].price);
+
 				for(var j=0;j<funds_actual[i].price_array.length;j++){
 					var percentageChange=((parseFloat(funds_actual[i].price_array[j].price)/basePrice)-1)*100;
 					var priceObj={
