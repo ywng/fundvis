@@ -116,8 +116,7 @@ text {
 <script>
 	$(function() {
 
-		$('#ex1').slider({
-		});
+		var slider=$('#ex1').slider({});
 
 		//set slider width (for selecting base price date)
 		//invisible on init, it is visible on during percent mode
@@ -175,7 +174,7 @@ text {
 				.text("Percentage Change %");//update axis label
 
 			funds_percent=new Array();
-			var sliderXPos=$("#ex1Slider").slider('getValue');
+			var sliderXPos=slider('getValue');
 
 			for(var i=0;i<funds_actual.length;i++){
 				var fundObj={
