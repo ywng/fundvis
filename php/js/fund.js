@@ -103,7 +103,7 @@ function findIndexGivenDateTime(xAxisPos,price_array){
 		//console.log(x(date));
 		var diff=xAxisPos-x(date);
 		//console.log(diff);
-		if(diff<0){
+		if(diff<=0){
 			return i;
 		}
 
