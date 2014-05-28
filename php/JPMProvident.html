@@ -119,6 +119,11 @@ text {
 		$('#ex1').slider({
 		});
 
+		//set slider width (for selecting base price date)
+		//invisible on init, it is visible on during percent mode
+		$("#ex1Slider").attr("style","width: 950px");
+		$("#ex1Slider").attr("display","none");
+
 		$("#ex1").on('slideStop', function(slideEvt) {
 			//console.log(slideEvt.value);
 			//var index=findIndexGivenDateTime(slideEvt.value,funds_actual[0].price_array);
@@ -142,8 +147,7 @@ text {
 
 		});
 
-		//set slider width (for selecting base price date)
-		$("#ex1Slider").attr("style","width: 950px");
+
 
 		update(funds_actual);
 
@@ -156,6 +160,7 @@ text {
 		  if(state==true){//state true means that $ is selected , else % is selected
 		  	//console.log("actual price is selected to display");
 		  
+		  	$("#ex1Slider").attr("display","none");
 
 		  	focus.select(".y.axis").select(".yaxisLabel").transition()
 				.text("Actual Price $");//update axis label
@@ -163,7 +168,9 @@ text {
 			update(funds_actual);
 
 		  }else{
-		  
+		  	
+		  	$("#ex1Slider").attr("display",'');
+
 		  	focus.select(".y.axis").select(".yaxisLabel").transition()
 				.text("Percentage Change %");//update axis label
 
