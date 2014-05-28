@@ -117,19 +117,11 @@ text {
 	$(function() {
 
 		$('#ex1').slider({
-			formater: function(value) {
-
-				return 'Current value: ' + value;
-			}
-		});
-
-	
-		$("#ex1").on('slide', function(slideEvt) {
-			console.log(slideEvt.value);
 		});
 
 		$("#ex1").on('slideStop', function(slideEvt) {
 			console.log(slideEvt.value);
+			console.log(x.invert(slideEvt.value));
 		});
 
 		//set slider width (for selecting base price date)
@@ -223,7 +215,7 @@ text {
 		.scale(y)
 		.orient("left");
 
-	x.domain([parseDate(minDate),parseDate(maxDate)]) .nice(d3.time.day); 
+	x.domain([parseDate(minDate),parseDate(maxDate)]).nice(d3.time.day); 
 	y.domain([find_max_min_selected_funds(funds_actual).min-1,find_max_min_selected_funds(funds_actual).max+1]);
 	x2.domain(x.domain());//the domain axis for the bar at the bottom
 	
