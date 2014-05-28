@@ -118,6 +118,7 @@ text {
 
 		$('#ex1').slider({
 			formater: function(value) {
+
 				return 'Current value: ' + value;
 			}
 		});
@@ -222,7 +223,7 @@ text {
 		.scale(y)
 		.orient("left");
 
-	x.domain([parseDate(minDate),parseDate(maxDate)]); 
+	x.domain([parseDate(minDate),parseDate(maxDate)]) .nice(d3.time.day); 
 	y.domain([find_max_min_selected_funds(funds_actual).min-1,find_max_min_selected_funds(funds_actual).max+1]);
 	x2.domain(x.domain());//the domain axis for the bar at the bottom
 	
