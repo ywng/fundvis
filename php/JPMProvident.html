@@ -214,7 +214,7 @@ text {
 	
 	_init_funds(); 
 	var margin = {top: 15, right: 50, bottom: 100, left: 50},
-		margin2 = {top: 500, right: 50, bottom: 50, left: 50},
+		margin2 = {top: 550, right: 50, bottom: 50, left: 50},
 		width = 1200 - margin.left - margin.right,
 		height = 570 - margin.top - margin.bottom,
 		height2 = 570 - margin2.top - margin2.bottom;
@@ -481,7 +481,7 @@ text {
   
 	context.append("g")
       .attr("class", "x axis")
-      .attr("transform", "translate(0," + height2+50 + ")")
+      .attr("transform", "translate(0," + height2 + ")")
       .call(xAxis2);
 	  
 	var contextArea = d3.svg.area()
