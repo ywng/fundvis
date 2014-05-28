@@ -121,8 +121,7 @@ text {
 
 		//set slider width (for selecting base price date)
 		//invisible on init, it is visible on during percent mode
-		$("#ex1Slider").attr("style","width: 950px");
-		$("#ex1Slider").attr("display","none");
+		$("#ex1Slider").attr("style","width: 950px;display:none");
 
 		$("#ex1").on('slideStop', function(slideEvt) {
 			//console.log(slideEvt.value);
@@ -160,7 +159,7 @@ text {
 		  if(state==true){//state true means that $ is selected , else % is selected
 		  	//console.log("actual price is selected to display");
 		  
-		  	$("#ex1Slider").attr("display","none");
+		  	$("#ex1Slider").attr("style","width: 950px;display:none");
 
 		  	focus.select(".y.axis").select(".yaxisLabel").transition()
 				.text("Actual Price $");//update axis label
@@ -169,7 +168,8 @@ text {
 
 		  }else{
 		  	
-		  	$("#ex1Slider").attr("display",'');
+		  	$("#ex1Slider").attr("style","width: 950px");
+
 
 		  	focus.select(".y.axis").select(".yaxisLabel").transition()
 				.text("Percentage Change %");//update axis label
