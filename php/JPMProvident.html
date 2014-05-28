@@ -91,13 +91,13 @@ text {
  * Slider bar for selecting the base price date
  * -->
  <div id="basePriceSliderDiv" style="position:relative;width:100%;margin-left:50px;margin-top:-97px;margin-bottom:50px">
-<input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="400" data-slider-step="1" data-slider-value="14"  />
+<input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="950" data-slider-step="1" data-slider-value="14"  />
 </div>
 
 <!-- FOOTER -->
 <footer>
     <p class="pull-right"><a href="#">Back to top</a></p>
-    <p>&copy; 2014 <a href="http://www.linkedin.com/pub/jason-ng/5a/a85/a0a">Jason Ng </a>&middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+    <p>&copy; 2014 <a href="http://www.linkedin.com/pub/jason-ng/5a/a85/a0a">Jason Ng </a>&middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a> &middot; <a href="#">Manul</a></p>
 </footer>
 
 </body>
@@ -127,6 +127,11 @@ text {
 			console.log(slideEvt.value);
 		});
 
+		$("#ex1").on('slideStop', function(slideEvt) {
+			console.log(slideEvt.value);
+		});
+
+		//set slider width (for selecting base price date)
 		$("#ex1Slider").attr("style","width: 950px");
 
 		update(funds_actual);
