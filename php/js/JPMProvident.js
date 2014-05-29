@@ -385,6 +385,7 @@
  
   //tooltip
   function mouseover() {
+    console.log("on mouse over");
   div.transition()
       .duration(500)
       .style("opacity", 1)
