@@ -383,29 +383,28 @@
     .attr("class", "dateLabel");
 
  
-  //tooltip
-  function mouseover() {
+  //tooltip callback
+  function mouseover(event) {
     console.log("on mouse over");
-  div.transition()
-      .duration(500)
-      .style("opacity", 1)
-      .text(d3.event.pageX + ", " + d3.event.pageY)
-      .style("left", (d3.event.pageX - 34) + "px")
-      .style("top", (d3.event.pageY - 12) + "px");
-}
+    div.transition()
+        .duration(500)
+        .style("opacity", 1)
+        .text(event.pageX + ", " + event.pageY)
+        .style("left", (event.pageX - 34) + "px")
+        .style("top", (event.pageY - 12) + "px");
+  }
 
-function mousemove() {
-  div
-      .text(d3.event.pageX + ", " + d3.event.pageY)
-      .style("left", (d3.event.pageX - 34) + "px")
-      .style("top", (d3.event.pageY - 12) + "px");
-}
+  function mousemove(event) {
+    div.text(d3.event.pageX + ", " + d3.event.pageY)
+        .style("left", (d3.event.pageX - 34) + "px")
+        .style("top", (d3.event.pageY - 12) + "px");
+  }
 
-function mouseout() {
-  div.transition()
-      .duration(500)
-      .style("opacity", 1e-6);
-}
+  function mouseout(event) {
+    div.transition()
+        .duration(500)
+        .style("opacity", 1e-6);
+  }
   
        
  
