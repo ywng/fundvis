@@ -250,16 +250,44 @@
           
             fund.select("rect").transition()//update legend 
               .attr("fill",function(d) {if(d.vis=="True"){return colors(d.id-1);}else{return "white";}});
-        });  
+      });  
 
 
-    var trackingDots =fund.append("circle")
-                          .style("stroke", function(d){return colors(d.id-1);})
-                          .style("fill", function(d){return colors(d.id-1);})
-                          .attr("r", 3)
-                          .attr("cx", 50)
-                          .attr("cy", 20)
-                          .style("display", "none"); 
+      fund.append("circle")
+        .style("stroke", function(d){return colors(d.id-1);})
+        .style("fill", function(d){return colors(d.id-1);})
+        .attr("r", 3)
+        .attr("cx", 50)
+        .attr("cy", 20)
+        .style("display", "none"); 
+
+
+      //for displaying fund unit price
+     fund.append("text")
+        .attr("x",function(d) { 
+          if(d.id<=13){
+            return width-100+((d.id-1)%3)*40;
+          }else{
+            return width-100+((d.id-14)%3)*40;
+          }
+          
+        })
+        .attr("y",function(d) { 
+          if(d.id<=13){
+            return 95+Math.floor((d.id-1)/3)*40;
+          }else{
+            return 95+(Math.floor((d.id-14)/3)+2)*40+Math.floor((13-1)/3)*40;
+          }
+          
+        })
+        .text( function (d) { 
+          var dateStr="";
+        
+        })
+       .attr("font-family", "sans-serif")
+       .attr("font-size", "15px")
+       .attr("fill", function(d) { return colors(d.id-1); }); 
+      // .style("display", "none");  
 
 
     //end of curving part of those funds------------------------------------------------------------- 
@@ -346,49 +374,13 @@
   })    
 
 
-
-
-    //mouse picker related, hover line---------------------------------------------------------------
-  var pickerValue = focus.selectAll(".pickerValue")//for displaying fund unit price 
-    .data(funds_actual)
-    .enter().append("g")
-    .attr("class", "pickerValue");
-    
-    
-
         
   var DateLbl = focus.append("g")  //the date label at the right upper corner part
     .attr("class", "dateLabel");
 
  
   
-  //mousePickerDate=getValueForPositionXFromData(width-210);//initial pick date is the last day of the plot
-  //for displaying fund unit price
-  pickerValue.append("text")
-    .attr("class", "valuesLabel")
-    .attr("x", function(d) { return width-205; })
-    .attr("y", function(d) { return d.id*35+15;})//return getFundID(d.name)*35+15; })
-    .text( function (d) { 
-      var dateStr="";
-      //console.log(mousePickerDate);
-    /*  dateStr+=mousePickerDate.getFullYear();
-      if(mousePickerDate.getMonth()+1<10){
-        dateStr+="0"+(mousePickerDate.getMonth()+1);
-      }else{
-        dateStr+=(mousePickerDate.getMonth()+1);
-      }
-      if(mousePickerDate.getDate()<10){
-        dateStr+="0"+mousePickerDate.getDate();
-      }else{
-        dateStr+=mousePickerDate.getDate();
-      }
-      //console.log(dateStr);
-      currIndex=DateMapIndex.get(dateStr);
-      return d.priceList[currIndex].price; */
-    })
-           .attr("font-family", "sans-serif")
-           .attr("font-size", "15px")
-           .attr("fill", function(d) { return colors(d.name); });  
+  
        
  
 
