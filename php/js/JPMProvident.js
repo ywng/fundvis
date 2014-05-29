@@ -323,28 +323,7 @@
   //********************************************************************************//
   //**************End of Slider part & Brush****************************************//
 
-
-
-
-
-    //mouse picker related, hover line---------------------------------------------------------------
-  var pickerValue = focus.selectAll(".pickerValue")//for displaying fund unit price 
-    .data(funds_actual)
-    .enter().append("g")
-    .attr("class", "pickerValue");
-    
-  var valueChange = focus.selectAll(".valueChange")//for displaying unit price percentage change
-    .data(funds_actual)
-    .enter().append("g")
-    .attr("class", "valueChange");
-    
-  var hoverLineGroup = focus.append("g") //the vertical line across the plots
-        .attr("class", "hover-line");
-        
-  var DateLbl = focus.append("g")  //the date label at the right upper corner part
-    .attr("class", "dateLabel");
-
-  //check the mouse event over the plot area and do the processing 
+   //check the mouse event over the plot area and do the processing 
   container = document.querySelector('#graph');
   $(container).mouseleave(function(event) {
     handleMouseOutGraph(event);
@@ -354,6 +333,23 @@
     handleMouseOverGraph(event);
     //console.log("mouse move on graph");
   })    
+
+
+
+    //mouse picker related, hover line---------------------------------------------------------------
+  var pickerValue = focus.selectAll(".pickerValue")//for displaying fund unit price 
+    .data(funds_actual)
+    .enter().append("g")
+    .attr("class", "pickerValue");
+    
+    
+  var hoverLineGroup = focus.append("g") //the vertical line across the plots
+        .attr("class", "hover-line");
+        
+  var DateLbl = focus.append("g")  //the date label at the right upper corner part
+    .attr("class", "dateLabel");
+
+ 
   
   //mousePickerDate=getValueForPositionXFromData(width-210);//initial pick date is the last day of the plot
   //for displaying fund unit price
@@ -383,28 +379,6 @@
            .attr("font-size", "15px")
            .attr("fill", function(d) { return colors(d.name); });  
        
-  //for displaying unit price percentage change
-  valueChange.append("text")
-    .attr("class", "valuesLabel")
-    .attr("x", function(d) { return width-170; })
-    .attr("y", function(d) { return d.id*35+15;})//return getFundID(d.name)*35+15; })
-    .text( function (d) { 
-    /*  var percentChange=(d.priceList[currIndex].price-d.priceList[currIndex-1].price)/d.priceList[currIndex-1].price*100;
-      if(percentChange<0){
-        return "(-"+percentChange.toFixed(2)+"%)" 
-      }else{
-        return "(+"+percentChange.toFixed(2)+"%)" 
-      }*/
-    })
-        .attr("font-family", "sans-serif")
-        .attr("font-size", "15px")
-        .attr("fill", function (d) {
-      /*var percentChange=(d.priceList[currIndex].price-d.priceList[currIndex-1].price)/d.priceList[currIndex-1].price*100;
-      if(percentChange<0){
-        return "red" 
-      }else{
-        return "black" 
-      }*/
-    });  
+ 
 
   //end of mouse picker related, hover line-------------------------------------------------------------------

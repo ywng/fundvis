@@ -47,18 +47,8 @@ function _init_funds(){
 
 			for(var i=0; i < funds_actual.length; i++) {
 				funds_actual[i].vis="False";
-
-				/*
-
-					
-					//construct the map for mapping date to array index
-					//only do it once for first series is okay
-					if(i==0){
-						DateMapIndex.set(funds_arr[i].price_array[j].datetime,j);
-					}
-				
-				*/
 			}
+			
 			funds_actual[0].vis="True";//when start, only visible the first one, other funds, let user set it later.	
 		},
 		error: function(jqHXR, textStatus, errorThrown) {

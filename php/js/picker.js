@@ -23,6 +23,8 @@
 	 * Mouse Picker related functions
 	 */
 	var handleMouseOverGraph = function(event) {	
+		console.log(event.pageX);
+		console.log(event.pageY);
 		var mouseX = event.pageX-90;
 		var mouseY = event.pageY-34;
 	
@@ -124,14 +126,4 @@
 		*/
 	}
 	
-	/**
-	* Convert back from an X position on the graph to a data value 
-	* 
-	*/
-	function getValueForPositionXFromData(xPosition) {
-		// get the date on x-axis for the current location
-		//var xValue = x.invert(xPosition);
-		//console.log(xValue);
-		//return xValue;
-	}
 
