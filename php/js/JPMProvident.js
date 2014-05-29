@@ -102,10 +102,6 @@
     width = 1200 - margin.left - margin.right,
     height = 570 - margin.top - margin.bottom,
     height2 = 585 - margin2.top - margin2.bottom;
-
-
-  //var mousePickerDate;
-  //var currIndex=data2[0].priceList.length-1;
   
   var x = d3.time.scale()
     .range([0, width-150]),
@@ -177,17 +173,18 @@
     .attr("font-family", "sans-serif")
     .attr("font-size", "30px")
     .attr("fill", "black");  
-  
+
+ 
+  //**************** Core part visualizing funds' data ******************************//
+  //********************************************************************************//  
   var fund;
   function update(data) {
 
     y.domain([find_max_min_selected_funds(data).min-1,find_max_min_selected_funds(data).max+1]);
     focus.select(".y.axis").call(yAxis);
 
-    //remove old data/plot
-  
-
     focus.selectAll(".fund").remove();
+
     //curving part of these funds------------------------------------------------------------------------
     fund = focus.selectAll(".fund")
       .data(data)
@@ -256,14 +253,81 @@
         });  
     //end of curving part of those funds------------------------------------------------------------- 
 
-
-      // EXIT
-      // Remove old elements as needed.
-      //fund.exit().remove();
   }
+  //********************************************************************************// 
+  //**************** end of Core part visualizing funds' data **********************// 
   
+
       
-  //mouse picker related, hover line---------------------------------------------------------------
+  //**************** Slider part & Brush *******************************************//
+  //********************************************************************************//
+  var brush = d3.svg.brush()//for slider bar at the bottom
+    .x(x2)
+    .on("brush", brushed);
+  
+  var context = svg.append("g")
+    .attr("transform", "translate(" + margin2.left + "," + margin2.top + ")");
+  
+  //append click path for controlling the sliding of curve, clip those part out of bounds
+  svg.append("defs").append("clipPath") 
+  .attr("id", "clip")
+  .append("rect")
+  .attr("width", width-150)
+  .attr("height", height); 
+  
+  context.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height2 + ")")
+      .call(xAxis2);
+    
+  var contextArea = d3.svg.area()
+    .interpolate("monotone")
+    .x(function(d) { return x2(parseDate(d.datetime)); })
+    .y0(height2)//the height is always max height, just to plot a rectangle rather than an actual path of the data
+    .y1(0);
+  
+  //plot the rect as the bar at the bottom
+  var dummyObjToIncludeMindate={
+    datetime:minDate,
+    price:"0"
+  };
+  var dummyObjToIncludeMaxdate={
+    datetime:maxDate,
+    price:"0"
+  };
+  var sampleFundPriceArray=funds_actual[0].price_array.slice();
+  sampleFundPriceArray.push(dummyObjToIncludeMaxdate);
+  sampleFundPriceArray.push(dummyObjToIncludeMindate);
+
+  context.append("path")
+    .attr("class", "area")
+    .attr("d", contextArea(sampleFundPriceArray))
+    .attr("fill", "LightYellow ");
+    
+  //append the brush for the selection of subsection  
+  context.append("g")
+    .attr("class", "x brush")
+    .call(brush)
+    .selectAll("rect")
+    .attr("height", height2)
+      .attr("fill", "SkyBlue");  
+
+  //for brusher of the slider bar at the bottom
+  function brushed() {
+    x.domain(brush.empty() ? x2.domain() : brush.extent());
+    fund.select("path").transition()//update curve 
+      .attr("d", function(d) { if(d.vis=="True"){return line(d.price_array);} else{ return null;} })
+    focus.select(".x.axis").call(xAxis);
+  }
+
+  //********************************************************************************//
+  //**************End of Slider part & Brush****************************************//
+
+
+
+
+
+    //mouse picker related, hover line---------------------------------------------------------------
   var pickerValue = focus.selectAll(".pickerValue")//for displaying fund unit price 
     .data(funds_actual)
     .enter().append("g")
@@ -344,69 +408,3 @@
     });  
 
   //end of mouse picker related, hover line-------------------------------------------------------------------
-  
-  
-
-  //**************** Slider part & Brush *******************************************//
-  //********************************************************************************//
-  var brush = d3.svg.brush()//for slider bar at the bottom
-    .x(x2)
-    .on("brush", brushed);
-  
-  var context = svg.append("g")
-    .attr("transform", "translate(" + margin2.left + "," + margin2.top + ")");
-  
-  //append click path for controlling the sliding of curve, clip those part out of bounds
-  svg.append("defs").append("clipPath") 
-  .attr("id", "clip")
-  .append("rect")
-  .attr("width", width-150)
-  .attr("height", height); 
-  
-  context.append("g")
-      .attr("class", "x axis")
-      .attr("transform", "translate(0," + height2 + ")")
-      .call(xAxis2);
-    
-  var contextArea = d3.svg.area()
-    .interpolate("monotone")
-    .x(function(d) { return x2(parseDate(d.datetime)); })
-    .y0(height2)//the height is always max height, just to plot a rectangle rather than an actual path of the data
-    .y1(0);
-  
-  //plot the rect as the bar at the bottom
-  var dummyObjToIncludeMindate={
-    datetime:minDate,
-    price:"0"
-  };
-  var dummyObjToIncludeMaxdate={
-    datetime:maxDate,
-    price:"0"
-  };
-  var sampleFundPriceArray=funds_actual[0].price_array.slice();
-  sampleFundPriceArray.push(dummyObjToIncludeMaxdate);
-  sampleFundPriceArray.push(dummyObjToIncludeMindate);
-
-  context.append("path")
-    .attr("class", "area")
-    .attr("d", contextArea(sampleFundPriceArray))
-    .attr("fill", "LightYellow ");
-    
-  //append the brush for the selection of subsection  
-  context.append("g")
-    .attr("class", "x brush")
-    .call(brush)
-    .selectAll("rect")
-    .attr("height", height2)
-      .attr("fill", "SkyBlue");  
-
-  //for brusher of the slider bar at the bottom
-  function brushed() {
-    x.domain(brush.empty() ? x2.domain() : brush.extent());
-    fund.select("path").transition()//update curve 
-      .attr("d", function(d) { if(d.vis=="True"){return line(d.price_array);} else{ return null;} })
-    focus.select(".x.axis").call(xAxis);
-  }
-
-  //********************************************************************************//
-  //**************End of Slider part & Brush****************************************//
