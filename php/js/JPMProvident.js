@@ -133,10 +133,7 @@
   var line = d3.svg.line()
     .interpolate("linear")
     .x(function(d) { return x(parseDate(d.datetime)); })
-    .y(function(d) { return y(parseFloat(d.price));   })
-    .on("click", function(d){
-       console.log(d);
-    });
+    .y(function(d) { return y(parseFloat(d.price));   });
 
   var svg = d3.select("#graph").append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -201,7 +198,10 @@
       .attr("class", "line")
       .attr("clip-path", "url(#clip)")//use clip path to make irrelevant part invisible
       .attr("d", function(d) { if(d.vis=="True"){return line(d.price_array);} else{ return null;} })
-      .style("stroke", function(d) { return colors(d.id-1); });
+      .style("stroke", function(d) { return colors(d.id-1); })
+      .on("click", function(d){
+          console.log(d);
+      });
 
   
     
