@@ -34,23 +34,16 @@
 			//show date 
 			displayDateForPositionX(mouseX);
 
-			// show the dots
+			//show dots
+			displayDotsForPositionX(mouseX);
 			
-			fund.select("circle").transition().duration(0)
-				 .attr("cx",  function(d) {
-				 	 var index=findIndexGivenDateTime(mouseX,d.price_array);
-				 	 return x(parseDate(d.price_array[index].datetime));
-				 })
-                 .attr("cy",  function(d) {
-                 	 var index=findIndexGivenDateTime(mouseX,d.price_array);
-                 	 return y(parseFloat(d.price_array[index].price));
-                 })
-                 .style("display", function(d) {if(d.vis=="True"){return "initial";}else{return "none";}}); 
 
 		} else {
 			// hide the dots
 			fund.select("circle").transition().duration(0)
 		    	.style("display", "none");
+		    fund.select("text").transition().duration(0)
+		    	.text("");
 		    DateLbl.select('text').remove();
 	
 		}
@@ -61,6 +54,8 @@
 		// hide the dots
 		fund.select("circle").transition().duration(0)
 		    .style("display", "none");
+		fund.select("text").transition().duration(0)
+		    .text("");
 		DateLbl.select('text').remove();
 	}
 	
@@ -79,45 +74,63 @@
             .attr("font-family", "sans-serif")
             .attr("font-size", "10px")
             .attr("fill", "Gray");
+	}
+
+	/**
+	* Display dot at position X 
+	*/
+	var displayDotsForPositionX = function(xPosition) {
+		
+		// show the dots
+		
+		fund.select("circle").transition().duration(0)
+			 .attr("cx",  function(d) {
+			 	 var index=findIndexGivenDateTime(xPosition,d.price_array);
+			 	 return x(parseDate(d.price_array[index].datetime));
+			 })
+	         .attr("cy",  function(d) {
+	         	 var index=findIndexGivenDateTime(xPosition,d.price_array);
+	         	 return y(parseFloat(d.price_array[index].price));
+	         })
+	         .style("display", function(d) {if(d.vis=="True"){return "initial";}else{return "none";}}); 
+	}
 	
-		/*
+
+	/**
+	* Display unit price / percent change on position x's date
+	*/
+	var displayPricePositionX = function(xPosition) {
 		
-		//modify the picker display of each funds	
-		//do only when we have a defined update of index. For some of the date, e.g. Sunday, no such record, the index will be undefined
-		if((currIndex>=0 )&& (currIndex<data2[0].priceList.length)){ 
+
+		fund.select("text").transition().duration(0)
+			 .text(function(d){
+			 	var index=findIndexGivenDateTime(xPosition,d.price_array);
+
+			 	if(mode=="actual"){
+			 	 	return parseFloat(d.price_array[index].price);
+			 	}else if(mode=="percent"){
+			 		return parseFloat(d.price_array[index].price)+"%";
+			 	}
+
+			 })
+			 .attr("fill", function(d){
+			 	var index=findIndexGivenDateTime(xPosition,d.price_array);
+
+			 	if(mode=="actual"){
+			 	 	return "black";
+			 	}else if(mode=="percent"){
+			 		var price=parseFloat(d.price_array[index].price);
+			 		if(price>0)
+			 			return "blue";
+			 		else if(price==0)
+			 			return "black";
+			 		else
+			 			retun "red";
+			 	}
+
+			 }); 
+
 		
-			pickerValue.select("text").transition()//update the unit price label 
-				.text( function (d) { 
-					return d.priceList[currIndex].price;
-				});
-			
-			valueChange.select("text").transition()//update % value change label
-				.text( function (d) {
-					var percentChange;				
-					if(currIndex==d.priceList.length-1)
-						percentChange=(d.priceList[currIndex].price-d.priceList[currIndex-1].price)/d.priceList[currIndex-1].price*100;
-					else
-					    percentChange=(d.priceList[d.priceList.length-1].price-d.priceList[currIndex].price)/d.priceList[currIndex].price*100;
-					if(percentChange<0){
-						return "(-"+percentChange.toFixed(2)+"%)" 
-					}else{
-						return "(+"+percentChange.toFixed(2)+"%)" 
-					}
-				})
-				.attr("fill", function (d) {
-					var percentChange;				
-					if(currIndex==d.priceList.length-1)
-						percentChange=(d.priceList[currIndex].price-d.priceList[currIndex-1].price)/d.priceList[currIndex-1].price*100;
-					else
-					    percentChange=(d.priceList[d.priceList.length-1].price-d.priceList[currIndex].price)/d.priceList[currIndex].price*100;
-					if(percentChange<0){
-						return "red" 
-					}else{
-						return "black" 
-					}
-				});
-		}
-		*/
 	}
 	
 

@@ -1,3 +1,5 @@
+  var mode="actual";//actual price || percentage change
+
   $(function() {
 
     var slider=$('#ex1').slider({});
@@ -41,7 +43,7 @@
 
       if(state==true){//state true means that $ is selected , else % is selected
         //console.log("actual price is selected to display");
-      
+        mode="actual";
         $("#ex1Slider").attr("style","width: 950px;display:none");
 
         focus.select(".y.axis").select(".yaxisLabel").transition()
@@ -50,6 +52,7 @@
       update(funds_actual);
 
       }else{
+        mode="percent";
         
         $("#ex1Slider").attr("style","width: 950px");
 
@@ -270,7 +273,6 @@
           }else{
             return width-100+((d.id-14)%3)*40;
           }
-          
         })
         .attr("y",function(d) { 
           if(d.id<=13){
@@ -278,7 +280,6 @@
           }else{
             return 105+(Math.floor((d.id-14)/3)+2)*40+Math.floor((13-1)/3)*40;
           }
-          
         })
         .text( function (d) { })//to add on transition
         .attr("font-family", "sans-serif")
