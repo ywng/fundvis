@@ -274,22 +274,16 @@
         })
         .attr("y",function(d) { 
           if(d.id<=13){
-            return 95+Math.floor((d.id-1)/3)*40;
+            return 105+Math.floor((d.id-1)/3)*40;
           }else{
-            return 95+(Math.floor((d.id-14)/3)+2)*40+Math.floor((13-1)/3)*40;
+            return 105+(Math.floor((d.id-14)/3)+2)*40+Math.floor((13-1)/3)*40;
           }
           
         })
-        .text( function (d) { 
-          var dateStr="testing";
-          return "ddd";
-        
-        })
-       .attr("font-family", "sans-serif")
-       .attr("font-size", "15px")
-       .attr("fill", function(d) { return colors(d.id-1); }); 
-      // .style("display", "none");  
-
+        .text( function (d) { })//to add on transition
+        .attr("font-family", "sans-serif")
+        .attr("font-size", "15px")
+        .attr("fill", "black"); 
 
     //end of curving part of those funds------------------------------------------------------------- 
 
