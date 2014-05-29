@@ -23,22 +23,22 @@
 	 * Mouse Picker related functions
 	 */
 	var handleMouseOverGraph = function(event) {	
-		console.log(event.pageX);
-		console.log(event.pageY);
+		//console.log(event.pageX);
+		//console.log(event.pageY);
 		var mouseX = event.pageX-90;
 		var mouseY = event.pageY-50;
 	
 		if(mouseX >= 0 && mouseX <=950 && mouseY >= 0 && mouseY <= 460) {
 			console.log(mouseX+"  "+mouseY);
 			// show the dot
-			trackingDots.select('circle').remove();
+			/*trackingDots.select('circle').remove();
 			hoverLineGroup.append("line")
 				.attr("x1", mouseX).attr("x2", mouseX) 
 				.attr("y1", 0).attr("y2", height) 
 				.style("stroke", "DarkViolet")
 				.style("stroke-width", 0.2);
 			//update date label
-			displayDateForPositionX(mouseX);
+			displayDateForPositionX(mouseX);*/
 		} else {
 			//out of the bounds that we want
 			handleMouseOutGraph(event);
