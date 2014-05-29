@@ -33,3 +33,16 @@ text {
 	background: #BABABA;
 
 }
+
+div.tooltip {
+  position: absolute;
+  text-align: center;
+  width: 60px;
+  height: 12px;
+  padding: 8px;
+  font: 10px sans-serif;
+  background: #ddd;
+  border: solid 1px #aaa;
+  border-radius: 8px;
+  pointer-events: none;
+}

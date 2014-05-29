@@ -177,6 +177,9 @@
     .attr("font-size", "30px")
     .attr("fill", "black");  
 
+  var div = focus.append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 1e-6);
  
   //**************** Core part visualizing funds' data ******************************//
   //********************************************************************************//  
@@ -256,7 +259,9 @@
           
             fund.select("rect").transition()//update legend 
               .attr("fill",function(d) {if(d.vis=="True"){return colors(d.id-1);}else{return "white";}});
-      });  
+      })
+      .on("mouseover", mouseover)
+      .on("mouseout", mouseout);  
 
 
       fund.append("circle")
@@ -378,7 +383,28 @@
     .attr("class", "dateLabel");
 
  
-  
+  //tooltip
+  function mouseover() {
+  div.transition()
+      .duration(500)
+      .style("opacity", 1)
+      .text(d3.event.pageX + ", " + d3.event.pageY)
+      .style("left", (d3.event.pageX - 34) + "px")
+      .style("top", (d3.event.pageY - 12) + "px");
+}
+
+function mousemove() {
+  div
+      .text(d3.event.pageX + ", " + d3.event.pageY)
+      .style("left", (d3.event.pageX - 34) + "px")
+      .style("top", (d3.event.pageY - 12) + "px");
+}
+
+function mouseout() {
+  div.transition()
+      .duration(500)
+      .style("opacity", 1e-6);
+}
   
        
  
