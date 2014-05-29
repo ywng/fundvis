@@ -251,6 +251,17 @@
             fund.select("rect").transition()//update legend 
               .attr("fill",function(d) {if(d.vis=="True"){return colors(d.id-1);}else{return "white";}});
         });  
+
+
+    var trackingDots =fund.append("circle")
+                          .style("stroke", function(d) {if(d.vis=="True"){return colors(d.id-1);}else{return "white";}})
+                          .style("fill", function(d) {if(d.vis=="True"){return colors(d.id-1);}else{return "white";}})
+                          .attr("r", 40)
+                          .attr("cx", 50)
+                          .attr("cy", 20)
+                          .style("opacity", function(d) {if(d.vis=="True"){return 0.1;}else{return 1;}}); 
+
+
     //end of curving part of those funds------------------------------------------------------------- 
 
   }
@@ -336,6 +347,7 @@
 
 
 
+
     //mouse picker related, hover line---------------------------------------------------------------
   var pickerValue = focus.selectAll(".pickerValue")//for displaying fund unit price 
     .data(funds_actual)
@@ -343,8 +355,7 @@
     .attr("class", "pickerValue");
     
     
-  var hoverLineGroup = focus.append("g") //the vertical line across the plots
-        .attr("class", "hover-line");
+
         
   var DateLbl = focus.append("g")  //the date label at the right upper corner part
     .attr("class", "dateLabel");
