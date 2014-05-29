@@ -36,6 +36,9 @@
 
 			//show dots
 			displayDotsForPositionX(mouseX);
+
+			//show price
+			displayPricePositionX(mouseX);
 			
 
 		} else {
