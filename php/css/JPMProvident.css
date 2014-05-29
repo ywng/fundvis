@@ -1,0 +1,35 @@
+body {
+  padding-bottom: 40px;
+  margin:10px 5px 30px 40px;
+  width: 1200px;
+}
+
+.fundCategory{
+	font: 14px sans-serif;
+}
+
+text {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.line {
+  fill: none;
+  stroke: url(#temperature-gradient);
+  stroke-width: 1.5px;
+}
+
+#ex1Slider .slider-selection {
+	background: #BABABA;
+
+}
