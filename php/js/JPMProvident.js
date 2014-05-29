@@ -178,7 +178,7 @@
     .attr("fill", "black");  
 
   var div = focus.append("div")
-    .attr("class", "tooltip")
+    .attr("class", "D3tooltip")
     .style("opacity", 1e-6);
  
   //**************** Core part visualizing funds' data ******************************//
