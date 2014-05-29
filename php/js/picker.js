@@ -108,13 +108,18 @@
 
 		fund.select("text").transition().duration(0)
 			 .text(function(d){
-			 	var index=findIndexGivenDateTime(xPosition,d.price_array);
+			 	if(d.vis=="True"){
+			 		var index=findIndexGivenDateTime(xPosition,d.price_array);
 
-			 	if(mode=="actual"){
-			 	 	return parseFloat(d.price_array[index].price);
-			 	}else if(mode=="percent"){
-			 		return parseFloat(d.price_array[index].price)+"%";
+				 	if(mode=="actual"){
+				 	 	return parseFloat(d.price_array[index].price);
+				 	}else if(mode=="percent"){
+				 		return parseFloat(d.price_array[index].price).toFixed(2)+"%";
+				 	}
+			 	}else{
+			 		return "";
 			 	}
+			 	
 
 			 })
 			 .attr("fill", function(d){
