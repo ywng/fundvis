@@ -53,7 +53,7 @@
 
       }else{
         mode="percent";
-        
+
         $("#ex1Slider").attr("style","width: 950px");
 
 
@@ -133,7 +133,10 @@
   var line = d3.svg.line()
     .interpolate("linear")
     .x(function(d) { return x(parseDate(d.datetime)); })
-    .y(function(d) { return y(parseFloat(d.price));   });
+    .y(function(d) { return y(parseFloat(d.price));   })
+    .on("click", function(d){
+       console.log(d);
+    });
 
   var svg = d3.select("#graph").append("svg")
     .attr("width", width + margin.left + margin.right)
