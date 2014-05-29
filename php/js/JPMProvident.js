@@ -168,7 +168,7 @@
   focus.append("text")
     .attr("class", "fundCategory")
     .attr("x", function(d) { return width-100; })
-    .attr("y", 275)
+    .attr("y", 300)
     .text( "Fidelity Funds")
     .attr("font-family", "sans-serif")
     .attr("font-size", "30px")
