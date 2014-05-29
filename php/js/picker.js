@@ -51,6 +51,7 @@
 			// hide the dots
 			fund.select("circle").transition().duration(0)
 		    	.style("display", "none");
+		    DateLbl.select('text').remove();
 	
 		}
 	}
@@ -60,6 +61,7 @@
 		// hide the dots
 		fund.select("circle").transition().duration(0)
 		    .style("display", "none");
+		DateLbl.select('text').remove();
 	}
 	
 	/**
