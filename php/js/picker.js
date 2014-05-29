@@ -33,7 +33,7 @@
 
 			//show date 
 			displayDateForPositionX(mouseX);
-			
+
 			// show the dots
 			
 			fund.select("circle").transition().duration(0)
@@ -67,7 +67,7 @@
 	*/
 	var displayDateForPositionX = function(xPosition) {
 		
-		var dateToShow=x(xPosition);
+		var dateToShow=x.invert(xPosition);
 		
 		DateLbl.select('text').remove();
 		DateLbl.append("text")
