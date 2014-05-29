@@ -44,7 +44,9 @@
                  .style("display", function(d) {if(d.vis=="True"){return "initial";}else{return "none";}}); 
 
 		} else {
-			//out of the bounds that we want
+			// hide the dots
+			fund.select("circle").transition().duration(0)
+		    	.style("display", "none");
 	
 		}
 	}
