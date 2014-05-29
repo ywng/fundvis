@@ -45,18 +45,15 @@
 
 		} else {
 			//out of the bounds that we want
-			//handleMouseOutGraph(event);
+	
 		}
 	}
 	
 	
 	var handleMouseOutGraph = function(event) {	
-		// hide the hover-line
-		//hoverLineGroup.select('line').remove();
-		
-		//Set the value labels to whatever the latest data point is.
-		//when the user is not scanning through the graph
-		//displayDateForPositionX(width-210);
+		// hide the dots
+		fund.select("circle").transition().duration(0)
+		    .style("display", "none");
 	}
 	
 	/**
