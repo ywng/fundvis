@@ -31,17 +31,21 @@
 		if(mouseX >= 0 && mouseX <=950 && mouseY >= 0 && mouseY <= 460) {
 			console.log(mouseX+"  "+mouseY);
 			// show the dot
-			/*trackingDots.select('circle').remove();
-			hoverLineGroup.append("line")
-				.attr("x1", mouseX).attr("x2", mouseX) 
-				.attr("y1", 0).attr("y2", height) 
-				.style("stroke", "DarkViolet")
-				.style("stroke-width", 0.2);
-			//update date label
-			displayDateForPositionX(mouseX);*/
+			
+			fund.select("circle").transition()
+				 .attr("cx",  function(d) {
+				 	 var index=findIndexGivenDateTime(mouseX,d.price_array);
+				 	 return x(parseDate(d.price_array[index].datetime));
+				 })
+                 .attr("cy",  function(d) {
+                 	 var index=findIndexGivenDateTime(mouseX,d.price_array);
+                 	 return parseFloat(d.price_array[index].price);
+                 })
+                 .style("display", function(d) {if(d.vis=="True"){return "initial";}else{return "none";}}); 
+
 		} else {
 			//out of the bounds that we want
-			handleMouseOutGraph(event);
+			//handleMouseOutGraph(event);
 		}
 	}
 	
