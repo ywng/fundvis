@@ -281,7 +281,7 @@
           
         })
         .text( function (d) { 
-          var dateStr="";
+          var dateStr="testing";
         
         })
        .attr("font-family", "sans-serif")
