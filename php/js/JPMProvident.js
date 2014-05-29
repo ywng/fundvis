@@ -259,7 +259,7 @@
                           .attr("r", 40)
                           .attr("cx", 50)
                           .attr("cy", 20)
-                          .style("opacity", function(d) {if(d.vis=="True"){return 0.1;}else{return 1;}}); 
+                          .style("display", function(d) {if(d.vis=="True"){return "initial";}else{return "none";}}); 
 
 
     //end of curving part of those funds------------------------------------------------------------- 
