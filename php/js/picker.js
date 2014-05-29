@@ -30,7 +30,11 @@
 	
 		if(mouseX >= 0 && mouseX <=950 && mouseY >= 0 && mouseY <= 460) {
 			//console.log(mouseX+"  "+mouseY);
-			// show the dot
+
+			//show date 
+			displayDateForPositionX(mouseX);
+			
+			// show the dots
 			
 			fund.select("circle").transition().duration(0)
 				 .attr("cx",  function(d) {

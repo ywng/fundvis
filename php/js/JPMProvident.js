@@ -222,7 +222,7 @@
       .attr("stroke", function(d) {return colors(d.id-1);})
       .attr("fill",function(d) {if(d.vis=="True"){return colors(d.id-1);}else{return "white";}})
       .on("click", function(d) { 
-            console.log(d.vis);
+           // console.log(d.vis);
             if(d.vis=="True"){ //show the curve or not 
               d.vis="False";
             }
