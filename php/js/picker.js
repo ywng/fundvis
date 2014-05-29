@@ -70,6 +70,7 @@
 		var dateToShow=x.invert(xPosition);
 		
 		DateLbl.select('text').remove();
+
 		DateLbl.append("text")
 			.attr("x",width-350)
             .attr("y", 0)
@@ -123,12 +124,13 @@
 			 	 	return "black";
 			 	}else if(mode=="percent"){
 			 		var price=parseFloat(d.price_array[index].price);
-			 		if(price>0)
+			 		if(price>0){
 			 			return "blue";
-			 		else if(price==0)
+			 		}else if(price==0){
 			 			return "black";
-			 		else
-			 			retun "red";
+			 		}else{
+			 			return "red";
+			 		}
 			 	}
 
 			 }); 
