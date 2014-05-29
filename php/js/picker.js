@@ -29,7 +29,7 @@
 		var mouseY = event.pageY-50;
 	
 		if(mouseX >= 0 && mouseX <=950 && mouseY >= 0 && mouseY <= 460) {
-			console.log(mouseX+"  "+mouseY);
+			//console.log(mouseX+"  "+mouseY);
 			// show the dot
 			
 			fund.select("circle").transition().duration(0)
@@ -62,9 +62,9 @@
 	* Display the data & date values at position X 
 	*/
 	var displayDateForPositionX = function(xPosition) {
-		//console.log("xPos:"+xPosition);
-		/*var dateToShow=getValueForPositionXFromData(xPosition);
-		mousePickerDate=dateToShow;
+		
+		var dateToShow=x(xPosition);
+		
 		DateLbl.select('text').remove();
 		DateLbl.append("text")
 			.attr("x",width-550)
@@ -74,22 +74,7 @@
             .attr("font-size", "10px")
             .attr("fill", "Gray");
 	
-		//recalculate the current index where the hover lines is on
-		var dateStr="";
-		//console.log(mousePickerDate);
-		dateStr+=mousePickerDate.getFullYear();
-		if(mousePickerDate.getMonth()+1<10){
-			dateStr+="0"+(mousePickerDate.getMonth()+1);
-		}else{
-			dateStr+=(mousePickerDate.getMonth()+1);
-		}
-		if(mousePickerDate.getDate()<10){
-			dateStr+="0"+mousePickerDate.getDate();
-		}else{
-			dateStr+=mousePickerDate.getDate();
-		}
-		currIndex=DateMapIndex.get(dateStr);//update current index
-		//console.log("date:"+dateStr+" index:"+currIndex);
+		/*
 		
 		//modify the picker display of each funds	
 		//do only when we have a defined update of index. For some of the date, e.g. Sunday, no such record, the index will be undefined
