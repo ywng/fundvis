@@ -126,7 +126,15 @@
 			 	var index=findIndexGivenDateTime(xPosition,d.price_array);
 
 			 	if(mode=="actual"){
-			 	 	return "black";
+			 		if(index==(d.price_array.length-1))
+			 	 		return "black";
+			 	 	if(parseFloat(d.price_array[index].price)>parseFloat(d.price_array[index+1].price)){
+			 	 		return "blue";
+			 	 	}else if (parseFloat(d.price_array[index].price)==parseFloat(d.price_array[index+1].price)){
+			 	 		return "black";
+			 	 	}else{
+			 	 		return "red";
+			 	 	}
 			 	}else if(mode=="percent"){
 			 		var price=parseFloat(d.price_array[index].price);
 			 		if(price>0){
