@@ -213,9 +213,9 @@
       })
       .attr("y",function(d) { 
         if(d.id<=13){
-          return 80+Math.floor((d.id-1)/3)*35;
+          return 80+Math.floor((d.id-1)/3)*40;
         }else{
-          return 80+(Math.floor((d.id-14)/3)+2)*35+Math.floor((13-1)/3)*35;
+          return 80+(Math.floor((d.id-14)/3)+2)*40+Math.floor((13-1)/3)*40;
         }
         
       })
