@@ -39,7 +39,7 @@
 				 })
                  .attr("cy",  function(d) {
                  	 var index=findIndexGivenDateTime(mouseX,d.price_array);
-                 	 return parseFloat(d.price_array[index].price);
+                 	 return y(parseFloat(d.price_array[index].price));
                  })
                  .style("display", function(d) {if(d.vis=="True"){return "initial";}else{return "none";}}); 
 
@@ -52,7 +52,7 @@
 	
 	var handleMouseOutGraph = function(event) {	
 		// hide the hover-line
-		hoverLineGroup.select('line').remove();
+		//hoverLineGroup.select('line').remove();
 		
 		//Set the value labels to whatever the latest data point is.
 		//when the user is not scanning through the graph
