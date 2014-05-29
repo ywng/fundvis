@@ -32,7 +32,7 @@
 			console.log(mouseX+"  "+mouseY);
 			// show the dot
 			
-			fund.select("circle").transition()
+			fund.select("circle").transition().duration(0)
 				 .attr("cx",  function(d) {
 				 	 var index=findIndexGivenDateTime(mouseX,d.price_array);
 				 	 return x(parseDate(d.price_array[index].datetime));

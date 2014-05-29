@@ -256,7 +256,7 @@
     var trackingDots =fund.append("circle")
                           .style("stroke", function(d){return colors(d.id-1);})
                           .style("fill", function(d){return colors(d.id-1);})
-                          .attr("r", 5)
+                          .attr("r", 2)
                           .attr("cx", 50)
                           .attr("cy", 20)
                           .style("display", "none"); 
