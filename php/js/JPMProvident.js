@@ -385,7 +385,7 @@
  
   //tooltip callback
   function mouseover() {
-    console.log("on mouse over");
+    console.log("on mouse over: "+d3.event.pageX+"  "+d3.event.pageY);
   div.transition()
       .duration(500)
       .style("opacity", 1)
