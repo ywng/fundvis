@@ -390,8 +390,8 @@
       .duration(500)
       .style("opacity", 1)
       .text(d3.event.pageX + ", " + d3.event.pageY)
-      .style("left", (d3.event.pageX - 334) + "px")
-      .style("top", (d3.event.pageY - 312) + "px");
+      .style("left", (d3.event.pageX ) + "px")
+      .style("top", (d3.event.pageY ) + "px");
   }
 
   function mousemove() {
