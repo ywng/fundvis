@@ -34,7 +34,7 @@ text {
 
 }
 
-div.D3tooltip {
+.D3tooltip {
   position: absolute;
   text-align: center;
   width: 60px;
