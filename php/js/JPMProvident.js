@@ -22,7 +22,7 @@
     //invisible on init, it is visible on during percent mode only
     $("#ex1Slider").attr("style","width: 950px;display:none");
     $("#ex1").on('slideStop', function(slideEvt) {
-      console.log(slideEvt.value);
+      //console.log(slideEvt.value);
       //update funds_percent (recalculate) and redraw it
       for(var i=0;i<funds_percent.length;i++){
 
@@ -71,6 +71,7 @@
 
         funds_percent=new Array();
         var sliderXPos=slider.data('slider').getValue();
+        console.log(sliderXPos);
 
         for(var i=0;i<funds_actual.length;i++){
           var fundObj={
