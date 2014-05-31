@@ -165,14 +165,14 @@
 	//tooltip callback
 
 	//details var determins whether other fund details are shown
-	function showTooltip(d,details) {
+	function showTooltip(d,details,offsetX,offsetY) {
 		//console.log("on mouse over: "+d3.event.pageX+"  "+d3.event.pageY);
 		div.transition()        
 		   .duration(200)      
 		   .style("opacity", .9);      
 		div.html(d.name)  
-		   .style("left", (d3.event.pageX-60) + "px")     
-		   .style("top", (d3.event.pageY+5 ) + "px");    
+		   .style("left", (d3.event.pageX+offsetX) + "px")     
+		   .style("top", (d3.event.pageY+offsetY ) + "px");    
 	                       
 	}
 
