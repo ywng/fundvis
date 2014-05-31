@@ -97,18 +97,17 @@
 	var displayDotsForPositionX = function(xPosition) {
 		
 		// show the dots
-		var index=findIndexGivenDateTime(xPosition,d.price_array);
-		if(x(parseDate(d.price_array[index].datetime))>950){
-			fund.select("circle").transition().duration(0)
-		    	.style("display", "none");
-		    return;
-		}
-
+		
 		fund.select("circle").transition().duration(0)
 			 .attr("cx",  function(d) {
+			 	 var index=findIndexGivenDateTime(xPosition,d.price_array);
+			 	 if(x(parseDate(d.price_array[index].datetime))>950){
+					return -999999; //not display
+				 }
 			 	 return x(parseDate(d.price_array[index].datetime));
 			 })
 	         .attr("cy",  function(d) {
+	         	 var index=findIndexGivenDateTime(xPosition,d.price_array);
 	         	 return y(parseFloat(d.price_array[index].price));
 	         })
 	         .style("display", function(d) {if(d.vis=="True"){return "initial";}else{return "none";}}); 
