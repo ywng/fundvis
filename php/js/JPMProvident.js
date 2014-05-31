@@ -200,11 +200,11 @@
     .attr("class", "dateLabel");
 
   var horizontalZeroLine=focus.append("line")
-       .attr("x1", 5)
-       .attr("y1", 5)
+       .attr("x1", 25)
+       .attr("y1", 25)
        .attr("x2", 50)
-       .attr("y2", 50)
-       .style("display", "none");//show only on percentage mode
+       .attr("y2", 50);
+     //  .style("display", "none");//show only on percentage mode
   
   //********************************************************************************//  
   //**************** End of Constructing Vis Main Components ***********************//
