@@ -138,6 +138,11 @@
   var svg = d3.select("#graph").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom);
+
+  //tooltip
+  var div = d3.select("body").append("div")   
+    .attr("class", "D3tooltip")               
+    .style("opacity", 0);
   
   //the main graphic component of the plot
   var focus=svg.append("g")
@@ -290,10 +295,6 @@
         .attr("font-size", "15px")
         .attr("fill", "black"); 
 
-      fund.append("div")
-        .attr("class", "D3tooltip")
-        .style("opacity", 1e-6);
-
 
     //end of curving part of those funds------------------------------------------------------------- 
 
@@ -387,24 +388,19 @@
   //tooltip callback
   function mouseover() {
     console.log("on mouse over: "+d3.event.pageX+"  "+d3.event.pageY);
-    fund.select("div").transition()
-      .duration(500)
-      .style("opacity", 1)
-      .text(d3.event.pageX + ", " + d3.event.pageY)
-      .style("left", (d3.event.pageX ) + "px")
-      .style("top", (d3.event.pageY ) + "px");
-  }
-
-  function mousemove() {
-    div.text(d3.event.pageX + ", " + d3.event.pageY)
-        .style("left", (d3.event.pageX - 34) + "px")
-        .style("top", (d3.event.pageY - 12) + "px");
+    div.transition()        
+                .duration(200)      
+                .style("opacity", .9);      
+            div .html(d.name)  
+                .style("left", (d3.event.pageX) + "px")     
+                .style("top", (d3.event.pageY - 28) + "px");    
+            })                  
   }
 
   function mouseout() {
-    fund.select("div").transition()
-        .duration(500)
-        .style("opacity", 1e-6);
+     div.transition()        
+                .duration(500)      
+                .style("opacity", 0);   
   }
   
        
