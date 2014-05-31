@@ -163,6 +163,8 @@
 	}
 
 	//tooltip callback
+
+	//details var determins whether other fund details are shown
 	function showTooltip(d,details) {
 		//console.log("on mouse over: "+d3.event.pageX+"  "+d3.event.pageY);
 		div.transition()        
