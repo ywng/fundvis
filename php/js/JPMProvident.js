@@ -295,7 +295,11 @@
         .attr("r", 3)
         .attr("cx", 50)
         .attr("cy", 20)
-        .style("display", "none"); 
+        .style("display", "none")
+        .on("click", function(d){
+            showTooltip(d,"yes",-60,8);//yes=> show details
+        })
+        .on("mouseout", function(d){hideTooltip();});
 
 
       //for displaying fund unit price
