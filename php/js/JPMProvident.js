@@ -288,7 +288,7 @@
       .on("mouseover", function(d){showTooltip(d,"no",-60,10);}) //no=> don't show details
       .on("mouseout", function(d){hideTooltip();});  
 
-
+      /*tracing dots*/
       fund.append("circle")
         .style("stroke", function(d){return colors(d.id-1);})
         .style("fill", function(d){return colors(d.id-1);})
