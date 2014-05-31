@@ -51,3 +51,8 @@ div.D3tooltip {
 .right  .github-fork-ribbon {
     background-color: #090; /* change the color of the fork me on github ribbon*/
 }
+
+.page_header{
+  font-family:"sans-serif";
+  font-size: 15px;
+}
