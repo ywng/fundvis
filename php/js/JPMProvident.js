@@ -212,6 +212,9 @@
             .attr("x2", width-150)
             .attr("y2", y(0))
             .style("display", "initial");
+      }else{
+          horizontalZeroLine.transition()
+            .style("display", "none");
       }
    
   }
