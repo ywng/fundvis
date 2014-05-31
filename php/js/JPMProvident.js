@@ -200,6 +200,8 @@
     .attr("class", "dateLabel");
 
   var horizontalZeroLine=focus.append("line")
+       .style("stroke-dasharray", ("3, 3"))
+       .style("stroke", "rgb(155, 154, 154)")
        .attr("x1", 25)
        .attr("y1", 25)
        .attr("x2", 50)
