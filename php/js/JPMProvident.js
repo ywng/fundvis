@@ -18,7 +18,7 @@
      * We use this bar to select a date's price as the base level for calculating the percentage
      * That means we can find out the percentage change of price relative to whichever day we want
      */  
-    var slider=$('#ex1').slider({});
+    var slider=$('#ex1').slider('setValue', 0);
     //invisible on init, it is visible on during percent mode only
     $("#ex1Slider").attr("style","width: 950px;display:none");
     $("#ex1").on('slideStop', function(slideEvt) {
@@ -71,7 +71,7 @@
 
         funds_percent=new Array();
         var sliderXPos=slider.data('slider').getValue();
-        console.log(sliderXPos);
+        //console.log(sliderXPos);
 
         for(var i=0;i<funds_actual.length;i++){
           var fundObj={
