@@ -292,7 +292,7 @@
 
       fund.append("div")
         .attr("class", "D3tooltip")
-        .style("opacity", 1e-6);
+        .style("opacity", 1e-6)
         .text(d3.event.pageX + ", " + d3.event.pageY)
         .style("left", (d3.event.pageX ) + "px")
         .style("top", (d3.event.pageY ) + "px");
