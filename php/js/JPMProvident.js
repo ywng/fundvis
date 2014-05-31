@@ -202,12 +202,19 @@
   var horizontalZeroLine=focus.append("line")
        .style("stroke-dasharray", ("3, 3"))
        .style("stroke", "rgb(155, 154, 154)")
-       .attr("x1", 25)
-       .attr("y1", 25)
-       .attr("x2", 50)
-       .attr("y2", 50)
        .style("display", "none");//show only on percentage mode
   
+  var updateHorizontalZeroLine=function(){
+      if(mode=="percent"){
+          horizontalZeroLine.transition()
+            .attr("x1", 0)
+            .attr("y1", y(0))
+            .attr("x2", width-150)
+            .attr("y2", y(0))
+            .style("display", "initial");
+      }
+   
+  }
   //********************************************************************************//  
   //**************** End of Constructing Vis Main Components ***********************//
 
@@ -221,12 +228,7 @@
     y.domain([find_max_min_selected_funds(data).min-1,find_max_min_selected_funds(data).max+1]);
     focus.select(".y.axis").call(yAxis);
 
-    horizontalZeroLine.transition()
-      .attr("x1", 0)
-      .attr("y1", y.invert(0))
-      .attr("x2", width-150)
-      .attr("y2", y.invert(0))
-      .style("display", "initial");
+    updateHorizontalZeroLine();
 
     focus.selectAll(".fund").remove();
 
@@ -295,14 +297,7 @@
             y.domain([find_max_min_selected_funds(data).min-1,find_max_min_selected_funds(data).max+1]);
             focus.select(".y.axis").call(yAxis);
 
-            if(mode=="percent"){
-              horizontalZeroLine.transition()
-                .attr("x1", 0)
-                .attr("y1", y.invert(0))
-                .attr("x2", width-150)
-                .attr("y2", y.invert(0))
-                .style("display", "initial");
-            }
+            updateHorizontalZeroLine();
             
             fund.select("path").transition()//update curve 
               .attr("d", function(d) { if(d.vis=="True"){return line(d.price_array);} else{ return null;} });
