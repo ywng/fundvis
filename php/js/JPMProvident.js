@@ -228,7 +228,8 @@
       .on("click", function(d){
           //console.log(d);
           showTooltip(d,"yes",-60,5);//yes=> show details
-      });
+      })
+      .on("mouseout", function(d){hideTooltip();});
 
   
     
@@ -285,7 +286,7 @@
               .attr("fill",function(d) {if(d.vis=="True"){return colors(d.id-1);}else{return "white";}});
       })
       .on("mouseover", function(d){showTooltip(d,"no",-60,10);}) //no=> don't show details
-      .on("mouseout", function(d){hideTooltip(d);});  
+      .on("mouseout", function(d){hideTooltip();});  
 
 
       fund.append("circle")
