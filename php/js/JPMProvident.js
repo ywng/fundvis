@@ -176,10 +176,6 @@
     .attr("font-family", "sans-serif")
     .attr("font-size", "30px")
     .attr("fill", "black");  
-
-  var div = focus.append("div")
-    .attr("class", "D3tooltip")
-    .style("opacity", 1e-6);
  
   //**************** Core part visualizing funds' data ******************************//
   //********************************************************************************//  
@@ -274,7 +270,7 @@
 
 
       //for displaying fund unit price
-     fund.append("text")
+      fund.append("text")
         .attr("x",function(d) { 
           if(d.id<=13){
             return width-100+((d.id-1)%3)*40;
@@ -293,6 +289,14 @@
         .attr("font-family", "sans-serif")
         .attr("font-size", "15px")
         .attr("fill", "black"); 
+
+      fund.append("div")
+        .attr("class", "D3tooltip")
+        .style("opacity", 1e-6);
+        .text(d3.event.pageX + ", " + d3.event.pageY)
+        .style("left", (d3.event.pageX ) + "px")
+        .style("top", (d3.event.pageY ) + "px");
+
 
     //end of curving part of those funds------------------------------------------------------------- 
 
@@ -386,7 +390,7 @@
   //tooltip callback
   function mouseover() {
     console.log("on mouse over: "+d3.event.pageX+"  "+d3.event.pageY);
-  div.transition()
+    fund.select("div").transition()
       .duration(500)
       .style("opacity", 1)
       .text(d3.event.pageX + ", " + d3.event.pageY)
@@ -401,7 +405,7 @@
   }
 
   function mouseout() {
-    div.transition()
+    fund.select("div").transition()
         .duration(500)
         .style("opacity", 1e-6);
   }
