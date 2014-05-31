@@ -261,8 +261,8 @@
             fund.select("rect").transition()//update legend 
               .attr("fill",function(d) {if(d.vis=="True"){return colors(d.id-1);}else{return "white";}});
       })
-      .on("mouseover", function(d){mouseover(d);})
-      .on("mouseout", function(d){mouseout(d);});  
+      .on("mouseover", function(d){showTooltip(d,"no");})
+      .on("mouseout", function(d){hideTooltip(d);});  
 
 
       fund.append("circle")
@@ -386,18 +386,18 @@
 
  
   //tooltip callback
-  function mouseover(d) {
+  function showTooltip(d,details) {
     console.log("on mouse over: "+d3.event.pageX+"  "+d3.event.pageY);
     div.transition()        
        .duration(200)      
        .style("opacity", .9);      
     div.html(d.name)  
-       .style("left", (d3.event.pageX) + "px")     
-       .style("top", (d3.event.pageY - 28) + "px");    
+       .style("left", (d3.event.pageX-60) + "px")     
+       .style("top", (d3.event.pageY ) + "px");    
                            
   }
 
-  function mouseout(d) {
+  function hideTooltip() {
      div.transition()        
         .duration(500)      
         .style("opacity", 0);   

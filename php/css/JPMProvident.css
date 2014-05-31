@@ -37,12 +37,12 @@ text {
 div.D3tooltip {
   position: absolute;
   text-align: center;
-  width: 100px;
+  width: 120px;
   height: 50px;
-  padding: -50px;
+  padding: 5px;
   font: 10px sans-serif;
   background: #ddd;
-  border: solid 1px #aaa;
-  border-radius: 8px;
+  border: solid 0.5px #aaa;
+  border-radius: 5px;
   pointer-events: none;
 }
