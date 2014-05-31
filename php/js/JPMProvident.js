@@ -150,14 +150,6 @@
   var svg = d3.select("#graph").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom);
-
-  //tooltip
-  var div = d3.select("body").append("div")   
-    .attr("class", "D3tooltip")               
-    .style("opacity", 0);
-
-  var DateLbl = focus.append("g")  //the date label at the right upper corner part
-    .attr("class", "dateLabel");
   
   //the main graphic component of the plot
   var focus=svg.append("g")
@@ -196,6 +188,14 @@
     .attr("font-family", "sans-serif")
     .attr("font-size", "30px")
     .attr("fill", "black");  
+
+  //tooltip
+  var div = d3.select("body").append("div")   
+    .attr("class", "D3tooltip")               
+    .style("opacity", 0);
+
+  var DateLbl = focus.append("g")  //the date label at the right upper corner part
+    .attr("class", "dateLabel");
   
   //********************************************************************************//  
   //**************** End of Constructing Vis Main Components ***********************//
