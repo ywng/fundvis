@@ -1,19 +1,28 @@
+  /**
+  * Global Variables
+  */  
   var mode="actual";//actual price || percentage change
+  var margin = {top: 15, right: 50, bottom: 100, left: 50},
+      margin2 = {top: 515, right: 50, bottom: 50, left: 50},
+      width = 1200 - margin.left - margin.right,
+      height = 570 - margin.top - margin.bottom,
+      height2 = 585 - margin2.top - margin2.bottom;
 
+  /**
+  * Document Ready: Dom Setup & Init
+  */  
   $(function() {
 
+    /**
+     * Slider bar just under the x-axis, which is visible only on percent change mode
+     * We use this bar to select a date's price as the base level for calculating the percentage
+     * That means we can find out the percentage change of price relative to whichever day we want
+     */  
     var slider=$('#ex1').slider({});
-
-    //set slider width (for selecting base price date)
-    //invisible on init, it is visible on during percent mode
+    //invisible on init, it is visible on during percent mode only
     $("#ex1Slider").attr("style","width: 950px;display:none");
-
     $("#ex1").on('slideStop', function(slideEvt) {
-      //console.log(slideEvt.value);
-      //var index=findIndexGivenDateTime(slideEvt.value,funds_actual[0].price_array);
-      //console.log(index);
-
-      //update funds_percent and redraw it
+      //update funds_percent (recalculate) and redraw it
       for(var i=0;i<funds_percent.length;i++){
 
         var basePriceIndex=findIndexGivenDateTime(slideEvt.value,funds_actual[i].price_array);
@@ -24,17 +33,16 @@
             funds_percent[i].price_array[j].price=percentageChange.toString();
           
         }
-
       }
-
       update(funds_percent);
-
     });
 
-
-
-    update(funds_actual);
-
+    /**
+     * Switch btn at the top, which allow users to select between 2 modes:
+     * actual: showing the actual unit price of each fund
+     * percent: showing the percentage change of price, in this case, it eliminate the effect of unit price size
+     * , and allow meaningful comparison of fund performance 
+     */  
     $("[name='my-checkbox']").bootstrapSwitch();
     $('input[name="my-checkbox"]').on('switchChange.bootstrapSwitch', function(event, state) {
       //console.log(this); // DOM element
@@ -49,7 +57,7 @@
         focus.select(".y.axis").select(".yaxisLabel").transition()
         .text("Actual Price $");//update axis label
     
-      update(funds_actual);
+        update(funds_actual);
 
       }else{
         mode="percent";
@@ -60,52 +68,56 @@
         focus.select(".y.axis").select(".yaxisLabel").transition()
         .text("Percentage Change %");//update axis label
 
-      funds_percent=new Array();
-      var sliderXPos=slider.data('slider').getValue();
+        funds_percent=new Array();
+        var sliderXPos=slider.data('slider').getValue();
 
-      for(var i=0;i<funds_actual.length;i++){
-        var fundObj={
-          id:funds_actual[i].id,
-          name:funds_actual[i].name,
-          price_array:new Array(),
-          vis:funds_actual[i].vis
-        }
+        for(var i=0;i<funds_actual.length;i++){
+          var fundObj={
+            id:funds_actual[i].id,
+            name:funds_actual[i].name,
+            price_array:new Array(),
+            vis:funds_actual[i].vis
+          }
 
-        funds_percent.push(fundObj);
+          funds_percent.push(fundObj);
 
-        var basePriceIndex=findIndexGivenDateTime(sliderXPos,funds_actual[i].price_array);
-        var basePrice=parseFloat(funds_actual[i].price_array[basePriceIndex].price);
+          var basePriceIndex=findIndexGivenDateTime(sliderXPos,funds_actual[i].price_array);
+          var basePrice=parseFloat(funds_actual[i].price_array[basePriceIndex].price);
 
-        for(var j=0;j<funds_actual[i].price_array.length;j++){
-          var percentageChange=((parseFloat(funds_actual[i].price_array[j].price)/basePrice)-1)*100;
-          var priceObj={
-            datetime:funds_actual[i].price_array[j].datetime,
-            price:percentageChange.toString()
-          };
-          funds_percent[i].price_array.push(priceObj);
-        }
-      }
+          for(var j=0;j<funds_actual[i].price_array.length;j++){
+            var percentageChange=((parseFloat(funds_actual[i].price_array[j].price)/basePrice)-1)*100;
+            var priceObj={
+              datetime:funds_actual[i].price_array[j].datetime,
+              price:percentageChange.toString()
+            };
+            funds_percent[i].price_array.push(priceObj);
+          } //end for price array
 
-      //update the funds path
-      //console.log(funds_percent);
-      //console.log(funds_actual);
-      update(funds_percent);
+        }//end for whole fund
 
-      }
+        update(funds_percent);
+
+      }//end mode if
 
 
-    });
+    });//end switch listener 
+
+
+
+    //on init, by default, we are in actual price mode
+    update(funds_actual);
     
   });
 
-  
+
+  /**
+    * Initialization: loading funds data onto the dom, and construct obj: funds_actual
+    */  
   _init_funds(); 
-  var margin = {top: 15, right: 50, bottom: 100, left: 50},
-    margin2 = {top: 515, right: 50, bottom: 50, left: 50},
-    width = 1200 - margin.left - margin.right,
-    height = 570 - margin.top - margin.bottom,
-    height2 = 585 - margin2.top - margin2.bottom;
-  
+
+
+  //**************** Constructing Vis Main Components ******************************//
+  //********************************************************************************//   
   var x = d3.time.scale()
     .range([0, width-150]),
     x2 = d3.time.scale()      //for the time selection bar at the bottom
@@ -143,6 +155,9 @@
   var div = d3.select("body").append("div")   
     .attr("class", "D3tooltip")               
     .style("opacity", 0);
+
+  var DateLbl = focus.append("g")  //the date label at the right upper corner part
+    .attr("class", "dateLabel");
   
   //the main graphic component of the plot
   var focus=svg.append("g")
@@ -181,6 +196,11 @@
     .attr("font-family", "sans-serif")
     .attr("font-size", "30px")
     .attr("fill", "black");  
+  
+  //********************************************************************************//  
+  //**************** End of Constructing Vis Main Components ***********************//
+
+
  
   //**************** Core part visualizing funds' data ******************************//
   //********************************************************************************//  
@@ -295,9 +315,6 @@
         .attr("font-size", "15px")
         .attr("fill", "black"); 
 
-
-    //end of curving part of those funds------------------------------------------------------------- 
-
   }
   //********************************************************************************// 
   //**************** end of Core part visualizing funds' data **********************// 
@@ -367,43 +384,3 @@
 
   //********************************************************************************//
   //**************End of Slider part & Brush****************************************//
-
-   //check the mouse event over the plot area and do the processing 
-  container = document.querySelector('#graph');
-  $(container).mouseleave(function(event) {
-    handleMouseOutGraph(event);
-    //console.log("mouse leave");
-  })
-  $(container).mousemove(function(event) {
-    handleMouseOverGraph(event);
-    //console.log("mouse move on graph");
-  })    
-
-
-        
-  var DateLbl = focus.append("g")  //the date label at the right upper corner part
-    .attr("class", "dateLabel");
-
- 
-  //tooltip callback
-  function showTooltip(d,details) {
-    console.log("on mouse over: "+d3.event.pageX+"  "+d3.event.pageY);
-    div.transition()        
-       .duration(200)      
-       .style("opacity", .9);      
-    div.html(d.name)  
-       .style("left", (d3.event.pageX-60) + "px")     
-       .style("top", (d3.event.pageY ) + "px");    
-                           
-  }
-
-  function hideTooltip() {
-     div.transition()        
-        .duration(500)      
-        .style("opacity", 0);   
-  }
-  
-       
- 
-
-  //end of mouse picker related, hover line-------------------------------------------------------------------

@@ -18,6 +18,17 @@
  * The Hong Kong University of Science and Technology
  * Data Visualization, CSE, HKUST
  */
+
+ 	//check the mouse event over the plot area and do the processing 
+	container = document.querySelector('#graph');
+		$(container).mouseleave(function(event) {
+		handleMouseOutGraph(event);
+		//console.log("mouse leave");
+	})
+	$(container).mousemove(function(event) {
+		handleMouseOverGraph(event);
+		//console.log("mouse move on graph");
+	})    
  
 	/**
 	 * Mouse Picker related functions
@@ -150,5 +161,25 @@
 
 		
 	}
+
+	//tooltip callback
+	function showTooltip(d,details) {
+		//console.log("on mouse over: "+d3.event.pageX+"  "+d3.event.pageY);
+		div.transition()        
+		   .duration(200)      
+		   .style("opacity", .9);      
+		div.html(d.name)  
+		   .style("left", (d3.event.pageX-60) + "px")     
+		   .style("top", (d3.event.pageY-17.5 ) + "px");    
+	                       
+	}
+
+	function hideTooltip() {
+		 div.transition()        
+		    .duration(500)      
+		    .style("opacity", 0);   
+	}
+  
+       
 	
 
