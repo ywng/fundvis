@@ -46,3 +46,8 @@ div.D3tooltip {
   border-radius: 5px;
   pointer-events: none;
 }
+
+ /* The default background color is #c00 */
+.right  .github-fork-ribbon {
+    background-color: #090;
+}
