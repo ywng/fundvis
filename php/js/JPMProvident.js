@@ -227,7 +227,7 @@
       .style("stroke", function(d) { return colors(d.id-1); })
       .on("click", function(d){
           //console.log(d);
-          showTooltip(d,"yes",-60,5);//yes=> show details
+          showTooltip(d,"yes",-60,8);//yes=> show details
       })
       .on("mouseout", function(d){hideTooltip();});
 
