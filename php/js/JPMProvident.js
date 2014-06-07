@@ -395,6 +395,8 @@
   //for brusher of the slider bar at the bottom
   function brushed() {
     x.domain(brush.empty() ? x2.domain() : brush.extent());
+
+    //rebase percentage
     fund.select("path").transition()//update curve 
       .attr("d", function(d) { if(d.vis=="True"){return line(d.price_array);} else{ return null;} })
     focus.select(".x.axis").call(xAxis);
@@ -420,3 +422,6 @@
       }
       update(funds_percent);
   }
+
+
+  //?????need to rebase after change of brush extent??
