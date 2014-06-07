@@ -33,6 +33,12 @@ class Fund extends REST_Controller {
 	public function getAllPrice_get(){
 		 
 		$funds = $this->fund_model->get_all_funds();
+
+		$max_date=$this->fund_model->get_max_date();
+		$this->core_controller->add_return_data('max_date', $max_date[0]); 
+		$min_date=$this->fund_model->get_min_date();
+		$this->core_controller->add_return_data('min_date', $min_date[0]); 
+
 		$this->retriveRequiredFundsData($funds);
 
 	}
@@ -45,6 +51,13 @@ class Fund extends REST_Controller {
 		}
 
 		$funds = $this->fund_model->get_funds_with_id_array($requiredFundIDArr);
+
+
+		$max_date=$this->fund_model->get_max_date_with_id_array($requiredFundIDArr);
+		$this->core_controller->add_return_data('max_date', $max_date[0]); 
+		$min_date=$this->fund_model->get_min_date_with_id_array($requiredFundIDArr);
+		$this->core_controller->add_return_data('min_date', $min_date[0]); 
+		
 		$this->retriveRequiredFundsData($funds);
 	}
 
@@ -63,11 +76,6 @@ class Fund extends REST_Controller {
 			array_push($funds_price,$fund_price_object);
 		}
 		$this->core_controller->add_return_data('funds', $funds_price); 
-
-		$max_date=$this->fund_model->get_max_date();
-		$this->core_controller->add_return_data('max_date', $max_date[0]); 
-		$min_date=$this->fund_model->get_min_date();
-		$this->core_controller->add_return_data('min_date', $min_date[0]); 
 
 		$this->core_controller->successfully_processed();
 	}
