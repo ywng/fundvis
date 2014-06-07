@@ -42,9 +42,9 @@ class Fund_model extends CI_Model{
         return $this->db->get($this->Table_name_fund)->result_array();
     }
 
-     public function get_funds_with_id_array($requiredFundIDArray){
-        return $this->db->get($this->Table_name_fund)
-                    ->or_where_in($this->KEY_fund_id,$requiredFundIDArray)->result_array();
+    public function get_funds_with_id_array($requiredFundIDArray){
+        $this->db->or_where_in($this->KEY_fund_id,$requiredFundIDArray);
+        return $this->db->get($this->Table_name_fund)->result_array();
     }
    
 
