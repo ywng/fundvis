@@ -21,7 +21,9 @@
     var slider=$('#ex1').slider('setValue', 0);
     //invisible on init, it is visible on during percent mode only
     $("#ex1Slider").attr("style","width: 950px;display:none");
-    $("#ex1").on('slideStop', percentageRebase(slideEvt.value));
+    $("#ex1").on('slideStop', function(slideEvt) {
+        percentageRebase(slideEvt.value);
+    });
 
     /**
      * Switch btn at the top, which allow users to select between 2 modes:
