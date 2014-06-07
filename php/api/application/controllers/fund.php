@@ -31,28 +31,9 @@ class Fund extends REST_Controller {
 	}
 
 	public function getAllPrice_get(){
-		$this->load->model('fund_model'); 
+		 
 		$funds = $this->fund_model->get_all_funds();
-
-		$funds_price= array();
-		
-		foreach($funds as $fund){
-			$fund_price_object = array(
-               "price_array" => $this->fund_model->get_fund_price_by_id($fund[$this->fund_model->KEY_fund_id]),
-               "id" =>$fund[$this->fund_model->KEY_fund_id],
-               "name"=> $fund[$this->fund_model->KEY_name]
-            );
-			
-			array_push($funds_price,$fund_price_object);
-		}
-		$this->core_controller->add_return_data('funds', $funds_price); 
-
-		$max_date=$this->fund_model->get_max_date();
-		$this->core_controller->add_return_data('max_date', $max_date[0]); 
-		$min_date=$this->fund_model->get_min_date();
-		$this->core_controller->add_return_data('min_date', $min_date[0]); 
-
-		$this->core_controller->successfully_processed();
+		$this->retriveRequiredFundsData($funds);
 
 	}
 
