@@ -21,22 +21,7 @@
     var slider=$('#ex1').slider('setValue', 0);
     //invisible on init, it is visible on during percent mode only
     $("#ex1Slider").attr("style","width: 950px;display:none");
-    $("#ex1").on('slideStop', function(slideEvt) {
-      //console.log(slideEvt.value);
-      //update funds_percent (recalculate) and redraw it
-      for(var i=0;i<funds_percent.length;i++){
-
-        var basePriceIndex=findIndexGivenDateTime(slideEvt.value,funds_actual[i].price_array);
-        var basePrice=parseFloat(funds_actual[i].price_array[basePriceIndex].price);
-
-        for(var j=0;j<funds_actual[i].price_array.length;j++){
-            var percentageChange=((parseFloat(funds_actual[i].price_array[j].price)/basePrice)-1)*100;
-            funds_percent[i].price_array[j].price=percentageChange.toString();
-          
-        }
-      }
-      update(funds_percent);
-    });
+    $("#ex1").on('slideStop', fpercentageRebase(slideEvt.value));
 
     /**
      * Switch btn at the top, which allow users to select between 2 modes:
@@ -415,3 +400,21 @@
 
   //********************************************************************************//
   //**************End of Slider part & Brush****************************************//
+
+
+  function percentageRebase(value) {
+      //console.log(slideEvt.value);
+      //update funds_percent (recalculate) and redraw it
+      for(var i=0;i<funds_percent.length;i++){
+
+        var basePriceIndex=findIndexGivenDateTime(value,funds_actual[i].price_array);
+        var basePrice=parseFloat(funds_actual[i].price_array[basePriceIndex].price);
+
+        for(var j=0;j<funds_actual[i].price_array.length;j++){
+            var percentageChange=((parseFloat(funds_actual[i].price_array[j].price)/basePrice)-1)*100;
+            funds_percent[i].price_array[j].price=percentageChange.toString();
+          
+        }
+      }
+      update(funds_percent);
+  }
