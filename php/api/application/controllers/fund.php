@@ -54,7 +54,7 @@ class Fund extends REST_Controller {
 
 	}
 
-	public function getAllPriceJPM_ORSO_get(){
+	public function getAllPriceJPMORSO_get(){
 		$this->load->model('fund_model'); 
 		$funds = $this->fund_model->get_all_funds();
 
