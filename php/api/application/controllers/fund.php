@@ -56,7 +56,11 @@ class Fund extends REST_Controller {
 
 	public function getAllPriceJPMORSO_get(){
 		$this->load->model('fund_model'); 
-		$funds = $this->fund_model->get_all_funds();
+		$requiredFundIDArr= array();
+		for($i=1;i<=20;i++){
+			array_push($requiredFundIDArr,$i);
+		}
+		$funds = $this->fund_model->get_funds_with_id_array($requiredFundIDArr);
 
 		$funds_price= array();
 		
