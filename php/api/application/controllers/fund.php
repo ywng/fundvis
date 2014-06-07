@@ -14,6 +14,8 @@ class Fund extends REST_Controller {
 		$this->load->library('CORE_Controller');
 		$this->load->helper(array('form', 'url'));
 		$this->core_controller->set_response_helper($this);
+
+		$this->load->model('fund_model'); 
 	
 	}
 
@@ -55,13 +57,19 @@ class Fund extends REST_Controller {
 	}
 
 	public function getAllPriceJPMORSO_get(){
-		$this->load->model('fund_model'); 
+		
 		$requiredFundIDArr= array();
 		for($i=1;$i<=20;$i++){
 			array_push($requiredFundIDArr,$i);
 		}
-		$funds = $this->fund_model->get_funds_with_id_array($requiredFundIDArr);
 
+		$funds = $this->fund_model->get_funds_with_id_array($requiredFundIDArr);
+		$this->retriveRequiredFundsData($funds);
+	}
+
+
+	//helper functions
+	private function retriveRequiredFundsData($funds){
 		$funds_price= array();
 		
 		foreach($funds as $fund){
@@ -81,12 +89,6 @@ class Fund extends REST_Controller {
 		$this->core_controller->add_return_data('min_date', $min_date[0]); 
 
 		$this->core_controller->successfully_processed();
-
-	}
-
-	public function getFundPrice_post(){
-
-
 	}
 	
 	
