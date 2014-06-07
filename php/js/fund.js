@@ -31,10 +31,10 @@ var funds_percent=new Array();
 var maxDate;
 var minDate;
 
-function _init_funds(){
+function _init_funds(url){
 	// fetch data from database
 	$.ajax({
-		url: serverDomain+"api/fund/getAllPrice",
+		url: serverDomain+url,
 		context: document.body,
 		dataType: "json", 
 		headers : {Accept : "application/json","Access-Control-Allow-Origin" : "*"},
@@ -48,7 +48,7 @@ function _init_funds(){
 			for(var i=0; i < funds_actual.length; i++) {
 				funds_actual[i].vis="False";
 			}
-			
+
 			funds_actual[0].vis="True";//when start, only visible the first one, other funds, let user set it later.	
 		},
 		error: function(jqHXR, textStatus, errorThrown) {

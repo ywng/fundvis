@@ -115,7 +115,7 @@
   /**
     * Initialization: loading funds data onto the dom, and construct obj: funds_actual
     */  
-  _init_funds(); 
+  _init_funds("api/fund/getAllPriceJPMORSO"); 
 
 
   //**************** Constructing Vis Main Components ******************************//

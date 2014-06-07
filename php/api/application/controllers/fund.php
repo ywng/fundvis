@@ -40,7 +40,7 @@ class Fund extends REST_Controller {
 	public function getAllPriceJPMORSO_get(){
 		
 		$requiredFundIDArr= array();
-		for($i=1;$i<=20;$i++){
+		for($i=1;$i<=20;$i++){//JPM ORSO consists of funds with fund id [1,2,3.....20]
 			array_push($requiredFundIDArr,$i);
 		}
 
@@ -49,7 +49,7 @@ class Fund extends REST_Controller {
 	}
 
 
-	//helper functions
+	//=====================private helper functions====================================//
 	private function retriveRequiredFundsData($funds){
 		$funds_price= array();
 		
