@@ -49,11 +49,12 @@ class Extracter extends REST_Controller {
 	private function bloomberg_extract($html,$fund){
 		// price span
 		$price_e=$html->find('span[class=price]')[0];
+		var_dump($price_e->plaintext);
 		$price=preg_replace("/[^0-9.]/", '',$price_e->plaintext);
 
 		//date span
 		$date_e=$html->find('p[class=fine_print]')[0];
-		var_dump($date_e);
+		//var_dump($date_e);
 		if (preg_match('/(0[1-9]|1[012])[\/](0[1-9]|[12][0-9]|3[01])[\/](19|20)[0-9]{2}/',$date_e->plaintext, $regs)) {
 			$date_str = $regs[0];
 	    } 
@@ -72,7 +73,7 @@ class Extracter extends REST_Controller {
 
 		$element_div=$html->find('div[class=daily_price_box]')[0];
 		$raw_str=$element_div->children(1)->children(0)->children(0)->plaintext;
-		var_dump($raw_str);
+		//var_dump($raw_str);
 		$data=explode(" ",$raw_str);
 		$price=preg_replace("/[\t]/", '',$data[16]);
 		$date_str=preg_replace("/[\t]/", '',$data[2]);
