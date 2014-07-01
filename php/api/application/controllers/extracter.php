@@ -49,7 +49,7 @@ class Extracter extends REST_Controller {
 	private function bloomberg_extract($html,$fund){
 		// price span
 		$price_e=$html->find('span[class=price]')[0];
-		var_dump($price_e->plaintext);
+		
 		$price=preg_replace("/[^0-9.]/", '',$price_e->plaintext);
 
 		//date span
