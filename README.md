@@ -1,5 +1,6 @@
-fund performance visualisation
+Fund Performance Visualisation
 =======
+
 for server side code & web page
 
 <h3>Framework that we are using</h3>
