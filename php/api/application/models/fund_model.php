@@ -11,6 +11,7 @@ class Fund_model extends CI_Model{
     var $KEY_name = 'name';
     var $KEY_link = 'link';
     var $KEY_remark = 'remark';
+    var $KEY_valid = 'valid';
     var $Table_name_fund = 'Fund';
 
 
@@ -30,32 +31,38 @@ class Fund_model extends CI_Model{
      */
     public function get_max_date_with_id_array($requiredFundIDArray){
         $this->db->or_where_in($this->KEY_price_fund_id,$requiredFundIDArray);
+        $this->db->where($this->KEY_valid,1);
         $this->db->select_max($this->KEY_datetime);
         return $this->db->get($this->Table_name_price)->result();
     }
 
     public function get_min_date_with_id_array($requiredFundIDArray){
         $this->db->or_where_in($this->KEY_price_fund_id,$requiredFundIDArray);
+        $this->db->where($this->KEY_valid,1);
         $this->db->select_min($this->KEY_datetime);
         return $this->db->get($this->Table_name_price)->result();
     }
 
     public function get_max_date(){
         $this->db->select_max($this->KEY_datetime);
+        $this->db->where($this->KEY_valid,1);
         return $this->db->get($this->Table_name_price)->result();
     }
 
     public function get_min_date(){
         $this->db->select_min($this->KEY_datetime);
+        $this->db->where($this->KEY_valid,1);
         return $this->db->get($this->Table_name_price)->result();
     }
 
     public function get_all_funds(){
+        $this->db->where($this->KEY_valid,1);
         return $this->db->get($this->Table_name_fund)->result_array();
     }
 
     public function get_funds_with_id_array($requiredFundIDArray){
         $this->db->or_where_in($this->KEY_fund_id,$requiredFundIDArray);
+        $this->db->where($this->KEY_valid,1);
         return $this->db->get($this->Table_name_fund)->result_array();
     }
    
