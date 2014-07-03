@@ -1,5 +1,21 @@
-Fund Performance Visualisation
+Fund Performance Visualisation (Ver. 2.0)
+<li><a href="https://github.com/ywng/mpf_vis">An older & simpler version (Ver. 1.0)</a></li>
 =======
+
+![alt tag](https://raw.github.com/ywng/fundvis/master/scr_shot.png)
+
+Design Characteristics:
+
+1. Allow quick selection of the funds, and add it into the plot (click the color rect next to fund name)
+
+2. Auto adjust of y-axis according to the selected funds
+
+3. Allow traversal of time line quickly, quick selection of time interval (select over the yellow slider bar at the bottom)
+
+4. Has a picker line to view the detailed price and date
+
+5. Show price percentage changed and highlighted accordingly (red: decrease; black: increase)
+
 
 for server side code & web page
 
