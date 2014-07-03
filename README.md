@@ -18,15 +18,16 @@ Design Characteristics:
 6. The reference point (base price) of the percentage mode can be set to any date within the data range. That means you can easily find out one month, one year, 5 year return. (you can get percentage change of the fund price of any interval length: just move the refernce pt)
 
 
+<h2>HTML Page & D3 Code Part</h2>
 
-
-
-for server side code & web page
-
-<h3>Framework that we are using</h3>
+<h3>Server Part for Fetching Data of the Funds</h3>
+<h4>Framework that we are using</h4>
 <ol>
-<li><a href="http://ellislab.com/codeigniter/user-guide/">Codeigniter 2.1.4 - PHP Framework</a></li>
-<li><a href="https://github.com/philsturgeon/codeigniter-restserver">RESTful API for Codeigniter</a></li>
+<li><a href="http://ellislab.com/codeigniter/user-guide/">Codeigniter 2.1.4 - PHP Framework (/php/api/)</a></li>
+<li><a href="https://github.com/philsturgeon/codeigniter-restserver">RESTful API for Codeigniter (/php/api/application/libraries/CORE_Controller/php)</a></li>
+<p>
+We etablished a RESTful archieture for providing the wbe services to our end points (here is HTML pages, in future, it may be mobile devices etc). The end points send the request to the server via AJAX call.
+</p>
 </ol>
 
 <h3>Files structure</h3>
