@@ -187,11 +187,10 @@ $this->core_controller->add_return_data($key1, $value1)->add_return_data($key2, 
 
 // Please remember to call successfully_processed() in the end of the chain if no more processing is needed.
 ```
-
-</ol>
 <p>
 On the call of fail_response(), all added return data <b>will be dropped and will not be included</b> in the return message.
 </p>
+</ol>
 
 
 <h2>Development History & Other Versions</h2>
