@@ -37,7 +37,7 @@ function _init_funds(url){
 		url: serverDomain+url,
 		context: document.body,
 		dataType: "json", 
-		headers : {Accept : "application/json","Access-Control-Allow-Origin": "*"},
+		headers : {Accept : "application/json","Access-Control-Allow-Origin":"*"},
 		type: 'GET', 
 		async: false,
 		success: function(data, textStatus, jqXHR){
