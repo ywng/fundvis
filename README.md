@@ -5,15 +5,20 @@ Fund Performance Visualisation (Ver. 2.0)
 
 Design Characteristics:
 
-1. Allow quick selection of the funds, and add it into the plot (click the color rect next to fund name)
+1. Allow quick selection of the funds, and add it into the plot (click the color rectangles, mouse over to get the name)
 
 2. Auto adjust of y-axis according to the selected funds
 
 3. Allow traversal of time line quickly, quick selection of time interval (select over the yellow slider bar at the bottom)
 
-4. Has a picker line to view the detailed price and date
+4. Has a tracing dot to view the detailed price (next to the color rectangles) and date (top right corner). You may also click onto the dots/lines to know more details about the funds
 
-5. Show price percentage changed and highlighted accordingly (red: decrease; black: increase)
+5. Two modes for showing fund performance: 1. actual price--only one fund will be shown  2. percent mode, which allow you to add as many funds onto the chart as possible
+
+6. The reference point (base price) of the percentage mode can be set to any date with the data range. That means you can easily find out one month, one year, 5 year return. (you can get percentage change of the fund price of any interval length: just move the refernce pt)
+
+
+
 
 
 for server side code & web page
