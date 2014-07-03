@@ -185,6 +185,7 @@ class CORE_Controller {
 		header('HTTP/1.1: ' . $http_code);
 		header('Status: ' . $http_code);
         header('Content-type: application/json');
+        header('Access-Control-Allow-Origin:*');
 		$response_array = array(
 			'status_code' => $custom_status_code,
             'message' => $msg,
