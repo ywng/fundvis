@@ -194,6 +194,9 @@ On the call of fail_response(), all added return data <b>will be dropped and wil
 </p>
 
 
+<h2>Development History & Other Versions</h2>
+<ol>
 <p>
 <li><a href="https://github.com/ywng/mpf_vis">An older & simpler version (Ver. 1.0) -- MPF Vis</a></li>
 </p>
+</ol>
