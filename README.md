@@ -22,7 +22,7 @@ Design Characteristics:
 
 <h2>Server Part for Fetching Data of the Funds</h2>
 <ol>
-<h4>Framework that we are using</h4>
+<h3>Framework that we are using</h3>
 <ol>
 <li><a href="http://ellislab.com/codeigniter/user-guide/">Codeigniter 2.1.4 - PHP Framework (/php/api/)</a></li>
 <li><a href="https://github.com/philsturgeon/codeigniter-restserver">RESTful API for Codeigniter (/php/api/application/libraries/CORE_Controller/php)</a></li>
@@ -33,7 +33,7 @@ We etablished a RESTful archieture for providing the wbe services to our end poi
 
 <h3>Files structure</h3>
 <p>
-Please refer to the document in Codeigniter to have a detail understanding. Please basically it can be separated into two parts, <b>application</b> and <b>system</b>
+Please refer to the document in Codeigniter to have a detail understanding. Basically it can be separated into two parts, <b>application</b> and <b>system</b>
 </p>
 
 <h4>Application</h4>
