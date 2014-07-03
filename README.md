@@ -1,5 +1,4 @@
 Fund Performance Visualisation (Ver. 2.0)
-<li><a href="https://github.com/ywng/mpf_vis">An older & simpler version (Ver. 1.0)</a></li>
 =======
 
 ![alt tag](https://raw.github.com/ywng/fundvis/master/scr_shot.png)
@@ -185,3 +184,7 @@ $this->core_controller->add_return_data($key1, $value1)->add_return_data($key2, 
 On the call of fail_response(), all added return data <b>will be dropped and will not be included</b> in the return message.
 </p>
 
+
+<p>
+<li><a href="https://github.com/ywng/mpf_vis">An older & simpler version (Ver. 1.0) -- MPF Vis</a></li>
+</p>
