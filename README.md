@@ -21,6 +21,7 @@ Design Characteristics:
 <h2>HTML Page & D3 Code Part</h2>
 
 <h3>Server Part for Fetching Data of the Funds</h3>
+<ol>
 <h4>Framework that we are using</h4>
 <ol>
 <li><a href="http://ellislab.com/codeigniter/user-guide/">Codeigniter 2.1.4 - PHP Framework (/php/api/)</a></li>
@@ -186,6 +187,8 @@ $this->core_controller->add_return_data($key1, $value1)->add_return_data($key2, 
 
 // Please remember to call successfully_processed() in the end of the chain if no more processing is needed.
 ```
+
+</ol>
 <p>
 On the call of fail_response(), all added return data <b>will be dropped and will not be included</b> in the return message.
 </p>
