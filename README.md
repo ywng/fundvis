@@ -20,7 +20,7 @@ Design Characteristics:
 
 <h2>HTML Page & D3 Code Part</h2>
 
-<h3>Server Part for Fetching Data of the Funds</h3>
+<h2>Server Part for Fetching Data of the Funds</h2>
 <ol>
 <h4>Framework that we are using</h4>
 <ol>
