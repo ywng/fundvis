@@ -13,7 +13,7 @@ Design Characteristics:
 
 4. Has a tracing dot to view the detailed price (next to the color rectangles) and date (top right corner). You may also click onto the dots/lines to know more details about the funds
 
-5. Two modes for showing fund performance: 1. actual price--only one fund will be shown  2. percent mode, which allow you to add as many funds onto the chart as possible
+5. Two modes (to change the mode, click the checkbox at the top) for showing fund performance: 1. actual price--only one fund will be shown  2. percent mode, which allow you to add as many funds onto the chart as possible
 
 6. The reference point (base price) of the percentage mode can be set to any date within the data range. That means you can easily find out one month, one year, 5 year return. (you can get percentage change of the fund price of any interval length: just move the refernce pt)
 
