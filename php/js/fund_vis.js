@@ -1,7 +1,7 @@
   /**
   * Global Variables
   */  
-  var mode="actual";//actual price || percentage change
+  var mode="percent";//actual price || percentage change
   var margin = {top: 15, right: 50, bottom: 100, left: 50},
       margin2 = {top: 515, right: 50, bottom: 50, left: 50},
       width = 1200 - margin.left - margin.right,
@@ -93,8 +93,8 @@
 
 
 
-    //on init, by default, we are in actual price mode
-    update(funds_actual);
+    //on init, by default, we are in percent change mode
+    update(funds_percent);
     
   });
 
