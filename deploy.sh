@@ -9,3 +9,4 @@ fi
 
 git commit -m "$message"
 git push openshift master
+git push origin master
