@@ -68,7 +68,7 @@ class Extracter extends REST_Controller {
 
 	private function AASTOCK_stock_extract($html,$stock){
 		// price span
-		/*
+
 		$price_e=$html->find('span[class=bold]')[0];
 		
 		$price=preg_replace("/[^0-9.]/", '',$price_e->plaintext);
@@ -76,7 +76,7 @@ class Extracter extends REST_Controller {
 		//date span
 		$datetime_e=$html->find('div[class=floatR]')[0];
 		//var_dump($date_e);
-		if (preg_match('/^(?ni:(?=\d)((?'year'((1[6-9])|([2-9]\d))\d\d)(?'sep'[/.-])(?'month'0?[1-9]|1[012])\2(?'day'((?<!(\2((0?[2469])|11)\2))31)|(?<!\2(0?2)\2)(29|30)|((?<=((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|(16|[2468][048]|[3579][26])00)\2\3\2)29)|((0?[1-9])|(1\d)|(2[0-8])))(?:(?=\x20\d)\x20|$))?((?<time>((0?[1-9]|1[012])(:[0-5]\d){0,2}(\x20[AP]M))|([01]\d|2[0-3])(:[0-5]\d){1,2}))?)$/',$datetime_e->plaintext, $regs)) {
+		if (preg_match('/(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})/',$datetime_e->plaintext, $regs)) {
 			$datetime_str = $regs[0];
 	    } 
 
@@ -87,7 +87,7 @@ class Extracter extends REST_Controller {
         );
         $this->core_controller->add_return_data($stock[$this->stock_model->KEY_stock_id],$stock_price); 
 
-	    $this->stock_model->insert_stock_price($stock[$this->stock_model->KEY_stock_id],$price,$date_str);*/
+	    $this->stock_model->insert_stock_price($stock[$this->stock_model->KEY_stock_id],$price,$date_str);
 	}
 	
 
