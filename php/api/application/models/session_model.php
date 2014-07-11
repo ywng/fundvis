@@ -11,7 +11,7 @@ class Session_model extends CI_Model{
     var $KEY_session_token = 'session_token';
     var $KEY_expire_time = 'expire_time';
     var $KEY_user_type = 'user_type';
-    var $Table_Name = 'session';
+    var $Table_Name = 'Session';
     
 
     function __construct() {
@@ -144,7 +144,7 @@ class Session_model extends CI_Model{
 
 
     private function insert_session_token($id, $user_type, $session_token) {
-		$nextDay = time() + (24 * 60 * 60 * 1000);	
+		$nextDay = time() + (24 * 60 * 60 * 7);	//7 days session valid time
 		$this->db->set($this->KEY_session_token, $session_token)
 				->set($this->KEY_id, $id)
                 ->set($this->KEY_user_type, $user_type)
@@ -159,7 +159,7 @@ class Session_model extends CI_Model{
 	}
 
     private function update_session_token($id, $user_type, $session_token) {
-		$nextDay = time() + (24 * 60 * 60 * 1000);
+		$nextDay = time() + (24 * 60 * 60 * 7);
 		$this->db->set($this->KEY_session_token, $session_token)
 				->set($this->KEY_expire_time, date('Y-m-d G:i:s', $nextDay))
 				->where($this->KEY_id, $id)

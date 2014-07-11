@@ -3,21 +3,21 @@
 
 /**
  * User Model
- * @author benleung
+ * @author Jason Ng
  */
 
 class User_model extends CI_Model {
-	var $Table_name_user = 'user';
+	var $Table_name_user = 'User';
 	
 	var $KEY_collection_privacy = 'collection_privacy';
-	var $KEY_user_id = 'user_id';
-	var $KEY_user_info = 'user_info';
+	var $KEY_user_id = 'uid';
 	var $KEY_email = 'email';
-	var $KEY_first_name = 'firstname';
-	var $KEY_last_name = 'lastname';
+	var $KEY_user_name = 'username';
+	var $KEY_password = 'password';
+	
 	var $KEY_profile_pic = 'profile_pic';
 	var $KEY_status = 'status';
-	var $KEY_password = 'password';
+	
 
 	function add_user($data) {
 		$this->db->insert($this->Table_name_user, $data);	//(DEBUG: how it works)
