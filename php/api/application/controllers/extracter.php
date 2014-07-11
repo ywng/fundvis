@@ -82,7 +82,7 @@ class Extracter extends REST_Controller {
 	    $stock_price = array(
                $this->stock_model->KEY_name => $stock[$this->stock_model->KEY_name],
                $this->stock_model->KEY_price => $price ,
-               $this->stock_model->KEY_datetime => $date_str
+               $this->stock_model->KEY_datetime => $datetime_str
         );
         $this->core_controller->add_return_data($stock[$this->stock_model->KEY_stock_id],$stock_price); 
 
