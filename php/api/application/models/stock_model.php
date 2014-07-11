@@ -76,7 +76,7 @@ class Stock_model extends CI_Model{
         return $this->db->get($this->Table_name_price)->result_array();
     }
 
-    public function insert_stock_daily_price($id, $price,$date_str){
+    public function insert_stock_price($id, $price,$date_str){
         $date = new DateTime($date_str);
         $this->db->where($this->KEY_price_stock_id,$id);
         $this->db->where($this->KEY_datetime,date_format($date, 'Y-m-d H:i:s'));

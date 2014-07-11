@@ -68,25 +68,25 @@ class Extracter extends REST_Controller {
 
 	private function AASTOCK_stock_extract($html,$stock){
 		// price span
-		/*$price_e=$html->find('span[class=price]')[0];
+		$price_e=$html->find('span[class=bold]')[0];
 		
 		$price=preg_replace("/[^0-9.]/", '',$price_e->plaintext);
 
 		//date span
-		$date_e=$html->find('p[class=fine_print]')[0];
+		$datetime_e=$html->find('div[class=floatR]')[0];
 		//var_dump($date_e);
-		if (preg_match('/(0[1-9]|1[012])[\/](0[1-9]|[12][0-9]|3[01])[\/](19|20)[0-9]{2}/',$date_e->plaintext, $regs)) {
-			$date_str = $regs[0];
+		if (preg_match('/^(?ni:(?=\d)((?'year'((1[6-9])|([2-9]\d))\d\d)(?'sep'[/.-])(?'month'0?[1-9]|1[012])\2(?'day'((?<!(\2((0?[2469])|11)\2))31)|(?<!\2(0?2)\2)(29|30)|((?<=((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|(16|[2468][048]|[3579][26])00)\2\3\2)29)|((0?[1-9])|(1\d)|(2[0-8])))(?:(?=\x20\d)\x20|$))?((?<time>((0?[1-9]|1[012])(:[0-5]\d){0,2}(\x20[AP]M))|([01]\d|2[0-3])(:[0-5]\d){1,2}))?)$/',$date_e->plaintext, $regs)) {
+			$datetime_str = $regs[0];
 	    } 
 
-	    $fund_daily_price = array(
-               $this->fund_model->KEY_name => $fund[$this->fund_model->KEY_name],
-               $this->fund_model->KEY_price => $price ,
-               $this->fund_model->KEY_datetime => $date_str
+	    $stock_price = array(
+               $this->stock_model->KEY_name => $stock[$this->stock_model->KEY_name],
+               $this->stock_model->KEY_price => $price ,
+               $this->stock_model->KEY_datetime => $date_str
         );
-        $this->core_controller->add_return_data($fund[$this->fund_model->KEY_fund_id],$fund_daily_price); 
+        $this->core_controller->add_return_data($stock[$this->stock_model->KEY_stock_id],$stock_price); 
 
-	    $this->fund_model->insert_fund_daily_price($fund[$this->fund_model->KEY_fund_id],$price,$date_str);*/
+	    $this->stock_model->insert_stock_price($stock[$this->stock_model->KEY_stock_id],$price,$date_str);
 	}
 	
 
