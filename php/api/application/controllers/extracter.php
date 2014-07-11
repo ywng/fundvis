@@ -68,6 +68,7 @@ class Extracter extends REST_Controller {
 
 	private function AASTOCK_stock_extract($html,$stock){
 		// price span
+		/*
 		$price_e=$html->find('span[class=bold]')[0];
 		
 		$price=preg_replace("/[^0-9.]/", '',$price_e->plaintext);
@@ -86,7 +87,7 @@ class Extracter extends REST_Controller {
         );
         $this->core_controller->add_return_data($stock[$this->stock_model->KEY_stock_id],$stock_price); 
 
-	    $this->stock_model->insert_stock_price($stock[$this->stock_model->KEY_stock_id],$price,$date_str);
+	    $this->stock_model->insert_stock_price($stock[$this->stock_model->KEY_stock_id],$price,$date_str);*/
 	}
 	
 
