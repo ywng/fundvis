@@ -15,8 +15,8 @@ class Fund_model extends CI_Model{
     var $Table_name_fund = 'Fund';
 
 
-    var $Table_name_price = 'Price';
-    var $KEY_price_fund_id = 'fund_id';
+    var $Table_name_price = 'FundPrice';
+    var $KEY_price_fund_id = 'fid';
     var $KEY_price = 'price';
     var $KEY_datetime = 'datetime';
     
