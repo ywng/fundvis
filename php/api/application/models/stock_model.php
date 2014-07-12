@@ -34,6 +34,11 @@ class Stock_model extends CI_Model{
     var $KEY_yield = 'yield';
     var $KEY_previous_close = 'prev_close';
 
+    //stock category
+    var $KEY_category_id = 'id';
+    var $KEY_category= 'category';
+    var $Table_name_category = 'StockCategory';
+
     function __construct() {
         parent::__construct();
     }
@@ -116,6 +121,22 @@ class Stock_model extends CI_Model{
         $this->db->insert($this->Table_name_stock, $data); 
     }
     
+    public function getCategoryID($category){
+        $this->db->where($this->KEY_category,$category);
+        $q = $this->db->get($this->Table_name_category);
+        if ( $q->num_rows() == 0 ) {
+            $data = array(
+               $this->KEY_category => $category 
+            );
+
+            $this->db->insert($this->Table_name_category, $data); 
+            $this->db->where($this->KEY_category,$category);
+            $q = $this->db->get($this->Table_name_category);
+        }
+        
+        return $q->result_array()[0][$this->KEY_category_id];
+        
+    }
 }
 
 /* end of file stock_model.php */

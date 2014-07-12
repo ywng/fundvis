@@ -23,15 +23,16 @@ class Stock extends REST_Controller {
 
 	public function addStockByCode_post(){
 		$this->load->library('../controllers/extracter');
-
-		$this->extracter->AASTOCK_stock_getinfo($this->input->post('code'));
-
+		$code=$this->input->post('code');
+		$stock_info=$this->extracter->AASTOCK_stock_getinfo($code);
+		$category=$this->stock_model->getCategoryID($stock_info["category"]);
 		
 		$data = array(
                $this->stock_model->KEY_stock_id => $code,
-               $this->stock_model->KEY_name => $name,
+               $this->stock_model->KEY_name => $stock_info["name"],
                $this->stock_model->KEY_link => "http://www.aastocks.com/en/ltp/rtquote.aspx?symbol=".$code ,
                $this->stock_model->KEY_valid => 1,
+               $this->stock_model->KEY_category => $category,
         );
 
 		$this->stock_model->addStock($data);
