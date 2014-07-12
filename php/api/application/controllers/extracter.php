@@ -124,8 +124,8 @@ class Extracter extends REST_Controller {
 		$week52_range=explode("-",$week52_range_e->plaintext);
 
 		$stock_updated_info = array(
-			  $this->stock_model->KEY_daily_low => $daily_range[0],
-			  $this->stock_model->KEY_daily_high => $daily_range[1],
+			  $this->stock_model->KEY_daily_low => preg_replace("/[^0-9.]/", '',$daily_range[0]),
+			  $this->stock_model->KEY_daily_high => preg_replace("/[^0-9.]/", '',$daily_range[1]),
 			  $this->stock_model->KEY_vol => $vol,
 			  $this->stock_model->KEY_mkt_capital => $mkt_cap,
 			  $this->stock_model->KEY_turnover => $turnover,
@@ -133,8 +133,8 @@ class Extracter extends REST_Controller {
 			  $this->stock_model->KEY_PE_Ratio => $PE_Ratio,
 			  $this->stock_model->KEY_yield => $yield,
 			  $this->stock_model->KEY_lot_size => $lot_size,
-			  $this->stock_model->KEY_52week_low => $week52_range[0],
-			  $this->stock_model->KEY_52week_high => $week52_range[1],
+			  $this->stock_model->KEY_52week_low => preg_replace("/[^0-9.]/", '',$week52_range[0]),
+			  $this->stock_model->KEY_52week_high =>  preg_replace("/[^0-9.]/", '',$week52_range[1]),
 
 		);
 		$this->core_controller->add_return_data($stock[$this->stock_model->KEY_stock_id].".info",$stock_updated_info); 
