@@ -22,9 +22,12 @@ class Stock_model extends CI_Model{
 
     //stock info
     var $KEY_vol = 'vol';
+    var $KEY_lot_size = 'lot_size';
     var $KEY_turnover = 'turnover';
     var $KEY_52week_low = '52w_low';
     var $KEY_52week_high = '52w_high';
+    var $KEY_daily_low = 'daily_low';
+    var $KEY_daily_high = 'daily_high';
     var $KEY_mkt_capital = 'mkt_cap';
     var $KEY_PE_Ratio = 'pe_ratio';
     var $KEY_EPS = 'eps';

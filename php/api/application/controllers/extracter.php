@@ -86,9 +86,9 @@ class Extracter extends REST_Controller {
 	    	$this->core_controller->fail_response(100);
 	    }
 
-	    //52 week range
-		$week52_range_e=$html->find('strong')[0];
-		$week52_range=explode("-",$week52_range_e->plaintext);
+	    //daily range
+		$daily_range_e=$html->find('strong')[0];
+		$daily_range=explode("-",$daily_range_e->plaintext);
 
 	    //vol
 		$vol_e=$html->find('strong')[1];
@@ -103,12 +103,38 @@ class Extracter extends REST_Controller {
 		$turnover_e=$html->find('strong')[3];
 		$turnover=preg_replace("/[^0-9.a-zA-Z]/", '',$turnover_e->plaintext);
 
+		//EPS
+		$EPS_e=$html->find('strong')[4];
+		$EPS=preg_replace("/[^0-9.]/", '',$EPS_e->plaintext);
+
+		//PE Ratio
+		$PE_Ratio_e=$html->find('strong')[5];
+		$PE_Ratio=preg_replace("/[^0-9.]/", '',$PE_Ratio_e->plaintext);
+
+		//Yield
+		$yield_e=$html->find('strong')[6];
+		$yield=preg_replace("/[^0-9.]/", '',$yield_e->plaintext);
+
+		//Lot size
+		$lot_size_e=$html->find('strong')[7];
+		$lot_size=preg_replace("/[^0-9]/", '',$lot_size_e->plaintext);
+
+		//52 week range
+		$week52_range_e=$html->find('strong')[8];
+		$week52_range=explode("-",$week52_range_e->plaintext);
+
 		$stock_updated_info = array(
-			  $this->stock_model->KEY_52week_low => $week52_range[0],
-			  $this->stock_model->KEY_52week_high => $week52_range[1],
+			  $this->stock_model->KEY_daily_low => $daily_range[0],
+			  $this->stock_model->KEY_daily_high => $daily_range[1],
+			  $this->stock_model->KEY_vol => $vol,
 			  $this->stock_model->KEY_mkt_capital => $mkt_cap,
 			  $this->stock_model->KEY_turnover => $turnover,
-			  $this->stock_model->KEY_vol => $vol,
+			  $this->stock_model->KEY_EPS => $EPS,
+			  $this->stock_model->KEY_pe_ratio => $PE_Ratio,
+			  $this->stock_model->KEY_yield => $yield,
+			  $this->stock_model->KEY_lot_size => $lot_size,
+			  $this->stock_model->KEY_52week_low => $week52_range[0],
+			  $this->stock_model->KEY_52week_high => $week52_range[1],
 
 		);
 		$this->core_controller->add_return_data($stock[$this->stock_model->KEY_stock_id].".info",$stock_updated_info); 
