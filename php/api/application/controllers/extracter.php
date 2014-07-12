@@ -86,6 +86,11 @@ class Extracter extends REST_Controller {
 	    	$this->core_controller->fail_response(100);
 	    }
 
+	    //vol
+		$vol_e=$html->find('div[class=floatR p2]')[0];
+		$vol=preg_replace("/[^0-9.]/", '',$vol_e->plaintext);
+		var_dump($vol);
+
 	    $stock_price = array(
                $this->stock_model->KEY_name => $stock[$this->stock_model->KEY_name],
                $this->stock_model->KEY_price => $price ,

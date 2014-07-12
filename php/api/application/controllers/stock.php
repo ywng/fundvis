@@ -70,5 +70,5 @@ class Stock extends REST_Controller {
 
 }
 
-/* End of file fund.php */
-/* Location: ./application/controllers/fund.php */
+/* End of file stock.php */
+/* Location: ./application/controllers/stock.php */
