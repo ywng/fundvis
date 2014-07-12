@@ -76,7 +76,7 @@ class Extracter extends REST_Controller {
 		$price=preg_replace("/[^0-9.]/", '',$price_e->plaintext);
 		
 		//date span
-		$datetime_e=$html->find('div[class=floatR]')[1];
+		$datetime_e=$html->find('div[style=font-size: 10px;]')[1];
 		var_dump($datetime_e);
 		if (preg_match('/(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})/',$datetime_e->plaintext, $regs)) {
 			$datetime_str = $regs[0];
