@@ -37,7 +37,7 @@ class Stock extends REST_Controller {
 	               $this->stock_model->KEY_valid => 1,
 	               $this->stock_model->KEY_category => $category,
 	        );
-			$this->stock_model->addStock($data_data);
+			$this->stock_model->addStock($stock_data);
 			array_push($added_stocks,$stock_data);
 
 		}
