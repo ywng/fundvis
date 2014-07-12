@@ -95,9 +95,19 @@ class Extracter extends REST_Controller {
 		$vol=preg_replace("/[^0-9.a-zA-Z]/", '',$vol_e->plaintext);
 		//var_dump($vol);
 
+		//mkt cap
+		$mkt_cap_e=$html->find('strong')[2];
+		$mkt_cap=preg_replace("/[^0-9.a-zA-Z]/", '',$mkt_cap_e->plaintext);
+
+		//turnover
+		$turnover_e=$html->find('strong')[3];
+		$turnover=preg_replace("/[^0-9.a-zA-Z]/", '',$turnover_e->plaintext);
+
 		$stock_updated_info = array(
 			  $this->stock_model->KEY_52week_low => $week52_range[0],
 			  $this->stock_model->KEY_52week_high => $week52_range[1],
+			  $this->stock_model->KEY_mkt_capital => $mkt_cap,
+			  $this->stock_model->KEY_turnover => $turnover,
 			  $this->stock_model->KEY_vol => $vol,
 
 		);
