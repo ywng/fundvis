@@ -48,7 +48,7 @@ class Stock extends REST_Controller {
 
 	//=====================private helper functions====================================//
 
-	private function retriveRequiredFundsData($stocks){
+	private function retriveRequiredStocksData($stocks){
 		$stocks_price= array();
 		
 		foreach($stocks as $stock){
