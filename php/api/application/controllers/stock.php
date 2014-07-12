@@ -25,7 +25,11 @@ class Stock extends REST_Controller {
 		$this->load->library('../controllers/extracter');
 		$code=$this->input->post('code');
 
-		
+		if(!$code){
+			// Stock code not found!!!
+			$this->core_controller->fail_response(101);
+
+		}
 		$stock_info=$this->extracter->AASTOCK_stock_getinfo($code);
 		$category=$this->stock_model->getCategoryID($stock_info["category"]);
 		
