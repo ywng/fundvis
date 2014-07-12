@@ -68,11 +68,13 @@ class Extracter extends REST_Controller {
 
 	private function AASTOCK_stock_extract($html,$stock){
 		// price span
-//echo $html;
 		$price_e=$html->find('span[class=neg bold]')[0];
+		if(!$price_e){
+			$price_e=$html->find('span[class=pos bold]')[0];
+		}
 		
 		$price=preg_replace("/[^0-9.]/", '',$price_e->plaintext);
-		var_dump($price);
+		
 		//date span
 		$datetime_e=$html->find('div[class=floatR]')[0];
 		//var_dump($datetime_e);
