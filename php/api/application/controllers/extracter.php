@@ -75,11 +75,11 @@ class Extracter extends REST_Controller {
 		}else{
 			//name
 			$name_e=$html->find('title')[0];
-			//$name=explode(" ",$name_e->plaintext)[0];
-			var_dump($name_e->plaintext);
+			$name=explode("&nbsp;",$name_e->plaintext)[0];
+			var_dump($name);
 			$category_e=$html->find('div[id=indDet]')[0];
-			//$name=explode(" ",$name_e->plaintext)[0];
-			var_dump($category_e->plaintext);
+			$category=preg_replace("/[^0-9.a-zA-Z]/", '',$category_e->plaintext);
+			var_dump($category);
 			$this->core_controller->successfully_processed();
 		}
 
