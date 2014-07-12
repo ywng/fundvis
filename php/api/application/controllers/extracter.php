@@ -73,11 +73,12 @@ class Extracter extends REST_Controller {
 			$price_e=$html->find('span[class=pos bold]')[0];
 			$price_chg_e=$html->find('span[class=pos bold]')[1];
 			$price_chg=(float)preg_replace("/[^0-9.]/", '',$price_chg_e->plaintext);
+			$price_chg=$price_chg*-1;
 
 		}else{
 			$price_chg_e=$html->find('span[class=neg bold]')[1];
 			$price_chg=(float)preg_replace("/[^0-9.]/", '',$price_chg_e->plaintext);
-			$price_chg=$price_chg*-1;
+
 
 		}
 		
