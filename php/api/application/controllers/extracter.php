@@ -71,6 +71,12 @@ class Extracter extends REST_Controller {
 		$price_e=$html->find('span[class=neg bold]')[0];
 		if(!$price_e){
 			$price_e=$html->find('span[class=pos bold]')[0];
+			$price_chg_e=$html->find('span[class=pos bold]')[1];
+			$price_chg=preg_replace("/[^0-9.]/", '',$price_chg_e->plaintext);
+
+		}else{
+			$price_chg_e=$html->find('span[class=neg bold]')[1];
+			$price_chg="-".preg_replace("/[^0-9.]/", '',$price_chg_e->plaintext);
 		}
 		
 		$price=preg_replace("/[^0-9.]/", '',$price_e->plaintext);
@@ -136,6 +142,7 @@ class Extracter extends REST_Controller {
 			  $this->stock_model->KEY_52week_low => preg_replace("/[^0-9.]/", '',$week52_range[0]),
 			  $this->stock_model->KEY_52week_high =>  preg_replace("/[^0-9.]/", '',$week52_range[1]),
 
+			  $this->stock_model->KEY_previous_close => ($price+$price_chg),
 		);
 		$this->core_controller->add_return_data($stock[$this->stock_model->KEY_stock_id].".info",$stock_updated_info); 
 		$this->stock_model->update_stock_info($stock[$this->stock_model->KEY_stock_id],$stock_updated_info);
