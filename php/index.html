@@ -1,29 +1,371 @@
-<!--
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * 
- * http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * -->
- 
-<!--
- * Author: NG, Yik-wai Jason
- * Contact & Support: ywng@ust.hk
- * The Hong Kong University of Science and Technology
- * Data Visualization, CSE, HKUST
- * -->
- 
+
+
+
 <!DOCTYPE html>
-<meta charset="utf-8">
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Taxibook</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="For Passengers Getting Taxis">
+    <meta name="author" content="HKUST CSE FYP">
 
-<body> 
+    <!-- Le styles -->
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="config/config.js"></script>
+    <link href="css/index.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="/Scripts/bootstrap/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="bootstrap/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="bootstrap/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="bootstrap/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="bootstrap/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="bootstrap/ico/favicon.png?v=2">
+</head>
+
+<body>
 
 
+
+    <!-- NAVBAR
+    ================================================== -->
+    <div class="navbar-wrapper">
+        <!-- Wrap the .navbar in .container to center it within the absolutely positioned parent. -->
+        <div class="container">
+
+            <div class="navbar navbar-inverse">
+                <div class="navbar-inner">
+                    <!-- Responsive Navbar Part 1: Button for triggering responsive navbar (not covered in tutorial). Include responsive CSS to utilize. -->
+                    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="brand" href="index.html">TaxiBook</a>
+                    <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li class="active"><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <!-- Read about Bootstrap dropdowns at http://twitter.github.com/bootstrap/javascript.html#dropdowns -->
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">More ... <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="traffic_heatmap.html">Real-time Traffic Heatmap</a></li>
+                                    <li><a href="statistics.html">Other Statistics</a></li>
+                                    <li class="divider"></li>
+                                    <li class="nav-header">Administration</li>
+                                    <li><a href="signin.html">Sign In</a></li>
+                                    
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--/.nav-collapse -->
+                </div>
+                <!-- /.navbar-inner -->
+            </div>
+            <!-- /.navbar -->
+
+        </div>
+        <!-- /.container -->
+    </div>
+    <!-- /.navbar-wrapper -->
+
+
+
+    <!-- Carousel
+    ================================================== -->
+    <div id="myCarousel" class="carousel slide">
+        <div class="carousel-inner">
+            <div class="item active">
+                <img src="img/background_passenger.png" alt="">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1>Book Your Taxis.</h1>
+                        <p class="lead">Your taxi journey is on your hands. Using your mobile devices, it is within your control and should be joyful!</p>
+                        <a class="btn btn-large btn-primary" href="#">Join us today</a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="img/main_img.jpg" alt="">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1>More Than A Ride.</h1>
+                        <p class="lead">You know the prices; your know where and when you are going to; you know the peak hour and the busy places. Intelligence is within your pocket! </p>
+                        <a class="btn btn-large btn-primary" href="traffic_heatmap.html">Learn more</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+    </div>
+    <!-- /.carousel -->
+
+
+
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div class="container marketing">
+
+        <!-- Three columns of text below the carousel -->
+        <div class="row">
+            <div class="span4">
+                <img class="img-circle" data-src="holder.js/140x140" src="img/icon_passenger.png">
+                <h2>Taxibook</h2>
+                <p>It is used by passengers to book taxis, monitor trips, and edit personal informations.</p>
+                <p><a class="btn" href="https://itunes.apple.com/tw/app/google-maps/id585027354?mt=8">View details &raquo;</a></p>
+            </div>
+            <!-- /.span4 -->
+            <div class="span4">
+                <img class="img-circle" data-src=src="holder.js/140x140" src="img/icon_driver.png">
+                <h2>Taxibook Driver</h2>
+                <p>It is used by drivers to receive orders, monitor orders, and communicate with passengers.</p>
+                <p><a class="btn" href="https://itunes.apple.com/tw/app/bei-jing-de-tie-rguide/id423071029?mt=8">View details &raquo;</a></p>
+            </div>
+            <!-- /.span4 -->
+            <div class="span4">
+                <img class="img-circle" data-src="holder.js/140x140"  src="img/HTML5_logo_and_wordmark.svg.png">
+                <h2>Web Portal</h2>
+                <p>It is used to manage content easily, explore real-time taxi-related data for due intelligence.</p>
+                <p><a class="btn" href="traffic_heatmap.html">View details &raquo;</a></p>
+            </div>
+            <!-- /.span4 -->
+        </div>
+        <!-- /.row -->
+
+
+        <!-- START THE FEATURETTES -->
+
+        <hr class="featurette-divider">
+
+        <div class="featurette">
+            <img class="featurette-image pull-right" src="img/passenger_main.jpg" width="20%" height="20%">
+            <h2 class="featurette-heading">For Passengers Getting Taxis <br><span class="muted">We make booking taxis easy.</span></h2>
+            <p class="lead">With your mobile devices, you can access to millions of taxis within a minute. We make you enjoy riding taxis ... </p>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="featurette">
+            <img class="featurette-image pull-left" src="img/passenger_order.jpg" width="20%" height="20%">
+            <h2 class="featurette-heading">Location Base <br><span class="muted">Shouldn't be hard to tell where ...</span></h2>
+            <p class="lead">It is always difficult to express where are you in verbal comunication. But, now with our easy－to－control Map interface, we make you easy to take a taxi ... </p>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="featurette">
+            <img class="featurette-image pull-right" src="img/Passenger_confirmTrip.jpg" width="20%" height="20%">
+            <h2 class="featurette-heading">Real-time Tracking <br><span class="muted">Closely monitor your trips.</span></h2>
+            <p class="lead">With easy-to-read interface, you can easily monitor and control every aspects of your trips. We make your trip cheap ... </p>
+        </div>
+
+        <hr class="featurette-divider">
+        <div id="CummulativeOrderChart"></div>
+
+        <hr class="featurette-divider">
+
+        <!-- /END THE FEATURETTES -->
+
+
+        <!-- FOOTER -->
+        <footer>
+            <p class="pull-right"><a href="#">Back to top</a></p>
+            <p>&copy; 2014 TaxiBook Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="bootstrap/bundles/bootstrapSourceJS.js"></script>
+
+    <script>
+        !function ($) {
+            $(function () {
+                // carousel demo
+                $('#myCarousel').carousel()
+
+                //chart
+                var cummulativeOrderStat=new Array(); 
+                var parseDate = d3.time.format("%Y-%m-%d").parse;
+
+                //get data
+                $.ajax({
+                  url: serverDomain+"index.php/statistics/getAllOrderCumulative",
+                  context: document.body,
+                  dataType: "json", 
+                  headers : {Accept : "application/json","Access-Control-Allow-Origin" : "*"},
+                  type: 'GET', 
+                  async: false,
+                  success: function(data, textStatus, jqXHR){
+                      var result=data.result; 
+                      for(var i=0;i<result.length;i++){
+                        var dateData=new Object();
+                        dateData.date= parseDate(result[i].order_date);
+                        dateData.freq=result[i].freq;
+                        
+                        cummulativeOrderStat[i]=dateData;
+
+                      }
+                      /*/for debug only
+                      for(var i=0;i<result.length;i++){
+                        console.log(cummulativeOrderStat[i].date+"  "+cummulativeOrderStat[i].freq);
+
+                      }*/
+
+                  },
+                  error: function(jqHXR, textStatus, errorThrown) {
+                    console.log('ajax error in get survey ID call:' +textStatus + ' ' + errorThrown);
+                  }
+
+                }); // end of the ajax call
+                var margin = {top: 15, right: 50, bottom: 100, left: 100},
+                  margin2 = {top: 500, right: 50, bottom: 50, left: 100},
+                  width = 1300 - margin.left - margin.right,
+                  height = 570 - margin.top - margin.bottom,
+                  height2 = 570 - margin2.top - margin2.bottom;
+                
+                var x = d3.time.scale()
+                  .range([0, width-210]),
+                  x2 = d3.time.scale()
+                  .range([0, width-210]);
+
+                var y = d3.scale.linear()
+                  .range([height, 0]),
+                  y2 = d3.scale.linear()
+                  .range([height2, 0]);
+
+                var xAxis = d3.svg.axis()
+                  .scale(x)
+                  .orient("bottom");
+                  xAxis2 = d3.svg.axis()
+                  .scale(x2).orient("bottom");
+
+                var yAxis = d3.svg.axis()
+                  .scale(y)
+                  .orient("left");
+                
+                var line = d3.svg.line()
+                  .interpolate("linear")
+                  .x(function(d) { return x(d.date); })
+                  .y(function(d) { return y(d.freq); });
+
+                var svg = d3.select("#CummulativeOrderChart").append("svg")
+                  .attr("width", width + margin.left + margin.right)
+                  .attr("height", height + margin.top + margin.bottom);
+                
+                //the main graphic component of the plot
+                var focus=svg.append("g")
+                  .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+                
+                //for slider part-----------------------------------------------------------------------------------
+                var brush = d3.svg.brush()//for slider bar at the bottom
+                  .x(x2)
+                  .on("brush", brushed);
+                
+                var context = svg.append("g")
+                  .attr("transform", "translate(" + margin2.left + "," + margin2.top + ")");
+                
+                //append click path for controlling the sliding of curve, clip those part out of bounds
+                svg.append("defs").append("clipPath") 
+                .attr("id", "clip")
+                .append("rect")
+                .attr("width", width-210)
+                .attr("height", height); 
+
+                x.domain([cummulativeOrderStat[0].date,cummulativeOrderStat[cummulativeOrderStat.length-1].date]); 
+                y.domain([0, d3.max(cummulativeOrderStat, function(d) { return d.freq; })]);
+                x2.domain(x.domain());//the domain axis for the bar at the bottom
+                
+                context.append("g")
+                    .attr("class", "x axis")
+                    .attr("transform", "translate(0," + height2 + ")")
+                    .call(xAxis2);
+                  
+                var contextArea = d3.svg.area()
+                  .interpolate("monotone")
+                  .x(function(d) { return x2(d.date); })
+                  .y0(height2)
+                  .y1(0);
+                
+                //plot the rect as the bar at the bottom
+                context.append("path")
+                  .attr("class", "area")
+                  .attr("d", contextArea(cummulativeOrderStat))
+                  .attr("fill", "LightYellow ");
+                  
+                //append the brush for the selection of subsection  
+                context.append("g")
+                  .attr("class", "x brush")
+                  .call(brush)
+                  .selectAll("rect")
+                  .attr("height", height2)
+                  .attr("fill", "SkyBlue");  
+                //end slider part-----------------------------------------------------------------------------------
+                
+                //x,y-axis for the plot
+                focus.append("g")
+                  .attr("class", "x axis")
+                  .attr("transform", "translate(0," + height + ")")
+                  .call(xAxis);
+
+                focus.append("g")
+                  .attr("class", "y axis")
+                  .call(yAxis)
+                  .append("text")
+                  .attr("transform", "rotate(-90)")
+                  .attr("y", 6)
+                  .attr("dy", ".71em")
+                  .style("text-anchor", "end")
+                  .text("Cummulative # Orders Handled");
+
+                focus.append("path")
+                  .attr("class", "line")
+                  .attr("id", "plot")
+                  .attr("clip-path", "url(#clip)")//use clip path to make irrelevant part invisible
+                  .attr("d", line(cummulativeOrderStat))
+                  .style("stroke",  "SkyBlue");
+
+               
+                //end of curving part of those funds------------------------------------------------------------- 
+                    
+                
+              //************************************************* Supporting Functions***********************************************
+                //for brusher of the slider bar at the bottom
+                function brushed() {
+                  x.domain(brush.empty() ? x2.domain() : brush.extent());
+                  focus.selectAll("path#plot").transition()//update curve 
+                    .attr("d", line(cummulativeOrderStat))
+                  focus.select(".x.axis").call(xAxis);
+                }
+                
+              
+
+
+
+            })
+        }(window.jQuery)
+    </script>
+    <script src="bootstrap/holder/holder.js"></script>
 </body>
+</html>
 
