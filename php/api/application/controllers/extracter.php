@@ -130,7 +130,7 @@ class Extracter extends REST_Controller {
 			  $this->stock_model->KEY_mkt_capital => $mkt_cap,
 			  $this->stock_model->KEY_turnover => $turnover,
 			  $this->stock_model->KEY_EPS => $EPS,
-			  $this->stock_model->KEY_pe_ratio => $PE_Ratio,
+			  $this->stock_model->KEY_PE_Ratio => $PE_Ratio,
 			  $this->stock_model->KEY_yield => $yield,
 			  $this->stock_model->KEY_lot_size => $lot_size,
 			  $this->stock_model->KEY_52week_low => $week52_range[0],
