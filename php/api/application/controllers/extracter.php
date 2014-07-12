@@ -79,7 +79,7 @@ class Extracter extends REST_Controller {
 			$name=preg_replace("/[^0-9.a-zA-Z]/", '',$name);
 			//var_dump($name);
 			$category_e=$html->find('div[id=indDet]')[0];
-			$category=preg_replace("/[^0-9.a-zA-Z]/", '',$category_e->plaintext);
+			$category=$category_e->plaintext;
 			//var_dump($category);
 			$data= array(
 				"name"=>$name,
