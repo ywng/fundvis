@@ -24,6 +24,7 @@ $config['error'][11] = 'DB insert fails';
 
 //extrater
 $config['error'][100] = 'Extrater failed!';
+$config['error'][101] = 'No such stock!';
 
 /* End of file error_message.php */
 /* Location: ./application/config/error_message.php */

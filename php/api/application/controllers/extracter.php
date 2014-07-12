@@ -66,6 +66,20 @@ class Extracter extends REST_Controller {
 
 	}
 
+	public function AASTOCK_stock_getinfo($stock_code){
+		$html = file_get_html("http://www.aastocks.com/en/ltp/rtquote.aspx?symbol=".$stock_code);
+		if (strlen(strstr($html->plaintext,"Sorry, stock code "))>0) {
+				// Stock code not found!!!
+				$this->core_controller->fail_response(101);
+
+		}else{
+
+		}
+
+	}
+
+
+
 	private function AASTOCK_stock_extract($html,$stock){
 		//go to the data section
 		$data_table=$html->find('table[class=tb-c]')[0];

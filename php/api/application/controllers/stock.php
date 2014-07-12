@@ -21,6 +21,23 @@ class Stock extends REST_Controller {
 
 	var $user_type = '';
 
+	public function addStockByCode_post(){
+		$this->load->library('../controllers/extracter');
+
+		$this->extracter->AASTOCK_stock_getinfo($this->input->post('code'));
+
+		
+		$data = array(
+               $this->stock_model->KEY_stock_id => $code,
+               $this->stock_model->KEY_name => $name,
+               $this->stock_model->KEY_link => "http://www.aastocks.com/en/ltp/rtquote.aspx?symbol=".$code ,
+               $this->stock_model->KEY_valid => 1,
+        );
+
+		$this->stock_model->addStock($data);
+		$this->core_controller->successfully_processed();
+
+	}
 
 	public function getAllStocks_get(){
 		$stocks = $this->stock_model->get_all_stocks();

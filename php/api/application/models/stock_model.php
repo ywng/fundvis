@@ -111,6 +111,10 @@ class Stock_model extends CI_Model{
         $this->db->update($this->Table_name_stock, $data); 
     }
     
+
+    public function addStock($data){
+        $this->db->insert($this->Table_name_stock, $data); 
+    }
     
 }
 
