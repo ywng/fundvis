@@ -39,7 +39,7 @@ class Stock_model extends CI_Model{
         $this->db->or_where_in($this->KEY_price_fund_id,$requiredFundIDArray);
         $this->db->select_min($this->KEY_datetime);
         return $this->db->get($this->Table_name_price)->result();
-    }
+    }*/
 
     public function get_max_date(){
         $this->db->select_max($this->KEY_datetime);
@@ -49,7 +49,7 @@ class Stock_model extends CI_Model{
     public function get_min_date(){
         $this->db->select_min($this->KEY_datetime);
         return $this->db->get($this->Table_name_price)->result();
-    }*/
+    }
 
     public function get_all_stocks(){
         $this->db->where($this->KEY_valid,1);
