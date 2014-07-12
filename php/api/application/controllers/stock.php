@@ -23,7 +23,7 @@ class Stock extends REST_Controller {
 
 	public function addStockByCode_post(){
 		$this->load->library('../controllers/extracter');
-		$codes=explode(",",$this->input->post('code'));
+		$codes=explode("::",$this->input->post('code'));
 
 		$added_stocks=array();
 		foreach ($codes as $code){
