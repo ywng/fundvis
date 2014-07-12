@@ -68,20 +68,20 @@ class Extracter extends REST_Controller {
 
 	private function AASTOCK_stock_extract($html,$stock){
 		//go to the data section
-		$html=$html->find('table[class=tb-c]')[0];
+		$data_table=$html->find('table[class=tb-c]')[0];
 
 		// price span
-		$price_e=$html->find('span[class=neg bold]')[0];
+		$price_e=$data_table->find('span[class=neg bold]')[0];
 		if(!$price_e){
-			$price_e=$html->find('span[class=pos bold]')[0];
+			$price_e=$data_table->find('span[class=pos bold]')[0];
 			var_dump($price_e->plaintext);
 
-			$price_chg_e=$html->find('span[class=pos bold]')[1];
+			$price_chg_e=$data_table->find('span[class=pos bold]')[1];
 			$price_chg=(float)preg_replace("/[^0-9.]/", '',$price_chg_e->plaintext);
 			$price_chg=$price_chg*-1;
 
 		}else{
-			$price_chg_e=$html->find('span[class=neg bold]')[1];
+			$price_chg_e=$data_table->find('span[class=neg bold]')[1];
 			$price_chg=(float)preg_replace("/[^0-9.]/", '',$price_chg_e->plaintext);
 		}
 		
