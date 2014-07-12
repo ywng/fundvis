@@ -67,6 +67,9 @@ class Extracter extends REST_Controller {
 	}
 
 	private function AASTOCK_stock_extract($html,$stock){
+		//go to the data section
+		$html=$html->find('table[class=tb-c]')[0];
+
 		// price span
 		$price_e=$html->find('span[class=neg bold]')[0];
 		if(!$price_e){
