@@ -1,0 +1,1 @@
+curl http://fundvis-ywng.rhcloud.com/api/extracter/stock_extract
