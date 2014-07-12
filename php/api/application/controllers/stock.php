@@ -23,19 +23,26 @@ class Stock extends REST_Controller {
 
 	public function addStockByCode_post(){
 		$this->load->library('../controllers/extracter');
-		$code=$this->input->post('code');
-		$stock_info=$this->extracter->AASTOCK_stock_getinfo($code);
-		$category=$this->stock_model->getCategoryID($stock_info["category"]);
-		
-		$data = array(
-               $this->stock_model->KEY_stock_id => $code,
-               $this->stock_model->KEY_name => $stock_info["name"],
-               $this->stock_model->KEY_link => "http://www.aastocks.com/en/ltp/rtquote.aspx?symbol=".$code ,
-               $this->stock_model->KEY_valid => 1,
-               $this->stock_model->KEY_category => $category,
-        );
+		$codes=$this->input->post('code');
 
-		$this->stock_model->addStock($data);
+		$added_stocks=new array();
+		foreach ($codes as $code){
+			$stock_info=$this->extracter->AASTOCK_stock_getinfo($code);
+			$category=$this->stock_model->getCategoryID($stock_info["category"]);
+			
+			$stock_data = array(
+	               $this->stock_model->KEY_stock_id => $code,
+	               $this->stock_model->KEY_name => $stock_info["name"],
+	               $this->stock_model->KEY_link => "http://www.aastocks.com/en/ltp/rtquote.aspx?symbol=".$code ,
+	               $this->stock_model->KEY_valid => 1,
+	               $this->stock_model->KEY_category => $category,
+	        );
+			$this->stock_model->addStock($data_data);
+			array_push($added_stocks,$stock_data);
+
+		}
+		
+		$this->core_controller->add_return_data('added_stocks', $added_stocks); 
 		$this->core_controller->successfully_processed();
 
 	}
