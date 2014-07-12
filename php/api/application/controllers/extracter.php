@@ -75,8 +75,11 @@ class Extracter extends REST_Controller {
 		}else{
 			//name
 			$name_e=$html->find('title')[0];
-			$name=explode(" ",$name_e->plaintext)[0];
-			echo $name;
+			//$name=explode(" ",$name_e->plaintext)[0];
+			var_dump($name_e->plaintext);
+			$category_e=$html->find('div[id=indDet]')[0];
+			//$name=explode(" ",$name_e->plaintext)[0];
+			var_dump($category_e->plaintext);
 			$this->core_controller->successfully_processed();
 		}
 
