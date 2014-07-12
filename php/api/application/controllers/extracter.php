@@ -126,6 +126,7 @@ class Extracter extends REST_Controller {
 	    } 
 
 	    if(!$price || !$datetime_str){
+	    	echo $stock;
 	    	$this->core_controller->fail_response(100);
 	    }
 

@@ -30,6 +30,7 @@ class Stock extends REST_Controller {
 			$this->core_controller->fail_response(101);
 
 		}
+		
 		$stock_info=$this->extracter->AASTOCK_stock_getinfo($code);
 		$category=$this->stock_model->getCategoryID($stock_info["category"]);
 		
