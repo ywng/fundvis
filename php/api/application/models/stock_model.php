@@ -123,6 +123,7 @@ class Stock_model extends CI_Model{
         if ( $q->num_rows() == 0 ) {
             $this->db->insert($this->Table_name_stock, $data); 
         }else{
+            $this->db->where($this->KEY_stock_id,$data[$this->KEY_stock_id]);
             $this->db->update($this->Table_name_stock, $data);
         }
     }
