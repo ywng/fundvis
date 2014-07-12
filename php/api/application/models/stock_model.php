@@ -118,7 +118,13 @@ class Stock_model extends CI_Model{
     
 
     public function addStock($data){
-        $this->db->insert($this->Table_name_stock, $data); 
+        $this->db->where($this->KEY_stock_id,$data[$this->KEY_stock_id]);
+        $q = $this->db->get($this->Table_name_stock);
+        if ( $q->num_rows() == 0 ) {
+            $this->db->insert($this->Table_name_stock, $data); 
+        }else{
+            $this->db->update($this->Table_name_stock, $data);
+        }
     }
     
     public function getCategoryID($category){
