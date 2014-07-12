@@ -74,7 +74,7 @@ class Extracter extends REST_Controller {
 
 		}else{
 			//name
-			$name_e=$html->find('div[class=floatL f15]')[0];
+			$name_e=$html->find('title')[0];
 			$name=explode(" ",$name_e->plaintext)[0];
 			echo $name;
 			$this->core_controller->successfully_processed();
