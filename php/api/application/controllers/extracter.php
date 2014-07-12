@@ -86,13 +86,20 @@ class Extracter extends REST_Controller {
 	    	$this->core_controller->fail_response(100);
 	    }
 
+	    //52 week range
+		$week52_range_e=$html->find('strong')[0];
+		$week52_range=explode("-",$week52_range_e->plaintext);
+
 	    //vol
 		$vol_e=$html->find('strong')[1];
 		$vol=preg_replace("/[^0-9.a-zA-Z]/", '',$vol_e->plaintext);
-		var_dump($vol);
+		//var_dump($vol);
 
 		$stock_updated_info = array(
+			  $this->stock_model->KEY_52week_low => $week52_range[0],
+			  $this->stock_model->KEY_52week_high => $week52_range[1],
 			  $this->stock_model->KEY_vol => $vol,
+
 		);
 		$this->core_controller->add_return_data($stock[$this->stock_model->KEY_stock_id].".info",$stock_updated_info); 
 		$this->stock_model->update_stock_info($stock[$this->stock_model->KEY_stock_id],$stock_updated_info);
