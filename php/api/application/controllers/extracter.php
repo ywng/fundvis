@@ -106,14 +106,15 @@ class Extracter extends REST_Controller {
 			//var_dump($price_e->plaintext);
 
 			if(!$price_e_array){
+				$price_e=$data_table->find('span[class=unc bold]')[0];
+				$price_chg=0;
+
+			}else{
+
 				$price_e=$price_e_array[0];
 				$price_chg_e=$data_table->find('span[class=pos bold]')[1];
 				$price_chg=(float)preg_replace("/[^0-9.]/", '',$price_chg_e->plaintext);
 				$price_chg=$price_chg*-1;
-
-			}else{
-				$price_e=$data_table->find('span[class=unc bold]')[0];
-				$price_chg=0;
 			}
 
 			
