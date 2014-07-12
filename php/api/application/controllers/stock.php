@@ -25,7 +25,7 @@ class Stock extends REST_Controller {
 		$this->load->library('../controllers/extracter');
 		$codes=$this->input->post('code');
 
-		$added_stocks=new array();
+		$added_stocks=array();
 		foreach ($codes as $code){
 			$stock_info=$this->extracter->AASTOCK_stock_getinfo($code);
 			$category=$this->stock_model->getCategoryID($stock_info["category"]);
