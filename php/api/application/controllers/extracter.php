@@ -77,10 +77,10 @@ class Extracter extends REST_Controller {
 		
 		//date span
 		$datetime_e=$html->find('div[style=font-size: 10px;]')[0];
-		var_dump($datetime_e->plaintext);
-		//if (preg_match('/(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})/',$datetime_e->plaintext, $regs)) {
-		//	$datetime_str = $regs[0];
-	    //} 
+		//var_dump($datetime_e->plaintext);
+		if (preg_match('/(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2})/',$datetime_e->plaintext, $regs)) {
+			$datetime_str = $regs[0];
+	    } 
 
 	    $stock_price = array(
                $this->stock_model->KEY_name => $stock[$this->stock_model->KEY_name],
