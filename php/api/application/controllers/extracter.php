@@ -88,13 +88,13 @@ class Extracter extends REST_Controller {
 
 	    //vol
 		$vol_e=$html->find('strong')[1];
-		$vol=preg_replace("/[^0-9.]/", '',$vol_e->plaintext);
+		$vol=preg_replace("/[^0-9.a-zA-Z]/", '',$vol_e->plaintext);
 		var_dump($vol);
 
 		$stock_updated_info = array(
 			  $this->stock_model->KEY_vol => $vol,
 		);
-		$this->core_controller->add_return_data($stock[$this->stock_model->KEY_stock_id].".info",$stock_price); 
+		$this->core_controller->add_return_data($stock[$this->stock_model->KEY_stock_id].".info",$stock_updated_info); 
 		$this->stock_model->update_stock_info($stock[$this->stock_model->KEY_stock_id],$stock_updated_info);
 
 
@@ -103,7 +103,7 @@ class Extracter extends REST_Controller {
                $this->stock_model->KEY_price => $price ,
                $this->stock_model->KEY_datetime => $datetime_str
         );
-        $this->core_controller->add_return_data($stock[$this->stock_model->KEY_stock_id]."price",$stock_price); 
+        $this->core_controller->add_return_data($stock[$this->stock_model->KEY_stock_id].".price",$stock_price); 
 	    $this->stock_model->insert_stock_price($stock[$this->stock_model->KEY_stock_id],$price,$datetime_str);
 	
 	}
