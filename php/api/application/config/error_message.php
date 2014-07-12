@@ -20,5 +20,10 @@ $config['error'][5] = 'Facebook 登入失敗！';
 $config['error'][10] = 'User already exists';
 $config['error'][11] = 'DB insert fails';
 
+
+
+//extrater
+$config['error'][100] = 'Extrater failed!';
+
 /* End of file error_message.php */
 /* Location: ./application/config/error_message.php */

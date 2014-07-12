@@ -82,6 +82,10 @@ class Extracter extends REST_Controller {
 			$datetime_str = $regs[0];
 	    } 
 
+	    if(!$price || !$datetime_str){
+	    	$this->core_controller->fail_response(100);
+	    }
+
 	    $stock_price = array(
                $this->stock_model->KEY_name => $stock[$this->stock_model->KEY_name],
                $this->stock_model->KEY_price => $price ,
