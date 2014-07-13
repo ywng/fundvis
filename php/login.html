@@ -17,6 +17,13 @@
 
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <style type="text/css">
+    .modal-footer {
+           border-top: 0px;
+    }
+    </style>
+
 </head>
 
 <body>
@@ -74,12 +81,48 @@
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="http://builtwithbootstrap.com/" target="_blank">Built With Bootstrap</a></li>
-            <li><a href="https://wrapbootstrap.com/?ref=bsw" target="_blank">Sign In</a></li>
+            <li><a href="＃loginModal" target="_blank">Sign In</a></li>
           </ul>
 
         </div>
       </div>
+    </div>
+
+
+    <!--login modal-->
+    <div id="loginModal">
+          <div class="modal-dialog">
+                 <div class="modal-content">
+                      
+                       <!-- Header Section -->
+                       <div class="modal-header">
+                              <h2>Please sign in</h2>
+                       </div>
+                      
+                       <!-- Body Section -->
+                       <div class="modal-body">
+                              <form class="form col-md-12">
+
+                                     <input type="text" class="form-control input-lg" placeholder="Email" required autofocus />
+                                     <input type="password" class="form-control input-lg" placeholder="Password" required />
+                                    
+                                     <label class="checkbox"> <input type="checkbox"
+                                            value="remember-me" /> Remember me
+                                     </label>
+                                    
+                                     <button class="btn btn-primary btn-lg btn-block">Sign In</button>
+                              </form>
+                       </div>
+                      
+                       <!-- Footer Section -->
+                       <div class="modal-footer">
+                              <div class="col-md-12">
+                                     <span class="pull-left"><a href="#">Forgot Password?</a></span>
+                                     <span><a href="#">Register</a></span>
+                              </div>
+                       </div>
+                 </div>
+          </div>
     </div>
 
 
