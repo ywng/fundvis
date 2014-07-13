@@ -6,7 +6,7 @@ body{
 }
 
 .login_modal_footer{margin-top:5px;}
-.login_modal_header .modal-title {text-align: center;font-family:fontawesome,sans-serif; }
+.login_modal_header .modal-title {text-align: center;font-family:fontawesome,serif; }
 .form-group{position: relative;}
 .form-group .login-field-icon {
     font-size: 20px;
