@@ -20,7 +20,7 @@ body{
     width:100%;
     padding-bottom:20px;
 }
-.login_modal_header, .login_modal_footer {background: #f8f8f8 !important;color:#fff;}
+.login_modal_header, .login_modal_footer {background: #006400 !important;color:#fff;}
 .modal-register-btn{margin: 4% 33% 2% 33% ;width:100%;}
 .login-modal input{height:40px; box-shadow: none; border:1px solid #ddd;}
 .modal-body-left{float:left; width:50%; padding-right:4%; border-right:4px solid #ddd;}
