@@ -20,7 +20,7 @@
   
     <link rel="stylesheet" href="css/login.css" />
     <script src="js/vendor/modernizr-2.6.2.min.js"></script>
-   
+    <script src="config/config.js"></script>
 
 </head>
 
@@ -146,6 +146,8 @@
 
     <!-- SB Admin Scripts - Include with every page -->
     <script src="js/sb-admin.js"></script>
+    <script src="js/helper.js"></script>
+    <script src="js/calls.ajax.js"></script>
 
 
     <script>
@@ -159,8 +161,10 @@
       if (response.status === 'connected') {
         // Logged into your app and Facebook.
          console.log(response.authResponse.accessToken);
+         fblogin(response.authResponse.accessToken);
+         checkLogin();
          //login our app server by AJAX Call
-         
+
       } else if (response.status === 'not_authorized') {
         // The person is logged into Facebook, but not your app.
           FB.login(function(response){
@@ -220,6 +224,9 @@
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 
+    $( document ).ready(function() {
+        checkLogin();  
+    });
    
 </script>
 
