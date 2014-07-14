@@ -21,6 +21,7 @@
 
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <script src="config/config.js"></script>
 
 </head>
 
@@ -827,6 +828,14 @@
 
     <!-- Page-Level Demo Scripts - Dashboard - Use for reference -->
     <script src="js/demo/dashboard-demo.js"></script>
+    <script src="js/helper.js"></script>
+    <script src="js/calls.ajax.js"></script>
+
+    <script>
+        $( document ).ready(function() {
+            checkLogin(); 
+        });
+    </script>
 
 </body>
 
