@@ -19,7 +19,7 @@ class User_model extends CI_Model {
 	
 
 	function add_user($data) {
-		$this->db->insert($this->Table_name_user, $data);	//(DEBUG: how it works)
+		$this->db->insert($this->Table_name_user, $data);	
 		if ($this->db->affected_rows() > 0) {
 			return $this->db->insert_id();
 		} else {
@@ -47,7 +47,6 @@ class User_model extends CI_Model {
 	}
 	
 	// helper
-	// (TODO: hide password) 
 	private function get_user_by_key($key, $value) {
 		$result = $this->db->from($this->Table_name_user)
 							->where($key, $value)
@@ -64,5 +63,5 @@ class User_model extends CI_Model {
 	
 }
 
-/* End of file test_model.php */
-/* Location: ./application/models/test_model.php */
+/* End of file user_model.php */
+/* Location: ./application/models/user_model.php */

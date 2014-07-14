@@ -20,6 +20,8 @@ class User extends REST_Controller {
 		$CI->config->load("facebook",TRUE);
 		$config = $CI->config->item('facebook');
 		$this->load->library('Facebook', $config);
+
+		$this->load->model('user_model');
 	
 	}
 
@@ -181,7 +183,7 @@ class User extends REST_Controller {
 
 	/**
 	*  DESC: Logout
-	*  @todo not working because session not ready
+	*  
 	*/
 	public function logout_get()
 	{
@@ -208,8 +210,6 @@ class User extends REST_Controller {
 	*/
 	public function fblogin_post()
 	{
-		$this->load->model('user_model');
-	
         // Try to get the user's id on Facebook
         $accessToken_fb=$this->input->post('access_token');
         $this->facebook->setAccessToken($accessToken_fb);
@@ -235,7 +235,7 @@ class User extends REST_Controller {
 	            //create an entry record for future activity 
 	             $data = array(
 	                $this->user_model->KEY_user_name => $fb_user['first_name'].$fb_user['last_name'],
-	                $this->user_model->KEY_status => 1 ,
+	                $this->user_model->KEY_status => '1' ,
 	                $this->user_model->KEY_email => $fb_user['email'],
        			 );
        			 $user_id = $this->user_model->add_user($data);
@@ -253,7 +253,7 @@ class User extends REST_Controller {
 			}
 
 	        $new_session_token = $this->get_valid_session_token_for_user($user_data[$this->user_model->KEY_user_id]);
-	        $this->core_controller->add_return_data('session_token', $new_session_token['session_token']);
+	        $this->core_controller->add_return_data('session_token', $new_session_token['session_token'])
 							->add_return_data('expire_time', $new_session_token['expire_time']);
             $this->core_controller->successfully_processed();
             
@@ -294,8 +294,7 @@ class User extends REST_Controller {
 	
 	/**
 	*  DESC: edit profile for a specific user
-	*  INPUT: user_id, 
-	*  @todo not started working
+	*  
 	*/
 	public function edit_profile(){/*
 		// Validation (TODO)
