@@ -14,7 +14,7 @@ function fblogin(access_token){
 		 }
 	};
 
-	var on failure=function(jqHXR, textStatus, errorThrown){
+	var onFailure=function(jqHXR, textStatus, errorThrown){
 		 console.log('ajax error:' +textStatus + ' ' + errorThrown);
 	};
 
