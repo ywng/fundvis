@@ -3,10 +3,6 @@ var fblogin_URL='user/fblogin'
 
 function logout(access_token){
 	if(localStorage.getItem("X-WealthVis-fbid")){
-		FB.api('DELETE/'+localStorage.getItem("X-WealthVis-fbid")+'/permissions',function(response) {
-	      console.log(response);
-	      
-	    });
 	    localStorage.clear();
 	}
 	
