@@ -3,6 +3,7 @@ var fblogin_URL='user/fblogin'
 
 
 function fblogin(access_token){
+
 	var onSuccess=function(data, textStatus, jqXHR){
 		 if(data.status_code=='1'){
 		 	localStorage.setItem("X-WealthVis-session-token", data.session_token);
@@ -12,9 +13,11 @@ function fblogin(access_token){
             localStorage.setItem("X-WealthVis-expire-time", data.expire_time);
 		 }
 	};
+
 	var on failure=function(jqHXR, textStatus, errorThrown){
 		 console.log('ajax error:' +textStatus + ' ' + errorThrown);
 	};
+
 	var data="access_token="+access_token;
 	rawAjaxCall(fblogin_URL,"POST",data,onSuccess,onFailure);
 }
@@ -27,8 +30,8 @@ function rawAjaxCall(relativeURL,type,data,onSuccess,onFailure){
         data:data,
         headers : {"X-WealthVis-session-token":localStorage.getItem("X-WealthVis-session-token"),"X-WealthVis-email":localStorage.getItem("X-WealthVis-email"),"X-WealthVis-user-type":localStorage.getItem("X-WealthVis-user-type")},
         type: type, 
-        success: onSuccess(data, textStatus, jqXHR),
-        error: onFailure(jqHXR, textStatus, errorThrown),
+        success: onSuccess,
+        error: onFailure
 
     }); // end of the ajax call
 
