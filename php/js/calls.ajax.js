@@ -26,7 +26,7 @@ function fblogin(access_token){
 function rawAjaxCall(relativeURL,type,data,onSuccess,onFailure){
 
 	$.ajax({
-        url: serverDomain + relativeURL,
+        url: apiDomain + relativeURL,
         data:data,
         headers : {"X-WealthVis-session-token":localStorage.getItem("X-WealthVis-session-token"),"X-WealthVis-email":localStorage.getItem("X-WealthVis-email"),"X-WealthVis-user-type":localStorage.getItem("X-WealthVis-user-type")},
         type: type, 
