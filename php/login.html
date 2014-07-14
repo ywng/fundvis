@@ -117,7 +117,7 @@
                 
                   <div class='modal-body-right'>
                     <div class="modal-social-icons">
-                      <a href='#' class="btn btn-default facebook" scope="public_profile,email" onclick="checkLoginState;"> <i class="fa fa-facebook modal-icons"></i> Sign In with Facebook </a>
+                      <a href='#' class="btn btn-default facebook" scope="public_profile,email" onclick="checkLoginState();"> <i class="fa fa-facebook modal-icons"></i> Sign In with Facebook </a>
                       <a href='#' class="btn btn-default twitter"> <i class="fa fa-twitter modal-icons"></i> Sign In with Twitter </a>
                       <a href='#' class="btn btn-default google"> <i class="fa fa-google-plus modal-icons"></i> Sign In with Google </a>
                       <a href='#' class="btn btn-default linkedin"> <i class="fa fa-linkedin modal-icons"></i> Sign In with Linkedin </a>
@@ -151,7 +151,7 @@
 
 
     <script>
-    
+
       //fb login part
       // This is called with the results from from FB.getLoginStatus().
      function statusChangeCallback(response) {
@@ -169,7 +169,7 @@
       } else if (response.status === 'not_authorized') {
         // The person is logged into Facebook, but not your app.
           FB.login(function(response){
-           statusChangeCallback(response);
+            statusChangeCallback(response);
           }, {scope: 'public_profile,email'});
       } else {
         // The person is not logged into Facebook, so we're not sure if
