@@ -234,7 +234,7 @@ class User extends REST_Controller {
 	        if (!$user_data) {
 	            //create an entry record for future activity 
 	             $data = array(
-	                $this->user_model->KEY_user_name => $fb_user['first_name'].$fb_user['last_name'],
+	                $this->user_model->KEY_user_name => $fb_user['first_name'].' '.$fb_user['last_name'],
 	                $this->user_model->KEY_status => '1' ,
 	                $this->user_model->KEY_email => $fb_user['email'],
        			 );
@@ -322,14 +322,9 @@ class User extends REST_Controller {
 		$result = $this->session_model->session_token_based_on_id($id, $this->user_type);
         if (!is_null($result) && is_array($result) && count($result) > 0) {
             // has session token, check
-            
-            //Not implement session_expire::
-            //At the moment, we do not implement session expire time, it is supposed to be forever
-            //so we just ignore the expire check to accomplish it
-            //if we need it again in the future, just uncomment it again
-       		//if (!$result['expired']) {
+       		if (!$result['expired']) {
 		    	return $this->session_model->get_session_by_id($id, $this->user_type);
-		    //}
+		    }
         }
         $this->session_model->generate_new_session_token($id, $this->user_type);
         return $this->session_model->get_session_by_id($id, $this->user_type);

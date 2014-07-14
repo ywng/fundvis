@@ -3,7 +3,7 @@
 /**
  * Check and generate Session data for users
 *
- * @author benleung
+ * @author jason ng
  */
 class Session_model extends CI_Model{
 
