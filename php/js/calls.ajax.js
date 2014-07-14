@@ -7,6 +7,7 @@ function logout(access_token){
 	      console.log(response);
 	      
 	    });
+	    localStorage.clear();
 	}
 	
 }
