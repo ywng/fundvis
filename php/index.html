@@ -843,6 +843,19 @@
                 js.src = "//connect.facebook.net/en_US/sdk.js";
                 fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));
+
+            window.fbAsyncInit = function() {
+                FB.init({
+                  appId      : '524329311029005',
+                  cookie     : true,  // enable cookies to allow the server to access 
+                                      // the session
+                  xfbml      : true,  // parse social plugins on this page
+                  version    : 'v2.0' // use version 2.0
+                });
+
+            });
+
+      };
            
         });
     </script>
