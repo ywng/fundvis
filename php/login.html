@@ -168,7 +168,6 @@
           // Logged into your app and Facebook.
            console.log(response.authResponse.accessToken);
            fblogin(response.authResponse.accessToken);
-           checkLogin();
            //login our app server by AJAX Call
 
         } else if (response.status === 'not_authorized') {

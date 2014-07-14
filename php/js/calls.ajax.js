@@ -11,6 +11,8 @@ function fblogin(access_token){
             localStorage.setItem("X-WealthVis-user-type",'user');
             localStorage.setItem("X-WealthVis-loggedIn", "true");
             localStorage.setItem("X-WealthVis-expire-time", data.expire_time);
+
+            checkLogin();
 		 }
 	};
 

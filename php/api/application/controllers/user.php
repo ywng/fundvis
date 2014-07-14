@@ -252,7 +252,7 @@ class User extends REST_Controller {
 				$this->core_controller->add_return_data($key, $value);
 			}
 
-	        $new_session_token = $this->get_valid_session_token_for_user($user_data[$this->user_model->KEY_user_id]);
+	        $new_session_token = $this->get_valid_session_token_for_user($user_id);
 	        $this->core_controller->add_return_data('session_token', $new_session_token['session_token'])
 							->add_return_data('expire_time', $new_session_token['expire_time']);
             $this->core_controller->successfully_processed();
