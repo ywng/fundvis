@@ -30,21 +30,13 @@ class User extends REST_Controller {
 		
 	}
 	
-	// (DEBUG: this function is for testing purpose only, to be removed)
-	public function test_function_post(){
-		$this->load->model('user_model'); 
-		$result = $this->user_model->check_if_user_exists($this->user_model->KEY_email,$this->input->post('email'));
-		$this->core_controller->add_return_data('result', $result); 
-		$this->core_controller->successfully_processed();
-	}
-	
 	/**
 	*  INPUT: email, firstname, lastname, password
 	*  Summary: Register + login together
 	*/
 	public function register_post()
 	{
-		// Validation
+		/*// Validation
 		$this->load->library('form_validation');
 		$validation_config = array(
 			array('field' => 'password', 'label' => 'password', 'rules' => 'trim|required|xss_clean|md5'), 
@@ -78,7 +70,7 @@ class User extends REST_Controller {
 			$this->core_controller->fail_response(11);
         }
 		
-		/*// upload profile pic
+		// upload profile pic
         $config['upload_path'] = './uploads/profile_pic';	//TODO: where is the path
 		//$config['allowed_types'] = 'JPEG|PNG';
 		//$config['max_size']	= '100000';
@@ -114,7 +106,7 @@ class User extends REST_Controller {
 			}
 
 			$this->core_controller->add_return_data('image_data', $file_data);
-		}*/
+		}
 		
 		
 		// Login
@@ -139,7 +131,7 @@ class User extends REST_Controller {
 		$this->core_controller->add_return_data('expire_time', $new_session_token['expire_time']);
 		$this->core_controller->successfully_processed();
 		
-		
+		*/
 	}
 
 	
@@ -148,7 +140,7 @@ class User extends REST_Controller {
 	*/
 	public function login_post()
 	{
-		// Validation
+	/*	// Validation
 		$this->load->library('form_validation');
 		$validation_config = array(
 			array('field' => 'password', 'label' => 'password', 'rules' => 'trim|required|xss_clean|md5'), 
@@ -184,7 +176,7 @@ class User extends REST_Controller {
 		$this->core_controller->add_return_data('session_token', $new_session_token['session_token']);
 		$this->core_controller->add_return_data('expire_time', $new_session_token['expire_time']);
 
-		$this->core_controller->successfully_processed();
+		$this->core_controller->successfully_processed();*/
 	}
 
 	/**
@@ -212,7 +204,7 @@ class User extends REST_Controller {
 	
 	/**
 	*  DESC: FB lognlin
-	*  @todo not working because session not ready
+	* 
 	*/
 	public function fblogin_post()
 	{
@@ -243,7 +235,7 @@ class User extends REST_Controller {
 	            //create an entry record for future activity 
 	             $data = array(
 	                $this->user_model->KEY_user_name => $fb_user['first_name'].$fb_user['last_name'],
-	                $this->user_model->KEY_staus => 1 ,
+	                $this->user_model->KEY_status => 1 ,
 	                $this->user_model->KEY_email => $fb_user['email'],
        			 );
        			 $user_id = $this->user_model->add_user($data);
@@ -276,7 +268,7 @@ class User extends REST_Controller {
 	*/
 	public function get_profile(){
 		// Validation
-		$this->load->library('form_validation');
+		/*$this->load->library('form_validation');
 		$validation_config = array(
 			array('field' => 'user_id', 'label' => 'user_id', 'rules' => 'trim|required|xss_clean')
 		);
@@ -297,7 +289,7 @@ class User extends REST_Controller {
 		foreach ($this->hide_user_data($user_data) as $key => $value){
 			$this->core_controller->add_return_data($key, $value);
 		}
-		$this->core_controller->successfully_processed();
+		$this->core_controller->successfully_processed();*/
 	}
 	
 	/**
@@ -305,7 +297,7 @@ class User extends REST_Controller {
 	*  INPUT: user_id, 
 	*  @todo not started working
 	*/
-	public function edit_profile(){
+	public function edit_profile(){/*
 		// Validation (TODO)
 		$this->load->library('form_validation');
 		$validation_config = array(
@@ -319,7 +311,7 @@ class User extends REST_Controller {
 		
 		
 		// Return JSON
-		$this->core_controller->successfully_processed();
+		$this->core_controller->successfully_processed();*/
 	}
 	
 	/****************
