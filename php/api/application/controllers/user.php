@@ -242,9 +242,9 @@ class User extends REST_Controller {
 	        if (!$user_data) {
 	            //create an entry record for future activity 
 	             $data = array(
-	                $this->user_model->KEY_first_name => $fb_user['first_name'],
-	                $this->user_model->KEY_last_name =>  $fb_user['last_name'],
-	                $this->user_model->KEY_email => $fb_user['email']
+	                $this->user_model->KEY_user_name => $fb_user['first_name'].$fb_user['last_name'],
+	                $this->user_model->KEY_staus => 1 ,
+	                $this->user_model->KEY_email => $fb_user['email'],
        			 );
        			 $user_id = $this->user_model->add_user($data);
 
@@ -262,7 +262,7 @@ class User extends REST_Controller {
 
 	        $new_session_token = $this->get_valid_session_token_for_user($user_data[$this->user_model->KEY_user_id]);
 	        $this->core_controller->add_return_data('session_token', $new_session_token['session_token']);
-							//->add_return_data('expire_time', $new_session_token['expire_time']);
+							->add_return_data('expire_time', $new_session_token['expire_time']);
             $this->core_controller->successfully_processed();
             
         }
