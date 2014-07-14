@@ -1,6 +1,15 @@
 //var 
 var fblogin_URL='user/fblogin'
 
+function logout(access_token){
+	if(localStorage.getItem("X-WealthVis-fbid")){
+		FB.api('DELETE/'+localStorage.getItem("X-WealthVis-fbid")+'/permissions',function(response) {
+	      console.log(response);
+	      
+	    });
+	}
+	
+}
 
 function fblogin(access_token){
 
@@ -11,6 +20,8 @@ function fblogin(access_token){
             localStorage.setItem("X-WealthVis-user-type",'user');
             localStorage.setItem("X-WealthVis-loggedIn", "true");
             localStorage.setItem("X-WealthVis-expire-time", data.expire_time);
+
+            localStorage.setItem("X-WealthVis-fbid", data.user_fbid);
 
             checkLogin();
 		 }
