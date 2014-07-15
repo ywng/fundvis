@@ -109,9 +109,18 @@ class Extracter extends REST_Controller {
 				$name_tc_e=$html_tc->find('title')[0];
 				$name_tc=explode("&nbsp;",$name_tc_e->plaintext)[0];
 				$name_tc=trim($name_tc);
-				
+
+				$combined_name;
+				$name_en_for_compare=preg_replace("/[^0-9.a-zA-Z]/", '',$name_en);
+				$name_tc_for_compare=preg_replace("/[^0-9.a-zA-Z]/", '',$name_tc);
+				if($name_en_for_compare==$name_tc_for_compare){
+						$combined_name=$name_en;
+				}else{
+						$combined_name=$name_tc." ".$name_en;
+				}
+			
 				$data= array(
-					$this->stock_model->KEY_name =>$name_tc." ".$name_en,//record both Eng & Trand Chinese name
+					$this->stock_model->KEY_name =>$combined_name,//record both Eng & Trand Chinese name
 
 				);
 				$this->stock_model->update_stock_info($stock[$this->stock_model->KEY_stock_id],$data);
