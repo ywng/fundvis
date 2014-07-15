@@ -108,7 +108,7 @@ class Extracter extends REST_Controller {
 
 				$name_tc_e=$html_tc->find('title')[0];
 				$name_tc=explode("&nbsp;",$name_tc_e->plaintext)[0];
-				$name_tc=trim($name_tr);
+				$name_tc=trim($name_tc);
 				
 				$data= array(
 					$this->stock_model->KEY_name =>$name_tc." ".$name_en,//record both Eng & Trand Chinese name
