@@ -106,12 +106,12 @@ class Extracter extends REST_Controller {
 				$name_en=explode("&nbsp;",$name_en_e->plaintext)[0];
 				$name_en=trim($name_en);
 
-				$name_tr_e=$html_tr->find('title')[0];
-				$name_tr=explode("&nbsp;",$name_tr_e->plaintext)[0];
-				$name_tr=trim($name_tr);
+				$name_tc_e=$html_tc->find('title')[0];
+				$name_tc=explode("&nbsp;",$name_tc_e->plaintext)[0];
+				$name_tc=trim($name_tr);
 				
 				$data= array(
-					$this->stock_model->KEY_name =>$name_tr." ".$name_en,//record both Eng & Trand Chinese name
+					$this->stock_model->KEY_name =>$name_tc." ".$name_en,//record both Eng & Trand Chinese name
 
 				);
 				$this->stock_model->update_stock_info($stock[$this->stock_model->KEY_stock_id],$data);
