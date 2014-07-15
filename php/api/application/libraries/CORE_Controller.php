@@ -10,9 +10,9 @@
 class CORE_Controller {
     
     protected $current_user_obj = null;
-    
+
     private $white_list_uri = array(
-	'fund/getAllFunds','extracter/extract','extracter/stock_extract','fund/getAllPrice','fund/getAllPriceJPMORSO',
+	'fund/getAllFunds','extracter/extract','extracter/stock_extract','extracter/AASTOCK_fetch_stock_name_Chinese','fund/getAllPrice','fund/getAllPriceJPMORSO',
     'stock/getAllStocks','stock/getAllPrice','stock/addStockByCode',
     'user/fblogin','user/login'); // this will indicate the script not to run security check
 

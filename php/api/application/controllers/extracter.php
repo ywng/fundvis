@@ -92,6 +92,33 @@ class Extracter extends REST_Controller {
 
 	}
 
+	public function AASTOCK_fetch_stock_name_Chinese(){
+		$this->load->model('stock_model'); 
+		$stocks = $this->stock_model->get_all_stocks();
+
+		foreach ($stocks as $stock){
+
+			$html = file_get_html("http://www.aastocks.com/tc/LTP/RTQuote.aspx?symbol=".$stock_code);
+			if (strlen(strstr($html->plaintext,"Sorry, stock code "))>0) {
+					// Stock code not found!!!
+					$this->core_controller->fail_response(101);
+
+			}else{
+				//name
+				$name_e=$html->find('title')[0];
+				$name=explode("&nbsp;",$name_e->plaintext)[0];
+				$name=trim($name);
+				
+				$data= array(
+					$this->stock_model->$KEY_name =>$stock[$this->stock_model->$KEY_name]." ".$name,//record both Eng & Trand Chinese name
+
+				);
+				$this->stock_model->update_stock_info($stock[$this->stock_model->$KEY_stock_id],$data);
+			}
+		}
+
+	}
+
 
 
 	private function AASTOCK_stock_extract($html,$stock){
