@@ -101,7 +101,7 @@ class Extracter extends REST_Controller {
 					$this->core_controller->fail_response(101);
 
 			}else{
-				//name
+				//name en & tc
 				$name_en_e=$html_en->find('title')[0];
 				$name_en=explode("&nbsp;",$name_en_e->plaintext)[0];
 				$name_en=trim($name_en);
@@ -114,7 +114,7 @@ class Extracter extends REST_Controller {
 				$name_en_for_compare=preg_replace("/[^0-9.a-zA-Z]/", '',$name_en);
 				$name_tc_for_compare=preg_replace("/[^0-9.a-zA-Z]/", '',$name_tc);
 				if($name_en_for_compare==$name_tc_for_compare){
-						$combined_name=$name_en;
+						$combined_name=$name_en; 
 				}else{
 						$combined_name=$name_tc." ".$name_en;
 				}
