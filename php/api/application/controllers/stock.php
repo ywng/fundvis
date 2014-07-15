@@ -41,7 +41,6 @@ class Stock extends REST_Controller {
 	}
 
 	public function addStockByCode_post(){
-		$this->load->library('../controllers/extracter');
 		$code=$this->input->post('code');
 
 		if(!$code){
@@ -99,6 +98,7 @@ class Stock extends REST_Controller {
 	}
 	
 	private function addStockByCode($code){
+		$this->load->library('../controllers/extracter');
 		$stock_info=$this->extracter->AASTOCK_stock_getinfo($code);
 		$category=$this->stock_model->getCategoryID($stock_info["category"]);
 		
