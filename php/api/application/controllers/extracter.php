@@ -94,19 +94,24 @@ class Extracter extends REST_Controller {
 
 		foreach ($stocks as $stock){
 
-			$html = file_get_html("http://www.aastocks.com/tc/LTP/RTQuote.aspx?symbol=".$stock[$this->stock_model->KEY_stock_id]);
-			if (strlen(strstr($html->plaintext,"Sorry, stock code "))>0) {
+			$html_tc = file_get_html("http://www.aastocks.com/tc/LTP/RTQuote.aspx?symbol=".$stock[$this->stock_model->KEY_stock_id]);
+			$html_en = file_get_html("http://www.aastocks.com/en/ltp/rtquote.aspx?symbol=".$stock[$this->stock_model->KEY_stock_id]);
+			if (strlen(strstr($html_tc->plaintext,"Sorry, stock code "))>0||strlen(strstr($html_en->plaintext,"Sorry, stock code "))>0) {
 					// Stock code not found!!!
 					$this->core_controller->fail_response(101);
 
 			}else{
 				//name
-				$name_e=$html->find('title')[0];
-				$name=explode("&nbsp;",$name_e->plaintext)[0];
-				$name=trim($name);
+				$name_en_e=$html_en->find('title')[0];
+				$name_en=explode("&nbsp;",$name_en_e->plaintext)[0];
+				$name_en=trim($name_en);
+
+				$name_tr_e=$html_tr->find('title')[0];
+				$name_tr=explode("&nbsp;",$name_tr_e->plaintext)[0];
+				$name_tr=trim($name_tr);
 				
 				$data= array(
-					$this->stock_model->KEY_name =>$stock[$this->stock_model->KEY_name]." ".$name,//record both Eng & Trand Chinese name
+					$this->stock_model->KEY_name =>$name_tr." ".$name_en,//record both Eng & Trand Chinese name
 
 				);
 				$this->stock_model->update_stock_info($stock[$this->stock_model->KEY_stock_id],$data);
