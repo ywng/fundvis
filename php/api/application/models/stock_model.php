@@ -74,6 +74,18 @@ class Stock_model extends CI_Model{
         return $this->db->get($this->Table_name_stock)->result_array();
     }
 
+    public function get_all_stocks_batch1(){
+        $this->db->where($this->KEY_valid,1);
+        $this->db->where($this->KEY_stock_id."<=",1500);
+        return $this->db->get($this->Table_name_stock)->result_array();
+    }
+
+     public function get_all_stocks_batch2(){
+        $this->db->where($this->KEY_valid,1);
+        $this->db->where($this->KEY_stock_id.">",1500);
+        return $this->db->get($this->Table_name_stock)->result_array();
+    }
+
 /*
     public function get_funds_with_id_array($requiredFundIDArray){
         $this->db->or_where_in($this->KEY_fund_id,$requiredFundIDArray);

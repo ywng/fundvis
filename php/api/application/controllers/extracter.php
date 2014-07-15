@@ -45,25 +45,21 @@ class Extracter extends REST_Controller {
 
 	}
 
-	public function stock_extract_get(){
+	public function stock_extract_batch1_get(){
 
 		$this->load->model('stock_model'); 
-		$stocks = $this->stock_model->get_all_stocks();
+		$stocks = $this->stock_model->get_all_stocks_batch1();
 
-		foreach ($stocks as $stock){
+		$this->stock_extract_given_stocks($stocks);
 
-			// Create DOM from URL or file
-			$html = file_get_html($stock[$this->stock_model->KEY_link]);
-			if (strlen(strstr($stock[$this->stock_model->KEY_link],"http://www.aastocks.com/"))>0) {
-				// AASTOCK webpages
-				$this->AASTOCK_stock_extract($html,$stock);
+		
 
-			}
+	}
+	public function stock_extract_batch1_get(){
+		$this->load->model('stock_model'); 
+		$stocks = $this->stock_model->get_all_stocks_batch2();
 
-		}
-
-		$this->core_controller->successfully_processed();
-
+		$this->stock_extract_given_stocks($stocks);
 	}
 
 	public function AASTOCK_stock_getinfo($stock_code){
@@ -92,7 +88,7 @@ class Extracter extends REST_Controller {
 
 	}
 
-	public function AASTOCK_fetch_stock_name_Chinese(){
+	public function AASTOCK_fetch_stock_name_Chinese_get(){
 		$this->load->model('stock_model'); 
 		$stocks = $this->stock_model->get_all_stocks();
 
@@ -277,6 +273,21 @@ class Extracter extends REST_Controller {
 		$this->fund_model->insert_fund_daily_price($fund[$this->fund_model->KEY_fund_id],$price,$date_str);
 	}
 
+	private function stock_extract_given_stocks($stocks){
+		foreach ($stocks as $stock){
+
+			// Create DOM from URL or file
+			$html = file_get_html($stock[$this->stock_model->KEY_link]);
+			if (strlen(strstr($stock[$this->stock_model->KEY_link],"http://www.aastocks.com/"))>0) {
+				// AASTOCK webpages
+				$this->AASTOCK_stock_extract($html,$stock);
+
+			}
+
+		}
+
+		$this->core_controller->successfully_processed();
+	}
 	
 
 }
