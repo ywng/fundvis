@@ -5,7 +5,7 @@ function stockSearch(){
 
 
 
-	$(location).attr('href', $(location).attr('href')+"#stockSearchDialog");
+	$(location).attr('href', "#stockSearchDialog");
 
 
 
