@@ -13,7 +13,7 @@ class CORE_Controller {
 
     private $white_list_uri = array(
 	'fund/getAllFunds','extracter/extract','extracter/stock_extract_batch1','extracter/stock_extract_batch2','extracter/AASTOCK_fetch_stock_name_Chinese','fund/getAllPrice','fund/getAllPriceJPMORSO',
-    'stock/getAllStocks','stock/getAllPrice','stock/addStockByCode',
+    'stock/getAllStocks','stock/getStock','stock/getAllPrice','stock/addStockByCode',
     'user/fblogin','user/login'); // this will indicate the script not to run security check
 
 

@@ -43,30 +43,12 @@ class Stock_model extends CI_Model{
         parent::__construct();
     }
     
-    
-    /*
-     * 
-     */
-    /*public function get_max_date_with_id_array($requiredFundIDArray){
-        $this->db->or_where_in($this->KEY_price_fund_id,$requiredFundIDArray);
-        $this->db->select_max($this->KEY_datetime);
-        return $this->db->get($this->Table_name_price)->result();
-    }
-
-    public function get_min_date_with_id_array($requiredFundIDArray){
-        $this->db->or_where_in($this->KEY_price_fund_id,$requiredFundIDArray);
-        $this->db->select_min($this->KEY_datetime);
-        return $this->db->get($this->Table_name_price)->result();
-    }*/
-
-    public function get_max_date(){
-        $this->db->select_max($this->KEY_datetime);
-        return $this->db->get($this->Table_name_price)->result();
-    }
-
-    public function get_min_date(){
-        $this->db->select_min($this->KEY_datetime);
-        return $this->db->get($this->Table_name_price)->result();
+    //stock related functions
+    //====================================================//
+    public function get_stock_by_id($code){
+        $this->db->where($this->KEY_valid,1);
+        $this->db->where($this->KEY_stock_id,$code);
+        return $this->db->get($this->Table_name_stock)->result_array();
     }
 
     public function get_all_stocks(){
@@ -86,13 +68,36 @@ class Stock_model extends CI_Model{
         return $this->db->get($this->Table_name_stock)->result_array();
     }
 
-/*
-    public function get_funds_with_id_array($requiredFundIDArray){
-        $this->db->or_where_in($this->KEY_fund_id,$requiredFundIDArray);
-        $this->db->where($this->KEY_valid,1);
-        return $this->db->get($this->Table_name_fund)->result_array();
-    }*/
-   
+    public function addStock($data){
+        $this->db->where($this->KEY_stock_id,$data[$this->KEY_stock_id]);
+        $q = $this->db->get($this->Table_name_stock);
+        if ( $q->num_rows() == 0 ) {
+            $this->db->insert($this->Table_name_stock, $data); 
+        }else{
+            $this->db->where($this->KEY_stock_id,$data[$this->KEY_stock_id]);
+            $this->db->update($this->Table_name_stock, $data);
+        }
+    }
+
+    public function update_stock_info($id,$data){
+        $this->db->where($this->KEY_stock_id, $id);
+        $this->db->update($this->Table_name_stock, $data); 
+    }
+
+
+
+    //stock price related functions
+    //====================================================//
+
+    public function get_max_date(){
+        $this->db->select_max($this->KEY_datetime);
+        return $this->db->get($this->Table_name_price)->result();
+    }
+
+    public function get_min_date(){
+        $this->db->select_min($this->KEY_datetime);
+        return $this->db->get($this->Table_name_price)->result();
+    }
 
     public function get_all_prices(){
         $this->db->order_by($this->KEY_datetime, "desc"); 
@@ -123,22 +128,9 @@ class Stock_model extends CI_Model{
 
     }
 
-    public function update_stock_info($id,$data){
-        $this->db->where($this->KEY_stock_id, $id);
-        $this->db->update($this->Table_name_stock, $data); 
-    }
-    
+    //stock category related functions
+    //====================================================//
 
-    public function addStock($data){
-        $this->db->where($this->KEY_stock_id,$data[$this->KEY_stock_id]);
-        $q = $this->db->get($this->Table_name_stock);
-        if ( $q->num_rows() == 0 ) {
-            $this->db->insert($this->Table_name_stock, $data); 
-        }else{
-            $this->db->where($this->KEY_stock_id,$data[$this->KEY_stock_id]);
-            $this->db->update($this->Table_name_stock, $data);
-        }
-    }
     
     public function getCategoryID($category){
         $this->db->where($this->KEY_category,$category);
@@ -156,6 +148,10 @@ class Stock_model extends CI_Model{
         return $q->result_array()[0][$this->KEY_category_id];
         
     }
+
+
+
+
 }
 
 /* end of file stock_model.php */

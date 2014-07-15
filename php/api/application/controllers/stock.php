@@ -21,6 +21,23 @@ class Stock extends REST_Controller {
 
 	var $user_type = '';
 
+	public function getStock_post(){
+		$code=$this->input->post('code');
+		$stocks=$this->stock_model->get_stock_by_id($code);
+		if(count($stocks)<1){
+			//the stock code is currently not in our db, add to our db
+			$this->addStockByCode($code);
+			$stocks=$this->stock_model->get_stock_by_id($code);
+
+
+		}
+		
+		$price_arr=$this->stock_model->get_stock_price_by_id($code);
+		$this->core_controller->add_return_data('stock_info', $stocks[0]); 
+		$this->core_controller->add_return_data('price', $price_arr); 
+
+	}
+
 	public function addStockByCode_post(){
 		$this->load->library('../controllers/extracter');
 		$code=$this->input->post('code');
@@ -30,24 +47,10 @@ class Stock extends REST_Controller {
 			$this->core_controller->fail_response(101);
 
 		}
-		
-		$stock_info=$this->extracter->AASTOCK_stock_getinfo($code);
-		$category=$this->stock_model->getCategoryID($stock_info["category"]);
-		
-		$stock_data = array(
-               $this->stock_model->KEY_stock_id => $code,
-               $this->stock_model->KEY_name => $stock_info["name"],
-               $this->stock_model->KEY_link => "http://www.aastocks.com/en/ltp/rtquote.aspx?symbol=".$code ,
-               $this->stock_model->KEY_valid => 1,
-               $this->stock_model->KEY_category => $category,
-        );
-		$this->stock_model->addStock($stock_data);
-			
-		
-		$this->core_controller->add_return_data('added_stocks', $stock_data); 
-		$this->core_controller->successfully_processed();
 
+		$this->addStockByCode($code);
 	}
+
 
 	public function getAllStocks_get(){
 		$stocks = $this->stock_model->get_all_stocks();
@@ -92,6 +95,23 @@ class Stock extends REST_Controller {
 		$this->core_controller->successfully_processed();
 	}
 	
+	private function addStockByCode($code){
+		$stock_info=$this->extracter->AASTOCK_stock_getinfo($code);
+		$category=$this->stock_model->getCategoryID($stock_info["category"]);
+		
+		$stock_data = array(
+               $this->stock_model->KEY_stock_id => $code,
+               $this->stock_model->KEY_name => $stock_info["name"],
+               $this->stock_model->KEY_link => "http://www.aastocks.com/en/ltp/rtquote.aspx?symbol=".$code ,
+               $this->stock_model->KEY_valid => 1,
+               $this->stock_model->KEY_category => $category,
+        );
+		$this->stock_model->addStock($stock_data);
+			
+		
+		$this->core_controller->add_return_data('added_stocks', $stock_data); 
+		$this->core_controller->successfully_processed();
+	}
 
 	
 
