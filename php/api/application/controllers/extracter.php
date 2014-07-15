@@ -115,7 +115,9 @@ class Extracter extends REST_Controller {
 
 	}
 
-
+	//private helpers
+	//not open APIs
+	//==========================================================================================//
 
 	private function AASTOCK_stock_extract($html,$stock){
 		//go to the data section
