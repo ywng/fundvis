@@ -52,6 +52,6 @@
  
  .close:hover { background: #00d9ff; }
 
- #stockSearchDialog{
+ #stockSearchDialog >div {
  	width: 60%;
  }
