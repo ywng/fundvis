@@ -36,6 +36,8 @@ class Stock extends REST_Controller {
 		$this->core_controller->add_return_data('stock_info', $stocks[0]); 
 		$this->core_controller->add_return_data('price', $price_arr); 
 
+		$this->core_controller->successfully_processed();
+
 	}
 
 	public function addStockByCode_post(){
@@ -49,6 +51,7 @@ class Stock extends REST_Controller {
 		}
 
 		$this->addStockByCode($code);
+		$this->core_controller->successfully_processed();
 	}
 
 
@@ -110,7 +113,7 @@ class Stock extends REST_Controller {
 			
 		
 		$this->core_controller->add_return_data('added_stocks', $stock_data); 
-		$this->core_controller->successfully_processed();
+		
 	}
 
 	
