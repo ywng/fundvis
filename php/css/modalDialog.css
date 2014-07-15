@@ -51,3 +51,7 @@
  }
  
  .close:hover { background: #00d9ff; }
+
+ #stockSearchDialog{
+ 	width: 60%;
+ }
