@@ -2,10 +2,8 @@
 var fblogin_URL='user/fblogin'
 
 function logout(access_token){
-	if(localStorage.getItem("X-WealthVis-fbid")){
-	    localStorage.clear();
-	}
-	
+	localStorage.clear();
+	checkRedirectNeeded();
 }
 
 function fblogin(access_token){
