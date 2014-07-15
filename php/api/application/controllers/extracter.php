@@ -55,7 +55,7 @@ class Extracter extends REST_Controller {
 		
 
 	}
-	public function stock_extract_batch1_get(){
+	public function stock_extract_batch2_get(){
 		$this->load->model('stock_model'); 
 		$stocks = $this->stock_model->get_all_stocks_batch2();
 
