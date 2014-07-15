@@ -94,7 +94,7 @@ class Extracter extends REST_Controller {
 
 		foreach ($stocks as $stock){
 
-			$html = file_get_html("http://www.aastocks.com/tc/LTP/RTQuote.aspx?symbol=".$stock_code);
+			$html = file_get_html("http://www.aastocks.com/tc/LTP/RTQuote.aspx?symbol=".$stock[$this->stock_model->KEY_stock_id]);
 			if (strlen(strstr($html->plaintext,"Sorry, stock code "))>0) {
 					// Stock code not found!!!
 					$this->core_controller->fail_response(101);
