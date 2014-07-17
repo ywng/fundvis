@@ -23,6 +23,8 @@ class Stock extends REST_Controller {
 
 	public function getStock_post(){
 		$code=$this->input->post('code');
+		if($code==="0" ||$code==null)
+			$this->core_controller->fail_response(101);
 		$stocks=$this->stock_model->get_stock_by_id($code);
 		if(count($stocks)<1){
 			//the stock code is currently not in our db, add to our db
@@ -98,8 +100,7 @@ class Stock extends REST_Controller {
 	}
 	
 	private function addStockByCode($code){
-		if(!$code || $code==="0")
-			// Stock code not found!!!
+		if($code==="0" ||$code==null)
 			$this->core_controller->fail_response(101);
 
 		$this->load->library('../controllers/extracter');
