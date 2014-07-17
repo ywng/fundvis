@@ -59,5 +59,6 @@
  #addTransactionsDialog >div {
  	width: 60%;
  	min-height: 75%
+ 	top:-45px;
 
  }
