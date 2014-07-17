@@ -22,6 +22,7 @@
     <script src="config/config.js"></script>
 
     <link href="css/modalDialog.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
 
 </head>
 
@@ -758,7 +759,18 @@
                                             <option>5</option>
                                         </select>
                                     </div>
+                                    <div class="well">
+                                      <div id="datetimepicker1" class="input-append date">
+                                        <input data-format="dd/MM/yyyy hh:mm:ss" type="text"></input>
+                                        <span class="add-on">
+                                          <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                                          </i>
+                                        </span>
+                                      </div>
+                                    </div>
+                                    <textarea class="form-control" rows="3" placeholder="Rationale"></textarea>
                                 </form>
+                                <button type="reset" class="btn btn-default">Reset</button>
                                 </div>
 
                                 <div class="col-lg-6">
@@ -769,8 +781,13 @@
                                     <div class="form-group">
                                         <input class="form-control" placeholder="Price">
                                     </div>
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="Any Transaction Fee">
+                                    </div>
+                                    <textarea class="form-control" rows="3" placeholder="Review"></textarea>
                                     
                                 </form>
+                                 <button type="submit" class="btn btn-default">Submit</button>
                                 </div>
                              </div>
                             <!-- /.row (nested) -->
@@ -800,13 +817,18 @@
     <script src="js/helper.js"></script>
     <script src="js/calls.ajax.js"></script>
     <script src="js/stock.js"></script>
+    <script src="js/bootstrap-datetimepicker.min.js"></script>
 
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
     $(document).ready(function() {
         $('#dataTables-example').dataTable();
 
-         checkRedirectNeeded();
+        $('#datetimepicker1').datetimepicker({
+          language: 'pt-BR'
+        });
+
+        checkRedirectNeeded();
     });
     </script>
 
