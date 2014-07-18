@@ -732,6 +732,13 @@
     <div id="addTransactionsDialog" class="modalDialog">
     <div>
         <a href="#close" title="Close" class="close">X</a>
+        
+       
+          
+                <div class="col-lg-12">
+                    <h4 class="page-header">Transactions</h4>
+                </div>
+                <!-- /.col-lg-12 -->
          
                 <div class="col-lg-12">
                     <div class="panel panel-default">
@@ -748,7 +755,7 @@
                                     </div>
                                     <div class="form-group">
                                         <select class="form-control" placeholder="Type">
-                                    
+                                                <option>Type</option>
                                                 <option>Buy</option>
                                                 <option>Sell</option>
                                                 <option>Hold</option>
@@ -766,14 +773,11 @@
                                         <input class="form-control" placeholder="Stop Loss Price">
                                     </div>
                                     
-                                    
-                                    <div id="datetimepicker1" class="input-append date">
-                                        <input class="form-control" data-format="dd/MM/yyyy" type="text" placeholder="Date"></input>
-                                        <span class="add-on">
-                                          <i data-time-icon="icon-time" data-date-icon="icon-calendar">
-                                          </i>
-                                        </span>
+                                    <div class="form-group">
+                                        <textarea class="form-control" rows="3" placeholder="Rationale"></textarea>
                                     </div>
+                                    
+                                    
                                   
                                     
                                     <br>
@@ -788,15 +792,20 @@
                                     <div class="form-group">
                                          <input class="form-control" id="disabledInput" type="text" placeholder="Stock Info" disabled>
                                     </div>
+                                    <div id="datetimepicker1" class="input-append date">
+                                        <input class="form-control" data-format="dd/MM/yyyy" type="text" placeholder="Date"></input>
+                                        <span class="add-on">
+                                          <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                                          </i>
+                                        </span>
+                                    </div>
                                     <div class="form-group">
                                         <input class="form-control" placeholder="Quantity">
                                     </div>
                                     <div class="form-group">
                                         <input class="form-control" placeholder="Any Transaction Fee">
                                     </div>
-                                    <div class="form-group">
-                                        <textarea class="form-control" rows="3" placeholder="Rationale"></textarea>
-                                    </div>
+                                  
                                     <div class="form-group">
                                         <textarea class="form-control" rows="3" placeholder="Review"></textarea>
                                     </div>
