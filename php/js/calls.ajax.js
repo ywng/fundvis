@@ -1,9 +1,19 @@
 //var 
 var fblogin_URL='user/fblogin'
+var getStock_URL='stock/getStock'
+
+var onFailure=function(jqHXR, textStatus, errorThrown){
+		 console.log('ajax error:' +textStatus + ' ' + errorThrown);
+	};
 
 function logout(access_token){
 	localStorage.clear();
 	checkRedirectNeeded();
+}
+
+function getStock(code,onSuccess){
+	
+	rawAjaxCall(getStock_URL,"POST","code="+code,onSuccess,onFailure);
 }
 
 function fblogin(access_token){
@@ -20,10 +30,6 @@ function fblogin(access_token){
 
             checkLogin();
 		 }
-	};
-
-	var onFailure=function(jqHXR, textStatus, errorThrown){
-		 console.log('ajax error:' +textStatus + ' ' + errorThrown);
 	};
 
 	var data="access_token="+access_token;

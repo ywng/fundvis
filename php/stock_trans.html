@@ -751,7 +751,7 @@
                         
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="Enter Stock Code ...">
+                                        <input id="stockcode_inputbox" class="form-control" placeholder="Enter Stock Code ...">
                                     </div>
                                     <div class="form-group">
                                     
@@ -788,7 +788,7 @@
                                 <div class="col-lg-6">
 
                                     <div class="form-group">
-                                         <input class="form-control" id="disabledInput" type="text" placeholder="Stock Info" disabled>
+                                         <input class="form-control" id="stock_info_box" type="text" placeholder="Stock Info" disabled>
                                     </div>
                                     <div id="datetimepicker1" class="input-append date form-group input-group">
                                             <span class="input-group-btn add-on" style="height:34px;">
@@ -849,6 +849,18 @@
 
         $('#datetimepicker1').datetimepicker({
           language: 'pt-BR'
+        });
+
+        $( "#stockcode_inputbox" ).change(function() {
+             var onSuccess_cb=function(data, textStatus, jqXHR){
+                 if(data.status_code=='1'){
+                    $("#stock_info_box").val(data.stock_info.name+" current price: "+data.price[0].price);
+                 }else{
+                    $("#stock_info_box").val(data.message);
+                 }
+            };
+
+            getStock($( "#stockcode_inputbox" ).value,onSuccess_cb);
         });
 
         checkRedirectNeeded();
