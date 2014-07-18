@@ -742,7 +742,7 @@
          
                 <div class="col-lg-12">
                     <div class="panel panel-default">
-                        <div class="panel-heading">
+                        <div id="msg_heading" class="panel-heading">
                             Add A New Transactions
                         </div>
                         <div class="panel-body">
@@ -781,7 +781,7 @@
                                     </br>
                                     <p>
                                         <button type="reset" class="btn btn-default">Reset</button>
-                                        <button type="submit" class="btn btn-default">Submit</button>
+                                        <button id="addTransRecord" type="submit" class="btn btn-default">Submit</button>
                                     </p>
                                 </div>
 
@@ -854,13 +854,28 @@
         $( "#stockcode_inputbox" ).change(function() {
              var onSuccess_cb=function(data, textStatus, jqXHR){
                  if(data.status_code=='1'){
-                    $("#stock_info_box").val(data.stock_info.name+" Price: "+data.price[0].price+" Lot: "+data.stock_info.lot_size);
+                    $("#stock_info_box").val(data.stock_info.name+"  Price: "+data.price[0].price+"  Lot: "+data.stock_info.lot_size);
                  }else{
                     $("#stock_info_box").val(data.message);
                  }
             };
 
             getStock($( "#stockcode_inputbox").val(),onSuccess_cb);
+        });
+
+        $( "#addTransRecord" ).click(function() {
+            data = new FormData();
+            //data.append( 'file', $( '#file' )[0].files[0] );
+
+            var onSuccess_cb=function(data, textStatus, jqXHR){
+                 if(data.status_code=='1'){
+                    $("#stock_info_box").val(data.stock_info.name+"  Price: "+data.price[0].price+"  Lot: "+data.stock_info.lot_size);
+                 }else{
+                    $("#stock_info_box").val(data.message);
+                 }
+            };
+
+            addTransRecord(data,onSuccess_cb);
         });
 
         checkRedirectNeeded();

@@ -1,6 +1,7 @@
 //var 
 var fblogin_URL='user/fblogin'
 var getStock_URL='stock/getStock'
+var addTransRecord_URL='transaction/addTransactionRecord'
 
 var onFailure=function(jqHXR, textStatus, errorThrown){
 		 console.log('ajax error:' +textStatus + ' ' + errorThrown);
@@ -14,6 +15,11 @@ function logout(access_token){
 function getStock(code,onSuccess){
 	
 	rawAjaxCall(getStock_URL,"POST","code="+code,onSuccess,onFailure);
+}
+
+function addTransRecord(form_data,onSuccess){
+	
+	rawAjaxCall(addTransRecord_URL,"POST",form_data,onSuccess,onFailure);
 }
 
 function fblogin(access_token){
