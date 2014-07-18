@@ -67,6 +67,4 @@
  	
 
  }
- #datetimepicker1{
- 	z-index:99999 !important;
- }
+.datepicker {z-index: 100000000000000 !important;}
