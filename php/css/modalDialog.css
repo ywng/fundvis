@@ -67,3 +67,7 @@
  	
 
  }
+
+ .bootstrap-datetimepicker-widget dropdown-menu{
+ 	z-index:999999;
+ }
