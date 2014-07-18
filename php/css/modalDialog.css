@@ -63,11 +63,11 @@
 
  }
   #addTransactionsDialog {
- 	top:-50px;
+ 	top:-80px;
  	
 
  }
 
- .bootstrap-datetimepicker-widget dropdown-menu{
+ .bootstrap-datetimepicker-widget{
  	z-index:999999;
  }
