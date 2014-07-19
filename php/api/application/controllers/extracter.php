@@ -62,6 +62,13 @@ class Extracter extends REST_Controller {
 		$this->stock_extract_given_stocks($stocks);
 	}
 
+	public function stock_extract_batch3_get(){
+		$this->load->model('stock_model'); 
+		$stocks = $this->stock_model->get_all_stocks_batch3();
+
+		$this->stock_extract_given_stocks($stocks);
+	}
+
 	public function AASTOCK_stock_getinfo($stock_code){
 		$html = file_get_html("http://www.aastocks.com/en/ltp/rtquote.aspx?symbol=".$stock_code);
 		if (strlen(strstr($html->plaintext,"Sorry, stock code "))>0) {
