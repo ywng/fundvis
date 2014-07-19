@@ -866,7 +866,7 @@
         $( "#addTransRecord" ).click(function() {
             var formdata = new FormData();
             formdata.append( 'stock_id', $( '#stockcode_inputbox' ).val());
-            formdata.append( 'type', $( '#trans_type' ).val());
+            formdata.append( 'type', $( '#trans_type option:selected' ).text());
             formdata.append( 'price', $( '#price' ).val());
             formdata.append( 'target_price', $( '#target_price' ).val());
             formdata.append( 'stop_loss_price', $( '#stop_loss_price' ).val());
