@@ -149,13 +149,13 @@ class CORE_Controller {
             // has session token, check
             
             if ($input_session_token && $input_session_token == $result['session_token']) {
-               // if (time() - strtotime($result['expire_time']) >= 0) {
-               //     $this->CI->session_model->generate_new_session_token($id, $user_type);
-               //     $this->session = $this->CI->session_model->get_session_by_id($id, $user_type);
-               // } else {
+                   if (time() - strtotime($result['expire_time']) >= 0) {
+                      $this->CI->session_model->generate_new_session_token($id, $user_type);
+                      $this->session = $this->CI->session_model->get_session_by_id($id, $user_type);
+                   } else {
                     $this->session['session_token'] = $result['session_token'];
-                   // $this->session['expire_time'] = $result['expire_time'];
-               // }
+                    $this->session['expire_time'] = $result['expire_time'];
+                   }
                 return TRUE;
             } else {
                 return FALSE;
