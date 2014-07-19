@@ -111,7 +111,10 @@ class CORE_Controller {
             return FALSE;
         }
 
+        var_dump($input_email);
         
+        var_dump($input_session_token);
+
         $this->CI->load->model('session_model');
         $user_type = 0;
         if ($input_user_type == 'user') {
@@ -124,7 +127,7 @@ class CORE_Controller {
             if (count($user_detail) == 0) {
                 return FALSE;
             }
-            var_dump(user_detail);
+
             $this->current_user_obj = $user_detail;
             $id = $user_detail['user_id'];
 
