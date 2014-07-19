@@ -111,9 +111,9 @@ class CORE_Controller {
             return FALSE;
         }
 
-        var_dump($input_email);
+        //var_dump($input_email);
         
-        var_dump($input_session_token);
+        //var_dump($input_session_token);
 
         $this->CI->load->model('session_model');
         $user_type = 0;
