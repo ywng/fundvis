@@ -23,7 +23,7 @@ class Transaction extends REST_Controller {
 		
 		$this->load->model('user_model'); 
 		$user=$this->core_controller->get_current_user();
-
+		var_dump($user);
 		$stock_id=$this->input->post('stock_id');
 		$price=$this->input->post('price');
 		$quantity=$this->input->post('quantity');
@@ -50,6 +50,7 @@ class Transaction extends REST_Controller {
 		  
 		);
 		$trans_id = $this->transaction_model->add_record($data);
+		var_dump($trans_id);
 		/*if($trans_id<0){
 			$this->core_controller->fail_response(200);
 		}*/
