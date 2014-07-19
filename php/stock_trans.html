@@ -730,7 +730,7 @@
     </div>
 
     <div id="addTransactionsDialog" class="modalDialog">
-    <div>
+    <div style="overflow:auto;">
         <a href="#close" title="Close" class="close">X</a>
         
        
@@ -874,7 +874,7 @@
             formdata.append( 'review', $( '#review' ).val());
             formdata.append( 'trans_fee', $( '#trans_fee' ).val());
             formdata.append( 'quantity', $( '#quantity' ).val());
-         //   formdata.append( 'datetime', $( '#datetime' ).val());
+            formdata.append( 'datetime', $( '#datetime' ).val());
 
 
             var onSuccess_cb=function(data, textStatus, jqXHR){

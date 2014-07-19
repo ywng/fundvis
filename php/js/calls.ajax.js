@@ -47,6 +47,9 @@ function rawAjaxCall(relativeURL,type,data,onSuccess,onFailure){
 
 	$.ajax({
         url: apiDomain + relativeURL,
+        contentType:false,
+		processData: false,
+		cache: false,
         data:data,
         headers : {"X-WealthVis-session-token":localStorage.getItem("X-WealthVis-session-token"),"X-WealthVis-email":localStorage.getItem("X-WealthVis-email"),"X-WealthVis-user-type":localStorage.getItem("X-WealthVis-user-type")},
         type: type, 
