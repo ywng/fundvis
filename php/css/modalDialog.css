@@ -1,5 +1,6 @@
 .modalDialog {
  	position: fixed;
+ 	overflow:scroll;
  	font-family: Arial, Helvetica, sans-serif;
  	top: 0;
  	right: 0;
