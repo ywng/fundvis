@@ -129,7 +129,7 @@ class CORE_Controller {
             }
 
             $this->current_user_obj = $user_detail;
-            $id = $user_detail['user_id'];
+            $id = $user_detail[$this->CI->user_model->KEY_user_id];
 
         } else if ($input_user_type == 'admin') {
 
