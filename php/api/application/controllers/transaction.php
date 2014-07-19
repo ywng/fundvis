@@ -20,7 +20,10 @@ class Transaction extends REST_Controller {
 
 	
 	public function addTransactionRecord_post(){
-		$user_id=$this->input->post('user_id');
+		
+		$this->load->model('user_model'); 
+		$user=$this->core_controller->get_current_user();
+
 		$stock_id=$this->input->post('stock_id');
 		$price=$this->input->post('price');
 		$quantity=$this->input->post('quantity');
@@ -33,16 +36,16 @@ class Transaction extends REST_Controller {
 		$trans_fee=$this->input->post('trans_fee');
 
 		$data = array(
-		    $this->transaction_model->KEY_user_id => $user_id,
+		    $this->transaction_model->KEY_user_id => $user[$this->user_model->KEY_user_id],
 		    $this->transaction_model->KEY_stock_id => $stock_id ,
 		    $this->transaction_model->KEY_price => $price,
-		     $this->transaction_model->KEY_quantity => $quantity,
+		    $this->transaction_model->KEY_quantity => $quantity,
 		    $this->transaction_model->KEY_datetime => $datetime ,
 		    $this->transaction_model->KEY_target_price=> $target_price,
-		     $this->transaction_model->KEY_stop_loss_price => $stop_loss_price,
+		    $this->transaction_model->KEY_stop_loss_price => $stop_loss_price,
 		    $this->transaction_model->KEY_rationale => $rationale ,
 		    $this->transaction_model->KEY_review => $review,
-		     $this->transaction_model->KEY_type => $type,
+		    $this->transaction_model->KEY_type => $type,
 		    $this->transaction_model->KEY_trans_fee => $trans_fee ,
 		  
 		);
