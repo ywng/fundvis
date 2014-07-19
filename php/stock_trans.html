@@ -854,6 +854,18 @@
           language: 'pt-BR'
         });
 
+        $( "#trans_type" ).change(function() {
+            if($( '#trans_type option:selected' ).text()=="Sell"||$( '#trans_type option:selected' ).text()=="Type"){
+                $("#target_price").prop('disabled', true);
+                $("#stop_loss_price").prop('disabled', true);
+                $("#target_price").val("");
+                $("#stop_loss_price").val("");
+            }else{
+                $("#target_price").prop('disabled', false);
+                $("#stop_loss_price").prop('disabled', false);
+            }
+        }
+
         $( "#stockcode_inputbox" ).change(function() {
              var onSuccess_cb=function(data, textStatus, jqXHR){
                  if(data.status_code=='1'){
