@@ -776,7 +776,7 @@
                                     </div>
                                     
 
-                                     <textarea id="rationale" class="form-control" rows="3" placeholder="Rationale" style="height:66px;"></textarea>
+                                     <textarea id="rationale" class="form-control" rows="3" placeholder="Rationale" ></textarea>
                                   
                                     </br>
                                     <p>
@@ -788,7 +788,10 @@
                                 <div class="col-lg-6">
 
                                     <div class="form-group">
-                                         <input class="form-control" id="stock_info_box" type="text" placeholder="Stock Info" disabled>
+                                         <input class="form-control" id="stock_info_box_name" type="text" placeholder="Stock Name" disabled>
+                                    </div>
+                                     <div class="form-group">
+                                         <input class="form-control" id="stock_info_box_price" type="text" placeholder="Stock Current Price ; Lot Size" disabled>
                                     </div>
                                     <div id="datetimepicker1" class="input-append date form-group input-group">
                                             <span class="input-group-btn add-on" style="height:34px;">
@@ -806,7 +809,7 @@
                                         <input id="trans_fee" class="form-control" placeholder="Any Transaction Fee">
                                     </div>
                                   
-                                    <textarea id="review" class="form-control" rows="5" placeholder="Review"></textarea>
+                                    <textarea id="review" class="form-control" rows="3" placeholder="Review"></textarea>
                                     
                                
                                  
@@ -854,9 +857,14 @@
         $( "#stockcode_inputbox" ).change(function() {
              var onSuccess_cb=function(data, textStatus, jqXHR){
                  if(data.status_code=='1'){
-                    $("#stock_info_box").val(data.stock_info.name+"  Price: "+data.price[0].price+"  Lot: "+data.stock_info.lot_size);
+                    $("#stock_info_box_name").val(data.stock_info.name);
+                    if(data.price[0].price){
+                        $("#stock_info_box_price").val("Current Price: "+data.price[0].price+"  Lot: "+data.stock_info.lot_size));
+                    }else{
+                        $("#stock_info_box_price").val("Current Price: 'to be fetching'  Lot: "+data.stock_info.lot_size));
+                    }
                  }else{
-                    $("#stock_info_box").val(data.message);
+                    $("#stock_info_box_name").val(data.message);
                  }
             };
 
