@@ -858,13 +858,14 @@
              var onSuccess_cb=function(data, textStatus, jqXHR){
                  if(data.status_code=='1'){
                     $("#stock_info_box_name").val(data.stock_info.name);
-                    if(data.price.length>1){
+                    if(data.price.length>0){
                         $("#stock_info_box_price").val("Current Price: "+data.price[0].price+"   Lot Size: "+data.stock_info.lot_size);
                     }else{
                         $("#stock_info_box_price").val("Current Price: 'to be fetching'   Lot Size: "+data.stock_info.lot_size);
                     }
                  }else{
                     $("#stock_info_box_name").val(data.message);
+                    $("#stock_info_box_price").val("");
                  }
             };
 
