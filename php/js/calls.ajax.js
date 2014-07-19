@@ -15,7 +15,7 @@ function logout(access_token){
 function getStock(code,onSuccess){
 	
 	var data=new FormData();
-	formdata.append( 'code', code);
+	data.append( 'code', code);
 
 	rawAjaxCall(getStock_URL,"POST",data,onSuccess,onFailure);
 }
@@ -42,7 +42,7 @@ function fblogin(access_token){
 	};
 
 	var data=new FormData();
-	formdata.append( 'access_token', access_token);
+	data.append( 'access_token', access_token);
 
 	rawAjaxCall(fblogin_URL,"POST",data,onSuccess,onFailure);
 }
