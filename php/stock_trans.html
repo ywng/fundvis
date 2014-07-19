@@ -755,7 +755,7 @@
                                     </div>
                                     <div class="form-group">
                                     
-                                        <select class="form-control" placeholder="Type">
+                                        <select id="trans_type" class="form-control" placeholder="Type">
                                                 <option>Type</option>
                                                 <option>Buy</option>
                                                 <option>Sell</option>
@@ -766,17 +766,17 @@
                                     </div>
                                    
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="Price">
+                                        <input id="price" class="form-control" placeholder="Price">
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="Target Price">
+                                        <input id="target_price" class="form-control" placeholder="Target Price">
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="Stop Loss Price">
+                                        <input id="stop_loss_price" class="form-control" placeholder="Stop Loss Price">
                                     </div>
                                     
 
-                                     <textarea class="form-control" rows="3" placeholder="Rationale" style="height:66px;"></textarea>
+                                     <textarea id="rationale" class="form-control" rows="3" placeholder="Rationale" style="height:66px;"></textarea>
                                   
                                     </br>
                                     <p>
@@ -795,18 +795,18 @@
                                                 <button class="btn btn-default" type="button" style="height:34px;"><i class="fa fa-calendar"></i>
                                                 </button>
                                             </span>
-                                            <input type="text" class="form-control" data-format="dd/MM/yyyy" placeholder="Date">
+                                            <input id="datetime" type="text" class="form-control" data-format="dd/MM/yyyy" placeholder="Date">
                                              
                                     </div>
                                   
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="Quantity">
+                                        <input id="quantity" class="form-control" placeholder="Quantity">
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="Any Transaction Fee">
+                                        <input id="trans_fee" class="form-control" placeholder="Any Transaction Fee">
                                     </div>
                                   
-                                    <textarea class="form-control" rows="5" placeholder="Review"></textarea>
+                                    <textarea id="review" class="form-control" rows="5" placeholder="Review"></textarea>
                                     
                                
                                  
@@ -864,18 +864,28 @@
         });
 
         $( "#addTransRecord" ).click(function() {
-            data = new FormData();
-            //data.append( 'file', $( '#file' )[0].files[0] );
+            var formdata = new FormData();
+            formdata.append( 'stock_id', $( '#stockcode_inputbox' ).val());
+            formdata.append( 'type', $( '#trans_type' ).val());
+            formdata.append( 'price', $( '#price' ).val());
+            formdata.append( 'target_price', $( '#target_price' ).val());
+            formdata.append( 'stop_loss_price', $( '#stop_loss_price' ).val());
+            formdata.append( 'rationale', $( '#rationale' ).val());
+            formdata.append( 'review', $( '#review' ).val());
+            formdata.append( 'trans_fee', $( '#trans_fee' ).val());
+            formdata.append( 'quantity', $( '#quantity' ).val());
+            formdata.append( 'datetime', $( '#datetime' ).val());
+
 
             var onSuccess_cb=function(data, textStatus, jqXHR){
                  if(data.status_code=='1'){
-                    $("#stock_info_box").val(data.stock_info.name+"  Price: "+data.price[0].price+"  Lot: "+data.stock_info.lot_size);
+                    $("#msg_heading").val("Transaction added successfully, transaction ID: "+data.transaction_id);
                  }else{
-                    $("#stock_info_box").val(data.message);
+                    $("#msg_heading").val(data.message);
                  }
             };
 
-            addTransRecord(data,onSuccess_cb);
+            addTransRecord(formdata,onSuccess_cb);
         });
 
         checkRedirectNeeded();
