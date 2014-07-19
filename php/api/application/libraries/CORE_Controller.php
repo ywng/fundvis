@@ -103,9 +103,9 @@ class CORE_Controller {
     
     private function credentials_check() {
 
-        $input_email = $this->CI->input->get_request_header('X-WealthVis-email', TRUE);
-        $input_session_token = $this->CI->input->get_request_header('X-WealthVis-session-token', TRUE);
-        $input_user_type = $this->CI->input->get_request_header('X-WealthVis-user-type', TRUE);
+        $input_email = $this->CI->input->get_request_header('X-email', TRUE);
+        $input_session_token = $this->CI->input->get_request_header('X-session-token', TRUE);
+        $input_user_type = $this->CI->input->get_request_header('X-user-type', TRUE);
 
         if ($input_email == FALSE || $input_user_type == FALSE || $input_session_token == FALSE) {
             return FALSE;
