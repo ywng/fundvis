@@ -124,7 +124,7 @@ class CORE_Controller {
             if (count($user_detail) == 0) {
                 return FALSE;
             }
-
+            var_dump(user_detail);
             $this->current_user_obj = $user_detail;
             $id = $user_detail['user_id'];
 
