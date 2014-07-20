@@ -50,12 +50,12 @@ class Transaction extends REST_Controller {
 		  
 		);
 
-		var_dump($data);
 		$trans_id = $this->transaction_model->add_record($data);
-		var_dump($trans_id);
+	
 		if($trans_id<0){
 			$this->core_controller->fail_response(200);
 		}
+		
 		$this->core_controller->add_return_data('transaction_id', $trans_id); 
 		$this->core_controller->successfully_processed();
 
