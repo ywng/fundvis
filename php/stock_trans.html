@@ -742,9 +742,9 @@
          
                 <div class="col-lg-12">
                     <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <div class="form-group has-success">
-                                <label id="msg_heading" class="control-label" for="inputSuccess">Add A New Transactions</label>
+                        <div  class="panel-heading">
+                            <div id="msg_div" class="form-group has-success" style="height:20px;">
+                                <label id="msg_heading" class="control-label">Add A New Transactions</label>
                             </div>
                         </div>
                         <div class="panel-body">
@@ -902,11 +902,11 @@
 
             var onSuccess_cb=function(data, textStatus, jqXHR){
                  if(data.status_code==1){
-                    $("#msg_heading").prop('for', 'inputSuccess');
+                    $("#msg_div").prop('class', 'form-group has-success');
                     $("#msg_heading").text("Transaction added successfully, transaction ID: "+data.transaction_id);
                     
                  }else{
-                    $("#msg_heading").prop('for', 'inputError');
+                    $("#msg_div").prop('class', 'form-group has-error');
                     $("#msg_heading").text(data.message);
                  }
             };
