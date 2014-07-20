@@ -742,8 +742,8 @@
          
                 <div class="col-lg-12">
                     <div class="panel panel-default">
-                        <div id="msg_heading" class="panel-heading">
-                            Add A New Transactions
+                        <div class="panel-heading">
+                            <label id="msg_heading">Add A New Transactions</label>
                         </div>
                         <div class="panel-body">
                             <div class="row">
@@ -769,10 +769,10 @@
                                         <input id="price" class="form-control" placeholder="Price">
                                     </div>
                                     <div class="form-group">
-                                        <input id="target_price" class="form-control" placeholder="Target Price">
+                                        <input id="target_price" class="form-control" placeholder="Target Price" disabled>
                                     </div>
                                     <div class="form-group">
-                                        <input id="stop_loss_price" class="form-control" placeholder="Stop Loss Price">
+                                        <input id="stop_loss_price" class="form-control" placeholder="Stop Loss Price" disabled>
                                     </div>
                                     
 
@@ -899,7 +899,7 @@
 
 
             var onSuccess_cb=function(data, textStatus, jqXHR){
-                 if(data.status_code=='1'){
+                 if(data.status_code==1){
                     $("#msg_heading").val("Transaction added successfully, transaction ID: "+data.transaction_id);
                  }else{
                     $("#msg_heading").val(data.message);
