@@ -743,7 +743,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <label id="msg_heading">Add A New Transactions</label>
+                            <label id="msg_heading" class="control-label" for="inputSuccess">Add A New Transactions</label>
                         </div>
                         <div class="panel-body">
                             <div class="row">
@@ -900,9 +900,12 @@
 
             var onSuccess_cb=function(data, textStatus, jqXHR){
                  if(data.status_code==1){
-                    $("#msg_heading").val("Transaction added successfully, transaction ID: "+data.transaction_id);
+                    $("#msg_heading").prop('for', 'inputSuccess');
+                    $("#msg_heading").text("Transaction added successfully, transaction ID: "+data.transaction_id);
+                    
                  }else{
-                    $("#msg_heading").val(data.message);
+                    $("#msg_heading").prop('for', 'inputError');
+                    $("#msg_heading").text(data.message);
                  }
             };
 
