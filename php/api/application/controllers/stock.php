@@ -42,6 +42,17 @@ class Stock extends REST_Controller {
 
 	}
 
+	public function getCurrentStockPrice_post(){
+		$code=$this->input->post('code');
+		if($code==="0" ||$code==null)
+			$this->core_controller->fail_response(101);
+		
+		$this->core_controller->add_return_data('price', $this->stock_model->get_curr_stock_price_by_id($code)); 
+
+		$this->core_controller->successfully_processed();
+
+	}
+
 	public function addStockByCode_post(){
 		$code=$this->input->post('code');
 

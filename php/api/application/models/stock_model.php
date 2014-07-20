@@ -118,6 +118,19 @@ class Stock_model extends CI_Model{
         return $this->db->get($this->Table_name_price)->result_array();
     }
 
+    public function get_curr_stock_price_by_id($id){
+        $this->db->order_by($this->KEY_datetime, "desc"); 
+        $this->db->select($this->KEY_price.",".$this->KEY_datetime);
+        $this->db->where($this->KEY_price_stock_id,$id);
+        
+        $q=$this->db->get($this->Table_name_price);
+        if( $q->num_rows() >0){
+            return $q->result_array()[0];
+        } else{
+            return null;
+        }
+    }
+
     public function insert_stock_price($id, $price,$date_str){
         $date = new DateTime($date_str);
         $this->db->where($this->KEY_price_stock_id,$id);
