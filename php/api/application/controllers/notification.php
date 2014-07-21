@@ -47,9 +47,9 @@ class Notification extends REST_Controller {
 			$notify_type=-1;
 			$notification_id=-1;
 			$title="";
-			$msg="Stock Code: ".$stock_code.'\n';
-			$msg=$msg."Stock Name: ".$stock[$this->stock_model->KEY_name].'\n';
-			$msg=$msg."Current Price: ".$stock_code_curr_price.'\n\n';
+			$msg="Stock Code: ".$stock_code.'\r\n';
+			$msg=$msg."Stock Name: ".$stock[$this->stock_model->KEY_name].'\r\n';
+			$msg=$msg."Current Price: ".$stock_code_curr_price.'\r\n\r\n';
 
 			if($stock_code_curr_price>=$target_price){
 
@@ -148,6 +148,7 @@ class Notification extends REST_Controller {
 		$user=$this->user_model->get_user_by_id($uid);
 
 		$this->load->library('email', $config);
+		$this->email->set_newline('\r\n');
 		$this->email->from('WealthVis@gmail.com', 'WealthVis');
 		$this->email->to($user[$this->user_model->KEY_email]); 
 		$this->email->subject($title.' Notification ID:'.$notification_id.")");
