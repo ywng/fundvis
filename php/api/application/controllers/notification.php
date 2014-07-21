@@ -28,6 +28,10 @@ class Notification extends REST_Controller {
 		$trans_array=$this->transaction_model->get_all_trans_record();
 
 		foreach($trans_array as $trans){
+			$trans_type=$trans[$this->transaction_model->KEY_type];
+			if($trans_type=="Sell")
+				continue; //sell trans no need check
+
 			$stock_code=$trans[$this->transaction_model->KEY_stock_id];
 			$target_price=$trans[$this->transaction_model->KEY_target_price];
 			$stop_loss_price=$trans[$this->transaction_model->KEY_stop_loss_price];
