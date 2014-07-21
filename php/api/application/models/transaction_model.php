@@ -36,6 +36,11 @@ class Transaction_model extends CI_Model{
         }
     }
 
+    public function get_all_trans_record(){
+        return $this->db->get($this->Table_name_trans)->result_array();  
+        
+    }
+
 
 
 }

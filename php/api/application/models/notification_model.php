@@ -7,32 +7,13 @@
  */
 class Notification_model extends CI_Model{
 
-    var $KEY_stock_id = 'code';
-    var $KEY_name = 'name';
-    var $KEY_link = 'link';
-    var $KEY_remark = 'remark';
-    var $KEY_valid = 'valid';
-    var $Table_name_stock = 'Stock';
-
-
-    var $Table_name_price = 'StockPrice';
-    var $KEY_price_stock_id = 'sid';
-    var $KEY_price = 'price';
-    var $KEY_datetime = 'datetime';
-
-    //stock info
-    var $KEY_vol = 'vol';
-    var $KEY_lot_size = 'lot_size';
-    var $KEY_turnover = 'turnover';
-    var $KEY_52week_low = '52w_low';
-    var $KEY_52week_high = '52w_high';
-    var $KEY_daily_low = 'daily_low';
-    var $KEY_daily_high = 'daily_high';
-    var $KEY_mkt_capital = 'mkt_cap';
-    var $KEY_PE_Ratio = 'pe_ratio';
-    var $KEY_EPS = 'eps';
-    var $KEY_yield = 'yield';
-    var $KEY_previous_close = 'prev_close';
+    var $KEY_stock_id = 'sid';
+    var $KEY_user_id = 'uid';
+    var $KEY_notification_id = 'id';
+    var $KEY_msg = 'msg';
+    var $KEY_type = 'type';
+    var $KEY_val_at_notify = 'val_at_notify';
+    var $Table_name_notification = 'NotificationHistory';
 
 
     function __construct() {
@@ -41,7 +22,21 @@ class Notification_model extends CI_Model{
     
    
     //====================================================//
-   
+   public function get_notification($uid,$sid,$type)
+   {
+        $this->db->where($this->KEY_stock_id,$sid);
+        $this->db->where($this->KEY_user_id,$uid);
+        $this->db->where($this->KEY_type,$type);
+        
+        $q=$this->db->get($this->Table_name_price);
+        if( $q->num_rows() >0){
+            return $q->result_array()[0];
+        } else{
+            return null;
+        }
+
+
+   }
 
 
 
