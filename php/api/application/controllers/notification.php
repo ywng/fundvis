@@ -88,9 +88,9 @@ class Notification extends REST_Controller {
 						//the curr price diff from the price of last notification by 1%
 						$notification_id=$last_notification[$this->notification_model->KEY_notification_id];
 						$notification_data = array(
-							$this->notification_model->update_record($notification_data);
 							$this->notification_model->KEY_val_at_notify => $stock_code_curr_price,
 						);
+						$this->notification_model->update_record($notification_id,$notification_data);
 						$this->notify($uid,$msg,$notification_id);
 
 					}
@@ -124,7 +124,50 @@ class Notification extends REST_Controller {
 
 	private function notify_email($uid,$msg,$notification_id)
 	{
-		var_dump($msg);
+		var_dump($msg);//test
+		  /* $config = Array(		
+		    'protocol' => 'smtp',
+		    'smtp_host' => 'ssl://smtp.googlemail.com',
+		    'smtp_port' => 465,
+		    'smtp_user' => 'taxibook.no.reply@gmail.com',  //use our google ac to send the email
+		    'smtp_pass' => 'taxibook123',
+		    'smtp_timeout' => '4',
+		    'mailtype'  => 'text', 
+		    'charset'   => 'iso-8859-1'
+		    );
+
+		    $message = 
+'Dear '.$passenger['first_name'].',
+
+Thank you for booking a taxi journey using our app!
+
+The journey details:
+Order id: '.$oid.'
+Date & Time: '.$order['order_time'].'
+From: '.$order['location_from'].'
+To: '.$order['location_to'].'
+
+You can rate the driver and comment by clicking the following link:
+'.$link.'
+
+Thank you!
+
+Best regards,
+Taxibook';
+
+		
+ 
+			$this->load->library('email', $config);
+			$this->email->set_newline("\r\n");
+			$this->email->from('taxibook.no.reply@gmail.com', 'TaxiBook');
+			$this->email->to($passenger['email']); 
+			$this->email->subject('[no-reply]Please rate your driver.');
+			$this->email->message($message);	
+
+			$this->email->send();
+
+			$this->core_controller->add_return_data('mail details', $this->email->print_debugger())->successfully_processed();
+		*/
 	}
 	
 
