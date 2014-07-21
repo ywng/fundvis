@@ -43,9 +43,9 @@ class Notification extends REST_Controller {
 			$notify_type=-1;
 			$notification_id=-1;
 			$title="";
-			$msg="Stock Code: ".$stock_code.'\n';
-			$msg=$msg."Stock Name: ".$stock[$this->stock_model->KEY_name].'\n';
-			$msg=$msg."Current Price: ".$stock_code_curr_price.'\n\n';
+			$msg="Stock Code: ".$stock_code.'\r\n';
+			$msg=$msg."Stock Name: ".$stock[$this->stock_model->KEY_name].'\r\n';
+			$msg=$msg."Current Price: ".$stock_code_curr_price.'\r\n\r\n';
 
 			if($stock_code_curr_price>=$target_price){
 

@@ -25,17 +25,17 @@ class Stock extends REST_Controller {
 		$code=$this->input->post('code');
 		if($code==="0" ||$code==null)
 			$this->core_controller->fail_response(101);
-		$stocks=$this->stock_model->get_stock_by_id($code);
-		if(count($stocks)<1){
+		$stock=$this->stock_model->get_stock_by_id($code);
+		if($stock==null){
 			//the stock code is currently not in our db, add to our db
 			$this->addStockByCode($code);
-			$stocks=$this->stock_model->get_stock_by_id($code);
+			$stock=$this->stock_model->get_stock_by_id($code);
 
 
 		}
 		
 		$price_arr=$this->stock_model->get_stock_price_by_id($code);
-		$this->core_controller->add_return_data('stock_info', $stocks[0]); 
+		$this->core_controller->add_return_data('stock_info', $stock); 
 		$this->core_controller->add_return_data('price', $price_arr); 
 
 		$this->core_controller->successfully_processed();

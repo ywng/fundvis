@@ -48,7 +48,14 @@ class Stock_model extends CI_Model{
     public function get_stock_by_id($code){
         $this->db->where($this->KEY_valid,1);
         $this->db->where($this->KEY_stock_id,$code);
-        return $this->db->get($this->Table_name_stock)->result_array()[0];
+     
+        $q=$this->db->get($this->Table_name_stock);
+        if( $q->num_rows() >0){
+            return $q->result_array()[0];
+        } else{
+            return null;
+        }
+    
     }
 
     public function get_all_stocks(){
