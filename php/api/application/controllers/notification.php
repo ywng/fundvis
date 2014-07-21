@@ -35,19 +35,23 @@ class Notification extends REST_Controller {
 			$uid=$trans[$this->transaction_model->KEY_user_id];
 
 			$stock_code_curr_price=$this->stock_model->get_curr_stock_price_by_id($stock_code)["price"];
+			$stock=$this->stock_model->get_stock_price_by_id($stock_code);
 
 
 			//notification rules
 
 			$notify_type=-1;
-			$msg="";
+			$msg="Stock Code: ".$stock_code.'\n';
+			$msg=$msg."Stock Name: ".$stock[$this->stock_model->KEY_name].'\n';
+			$msg=$msg."Current Price: ".$stock_code_curr_price.'\n\n';
+
 			if($stock_code_curr_price>=$target_price){
 
 				// rule 1: greater than target price
 				// & 
 				// not notify before || the curr price diff from the price of last notification by 1%
 				$notify_type=1;//type is 1 too
-				$msg=" is equal to or greater than target price ("+$target_price+")";
+				$msg="The current price is equal to or greater than target price (".$target_price.")";
 
 
 			}else if($stock_code_curr_price<=$stop_loss_price){
@@ -56,7 +60,7 @@ class Notification extends REST_Controller {
 				// & 
 				// not notify before || the curr price diff from the price of last notification by 1%
 				$notify_type=2;
-				$msg=" is equal to or lower than stop loss price ("+$stop_loss_price+")";
+				$msg="The current price is equal to or lower than stop loss price (".$stop_loss_price.")";
 				
 			}
 
