@@ -139,6 +139,8 @@ class Notification extends REST_Controller {
 		    'charset'   => 'iso-8859-1'
 		);
 
+		$this->load->model('user_model');
+
 		$user=$this->user_model->get_user_by_id($uid);
 
 		$this->load->library('email', $config);
