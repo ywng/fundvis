@@ -28,7 +28,7 @@ class Notification_model extends CI_Model{
         $this->db->where($this->KEY_user_id,$uid);
         $this->db->where($this->KEY_type,$type);
         
-        $q=$this->db->get($this->Table_name_price);
+        $q=$this->db->get($this->Table_name_notification);
         if( $q->num_rows() >0){
             return $q->result_array()[0];
         } else{
