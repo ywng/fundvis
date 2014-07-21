@@ -41,6 +41,8 @@ class Notification extends REST_Controller {
 			//notification rules
 
 			$notify_type=-1;
+			$notification_id=-1;
+			$title="";
 			$msg="Stock Code: ".$stock_code.'\n';
 			$msg=$msg."Stock Name: ".$stock[$this->stock_model->KEY_name].'\n';
 			$msg=$msg."Current Price: ".$stock_code_curr_price.'\n\n';
@@ -52,7 +54,7 @@ class Notification extends REST_Controller {
 				// not notify before || the curr price diff from the price of last notification by 1%
 				$notify_type=1;//type is 1 too
 				$msg=$msg."The current price is equal to or greater than target price (".$target_price.")";
-
+				$title="Target Price Notification (Stock:".$stock_code;
 
 			}else if($stock_code_curr_price<=$stop_loss_price){
 			
@@ -61,7 +63,7 @@ class Notification extends REST_Controller {
 				// not notify before || the curr price diff from the price of last notification by 1%
 				$notify_type=2;
 				$msg=$msg."The current price is equal to or lower than stop loss price (".$stop_loss_price.")";
-				
+				$title="Stop Loss Notification (Stock:".$stock_code;
 			}
 
 			if($notify_type!=-1){//will notify
@@ -78,7 +80,7 @@ class Notification extends REST_Controller {
       		    	);
 
 					$notification_id=$this->notification_model->add_record($notification_data);
-					$this->notify($uid,$msg,$notification_id);
+					$this->notify($uid,$title,$msg,$notification_id);
 
 				}else{
 					$val_at_last_notify=$last_notification[$this->notification_model->KEY_val_at_notify];
@@ -91,7 +93,7 @@ class Notification extends REST_Controller {
 							$this->notification_model->KEY_val_at_notify => $stock_code_curr_price,
 						);
 						$this->notification_model->update_record($notification_id,$notification_data);
-						$this->notify($uid,$msg,$notification_id);
+						$this->notify($uid,$title,$msg,$notification_id);
 
 					}
 
@@ -105,7 +107,7 @@ class Notification extends REST_Controller {
 
 		}//end for each
 
-		if($notification_id){
+		if($notification_id!=-1){
 			$this->core_controller->add_return_data('notification_id', $notification_id); 
 		}
 
@@ -115,59 +117,41 @@ class Notification extends REST_Controller {
 
 	//===========================private functions=========
 
-	private function notify($uid,$msg,$notification_id)
+	private function notify($uid,$title,$msg,$notification_id)
 	{
 
-		$this->notify_email($uid,$msg,$notification_id);
+		$this->notify_email($uid,$title,$msg,$notification_id);
 
 	}
 
-	private function notify_email($uid,$msg,$notification_id)
+	private function notify_email($uid,$title,$msg,$notification_id)
 	{
-		var_dump($msg);//test
-		  /* $config = Array(		
+		//var_dump($msg);//test
+	    
+	    $config = Array(		
 		    'protocol' => 'smtp',
 		    'smtp_host' => 'ssl://smtp.googlemail.com',
 		    'smtp_port' => 465,
-		    'smtp_user' => 'taxibook.no.reply@gmail.com',  //use our google ac to send the email
-		    'smtp_pass' => 'taxibook123',
+		    'smtp_user' => 'WealthVis@gmail.com',  //use our google ac to send the email
+		    'smtp_pass' => 'abcd1919',
 		    'smtp_timeout' => '4',
 		    'mailtype'  => 'text', 
 		    'charset'   => 'iso-8859-1'
-		    );
+		);
 
-		    $message = 
-'Dear '.$passenger['first_name'].',
+		$user=$this->user_model->get_user_by_id($uid);
 
-Thank you for booking a taxi journey using our app!
+		$this->load->library('email', $config);
+		$this->email->set_newline("\r\n");
+		$this->email->from('WealthVis@gmail.com', 'WealthVis');
+		$this->email->to($user[$this->user_model->KEY_email]); 
+		$this->email->subject($title.' Notification ID:'.$notification_id.")");
+		$this->email->message($msg);	
 
-The journey details:
-Order id: '.$oid.'
-Date & Time: '.$order['order_time'].'
-From: '.$order['location_from'].'
-To: '.$order['location_to'].'
+		$this->email->send();
 
-You can rate the driver and comment by clicking the following link:
-'.$link.'
-
-Thank you!
-
-Best regards,
-Taxibook';
-
-		
- 
-			$this->load->library('email', $config);
-			$this->email->set_newline("\r\n");
-			$this->email->from('taxibook.no.reply@gmail.com', 'TaxiBook');
-			$this->email->to($passenger['email']); 
-			$this->email->subject('[no-reply]Please rate your driver.');
-			$this->email->message($message);	
-
-			$this->email->send();
-
-			$this->core_controller->add_return_data('mail details', $this->email->print_debugger())->successfully_processed();
-		*/
+		$this->core_controller->add_return_data('mail_details', $this->email->print_debugger())->successfully_processed();
+	
 	}
 	
 
