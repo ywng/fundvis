@@ -35,7 +35,7 @@ class Notification extends REST_Controller {
 			$uid=$trans[$this->transaction_model->KEY_user_id];
 
 			$stock_code_curr_price=$this->stock_model->get_curr_stock_price_by_id($stock_code)["price"];
-			$stock=$this->stock_model->get_stock_price_by_id($stock_code);
+			$stock=$this->stock_model->get_stock_by_id($stock_code);
 
 
 			//notification rules
@@ -66,10 +66,19 @@ class Notification extends REST_Controller {
 
 			if($notify_type!=-1){//will notify
 				$last_notification=$this->notification_model->get_notification($uid,$stock_code,$notify_type);
+
 				if(!$last_notification){
 					//no last notification, so do notify
+					$notification_data = array(
+		               $this->notification_model->KEY_stock_id => $stock_code,
+		               $this->notification_model->KEY_user_id => $uid,
+		               $this->notification_model->KEY_type => $notify_type,
+		               $this->notification_model->KEY_val_at_notify => $stock_code_curr_price,
+		               $this->notification_model->KEY_msg => $msg,
+      		    	);
 
-					$this->notify($uid,$msg);
+					$notification_id=$this->notification_model->add_record($notification_data);
+					$this->notify($uid,$msg,$notification_id);
 
 				}else{
 					$val_at_last_notify=$last_notification[$this->notification_model->KEY_val_at_notify];
@@ -77,8 +86,12 @@ class Notification extends REST_Controller {
 
 					if($percent_diff>1){
 						//the curr price diff from the price of last notification by 1%
-					
-						$this->notify($uid,$msg);
+						$notification_id=$last_notification[$this->notification_model->KEY_notification_id];
+						$notification_data = array(
+							$this->notification_model->update_record($notification_data);
+							$this->notification_model->KEY_val_at_notify => $stock_code_curr_price,
+						);
+						$this->notify($uid,$msg,$notification_id);
 
 					}
 
@@ -92,20 +105,24 @@ class Notification extends REST_Controller {
 
 		}//end for each
 
+		if($notification_id){
+			$this->core_controller->add_return_data('notification_id', $notification_id); 
+		}
+
 		$this->core_controller->successfully_processed();
 
 	}
 
 	//===========================private functions=========
 
-	private function notify($uid,$msg)
+	private function notify($uid,$msg,$notification_id)
 	{
 
-		$this->notify_email($uid,$msg);
+		$this->notify_email($uid,$msg,$notification_id);
 
 	}
 
-	private function notify_email($uid,$msg)
+	private function notify_email($uid,$msg,$notification_id)
 	{
 		var_dump($msg);
 	}

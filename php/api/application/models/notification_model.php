@@ -38,6 +38,26 @@ class Notification_model extends CI_Model{
 
    }
 
+   public function add_record($data)
+   {
+        $this->db->insert($this->Table_name_notification, $data); 
+        if ($this->db->affected_rows() > 0) {
+            return $this->db->insert_id();
+        } else {
+            return -1;
+        }
+
+   }
+
+    public function update_record($notification_id,$data)
+   {
+        $this->db->where($this->KEY_notification_id, $notification_id);
+        $this->db->update($this->Table_name_notification, $data); 
+
+
+   }
+
+
 
 
 
