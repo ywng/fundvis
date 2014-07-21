@@ -140,7 +140,8 @@ class Notification extends REST_Controller {
 		    'smtp_pass' => 'abcd1919',
 		    'smtp_timeout' => '4',
 		    'mailtype'  => 'text', 
-		    'charset'   => 'iso-8859-1'
+		    'charset'   => 'iso-8859-1',
+		    'wordwrap' => TRUE,
 		);
 
 		$this->load->model('user_model');
