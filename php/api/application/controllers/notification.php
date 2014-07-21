@@ -51,7 +51,7 @@ class Notification extends REST_Controller {
 				// & 
 				// not notify before || the curr price diff from the price of last notification by 1%
 				$notify_type=1;//type is 1 too
-				$msg="The current price is equal to or greater than target price (".$target_price.")";
+				$msg=$msg."The current price is equal to or greater than target price (".$target_price.")";
 
 
 			}else if($stock_code_curr_price<=$stop_loss_price){
@@ -60,7 +60,7 @@ class Notification extends REST_Controller {
 				// & 
 				// not notify before || the curr price diff from the price of last notification by 1%
 				$notify_type=2;
-				$msg="The current price is equal to or lower than stop loss price (".$stop_loss_price.")";
+				$msg=$msg."The current price is equal to or lower than stop loss price (".$stop_loss_price.")";
 				
 			}
 
