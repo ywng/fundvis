@@ -744,7 +744,7 @@
                     <div class="panel panel-default">
                         <div  class="panel-heading" style="height:40px;">
                             <div id="msg_div" class="form-group has-success" style="height:20px;">
-                                <label id="msg_heading" class="control-label">Add A New Transaction</label>
+                                <label id="msg_heading" class="control-label">Add a New Transaction</label>
                             </div>
                         </div>
                         <div class="panel-body">
@@ -782,7 +782,7 @@
                                   
                                     </br>
                                     <p>
-                                        <button type="reset" class="btn btn-default">Reset</button>
+                                        <button id="resetForm" type="reset" class="btn btn-default">Reset</button>
                                         <button id="addTransRecord" type="submit" class="btn btn-default">Submit</button>
                                     </p>
                                 </div>
@@ -902,9 +902,10 @@
 
             var onSuccess_cb=function(data, textStatus, jqXHR){
                  if(data.status_code==1){
+                     //reset the form after successfully done it.
+                    $("#resetForm").click();
                     $("#msg_div").prop('class', 'form-group has-success');
                     $("#msg_heading").text("Transaction added successfully, transaction ID: "+data.transaction_id);
-                    
                  }else{
                     $("#msg_div").prop('class', 'form-group has-error');
                     $("#msg_heading").text(data.message);
@@ -912,6 +913,11 @@
             };
 
             addTransRecord(formdata,onSuccess_cb);
+        });
+        
+        $( "#resetForm" ).click(function() {
+             $("#msg_div").prop('class', 'form-group has-success');
+             $("#msg_heading").text("Add a New Transaction");
         });
 
         checkRedirectNeeded();
