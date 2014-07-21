@@ -887,6 +887,8 @@
         });
 
         $( "#addTransRecord" ).click(function() {
+            if($('#stock_info_box_name').text()="No such stock!")
+                return;
             var formdata = new FormData();
             formdata.append( 'stock_id', $( '#stockcode_inputbox' ).val());
             formdata.append( 'type', $( '#trans_type option:selected' ).text());
