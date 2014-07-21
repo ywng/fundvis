@@ -21,7 +21,7 @@ class Stock extends REST_Controller {
 	var $user_type = 'user';
 
 	
-	function routine_trans_target_stop_loss_check_get()
+	public function routine_trans_target_stop_loss_check_get()
 	{
 		$this->load->model('transaction_model'); 
 		$this->load->model('stock_model'); 
