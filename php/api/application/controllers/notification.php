@@ -156,7 +156,6 @@ class Notification extends REST_Controller {
 
 		$this->email->send();
 
-		$this->core_controller->add_return_data('mail_details', $this->email->print_debugger())->successfully_processed();
 	
 	}
 	
