@@ -148,7 +148,7 @@ class Notification extends REST_Controller {
 		$user=$this->user_model->get_user_by_id($uid);
 
 		$this->load->library('email', $config);
-		$this->email->set_newline('\r\n');
+		$this->email->set_newline("\r\n");
 		$this->email->from('WealthVis@gmail.com', 'WealthVis');
 		$this->email->to($user[$this->user_model->KEY_email]); 
 		$this->email->subject($title.' Notification ID:'.$notification_id.")");
