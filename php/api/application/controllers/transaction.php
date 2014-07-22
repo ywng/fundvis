@@ -49,6 +49,8 @@ class Transaction extends REST_Controller {
 		    $this->transaction_model->KEY_trans_fee => $trans_fee ,
 		  
 		);
+		//if it is a sell trans, need special handle
+		
 
 		$trans_id = $this->transaction_model->add_record($data);
 	

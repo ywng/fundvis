@@ -94,7 +94,7 @@ class Notification extends REST_Controller {
 	{
 		$this->load->model('transaction_model'); 
 		$this->load->model('stock_model'); 
-		$trans_array=$this->transaction_model->get_all_trans_record();
+		$trans_array=$this->transaction_model->get_all_trans_record_need_notify();
 
 		foreach($trans_array as $trans){
 			$trans_type=$trans[$this->transaction_model->KEY_type];
