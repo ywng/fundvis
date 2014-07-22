@@ -50,7 +50,7 @@ class Transaction extends REST_Controller {
 		  
 		);
 		//if it is a sell trans, need special handle
-		
+		//what if it is buy, what if it is sell hold!!
 
 		$trans_id = $this->transaction_model->add_record($data);
 	

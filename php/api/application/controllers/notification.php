@@ -28,10 +28,10 @@ class Notification extends REST_Controller {
 		if($alerts!=null){
 
 			foreach($alerts as $alert){
-				$notify_type=$alert[$this->notification_model->KEY_type];
+				$notify_type=$alert[$this->notification_model->KEY_notification_type_id];
 
 				$stock_code=$alert[$this->notification_model->KEY_stock_id];
-				$uid=$alert[$this->notification_model_model->KEY_user_id];
+				$uid=$alert[$this->notification_model->KEY_user_id];
 			
 				$stock_code_curr_price=$this->stock_model->get_curr_stock_price_by_id($stock_code)["price"];
 				$stock=$this->stock_model->get_stock_by_id($stock_code);
@@ -44,7 +44,7 @@ class Notification extends REST_Controller {
 				$msg=$msg."Stock Name: ".$stock[$this->stock_model->KEY_name]."\r\n";
 				$msg=$msg."Current Price: ".$stock_code_curr_price."\r\n\r\n";
 
-				$title="[".$stock_code."] Alert: ".$this->notification_model->get_notification_type_by_id($notify_type);
+				$title="[".$stock_code."] Alert: ".$this->notification_model->get_notification_type_by_id($notify_type)[$this->notification_model->KEY_notification_type_str];
 
 				$specified_price=$alert[$this->notification_model->KEY_specified_price];
 				$daily_percent=$alert[$this->notification_model->KEY_daily_percent];

@@ -24,7 +24,7 @@ class Notification_model extends CI_Model{
 
     //notification type table
     var $KEY_notification_type_id = 'id';
-    var $KEY_notification_type = 'type';
+    var $KEY_notification_type_str = 'type';
     var $Table_name_notification_type = 'NotificationType';
 
 
