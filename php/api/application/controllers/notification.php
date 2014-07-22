@@ -28,7 +28,7 @@ class Notification extends REST_Controller {
 		if($alerts!=null){
 
 			foreach($alerts as $alert){
-				$notify_type=$alert[$this->notification_model->KEY_notification_type_id];
+				$notify_type=$alert[$this->notification_model->KEY_type];
 
 				$stock_code=$alert[$this->notification_model->KEY_stock_id];
 				$uid=$alert[$this->notification_model->KEY_user_id];
