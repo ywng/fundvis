@@ -87,7 +87,7 @@ class Notification_model extends CI_Model{
         $this->db->where($this->KEY_notification_type_id,$id);
         $q=$this->db->get($this->Table_name_notification_type);
         if( $q->num_rows() >0){
-            return $q->result_array();
+            return $q->result_array()[0];
         } else{
             return null;
         }
