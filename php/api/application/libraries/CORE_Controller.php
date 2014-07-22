@@ -15,7 +15,7 @@ class CORE_Controller {
 	'fund/getAllFunds','extracter/extract','extracter/stock_extract_batch1','extracter/stock_extract_batch2','extracter/stock_extract_batch3','extracter/AASTOCK_fetch_stock_name_Chinese','fund/getAllPrice','fund/getAllPriceJPMORSO',
     'stock/getAllStocks','stock/getStock','stock/getAllPrice','stock/addStockByCode','stock/getCurrentStockPrice',
     'user/fblogin','user/login',
-    'notification/routine_trans_target_stop_loss_check',); // this will indicate the script not to run security check
+    'notification/routine_trans_target_stop_loss_check','notification/alert_check',); // this will indicate the script not to run security check
 
 
     private $session = null;
