@@ -161,7 +161,7 @@ class Notification extends REST_Controller {
                $this->notification_model->KEY_stock_id => $stock_code,
                $this->notification_model->KEY_user_id => $uid,
                $this->notification_model->KEY_type => $notify_type,
-               $this->notification_model->KEY_val_at_notify => $KEY_val_at_notify,
+               $this->notification_model->KEY_val_at_notify => $val_at_notify,
                $this->notification_model->KEY_msg => $msg,
 		    );
 
