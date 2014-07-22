@@ -28,7 +28,7 @@ class Notification extends REST_Controller {
 		if($alerts!=null){
 
 			foreach($alerts as $alert){
-				$notify_type=$alert[ $this->notification_model->KEY_type];
+				$notify_type=$alert[$this->notification_model->KEY_type];
 
 				$stock_code=$alert[$this->notification_model->KEY_stock_id];
 				$uid=$alert[$this->notification_model_model->KEY_user_id];
@@ -46,9 +46,9 @@ class Notification extends REST_Controller {
 
 				$title="[".$stock_code."] Alert: ".$this->notification_model->get_notification_type_by_id($notify_type);
 
-				$specified_price=$alert[$this->notification_model_model->KEY_specified_price];
-				$daily_percent=$alert[$this->notification_model_model->KEY_daily_percent];
-				$renotify_val=$alert[$this->notification_model_model->KEY_renotify_diff_percent];
+				$specified_price=$alert[$this->notification_model->KEY_specified_price];
+				$daily_percent=$alert[$this->notification_model->KEY_daily_percent];
+				$renotify_val=$alert[$this->notification_model->KEY_renotify_diff_percent];
 				
 				if($notify_type==3){//Greater Than Specified Price
 					if($stock_code_curr_price>=$specified_price){
@@ -163,7 +163,7 @@ class Notification extends REST_Controller {
                $this->notification_model->KEY_type => $notify_type,
                $this->notification_model->KEY_val_at_notify => $KEY_val_at_notify,
                $this->notification_model->KEY_msg => $msg,
-		    	);
+		    );
 
 			$notification_id=$this->notification_model->add_record($notification_data);
 			$this->notify($uid,$title,$msg,$notification_id);
@@ -172,7 +172,7 @@ class Notification extends REST_Controller {
 			$val_at_last_notify=$last_notification[$this->notification_model->KEY_val_at_notify];
 			
 			if($notify_type==5 || $notify_type==6){//daily percentage change
-				$percent_diff=$val_at_last_notify-$val_at_notify;
+				$percent_diff=abs($val_at_last_notify-$val_at_notify);
 
 			}else{//price related
 				$percent_diff=abs(($val_at_last_notify-$val_at_notify)/($val_at_notify*1.0)*100);
