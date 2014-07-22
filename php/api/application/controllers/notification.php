@@ -44,7 +44,7 @@ class Notification extends REST_Controller {
 				$msg=$msg."Stock Name: ".$stock[$this->stock_model->KEY_name]."\r\n";
 				$msg=$msg."Current Price: ".$stock_code_curr_price."\r\n\r\n";
 
-				$title="[".$stock_code."] Alert: ".$this->notification_model->get_notification_type_by_id($notify_type)[$this->notification_model->KEY_notification_type_str];
+				$title="[".$stock_code."] Alert: ".$this->notification_model->get_notification_type_by_id($notify_type);
 
 				$specified_price=$alert[$this->notification_model->KEY_specified_price];
 				$daily_percent=$alert[$this->notification_model->KEY_daily_percent];
