@@ -37,12 +37,11 @@ class Transaction extends REST_Controller {
 
 		$uid=$user[$this->user_model->KEY_user_id];
 
-		if($type=="Sell"){
-			$this->check_sell_conditions();
-		}else if($type=="Hold"){
-			$this->check_hold_conditions();
+		if($type=="Sell"||$type=="Hold"){
+			$this->check_hold_sell_conditions($stock_id,$uid,$quantity);
 		}
 
+		//pass check or it is buy type
 		$data = array(
 		    $this->transaction_model->KEY_user_id =>$uid,
 		    $this->transaction_model->KEY_stock_id => $stock_id ,
@@ -73,11 +72,22 @@ class Transaction extends REST_Controller {
 	}
 
 	//helper functions
-	private function check_hold_conditions(){
-
+	private function check_hold_sell_conditions($stock_id,$uid,$quantity){
+		if($this->get_all_open_buys_quantity($stock_id,$uid)==-1){
+			$this->core_controller->fail_response(201);
+		}else if($this->get_all_open_buys_quantity($stock_id,$uid)<$quantity){
+			$this->core_controller->fail_response(202);
+		}
 	}
 
-	private function check_sell_conditions(){
+	private function get_all_open_buys_quantity($stock_id,$uid){
+		$open_buys=$this->transaction_model->get_all_open_buy_record_with_uid_sid($stock_id,$uid);
+		$quantity=-1;
+		foreach($open_buys as $buy){
+			$quantity+=$buy[$this->transaction_model->KEY_quantity];
+		}
+
+		return $quantity;
 
 	}
 	 
