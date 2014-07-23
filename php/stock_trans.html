@@ -889,7 +889,7 @@
                     $("#trans_type").prop('disabled', false);
 
                     $("#stock_info_box_name").val(data.stock_info.name);
-                    $stockname=data.stock_info.name;
+                    stockname=data.stock_info.name;
 
                     showSellableQuantity();
 
@@ -910,7 +910,7 @@
         $( "#addTransRecord" ).click(function(event) {
             event.preventDefault();
 
-            if($('#stock_info_box_name').val()==="No such stock!" ||$( '#stockcode_inputbox' ).val()==="" )
+            if($('#stock_info_box_name').val()==="No such stock!" ||$( '#stockcode_inputbox' ).val()==="" || $('#trans_type option:selected' ).text()==="Type" || $('#price').val()==="" || $('#quantity').val()==="")
                 return;
             var formdata = new FormData();
             formdata.append( 'stock_id', $( '#stockcode_inputbox' ).val());
