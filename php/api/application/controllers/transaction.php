@@ -24,7 +24,7 @@ class Transaction extends REST_Controller {
 		$user=$this->core_controller->get_current_user();
 		$uid=$user[$this->user_model->KEY_user_id];
 
-		$stock_id=$this->input->post('stock_id');
+		$stock_id=$this->input->post('code');
 
 		$sellable_quantity=$this->get_all_open_buys_quantity($stock_id,$uid);
 		$this->core_controller->add_return_data('sellable_quantity', $sellable_quantity); 
