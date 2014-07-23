@@ -28,6 +28,8 @@ class Transaction extends REST_Controller {
 
 		$sellable_quantity=$this->get_all_open_buys_quantity($stock_id,$uid);
 		$this->core_controller->add_return_data('sellable_quantity', $sellable_quantity); 
+
+		$this->core_controller->successfully_processed();
 	}
 	
 	public function addTransactionRecord_post(){
