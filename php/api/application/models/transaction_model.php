@@ -20,7 +20,7 @@ class Transaction_model extends CI_Model{
     var $KEY_target_price = 'target_price';
     var $KEY_stop_loss_price= 'stop_loss_price';
 
-    var $KEY_need_notify= 'need_notify';
+    var $KEY_is_closed= 'closed';
    
     var $Table_name_trans = 'Transaction';
 
@@ -44,7 +44,7 @@ class Transaction_model extends CI_Model{
     }
 
     public function get_all_trans_record_need_notify(){
-        $this->db->where($this->KEY_need_notify,1);
+        $this->db->where($this->KEY_is_closed,0);
         return $this->db->get($this->Table_name_trans)->result_array();  
         
     }

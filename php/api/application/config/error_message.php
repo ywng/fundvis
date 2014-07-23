@@ -28,6 +28,10 @@ $config['error'][101] = 'No such stock!';
 
 //transactions
 $config['error'][200] = 'Insert transaction failed!';
+$config['error'][201] = 'You have not bought any of such stock before, so cannot hold anything!';
+$config['error'][202] = 'The hold quantity is larger than what you have!';
+$config['error'][203] = 'You do not have such stock to sell!';
+$config['error'][204] = 'You cannot sell more than what you have!';
 
 
 /* End of file error_message.php */

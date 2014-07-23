@@ -35,8 +35,16 @@ class Transaction extends REST_Controller {
 		$type=$this->input->post('type');
 		$trans_fee=$this->input->post('trans_fee');
 
+		$uid=$user[$this->user_model->KEY_user_id];
+
+		if($type=="Sell"){
+			$this->check_sell_conditions();
+		}else if($type=="Hold"){
+			$this->check_hold_conditions();
+		}
+
 		$data = array(
-		    $this->transaction_model->KEY_user_id => $user[$this->user_model->KEY_user_id],
+		    $this->transaction_model->KEY_user_id =>$uid,
 		    $this->transaction_model->KEY_stock_id => $stock_id ,
 		    $this->transaction_model->KEY_price => $price,
 		    $this->transaction_model->KEY_quantity => $quantity,
@@ -61,6 +69,15 @@ class Transaction extends REST_Controller {
 		$this->core_controller->add_return_data('transaction_id', $trans_id); 
 		$this->core_controller->successfully_processed();
 
+
+	}
+
+	//helper functions
+	private function check_hold_conditions(){
+
+	}
+
+	private function check_sell_conditions(){
 
 	}
 	 

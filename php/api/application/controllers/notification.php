@@ -73,7 +73,7 @@ class Notification extends REST_Controller {
 				}else if ($notify_type==6){
 					if($stock_previous_close!=0 && $daily_percent_chg<0 && ($daily_percent_chg*-1)>=$daily_percent){
 					
-						$msg=$msg."The daily percentage decrease (".$daily_percent_chg."%)is equal to or greater than specified percentage (-".$daily_percent."%)";
+						$msg=$msg."The daily percentage decrease (".$daily_percent_chg."%) is equal to or greater than specified percentage (-".$daily_percent."%)";
 						$this->check_need_notify($uid,$stock_code,$notify_type,$daily_percent,$renotify_val,$msg,$title);
 					}
 				}
