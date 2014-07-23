@@ -379,7 +379,7 @@
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <p>
-                                  <button id='btnAddRow' type="button" class="btn btn-outline btn-primary" onclick="$('#resetForm').click();window.location.href='?#addTransactionsDialog'">Add</button>
+                                  <button id='btnAddRow' type="button" class="btn btn-outline btn-primary" onclick="$('#resetForm').click();window.location.href='#addTransactionsDialog'">Add</button>
                                   <button id='btnDeleteRow' type="button" class="btn btn-outline btn-danger">Delete</button>
                                 </p>
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
@@ -886,7 +886,9 @@
             getStock($( "#stockcode_inputbox").val(),onSuccess_cb);
         });
 
-        $( "#addTransRecord" ).click(function() {
+        $( "#addTransRecord" ).click(function(event) {
+            event.preventDefault();
+
             if($('#stock_info_box_name').val()==="No such stock!" ||$( '#stockcode_inputbox' ).val()==="" )
                 return;
             var formdata = new FormData();
