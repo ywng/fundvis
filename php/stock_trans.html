@@ -851,6 +851,8 @@
 
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
+    var stockname="";
+
     $(document).ready(function() {
         $('#dataTables-example').dataTable();
 
@@ -887,6 +889,7 @@
                     $("#trans_type").prop('disabled', false);
 
                     $("#stock_info_box_name").val(data.stock_info.name);
+                    $stockname=data.stock_info.name;
 
                     showSellableQuantity();
 
@@ -953,7 +956,7 @@
             var onSuccess_cb=function(data, textStatus, jqXHR){
                  if(data.status_code=='1'){
                     if(data.sellable_quantity>0)
-                         $('#stock_info_box_name').val($('#stock_info_box_name').val()+"  Sellable Quan: "+data.sellable_quantity);
+                         $('#stock_info_box_name').val(stockname+"  Sellable Quan: "+data.sellable_quantity);
                  }else{
                     
                  }
