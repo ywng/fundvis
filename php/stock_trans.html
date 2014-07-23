@@ -862,11 +862,18 @@
             if($( '#trans_type option:selected' ).text()=="Sell"||$( '#trans_type option:selected' ).text()=="Type"){
                 $("#target_price").prop('disabled', true);
                 $("#stop_loss_price").prop('disabled', true);
+                $("#target_price_renotify_percent").prop('disabled', true);
+                $("#stop_loss_price_renotify_percent").prop('disabled', true);
+               
                 $("#target_price").val("");
                 $("#stop_loss_price").val("");
+                $("#target_price_renotify_percent").val("");
+                $("#stop_loss_price_renotify_percent").val("");
             }else{
                 $("#target_price").prop('disabled', false);
                 $("#stop_loss_price").prop('disabled', false);
+                $("#target_price_renotify_percent").prop('disabled', false);
+                $("#stop_loss_price_renotify_percent").prop('disabled', false;
             }
 
             showSellableQuantity();
@@ -908,6 +915,8 @@
             formdata.append( 'price', $( '#price' ).val());
             formdata.append( 'target_price', $( '#target_price' ).val());
             formdata.append( 'stop_loss_price', $( '#stop_loss_price' ).val());
+            formdata.append( 'target_price_renotify_percent', $( '#target_price_renotify_percent' ).val());
+            formdata.append( 'stop_loss_price_renotify_percent', $( '#stop_loss_price_renotify_percent' ).val());
             formdata.append( 'rationale', $( '#rationale' ).val());
             formdata.append( 'review', $( '#review' ).val());
             formdata.append( 'trans_fee', $( '#trans_fee' ).val());

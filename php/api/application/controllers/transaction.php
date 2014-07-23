@@ -42,6 +42,8 @@ class Transaction extends REST_Controller {
 		$datetime=$this->input->post('datetime');
 		$target_price=$this->input->post('target_price');
 		$stop_loss_price=$this->input->post('stop_loss_price');
+		$target_price_renotify_percent=$this->input->post('target_price_renotify_percent');
+		$stop_loss_price_renotify_percent=$this->input->post('stop_loss_price_renotify_percent');
 		$rationale=$this->input->post('rationale');
 		$review=$this->input->post('review');
 		$type=$this->input->post('type');
@@ -62,6 +64,8 @@ class Transaction extends REST_Controller {
 		    $this->transaction_model->KEY_datetime => $datetime ,
 		    $this->transaction_model->KEY_target_price=> $target_price,
 		    $this->transaction_model->KEY_stop_loss_price => $stop_loss_price,
+		    $this->transaction_model->KEY_target_price_renotify_percent=> $target_price_renotify_percent,
+		    $this->transaction_model->KEY_stop_loss_price_renotify_percent => $stop_loss_price_renotify_percent,
 		    $this->transaction_model->KEY_rationale => $rationale ,
 		    $this->transaction_model->KEY_review => $review,
 		    $this->transaction_model->KEY_type => $type,

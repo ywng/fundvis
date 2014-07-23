@@ -119,6 +119,7 @@ class Notification extends REST_Controller {
 			$msg="Stock Code: ".$stock_code."\r\n";
 			$msg=$msg."Stock Name: ".$stock[$this->stock_model->KEY_name]."\r\n";
 			$msg=$msg."Current Price: ".$stock_code_curr_price."\r\n\r\n";
+			$renotify_val;//default in db is a very large value, if user didnt set it, no renotify
 
 			if($stock_code_curr_price>=$target_price){
 
@@ -128,6 +129,7 @@ class Notification extends REST_Controller {
 				$notify_type=1;//type is 1 too
 				$msg=$msg."The current price is equal to or greater than target price (".$target_price.")";
 				$title="[".$stock_code."] Target Price Notification ";
+				$renotify_val=$trans[$this->transaction_model->KEY_target_price_renotify_percent];
 
 			}else if($stock_code_curr_price<=$stop_loss_price){
 			
@@ -137,10 +139,11 @@ class Notification extends REST_Controller {
 				$notify_type=2;
 				$msg=$msg."The current price is equal to or lower than stop loss price (".$stop_loss_price.")";
 				$title="[".$stock_code."] Stop Loss Notification ";
+				$renotify_val=$trans[$this->transaction_model->KEY_stop_loss_price_renotify_percent];
 			}
 
 			if($notify_type!=-1){//will notify
-				$this->check_need_notify($uid,$stock_code,$notify_type,$stock_code_curr_price,1,$msg,$title);
+				$this->check_need_notify($uid,$stock_code,$notify_type,$stock_code_curr_price,$renotify_val,$msg,$title);
 
 			}//end do notify
 

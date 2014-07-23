@@ -19,6 +19,8 @@ class Transaction_model extends CI_Model{
     var $KEY_review = 'review';
     var $KEY_target_price = 'target_price';
     var $KEY_stop_loss_price= 'stop_loss_price';
+     var $KEY_target_price_renotify_percent = 'target_price_renotify_percent';
+    var $KEY_stop_loss_price_renotify_percent= 'stop_loss_price_renotify_percent';
 
     var $KEY_is_closed= 'closed';
    
