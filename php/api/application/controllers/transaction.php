@@ -99,7 +99,7 @@ class Transaction extends REST_Controller {
 	private function get_all_open_buys_quantity($stock_id,$uid){
 		$open_buys=$this->transaction_model->get_all_open_buy_record_with_uid_sid($stock_id,$uid);
 		$quantity=-1;
-		if(count($open_buys )<1)
+		if(count($open_buys)<1)
 			return $quantity;
 		foreach($open_buys as $buy){
 			$quantity+=$buy[$this->transaction_model->KEY_quantity];
