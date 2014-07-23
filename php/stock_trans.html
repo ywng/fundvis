@@ -757,7 +757,7 @@
                                     </div>
                                     <div class="form-group">
                                     
-                                        <select id="trans_type" class="form-control" placeholder="Type">
+                                        <select id="trans_type" class="form-control" placeholder="Type" disabled>
                                                 <option>Type</option>
                                                 <option>Buy</option>
                                                 <option>Sell</option>
@@ -772,9 +772,11 @@
                                     </div>
                                     <div class="form-group">
                                         <input id="target_price" class="form-control" placeholder="Target Price" disabled>
+                                        <input id="target_price_renotify_percent" class="form-control" placeholder="Renotify % Chg" disabled>
                                     </div>
                                     <div class="form-group">
                                         <input id="stop_loss_price" class="form-control" placeholder="Stop Loss Price" disabled>
+                                        <input id="stop_loss_price_renotify_percent" class="form-control" placeholder="Renotify % Chg" disabled>
                                     </div>
                                     
 
@@ -866,11 +868,29 @@
                 $("#target_price").prop('disabled', false);
                 $("#stop_loss_price").prop('disabled', false);
             }
+
+            if($( '#trans_type option:selected' ).text()=="Sell" || $( '#trans_type option:selected' ).text()=="Hold"){
+
+                var onSuccess_cb=function(data, textStatus, jqXHR){
+                     if(data.status_code=='1'){
+                        if(data.sellable_quantity>0)
+                             $('#stock_info_box_name').val($('#stock_info_box_name').val()+" Sellable Quan: "+data.sellable_quantity);
+                     }else{
+                        
+                     }
+                };
+                getSellableQuantity($( "#stockcode_inputbox").val(),onSuccess_cb);
+               
+            }
+
         });
 
         $( "#stockcode_inputbox" ).change(function() {
              var onSuccess_cb=function(data, textStatus, jqXHR){
                  if(data.status_code=='1'){
+
+                    $("#trans_type").prop('disabled', false);
+
                     $("#stock_info_box_name").val(data.stock_info.name);
                     if(data.price.length>0){
                         $("#stock_info_box_price").val("Current Price: "+data.price[0].price+"   Lot Size: "+data.stock_info.lot_size);

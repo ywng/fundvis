@@ -2,6 +2,7 @@
 var fblogin_URL='user/fblogin'
 var getStock_URL='stock/getStock'
 var addTransRecord_URL='transaction/addTransactionRecord'
+var getSellableQuantity_URL='transaction/getSellableQuantity'
 
 var onFailure=function(jqHXR, textStatus, errorThrown){
 		 console.log('ajax error:' +textStatus + ' ' + errorThrown);
@@ -10,6 +11,14 @@ var onFailure=function(jqHXR, textStatus, errorThrown){
 function logout(access_token){
 	localStorage.clear();
 	checkRedirectNeeded();
+}
+
+function getSellableQuantity(code,onSuccess){
+	
+	var data=new FormData();
+	data.append( 'code', code);
+
+	rawAjaxCall(getSellableQuantity_URL,"POST",data,onSuccess,onFailure);
 }
 
 function getStock(code,onSuccess){

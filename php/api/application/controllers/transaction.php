@@ -19,6 +19,16 @@ class Transaction extends REST_Controller {
 
 	var $user_type = '';
 
+	public function getSellableQuantity_post(){
+		$this->load->model('user_model'); 
+		$user=$this->core_controller->get_current_user();
+		$uid=$user[$this->user_model->KEY_user_id];
+
+		$stock_id=$this->input->post('stock_id');
+
+		$sellable_quantity=$this->get_all_open_buys_quantity($stock_id,$uid);
+		$this->core_controller->add_return_data('sellable_quantity', $sellable_quantity); 
+	}
 	
 	public function addTransactionRecord_post(){
 		
