@@ -749,14 +749,15 @@
                         </div>
                         <div class="panel-body">
                             <div class="row">
-                                <label class="control-label">Currently Visited Stocks:</label>
+                                <label class="control-label">Currently Visited Stocks: </label>
                             </div>
                             <div class="row">
                                 <form role="form">
                         
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <input id="stockcode_inputbox" class="form-control" placeholder="Enter Stock Code ...">
+                                        <input id="stockcode_inputbox" class="form-control" placeholder="Stock Code" disabled style="width:50%;">
+                                        <input class="form-control" id="stock_info_box_name" type="text" placeholder="Stock Name" disabled style="width:50%;">
                                     </div>
                                     <div class="form-group">
                                     
@@ -794,11 +795,11 @@
 
                                 <div class="col-lg-6">
 
-                                    <div class="form-group">
-                                         <input class="form-control" id="stock_info_box_name" type="text" placeholder="Stock Name" disabled>
-                                    </div>
+                                
                                      <div class="form-group">
-                                         <input class="form-control" id="stock_info_box_price" type="text" placeholder="Stock Current Price ; Lot Size" disabled>
+                                         <input class="form-control" id="stock_info_box_price" type="text" placeholder="Current Price" disabled style="width:50%;">
+
+
                                     </div>
                                     <div id="datetimepicker1" class="input-append date form-group input-group">
                                             <span class="input-group-btn add-on" style="height:34px;">
