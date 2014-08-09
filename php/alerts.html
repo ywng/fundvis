@@ -744,7 +744,7 @@
                     <div class="panel panel-default">
                         <div  class="panel-heading" style="height:40px;">
                             <div id="msg_div" class="form-group has-success" style="height:20px;">
-                                <label id="msg_heading" class="control-label">Add a New Alert</label>
+                                <label id="msg_heading" class="control-label">Add New Alerts</label>
                             </div>
                         </div>
                         <div class="panel-body">
@@ -759,36 +759,36 @@
                         
                                 <div class="col-lg-6">
                                     <div class="form-group input-group">
-                                        <input id="stockcode_inputbox" class="form-control" placeholder="Stock Code" style="width:35%;">
-                                        <input class="form-control" id="stock_info_box_name" type="text" placeholder="Stock Name" disabled style="width:65%;">
+                                        <input id="stockcode_inputbox1" class="form-control" placeholder="Stock Code" style="width:35%;">
+                                        <input class="form-control" id="stock_info_box_name1" type="text" placeholder="Stock Name" disabled style="width:65%;">
                                     </div>
 
                                     <div class="form-group input-group">
-                                        <select id="alert_type" class="form-control" placeholder="Alert Type" disabled style="width:50%;">
+                                        <select id="alert_type1" class="form-control" placeholder="Alert Type" disabled style="width:50%;">
                                                 <option> &gt; Specified Price</option>
                                                 <option> &lt; Specified Price</option>
                                                 <option> Daily % Increase &gt; </option>
                                                 <option> Daily % Decrease &lt; </option>
                                         </select>
-                                        <input id="alert_trigger_condition" class="form-control" placeholder="Specified Price" style="width:50%;">
+                                        <input id="alert_trigger_condition1" class="form-control" placeholder="Specified Price" style="width:50%;">
                                     </div>
                                    
                                    </br>
                                    </br>
 
                                    <div class="form-group input-group">
-                                        <input id="stockcode_inputbox" class="form-control" placeholder="Stock Code" style="width:35%;">
-                                        <input class="form-control" id="stock_info_box_name" type="text" placeholder="Stock Name" disabled style="width:65%;">
+                                        <input id="stockcode_inputbox2" class="form-control" placeholder="Stock Code" style="width:35%;">
+                                        <input class="form-control" id="stock_info_box_name2" type="text" placeholder="Stock Name" disabled style="width:65%;">
                                     </div>
 
                                     <div class="form-group input-group">
-                                        <select id="alert_type" class="form-control" placeholder="Alert Type" disabled style="width:50%;">
+                                        <select id="alert_type2" class="form-control" placeholder="Alert Type" disabled style="width:50%;">
                                                 <option> &gt; Specified Price</option>
                                                 <option> &lt; Specified Price</option>
                                                 <option> Daily % Increase &gt; </option>
                                                 <option> Daily % Decrease &lt; </option>
                                         </select>
-                                        <input id="alert_trigger_condition" class="form-control" placeholder="Specified Price" style="width:50%;">
+                                        <input id="alert_trigger_condition2" class="form-control" placeholder="Specified Price" style="width:50%;">
                                     </div>
                                  
                               
@@ -796,7 +796,7 @@
                                     </br>
                                     <p>
                                         <button id="resetForm" type="reset" class="btn btn-default">Reset</button>
-                                        <button id="addTransRecord" class="btn btn-default">Submit</button>
+                                        <button id="addAlerts" class="btn btn-default">Submit</button>
                                     </p>
                                 </div>
 
@@ -804,12 +804,12 @@
 
                                 
                                      <div class="form-group input-group">
-                                         <input class="form-control" id="stock_info_box_price" type="text" placeholder="Current Price" disabled style="width:50%;">
-                                          <input class="form-control" id="stock_info_box_price" type="text" placeholder="52w l h" disabled style="width:50%;">
+                                         <input class="form-control" id="stock_info_box_price1" type="text" placeholder="Current Price" disabled style="width:50%;">
+                                          <input class="form-control" id="52wlh1" type="text" placeholder="52w l h" disabled style="width:50%;">
                                     </div>
 
                                     <div class="form-group input-group">
-                                        <input id="renotify_percent" class="form-control" placeholder="Renotify Val (% Chg)" disabled style="width:50%;">
+                                        <input id="renotify_percent1" class="form-control" placeholder="Renotify Val (% Chg)" disabled style="width:50%;">
                                         <div id="datetimepicker1" class="input-append date form-group input-group">
                                                 <span class="input-group-btn add-on" style="height:34px;">
                                                     <button class="btn btn-default" type="button" style="height:34px;"><i class="fa fa-calendar"></i>
@@ -822,16 +822,16 @@
                                   
                                     
                                     </br>
-                                    </br>
+                                    
 
                                      <div class="form-group input-group">
-                                         <input class="form-control" id="stock_info_box_price" type="text" placeholder="Current Price" disabled style="width:50%;">
-                                          <input class="form-control" id="stock_info_box_price" type="text" placeholder="52w l h" disabled style="width:50%;">
+                                         <input class="form-control" id="stock_info_box_price2" type="text" placeholder="Current Price" disabled style="width:50%;">
+                                          <input class="form-control" id="stock_info_box_price2" type="text" placeholder="52w l h" disabled style="width:50%;">
                                     </div>
 
                                     <div class="form-group input-group">
-                                        <input id="renotify_percent" class="form-control" placeholder="Renotify Val (% Chg)" disabled style="width:50%;">
-                                        <div id="datetimepicker1" class="input-append date form-group input-group">
+                                        <input id="renotify_percent2" class="form-control" placeholder="Renotify Val (% Chg)" disabled style="width:50%;">
+                                        <div id="datetimepicker2" class="input-append date form-group input-group">
                                                 <span class="input-group-btn add-on" style="height:34px;">
                                                     <button class="btn btn-default" type="button" style="height:34px;"><i class="fa fa-calendar"></i>
                                                     </button>
@@ -885,40 +885,44 @@
           language: 'pt-BR'
         });
 
+        $('#datetimepicker2').datetimepicker({
+          language: 'pt-BR'
+        });
+
        
 
-        $( "#stockcode_inputbox" ).change(function() {
+        $( "#stockcode_inputbox1" ).change(function() {
              var onSuccess_cb=function(data, textStatus, jqXHR){
                  if(data.status_code=='1'){
 
-                    $("#trans_type").prop('disabled', false);
+                    $("#alert_type").prop('disabled', false);
 
-                    $("#stock_info_box_name").val(data.stock_info.name);
+                    $("#stock_info_box_name1").val(data.stock_info.name);
                     stockname=data.stock_info.name;
 
-                    showSellableQuantity();
+                  
 
                     if(data.price.length>0){
-                        $("#stock_info_box_price").val("Current Price: "+data.price[0].price+"   Lot Size: "+data.stock_info.lot_size);
+                        $("#stock_info_box_price1").val("Current Price: "+data.price[0].price+"   Lot Size: "+data.stock_info.lot_size);
                     }else{
-                        $("#stock_info_box_price").val("Current Price: 'to be fetching'   Lot Size: "+data.stock_info.lot_size);
+                        $("#stock_info_box_price1").val("Current Price: 'to be fetching'   Lot Size: "+data.stock_info.lot_size);
                     }
                  }else{
-                    $("#stock_info_box_name").val(data.message);
-                    $("#stock_info_box_price").val("");
+                    $("#stock_info_box_name1").val(data.message);
+                    $("#stock_info_box_price1").val("");
                  }
             };
 
-            getStock($( "#stockcode_inputbox").val(),onSuccess_cb);
+            getStock($( "#stockcode_inputbox1").val(),onSuccess_cb);
         });
 
-        $( "#addTransRecord" ).click(function(event) {
+        $( "#addAlerts" ).click(function(event) {
             event.preventDefault();
 
             if($('#stock_info_box_name').val()==="No such stock!" ||$( '#stockcode_inputbox' ).val()==="" || $('#trans_type option:selected' ).text()==="Type" || $('#price').val()==="" || $('#quantity').val()==="")
                 return;
             var formdata = new FormData();
-            formdata.append( 'stock_id', $( '#stockcode_inputbox' ).val());
+           /* formdata.append( 'stock_id', $( '#stockcode_inputbox' ).val());
             formdata.append( 'type', $( '#trans_type option:selected' ).text());
             formdata.append( 'price', $( '#price' ).val());
             formdata.append( 'target_price', $( '#target_price' ).val());
@@ -929,7 +933,7 @@
             formdata.append( 'review', $( '#review' ).val());
             formdata.append( 'trans_fee', $( '#trans_fee' ).val());
             formdata.append( 'quantity', $( '#quantity' ).val());
-            formdata.append( 'datetime', $( '#datetime' ).val());
+            formdata.append( 'datetime', $( '#datetime' ).val());*/
 
 
             var onSuccess_cb=function(data, textStatus, jqXHR){
@@ -944,12 +948,12 @@
                  }
             };
 
-            addTransRecord(formdata,onSuccess_cb);
+           // addTransRecord(formdata,onSuccess_cb);
         });
         
         $( "#resetForm" ).click(function() {
              $("#msg_div").prop('class', 'form-group has-success');
-             $("#msg_heading").text("Add a New Transaction");
+             $("#msg_heading").text("Add New Alerts");
         });
 
         checkRedirectNeeded();
