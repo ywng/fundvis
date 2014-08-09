@@ -364,7 +364,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Transactions</h1>
+                    <h1 class="page-header">Alerts</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -373,13 +373,13 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Stock Transaction History
+                            Alert Triggers
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <p>
-                                  <button id='btnAddRow' type="button" class="btn btn-outline btn-primary" onclick="$('#resetForm').click();window.location.href='#addTransactionsDialog'">Add</button>
+                                  <button id='btnAddRow' type="button" class="btn btn-outline btn-primary" onclick="$('#resetForm').click();window.location.href='#addAlertsDialog'">Add</button>
                                   <button id='btnDeleteRow' type="button" class="btn btn-outline btn-danger">Delete</button>
                                 </p>
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
@@ -860,27 +860,7 @@
           language: 'pt-BR'
         });
 
-        $( "#trans_type" ).change(function() {
-            if($( '#trans_type option:selected' ).text()=="Sell"||$( '#trans_type option:selected' ).text()=="Type"){
-                $("#target_price").prop('disabled', true);
-                $("#stop_loss_price").prop('disabled', true);
-                $("#target_price_renotify_percent").prop('disabled', true);
-                $("#stop_loss_price_renotify_percent").prop('disabled', true);
-               
-                $("#target_price").val("");
-                $("#stop_loss_price").val("");
-                $("#target_price_renotify_percent").val("");
-                $("#stop_loss_price_renotify_percent").val("");
-            }else{
-                $("#target_price").prop('disabled', false);
-                $("#stop_loss_price").prop('disabled', false);
-                $("#target_price_renotify_percent").prop('disabled', false);
-                $("#stop_loss_price_renotify_percent").prop('disabled', false);
-            }
-
-            showSellableQuantity();
-
-        });
+       
 
         $( "#stockcode_inputbox" ).change(function() {
              var onSuccess_cb=function(data, textStatus, jqXHR){
@@ -950,21 +930,7 @@
         checkRedirectNeeded();
     });
 
-    function showSellableQuantity(){
-        if($( '#trans_type option:selected' ).text()=="Sell" || $( '#trans_type option:selected' ).text()=="Hold"){
 
-            var onSuccess_cb=function(data, textStatus, jqXHR){
-                 if(data.status_code=='1'){
-                    if(data.sellable_quantity>0)
-                         $('#stock_info_box_name').val(stockname+"  Sellable Quan: "+data.sellable_quantity);
-                 }else{
-                    
-                 }
-            };
-            getSellableQuantity($( "#stockcode_inputbox").val(),onSuccess_cb);
-           
-        }
-    }
     </script>
 
 </body>
