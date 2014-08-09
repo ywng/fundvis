@@ -53,6 +53,10 @@ class Transaction extends REST_Controller {
 
 		if($type=="Sell"||$type=="Hold"){
 			$this->check_hold_sell_conditions($stock_id,$uid,$quantity);
+
+			if($type=="Sell"){
+				$this->sell_handling();
+			}
 		}
 
 		//pass check or it is buy type
@@ -94,6 +98,10 @@ class Transaction extends REST_Controller {
 		}else if($this->get_all_open_buys_quantity($stock_id,$uid)<$quantity){
 			$this->core_controller->fail_response(202);
 		}
+	}
+
+	private function sell_handling(){
+
 	}
 
 	private function get_all_open_buys_quantity($stock_id,$uid){
