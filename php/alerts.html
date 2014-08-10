@@ -801,15 +801,10 @@
                                 </div>
 
                                 <div class="col-lg-6">
-
-                                
-                                     <div class="form-group input-group">
-                                         <input class="form-control" id="stock_info_box_price1" type="text" placeholder="Current Price" disabled style="width:50%;">
-                                          <input class="form-control" id="52wlh1" type="text" placeholder="52w l h" disabled style="width:50%;">
-                                    </div>
+                                    <input class="form-control" id="stock_info_box_price1" type="text" placeholder="Current Price 53 w l h" disabled style="width:50%;">
 
                                     <div class="form-group input-group" style="margin-bottom:20px;">
-                                        <input id="renotify_percent1" class="form-control" placeholder="Renotify Val (% Chg)" disabled style="width:50%;">
+                                        <input id="renotify_percent1" class="form-control" placeholder="Renotify Val (% Chg)" style="width:50%;">
                                         <div id="datetimepicker1" class="input-append date form-group input-group">
                                                 <span class="input-group-btn add-on" style="height:34px;">
                                                     <button class="btn btn-default" type="button" style="height:34px;"><i class="fa fa-calendar"></i>
@@ -824,13 +819,10 @@
                                     </br>
                                     
 
-                                     <div class="form-group input-group">
-                                         <input class="form-control" id="stock_info_box_price2" type="text" placeholder="Current Price" disabled style="width:50%;">
-                                          <input class="form-control" id="stock_info_box_price2" type="text" placeholder="52w l h" disabled style="width:50%;">
-                                    </div>
+                                    <input class="form-control" id="stock_info_box_price1" type="text" placeholder="Current Price 53 w l h" disabled style="width:50%;">
 
                                     <div class="form-group input-group">
-                                        <input id="renotify_percent2" class="form-control" placeholder="Renotify Val (% Chg)" disabled style="width:50%;">
+                                        <input id="renotify_percent2" class="form-control" placeholder="Renotify Val (% Chg)" style="width:50%;">
                                         <div id="datetimepicker2" class="input-append date form-group input-group">
                                                 <span class="input-group-btn add-on" style="height:34px;">
                                                     <button class="btn btn-default" type="button" style="height:34px;"><i class="fa fa-calendar"></i>
@@ -895,7 +887,7 @@
              var onSuccess_cb=function(data, textStatus, jqXHR){
                  if(data.status_code=='1'){
 
-                    $("#alert_type").prop('disabled', false);
+                    $("#alert_type1").prop('disabled', false);
 
                     $("#stock_info_box_name1").val(data.stock_info.name);
                     stockname=data.stock_info.name;
@@ -914,6 +906,31 @@
             };
 
             getStock($( "#stockcode_inputbox1").val(),onSuccess_cb);
+        });
+
+        $( "#stockcode_inputbox2" ).change(function() {
+             var onSuccess_cb=function(data, textStatus, jqXHR){
+                 if(data.status_code=='1'){
+
+                    $("#alert_type2").prop('disabled', false);
+
+                    $("#stock_info_box_name2").val(data.stock_info.name);
+                    stockname=data.stock_info.name;
+
+                  
+
+                    if(data.price.length>0){
+                        $("#stock_info_box_price2").val("Current Price: "+data.price[0].price+"   Lot Size: "+data.stock_info.lot_size);
+                    }else{
+                        $("#stock_info_box_price2").val("Current Price: 'to be fetching'   Lot Size: "+data.stock_info.lot_size);
+                    }
+                 }else{
+                    $("#stock_info_box_name2").val(data.message);
+                    $("#stock_info_box_price2").val("");
+                 }
+            };
+
+            getStock($( "#stockcode_inputbox2").val(),onSuccess_cb);
         });
 
         $( "#addAlerts" ).click(function(event) {
