@@ -15,18 +15,6 @@ class Notification_model extends CI_Model{
     var $KEY_val_at_notify = 'val_at_notify';
     var $Table_name_notification = 'NotificationHistory';
 
-    //alert table
-    var $KEY_alert_id = 'id';
-    var $KEY_specified_price = 'specified_price';
-    var $KEY_daily_percent = 'daily_percent';
-    var $KEY_renotify_diff_percent = 'renotify_diff_percent';
-    var $Table_name_alert = 'Alert';
-
-    //notification type table
-    var $KEY_notification_type_id = 'id';
-    var $KEY_notification_type_str = 'type';
-    var $Table_name_notification_type = 'NotificationType';
-
 
     function __construct() {
         parent::__construct();
@@ -69,30 +57,6 @@ class Notification_model extends CI_Model{
 
    }
 
-   //==========================================================
-   //Alert Table 
-   public function get_all_alerts(){
-       $q=$this->db->get($this->Table_name_alert);
-        if( $q->num_rows() >0){
-            return $q->result_array();
-        } else{
-            return null;
-        }
-
-   }
-
-   //===========================================================
-   //notification type
-   public function get_notification_type_by_id($id){
-        $this->db->where($this->KEY_notification_type_id,$id);
-        $q=$this->db->get($this->Table_name_notification_type);
-        if( $q->num_rows() >0){
-            $row=$q->result_array()[0];
-            return $row[$this->KEY_notification_type_str];
-        } else{
-            return null;
-        }
-   }
 
 
 
