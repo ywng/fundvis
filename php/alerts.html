@@ -760,18 +760,18 @@
                                 
                                 <div class="col-lg-6">
                                     <div class="form-group input-group">
-                                        <input id="stockcode_inputbox1" class="form-control" placeholder="Code" style="width:25%;">
+                                        <input id="stockcode_inputbox" class="form-control" placeholder="Code" style="width:25%;">
                                         <input class="form-control" id="stock_info_box_name1" type="text" placeholder="Stock Name" disabled style="width:75%;">
                                     </div>
 
                                     <div class="form-group input-group">
-                                        <select id="alert_type1" class="form-control" placeholder="Alert Type" disabled style="width:50%;">
+                                        <select id="alert_type" class="form-control" placeholder="Alert Type" disabled style="width:50%;">
                                                 <option> &gt; Specified Price</option>
                                                 <option> &lt; Specified Price</option>
                                                 <option> Daily % Increase &gt; </option>
                                                 <option> Daily % Decrease &gt; </option>
                                         </select>
-                                        <input id="alert_trigger_condition1" class="form-control" placeholder="Specified Price" style="width:50%;">
+                                        <input id="alert_trigger_condition" class="form-control" placeholder="Specified Price" style="width:50%;">
                                     </div> 
                                   
                                     </br>
@@ -787,8 +787,8 @@
                                     </div>
 
                                     <div class="form-group input-group" style="margin-bottom:20px;">
-                                        <input id="renotify_percent1" class="form-control" placeholder="Renotify Val (% Chg)" style="width:50%;">
-                                        <div id="datetimepicker1" class="input-append date form-group input-group">
+                                        <input id="renotify_percent" class="form-control" placeholder="Renotify Val (% Chg)" style="width:50%;">
+                                        <div id="datetimepicker" class="input-append date form-group input-group">
                                                 <span class="input-group-btn add-on" style="height:34px;">
                                                     <button class="btn btn-default" type="button" style="height:34px;"><i class="fa fa-calendar"></i>
                                                     </button>
@@ -837,84 +837,49 @@
     $(document).ready(function() {
         $('#dataTables-example').dataTable();
 
-        $('#datetimepicker1').datetimepicker({
+        $('#datetimepicker').datetimepicker({
           language: 'pt-BR'
         });
-
-        $('#datetimepicker2').datetimepicker({
-          language: 'pt-BR'
-        });
-
        
 
-        $( "#stockcode_inputbox1" ).change(function() {
+        $( "#stockcode_inputbox" ).change(function() {
              var onSuccess_cb=function(data, textStatus, jqXHR){
                  if(data.status_code=='1'){
 
-                    $("#alert_type1").prop('disabled', false);
+                    $("#alert_type").prop('disabled', false);
 
-                    $("#stock_info_box_name1").val(data.stock_info.name);
+                    $("#stock_info_box_name").val(data.stock_info.name);
                     stockname=data.stock_info.name;
 
                   
 
                     if(data.price.length>0){
-                        $("#stock_info_box_price1").val("Current Price: "+data.price[0].price+"   Lot Size: "+data.stock_info.lot_size);
+                        $("#stock_info_box_price").val("Current Price: "+data.price[0].price+"   Lot Size: "+data.stock_info.lot_size);
                     }else{
-                        $("#stock_info_box_price1").val("Current Price: 'to be fetching'   Lot Size: "+data.stock_info.lot_size);
+                        $("#stock_info_box_price").val("Current Price: 'to be fetching'   Lot Size: "+data.stock_info.lot_size);
                     }
                  }else{
-                    $("#stock_info_box_name1").val(data.message);
-                    $("#stock_info_box_price1").val("");
+                    $("#stock_info_box_name").val(data.message);
+                    $("#stock_info_box_price").val("");
                  }
             };
 
-            getStock($( "#stockcode_inputbox1").val(),onSuccess_cb);
-        });
-
-        $( "#stockcode_inputbox2" ).change(function() {
-             var onSuccess_cb=function(data, textStatus, jqXHR){
-                 if(data.status_code=='1'){
-
-                    $("#alert_type2").prop('disabled', false);
-
-                    $("#stock_info_box_name2").val(data.stock_info.name);
-                    stockname=data.stock_info.name;
-
-                  
-
-                    if(data.price.length>0){
-                        $("#stock_info_box_price2").val("Current Price: "+data.price[0].price+"   Lot Size: "+data.stock_info.lot_size);
-                    }else{
-                        $("#stock_info_box_price2").val("Current Price: 'to be fetching'   Lot Size: "+data.stock_info.lot_size);
-                    }
-                 }else{
-                    $("#stock_info_box_name2").val(data.message);
-                    $("#stock_info_box_price2").val("");
-                 }
-            };
-
-            getStock($( "#stockcode_inputbox2").val(),onSuccess_cb);
+            getStock($( "#stockcode_inputbox").val(),onSuccess_cb);
         });
 
         $( "#addAlerts" ).click(function(event) {
             event.preventDefault();
 
-            var stock_id_alert1;
-            var type_alert1;
-            var specified_price_alert1;
-            var daily_percent_alert1;
-            var renotify_diff_percent_alert1;
-            var valid_till_alert1;
+            var stock_id;
+            var alert_type;
+            var specified_price;
+            var daily_percent;
+            var renotify_diff_percent;
+            var valid_till;//if not filled in...default not expire
 
-            var stock_id_alert2;
-            var type_alert2;
-            var specified_price_alert2;
-            var daily_percent_alert2;
-            var renotify_diff_percent_alert2;
-            var valid_till_alert2;
 
-           if($('#stock_info_box_name1').val()==="No such stock!" ||$( '#stockcode_inputbox1' ).val()==="" || $('#trans_type option:selected' ).text()==="Type" || $('#price').val()==="" || $('#quantity').val()===""){
+
+           if($('#stock_info_box_name').val()==="No such stock!" ||$( '#stockcode_inputbox' ).val()==="" || $('#alert_trigger_condition').val()===""){
                 //do nth with alert1
            }else{
 

@@ -21,7 +21,7 @@ class Alert extends REST_Controller {
 
 	var $user_type = 'user';
 
-	public function addAlerts_post(){
+	public function addAlert_post(){
 		
 		$user=$this->core_controller->get_current_user();
 		/*$stock_id=$this->input->post('stock_id');
