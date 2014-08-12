@@ -233,7 +233,7 @@ class Notification extends REST_Controller {
 
 		$this->load->library('email', $config);
 		$this->email->set_newline("\r\n");
-		$this->email->from('WealthVis@gmail.com', 'WealthVis');
+		$this->email->from('WealthVis@gmail.com', 'StockVis');
 		$this->email->to($user[$this->user_model->KEY_email]); 
 		$this->email->subject($title.' (Notification ID:'.$notification_id.")");
 		$this->email->message($msg);	

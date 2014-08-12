@@ -742,7 +742,7 @@
                     <div class="panel panel-default">
                         <div  class="panel-heading" style="height:40px;">
                             <div id="msg_div" class="form-group has-success" style="height:20px;">
-                                <label id="msg_heading" class="control-label">Add New Alert Triggers</label>
+                                <label id="msg_heading" class="control-label">Add a New Alert Trigger</label>
                             </div>
                         </div>
                         <div class="panel-body">
@@ -751,10 +751,13 @@
                                 <br>
                                 <br>
                                 <br>
+                                </br>
+                                </br>
+                                <label class="control-label" style="margin-left:15px;">more details here when the stock rects are clicked</label>
                             </div>
                             <div class="row">
                                 <form role="form">
-                        
+                                
                                 <div class="col-lg-6">
                                     <div class="form-group input-group">
                                         <input id="stockcode_inputbox1" class="form-control" placeholder="Code" style="width:25%;">
@@ -769,27 +772,7 @@
                                                 <option> Daily % Decrease &gt; </option>
                                         </select>
                                         <input id="alert_trigger_condition1" class="form-control" placeholder="Specified Price" style="width:50%;">
-                                    </div>
-                                   
-                                   </br>
-                                   </br>
-
-                                   <div class="form-group input-group">
-                                        <input id="stockcode_inputbox2" class="form-control" placeholder="Code" style="width:25%;">
-                                        <input class="form-control" id="stock_info_box_name2" type="text" placeholder="Stock Name" disabled style="width:75%;">
-                                    </div>
-
-                                    <div class="form-group input-group">
-                                        <select id="alert_type2" class="form-control" placeholder="Alert Type" disabled style="width:50%;">
-                                                <option> &gt; Specified Price</option>
-                                                <option> &lt; Specified Price</option>
-                                                <option> Daily % Increase &gt; </option>
-                                                <option> Daily % Decrease &gt; </option>
-                                        </select>
-                                        <input id="alert_trigger_condition2" class="form-control" placeholder="Specified Price" style="width:50%;">
-                                    </div>
-                                 
-                              
+                                    </div> 
                                   
                                     </br>
                                     <p>
@@ -813,27 +796,7 @@
                                                 <input id="datetime" type="text" class="form-control" data-format="yyyy/MM/dd" placeholder="Valid Till">
                                                  
                                         </div>
-                                    </div>
-                                  
-                                    
-                                    </br>
-                                    
-                                    <div class="form-group input-group">
-                                         <input class="form-control" id="stock_info_box_price2" type="text" placeholder="Current Price 53 w l h" disabled >
-                                    </div>
-
-                                    <div class="form-group input-group">
-                                        <input id="renotify_percent2" class="form-control" placeholder="Renotify Val (% Chg)" style="width:50%;">
-                                        <div id="datetimepicker2" class="input-append date form-group input-group">
-                                                <span class="input-group-btn add-on" style="height:34px;">
-                                                    <button class="btn btn-default" type="button" style="height:34px;"><i class="fa fa-calendar"></i>
-                                                    </button>
-                                                </span>
-                                                <input id="datetime" type="text" class="form-control" data-format="yyyy/MM/dd" placeholder="Valid Till">
-                                                 
-                                        </div>
-                                    </div>
-                               
+                                    </div>                
                                  
                                 </div>
                                 </form>
@@ -937,8 +900,25 @@
         $( "#addAlerts" ).click(function(event) {
             event.preventDefault();
 
-         /*   if($('#stock_info_box_name1').val()==="No such stock!" ||$( '#stockcode_inputbox1' ).val()==="" || $('#trans_type option:selected' ).text()==="Type" || $('#price').val()==="" || $('#quantity').val()==="")
-                return;*/
+            var stock_id_alert1;
+            var type_alert1;
+            var specified_price_alert1;
+            var daily_percent_alert1;
+            var renotify_diff_percent_alert1;
+            var valid_till_alert1;
+
+            var stock_id_alert2;
+            var type_alert2;
+            var specified_price_alert2;
+            var daily_percent_alert2;
+            var renotify_diff_percent_alert2;
+            var valid_till_alert2;
+
+           if($('#stock_info_box_name1').val()==="No such stock!" ||$( '#stockcode_inputbox1' ).val()==="" || $('#trans_type option:selected' ).text()==="Type" || $('#price').val()==="" || $('#quantity').val()===""){
+                //do nth with alert1
+           }else{
+
+           }
             var formdata = new FormData();
            /* formdata.append( 'stock_id', $( '#stockcode_inputbox' ).val());
             formdata.append( 'type', $( '#trans_type option:selected' ).text());
