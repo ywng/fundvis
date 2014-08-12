@@ -30,7 +30,7 @@ class Alert_model extends CI_Model{
    
     //====================================================//
   
-   public function get_all_alerts(){
+   public function get_all_alerts_all_users(){
        $q=$this->db->get($this->Table_name_alert);
         if( $q->num_rows() >0){
             return $q->result_array();
@@ -73,6 +73,14 @@ class Alert_model extends CI_Model{
         }
    }
 
+   public function get_all_notification_type(){
+        $q=$this->db->get($this->Table_name_notification_type);
+        if( $q->num_rows() >0){
+            return $q->result_array();
+        } else{
+            return null;
+        }
+   }
 
 
 }

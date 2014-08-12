@@ -76,7 +76,10 @@ class Alert extends REST_Controller {
 
 		$alerts_given_uid=$this->alert_model->get_all_alerts_by_uid($uid);
 
-		$this->core_controller->add_return_data('alerts', $alerts_given_uid); 
+		$alert_type=$this->alert_model->get_all_notification_type();
+
+		$this->core_controller->add_return_data('alerts', $alerts_given_uid);
+		$this->core_controller->add_return_data('alert_type', $alert_type);  
 		$this->core_controller->add_return_data('uid', $uid); 
 		$this->core_controller->successfully_processed();
 
