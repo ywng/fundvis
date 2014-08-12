@@ -70,6 +70,18 @@ class Alert extends REST_Controller {
 
 	}
 
+	public function getAlerts_get(){
+		$user=$this->core_controller->get_current_user();
+		$uid=$user[$this->user_model->KEY_user_id];
+
+		$alerts_given_uid=$this->alert_model->get_all_alerts_by_uid($uid);
+
+		$this->core_controller->add_return_data('alerts', $alerts_given_uid); 
+		$this->core_controller->add_return_data('uid', $uid); 
+		$this->core_controller->successfully_processed();
+
+	}
+
 	
 	
 
