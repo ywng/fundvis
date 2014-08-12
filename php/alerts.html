@@ -907,15 +907,12 @@
             formdata.append( 'renotify_percent', renotify_percent);
             formdata.append( 'valid_till', valid_till);
 
-            console.log(formdata);
-
-
             var onSuccess_cb=function(data, textStatus, jqXHR){
                  if(data.status_code==1){
                      //reset the form after successfully done it.
                     $("#resetForm").click();
                     $("#msg_div").prop('class', 'form-group has-success');
-                    $("#msg_heading").text("Transaction added successfully, transaction ID: "+data.transaction_id);
+                    $("#msg_heading").text("Alert added successfully, alert ID: "+data.alert_id);
                  }else{
                     $("#msg_div").prop('class', 'form-group has-error');
                     $("#msg_heading").text(data.message);
