@@ -761,15 +761,15 @@
                                 <div class="col-lg-6">
                                     <div class="form-group input-group">
                                         <input id="stockcode_inputbox" class="form-control" placeholder="Code" style="width:25%;">
-                                        <input class="form-control" id="stock_info_box_name1" type="text" placeholder="Stock Name" disabled style="width:75%;">
+                                        <input class="form-control" id="stock_info_box_name" type="text" placeholder="Stock Name" disabled style="width:75%;">
                                     </div>
 
                                     <div class="form-group input-group">
                                         <select id="alert_type" class="form-control" placeholder="Alert Type" disabled style="width:50%;">
-                                                <option> &gt; Specified Price</option>
-                                                <option> &lt; Specified Price</option>
-                                                <option> Daily % Increase &gt; </option>
-                                                <option> Daily % Decrease &gt; </option>
+                                                <option value="3"> &gt; Specified Price</option>
+                                                <option value="4"> &lt; Specified Price</option>
+                                                <option value="5"> Daily % Increase &gt; </option>
+                                                <option value="6"> Daily % Decrease &gt; </option>
                                         </select>
                                         <input id="alert_trigger_condition" class="form-control" placeholder="Specified Price" style="width:50%;">
                                     </div> 
@@ -777,13 +777,13 @@
                                     </br>
                                     <p>
                                         <button id="resetForm" type="reset" class="btn btn-default">Reset</button>
-                                        <button id="addAlerts" class="btn btn-default">Submit</button>
+                                        <button id="addAlert" class="btn btn-default">Submit</button>
                                     </p>
                                 </div>
 
                                 <div class="col-lg-6">
                                     <div class="form-group input-group">
-                                         <input class="form-control" id="stock_info_box_price1" type="text" placeholder="Current Price 53 w l h" disabled >
+                                         <input class="form-control" id="stock_info_box_price" type="text" placeholder="Current Price 53 w l h" disabled >
                                     </div>
 
                                     <div class="form-group input-group" style="margin-bottom:20px;">
@@ -841,6 +841,14 @@
           language: 'pt-BR'
         });
        
+        $( "#alert_type" ).change(function() {
+            if($( '#alert_type option:selected' ).val()=="3"||$( '#alert_type option:selected' ).val()=="4"){
+                $("#alert_trigger_condition").prop('palceholder', "Specified Price");
+            }else{
+                $("#alert_trigger_condition").prop('palceholder', "Daily Percent Change");
+            }
+
+        });
 
         $( "#stockcode_inputbox" ).change(function() {
              var onSuccess_cb=function(data, textStatus, jqXHR){
@@ -867,7 +875,7 @@
             getStock($( "#stockcode_inputbox").val(),onSuccess_cb);
         });
 
-        $( "#addAlerts" ).click(function(event) {
+        $( "#addAlert" ).click(function(event) {
             event.preventDefault();
 
             var stock_id;
