@@ -771,7 +771,7 @@
                                                 <option value="5"> Daily % Increase &gt; </option>
                                                 <option value="6"> Daily % Decrease &gt; </option>
                                         </select>
-                                        <input id="alert_trigger_condition" class="form-control" placeholder="Specified Price" style="width:50%;">
+                                        <input id="alert_trigger_condition" class="form-control" placeholder="" style="width:50%;">
                                     </div> 
                                   
                                     </br>
@@ -840,17 +840,12 @@
         $('#datetimepicker').datetimepicker({
           language: 'pt-BR'
         });
-       
-        $( "#alert_type" ).change(function() {
-            if($( '#alert_type option:selected' ).val()=="3"||$( '#alert_type option:selected' ).val()=="4"){
-                $("#alert_trigger_condition").prop('palceholder', "Specified Price");
-            }else{
-                $("#alert_trigger_condition").prop('palceholder', "Daily Percent Change");
-            }
-
-        });
 
         $( "#stockcode_inputbox" ).change(function() {
+             if($( "#stockcode_inputbox").val()==""){
+                $("#alert_type").prop('disabled', true);
+                return;
+             }
              var onSuccess_cb=function(data, textStatus, jqXHR){
                  if(data.status_code=='1'){
 
@@ -868,6 +863,7 @@
                     }
                  }else{
                     $("#stock_info_box_name").val(data.message);
+                    $("#alert_type").prop('disabled', true);
                     $("#stock_info_box_price").val("");
                  }
             };
