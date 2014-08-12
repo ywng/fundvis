@@ -881,26 +881,33 @@
             var renotify_diff_percent;
             var valid_till;//if not filled in...default not expire
 
-
-
            if($('#stock_info_box_name').val()==="No such stock!" ||$( '#stockcode_inputbox' ).val()==="" || $('#alert_trigger_condition').val()===""){
-                //do nth with alert1
+                //do nth since the form is incomplete
            }else{
+                stock_id=$( '#stockcode_inputbox' ).val();
+                alert_type=$( '#alert_type option:selected').val();
+
+                if(alert_type=="3"||alert_type=="4"){
+                    specified_price=$( '#alert_trigger_condition' ).val();
+                    daily_percent=null;
+                }else{
+                    specified_price=null;
+                    daily_percent=$( '#alert_trigger_condition' ).val();
+                }
+
+                renotify_percent=$( '#renotify_percent' ).val();
+                valid_till=$( '#datetime' ).val();
 
            }
             var formdata = new FormData();
-           /* formdata.append( 'stock_id', $( '#stockcode_inputbox' ).val());
-            formdata.append( 'type', $( '#trans_type option:selected' ).text());
-            formdata.append( 'price', $( '#price' ).val());
-            formdata.append( 'target_price', $( '#target_price' ).val());
-            formdata.append( 'stop_loss_price', $( '#stop_loss_price' ).val());
-            formdata.append( 'target_price_renotify_percent', $( '#target_price_renotify_percent' ).val());
-            formdata.append( 'stop_loss_price_renotify_percent', $( '#stop_loss_price_renotify_percent' ).val());
-            formdata.append( 'rationale', $( '#rationale' ).val());
-            formdata.append( 'review', $( '#review' ).val());
-            formdata.append( 'trans_fee', $( '#trans_fee' ).val());
-            formdata.append( 'quantity', $( '#quantity' ).val());
-            formdata.append( 'datetime', $( '#datetime' ).val());*/
+            formdata.append( 'stock_id', stock_id);
+            formdata.append( 'alert_type',alert_type);
+            formdata.append( 'specified_price', specified_price);
+            formdata.append( 'daily_percent', daily_percent);
+            formdata.append( 'renotify_percent', renotify_percent);
+            formdata.append( 'valid_till', valid_till);
+
+            console.log(formdata);
 
 
             var onSuccess_cb=function(data, textStatus, jqXHR){
