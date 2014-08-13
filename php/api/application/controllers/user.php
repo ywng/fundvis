@@ -162,7 +162,7 @@ class User extends REST_Controller {
 			// email does not exist
 			$this->core_controller->fail_response(3);
 		}
-		if ($user_data[$this->user_model->KEY_password] != $this->input->post('password')) {
+		if ($user_data[$this->user_model->KEY_password] != md5($this->input->post('password'))) {
 			// wrong password
 			$this->core_controller->fail_response(4);
 		}

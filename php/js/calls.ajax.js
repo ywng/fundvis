@@ -78,7 +78,8 @@ function loginOnSuccess(data, textStatus, jqXHR){
             localStorage.setItem("X-WealthVis-loggedIn", "true");
             localStorage.setItem("X-WealthVis-expire-time", data.expire_time);
 
-            localStorage.setItem("X-WealthVis-fbid", data.user_fbid);
+            if(data.user_fbid!=null)
+           	 localStorage.setItem("X-WealthVis-fbid", data.user_fbid);
 
             checkLogin();
 		 }
