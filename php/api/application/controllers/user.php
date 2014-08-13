@@ -142,7 +142,7 @@ class User extends REST_Controller {
 	*/
 	public function login_post()
 	{
-	/*	// Validation
+		// Validation
 		$this->load->library('form_validation');
 		$validation_config = array(
 			array('field' => 'password', 'label' => 'password', 'rules' => 'trim|required|xss_clean|md5'), 
@@ -178,7 +178,7 @@ class User extends REST_Controller {
 		$this->core_controller->add_return_data('session_token', $new_session_token['session_token']);
 		$this->core_controller->add_return_data('expire_time', $new_session_token['expire_time']);
 
-		$this->core_controller->successfully_processed();*/
+		$this->core_controller->successfully_processed();
 	}
 
 	/**

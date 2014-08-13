@@ -9,11 +9,11 @@ $config['error'][1] = 'Failed credential check.';
 $config['error'][2] = 'Standard validation error, you should use validation_error() function to generate exact message back to the app.';
 
 // Login related error message
-$config['error'][3] = '使用者不存在！';
-$config['error'][4] = '密碼不正確！';
+$config['error'][3] = 'User does not exist！';
+$config['error'][4] = 'Incorrect password！';
 
 // FB login related error message
-$config['error'][5] = 'Facebook 登入失敗！';
+$config['error'][5] = 'Facebook login failed！';
 
 
 // Register_related error message

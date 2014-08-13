@@ -102,7 +102,7 @@
                 <div id='social-icons-conatainer'>
                   <div class='modal-body-left'>
                     <div class="form-group">
-                          <input type="text" id="username" placeholder="Enter your name" value="" class="form-control login-field">
+                          <input type="text" id="username" placeholder="Email" value="" class="form-control login-field">
                           <i class="fa fa-user login-field-icon"></i>
                       </div>
         
@@ -111,7 +111,7 @@
                           <i class="fa fa-lock login-field-icon"></i>
                       </div>
         
-                      <a href="#" class="btn btn-success modal-login-btn">Login</a>
+                      <a href="#" class="btn btn-success modal-login-btn" onclick="loginCall();">Login</a>
                       <a href="#" class="login-link text-center">Lost your password?</a>
                   </div>
                 
@@ -151,6 +151,13 @@
 
 
     <script>
+      //normal login, propriety account
+      function loginCall(){
+        if($( "#username").val()==""||$( "#password").val()==""){
+          return;
+        }
+        login($( "#username").val(),$( "#password").val());
+      }
 
       //fb login part
       // This is called with the results from from FB.getLoginStatus().

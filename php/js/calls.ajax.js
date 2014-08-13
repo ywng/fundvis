@@ -1,5 +1,6 @@
 //var 
 var fblogin_URL='user/fblogin'
+var login_URL='user/login'
 var getStock_URL='stock/getStock'
 var addTransRecord_URL='transaction/addTransactionRecord'
 var getSellableQuantity_URL='transaction/getSellableQuantity'
@@ -34,26 +35,21 @@ function addTransRecord(form_data,onSuccess){
 	rawAjaxCall(addTransRecord_URL,"POST",form_data,onSuccess,onFailure);
 }
 
+function login(email, password){
+
+	var data=new FormData();
+	data.append( 'email', email);
+	data.append( 'password', password);
+
+	rawAjaxCall(login_URL,"POST",data,loginOnSuccess,onFailure);
+}
+
 function fblogin(access_token){
-
-	var onSuccess=function(data, textStatus, jqXHR){
-		 if(data.status_code=='1'){
-		 	localStorage.setItem("X-WealthVis-session-token", data.session_token);
-            localStorage.setItem("X-WealthVis-email", data.email);
-            localStorage.setItem("X-WealthVis-user-type",'user');
-            localStorage.setItem("X-WealthVis-loggedIn", "true");
-            localStorage.setItem("X-WealthVis-expire-time", data.expire_time);
-
-            localStorage.setItem("X-WealthVis-fbid", data.user_fbid);
-
-            checkLogin();
-		 }
-	};
 
 	var data=new FormData();
 	data.append( 'access_token', access_token);
 
-	rawAjaxCall(fblogin_URL,"POST",data,onSuccess,onFailure);
+	rawAjaxCall(fblogin_URL,"POST",data,loginOnSuccess,onFailure);
 }
 
 
@@ -74,5 +70,18 @@ function rawAjaxCall(relativeURL,type,data,onSuccess,onFailure){
 
 }
 
+function loginOnSuccess(data, textStatus, jqXHR){
+		 if(data.status_code=='1'){
+		 	localStorage.setItem("X-WealthVis-session-token", data.session_token);
+            localStorage.setItem("X-WealthVis-email", data.email);
+            localStorage.setItem("X-WealthVis-user-type",'user');
+            localStorage.setItem("X-WealthVis-loggedIn", "true");
+            localStorage.setItem("X-WealthVis-expire-time", data.expire_time);
+
+            localStorage.setItem("X-WealthVis-fbid", data.user_fbid);
+
+            checkLogin();
+		 }
+}
 
  
