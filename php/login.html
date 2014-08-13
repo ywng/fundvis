@@ -153,10 +153,10 @@
     <script>
       //normal login, propriety account
       function loginCall(){
-        if($( "#username").val()==""||$( "#password").val()==""){
+        if($( "#username").val()==""||$( "#login-pass").val()==""){
           return;
         }
-        login($( "#username").val(),$( "#password").val());
+        login($( "#username").val(),$( "#login-pass").val());
       }
 
       //fb login part
