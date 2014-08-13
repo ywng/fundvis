@@ -897,7 +897,12 @@
                 }
 
                 renotify_percent=$( '#renotify_percent' ).val();
-                valid_till=$( '#datetime' ).val();
+                if($( '#datetime' ).val()==""){
+                     valid_till=null;
+                }else{
+                     valid_till=$( '#datetime' ).val();
+                }
+               
 
            }
             var formdata = new FormData();
@@ -913,7 +918,7 @@
                      //reset the form after successfully done it.
                     $("#resetForm").click();
                     $("#msg_div").prop('class', 'form-group has-success');
-                    $("#msg_heading").text("Alert added successfully, alert ID: "+data.alert_id);
+                    $("#msg_heading").text("Alert trigger added successfully, alert ID: "+data.alert_id);
                  }else{
                     $("#msg_div").prop('class', 'form-group has-error');
                     $("#msg_heading").text(data.message);
@@ -925,7 +930,7 @@
         
         $( "#resetForm" ).click(function() {
              $("#msg_div").prop('class', 'form-group has-success');
-             $("#msg_heading").text("Add New Alerts");
+             $("#msg_heading").text("Add a New Alert Trigger");
         });
 
         checkRedirectNeeded();

@@ -38,7 +38,6 @@ class Alert extends REST_Controller {
 		    $this->alert_model->KEY_stock_id => $stock_id ,
 		    $this->alert_model->KEY_type => $alert_type,
 		    $this->alert_model->KEY_renotify_diff_percent => $renotify_percent,
-		    $this->alert_model->KEY_valid_till => $valid_till,
 		    $this->alert_model->KEY_enable => "1",
 		  
 		);
@@ -47,6 +46,9 @@ class Alert extends REST_Controller {
 		}
 		if($specified_price!=null){
 			$data[$this->alert_model->KEY_specified_price]=$specified_price;
+		}
+		if($valid_till!=null){
+			$data[$this->alert_model->KEY_valid_till]=$valid_till;
 		}
 
 		$alert_id = $this->alert_model->add_alert($data);
