@@ -1,9 +1,10 @@
 //var 
-var fblogin_URL='user/fblogin'
-var login_URL='user/login'
-var getStock_URL='stock/getStock'
-var addTransRecord_URL='transaction/addTransactionRecord'
-var getSellableQuantity_URL='transaction/getSellableQuantity'
+var fblogin_URL='user/fblogin';
+var login_URL='user/login';
+var getStock_URL='stock/getStock';
+var addTransRecord_URL='transaction/addTransactionRecord';
+var addAlert_URL='alert/addAlert'
+var getSellableQuantity_URL='transaction/getSellableQuantity';
 
 var onFailure=function(jqHXR, textStatus, errorThrown){
 		 console.log('ajax error:' +textStatus + ' ' + errorThrown);
@@ -33,6 +34,11 @@ function getStock(code,onSuccess){
 function addTransRecord(form_data,onSuccess){
 	
 	rawAjaxCall(addTransRecord_URL,"POST",form_data,onSuccess,onFailure);
+}
+
+function addAlert(form_data,onSuccess){
+	
+	rawAjaxCall(addAlert_URL,"POST",form_data,onSuccess,onFailure);
 }
 
 function login(email, password){

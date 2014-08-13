@@ -24,47 +24,34 @@ class Alert extends REST_Controller {
 	public function addAlert_post(){
 		
 		$user=$this->core_controller->get_current_user();
-		/*$stock_id=$this->input->post('stock_id');
-		$price=$this->input->post('price');
-		$quantity=$this->input->post('quantity');
-		$datetime=$this->input->post('datetime');
-		$target_price=$this->input->post('target_price');
-		$stop_loss_price=$this->input->post('stop_loss_price');
-		$target_price_renotify_percent=$this->input->post('target_price_renotify_percent');
-		$stop_loss_price_renotify_percent=$this->input->post('stop_loss_price_renotify_percent');
-		$rationale=$this->input->post('rationale');
-		$review=$this->input->post('review');
-		$type=$this->input->post('type');
-		$trans_fee=$this->input->post('trans_fee');*/
+		$stock_id=$this->input->post('stock_id');
+		$specified_price=$this->input->post('specified_price');
+		$alert_type=$this->input->post('alert_type');
+		$daily_percent=$this->input->post('daily_percent');
+		$renotify_percent=$this->input->post('renotify_percent');
+		$valid_till=$this->input->post('valid_till');
 
 		$uid=$user[$this->user_model->KEY_user_id];
 
-		/*$data = array(
-		    $this->transaction_model->KEY_user_id =>$uid,
-		    $this->transaction_model->KEY_stock_id => $stock_id ,
-		    $this->transaction_model->KEY_price => $price,
-		    $this->transaction_model->KEY_quantity => $quantity,
-		    $this->transaction_model->KEY_datetime => $datetime ,
-		    $this->transaction_model->KEY_target_price=> $target_price,
-		    $this->transaction_model->KEY_stop_loss_price => $stop_loss_price,
-		    $this->transaction_model->KEY_target_price_renotify_percent=> $target_price_renotify_percent,
-		    $this->transaction_model->KEY_stop_loss_price_renotify_percent => $stop_loss_price_renotify_percent,
-		    $this->transaction_model->KEY_rationale => $rationale ,
-		    $this->transaction_model->KEY_review => $review,
-		    $this->transaction_model->KEY_type => $type,
-		    $this->transaction_model->KEY_trans_fee => $trans_fee ,
+		$data = array(
+		    $this->alert_model->KEY_user_id =>$uid,
+		    $this->alert_model->KEY_stock_id => $stock_id ,
+		    $this->alert_model->KEY_specified_price => $specified_price,
+		    $this->alert_model->KEY_type => $alert_type,
+		    $this->alert_model->KEY_daily_percent => $daily_percent,
+		    $this->alert_model->KEY_renotify_diff_percent => $renotify_percent,
+		    $this->alert_model->KEY_valid_till => $valid_till,
+		    $this->alert_model->KEY_enable => "1",
 		  
 		);
-		//if it is a sell trans, need special handle
-		//what if it is buy, what if it is sell hold!!
 
-		$trans_id = $this->transaction_model->add_record($data);
+		$alert_id = $this->alert_model->add_alert($data);
 	
-		if($trans_id<0){
+		if($alert_id<0){
 			$this->core_controller->fail_response(200);
-		}*/
+		}
 		
-		//$this->core_controller->add_return_data('transaction_id', $trans_id); 
+		$this->core_controller->add_return_data('alert_id', $alert_id); 
 		$this->core_controller->successfully_processed();
 
 

@@ -15,7 +15,10 @@ class Alert_model extends CI_Model{
     var $KEY_specified_price = 'specified_price';
     var $KEY_daily_percent = 'daily_percent';
     var $KEY_renotify_diff_percent = 'renotify_diff_percent';
+    var $KEY_enable = 'enable';
+    var $KEY_valid_till = 'valid_till';
     var $Table_name_alert = 'Alert';
+
 
     //notification type table
     var $KEY_notification_type_id = 'id';

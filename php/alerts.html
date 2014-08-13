@@ -883,6 +883,7 @@
 
            if($('#stock_info_box_name').val()==="No such stock!" ||$( '#stockcode_inputbox' ).val()==="" || $('#alert_trigger_condition').val()===""){
                 //do nth since the form is incomplete
+                return;
            }else{
                 stock_id=$( '#stockcode_inputbox' ).val();
                 alert_type=$( '#alert_type option:selected').val();
@@ -919,7 +920,7 @@
                  }
             };
 
-           // addTransRecord(formdata,onSuccess_cb);
+            addAlert(formdata,onSuccess_cb);
         });
         
         $( "#resetForm" ).click(function() {
