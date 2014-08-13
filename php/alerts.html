@@ -896,7 +896,12 @@
                     daily_percent=$( '#alert_trigger_condition' ).val();
                 }
 
-                renotify_percent=$( '#renotify_percent' ).val();
+                if($( '#renotify_percent' ).val()==""){
+                     renotify_percent=null;
+                }else{
+                     renotify_percent=$( '#renotify_percent' ).val();
+                }
+               
                 if($( '#datetime' ).val()==""){
                      valid_till=null;
                 }else{
