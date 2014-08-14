@@ -1,48 +1,30 @@
-//var 
+//var ======================================================
+
+/* user related */
 var fblogin_URL='user/fblogin';
 var login_URL='user/login';
+
+/* stock */
 var getStock_URL='stock/getStock';
+
+/* transaction */
 var addTransRecord_URL='transaction/addTransactionRecord';
-var addAlert_URL='alert/addAlert'
 var getSellableQuantity_URL='transaction/getSellableQuantity';
 
-var onFailure=function(jqHXR, textStatus, errorThrown){
-		 console.log('ajax error:' +textStatus + ' ' + errorThrown);
-	};
+/* alert */
+var addAlert_URL='alert/addAlert'
+var getAlerts_URL='alert/getAlerts'
 
+//functions ==================================================
+
+
+/* user related */
 function logout(access_token){
 	localStorage.clear();
 	checkRedirectNeeded();
 }
 
-function getSellableQuantity(code,onSuccess){
-	
-	var data=new FormData();
-	data.append( 'code', code);
-
-	rawAjaxCall(getSellableQuantity_URL,"POST",data,onSuccess,onFailure);
-}
-
-function getStock(code,onSuccess){
-	
-	var data=new FormData();
-	data.append( 'code', code);
-
-	rawAjaxCall(getStock_URL,"POST",data,onSuccess,onFailure);
-}
-
-function addTransRecord(form_data,onSuccess){
-	
-	rawAjaxCall(addTransRecord_URL,"POST",form_data,onSuccess,onFailure);
-}
-
-function addAlert(form_data,onSuccess){
-	
-	rawAjaxCall(addAlert_URL,"POST",form_data,onSuccess,onFailure);
-}
-
 function login(email, password){
-
 	var data=new FormData();
 	data.append( 'email', email);
 	data.append( 'password', password);
@@ -51,14 +33,46 @@ function login(email, password){
 }
 
 function fblogin(access_token){
-
 	var data=new FormData();
 	data.append( 'access_token', access_token);
 
 	rawAjaxCall(fblogin_URL,"POST",data,loginOnSuccess,onFailure);
 }
 
+/* stock */
 
+function getSellableQuantity(code,onSuccess){
+	var data=new FormData();
+	data.append( 'code', code);
+
+	rawAjaxCall(getSellableQuantity_URL,"POST",data,onSuccess,onFailure);
+}
+
+function getStock(code,onSuccess){
+	var data=new FormData();
+	data.append( 'code', code);
+
+	rawAjaxCall(getStock_URL,"POST",data,onSuccess,onFailure);
+}
+
+/* transaction */
+function addTransRecord(form_data,onSuccess){
+	rawAjaxCall(addTransRecord_URL,"POST",form_data,onSuccess,onFailure);
+}
+
+/* alert */
+function addAlert(form_data,onSuccess){
+	rawAjaxCall(addAlert_URL,"POST",form_data,onSuccess,onFailure);
+}
+
+function getAlerts(onSuccess){
+	rawAjaxCall(getAlerts_URL,"GET",onSuccess,onFailure);
+}
+
+
+// helpers ======================================================
+/** generic ajax call */
+/** other calls are just build onto this */
 function rawAjaxCall(relativeURL,type,data,onSuccess,onFailure){
 
 	$.ajax({
@@ -75,6 +89,12 @@ function rawAjaxCall(relativeURL,type,data,onSuccess,onFailure){
     }); // end of the ajax call
 
 }
+
+
+/* common onFailure / onSuccess callback **/
+var onFailure=function(jqHXR, textStatus, errorThrown){
+	console.log('ajax error:' +textStatus + ' ' + errorThrown);
+};
 
 function loginOnSuccess(data, textStatus, jqXHR){
 		 if(data.status_code=='1'){

@@ -901,6 +901,8 @@
                  }else{
                     $("#stock_info_box_name").val(data.message);
                     $("#stock_info_box_price").val("");
+
+                    checkRedirectNeeded_status_code(data.status_code);
                  }
             };
 
@@ -936,6 +938,8 @@
                  }else{
                     $("#msg_div").prop('class', 'form-group has-error');
                     $("#msg_heading").text(data.message);
+
+                    checkRedirectNeeded_status_code(data.status_code);
                  }
             };
 
@@ -958,6 +962,7 @@
                     if(data.sellable_quantity>0)
                          $('#stock_info_box_name').val(stockname+"  Sellable Quan: "+data.sellable_quantity);
                  }else{
+                    checkRedirectNeeded_status_code(data.status_code);
                     
                  }
             };

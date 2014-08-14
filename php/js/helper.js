@@ -15,3 +15,8 @@ function checkRedirectNeeded(){
 	}
 }
 
+function checkRedirectNeeded_status_code(status_code){
+	if(status_code!=null && status_code=="-1"){//credential check failed, redirect to login
+		$(location).attr('href', serverDomain + 'login.html');
+	}
+}

@@ -118,6 +118,7 @@ class CORE_Controller {
 
         $this->CI->load->model('session_model');
         $user_type = 0;
+        $id=-1;
         if ($input_user_type == 'user') {
             
             $user_type = 'user';

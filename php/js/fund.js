@@ -50,6 +50,7 @@ function _init_funds(url){
 			}
 
 			funds_actual[0].vis="True";//when start, only visible the first one, other funds, let user set it later.	
+			
 		},
 		error: function(jqHXR, textStatus, errorThrown) {
 			console.log('ajax error in get survey ID call:' +textStatus + ' ' + errorThrown);

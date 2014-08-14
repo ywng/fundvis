@@ -829,6 +829,13 @@
     var stockname="";
 
     $(document).ready(function() {
+
+        var loadAlertsOnSuccess=function (data, textStatus, jqXHR){
+             if(data.status_code=='1'){
+                
+             }
+        }
+
         $('#dataTables-example').dataTable()
         .makeEditable({
             //...
@@ -867,6 +874,8 @@
                     $("#stock_info_box_name").val(data.message);
                     $("#alert_type").prop('disabled', true);
                     $("#stock_info_box_price").val("");
+
+                    checkRedirectNeeded_status_code(data.status_code);
                  }
             };
 
@@ -929,6 +938,8 @@
                  }else{
                     $("#msg_div").prop('class', 'form-group has-error');
                     $("#msg_heading").text(data.message);
+
+                    checkRedirectNeeded_status_code(data.status_code);
                  }
             };
 
