@@ -29,14 +29,14 @@ function login(email, password){
 	data.append( 'email', email);
 	data.append( 'password', password);
 
-	rawAjaxCall(login_URL,"POST",data,loginOnSuccess,onFailure);
+	rawAjaxCall(login_URL,"POST",true,data,loginOnSuccess,onFailure);
 }
 
 function fblogin(access_token){
 	var data=new FormData();
 	data.append( 'access_token', access_token);
 
-	rawAjaxCall(fblogin_URL,"POST",data,loginOnSuccess,onFailure);
+	rawAjaxCall(fblogin_URL,"POST",true,data,loginOnSuccess,onFailure);
 }
 
 /* stock */
@@ -45,41 +45,42 @@ function getSellableQuantity(code,onSuccess){
 	var data=new FormData();
 	data.append( 'code', code);
 
-	rawAjaxCall(getSellableQuantity_URL,"POST",data,onSuccess,onFailure);
+	rawAjaxCall(getSellableQuantity_URL,"POST",true,data,onSuccess,onFailure);
 }
 
 function getStock(code,onSuccess){
 	var data=new FormData();
 	data.append( 'code', code);
 
-	rawAjaxCall(getStock_URL,"POST",data,onSuccess,onFailure);
+	rawAjaxCall(getStock_URL,"POST",true,data,onSuccess,onFailure);
 }
 
 /* transaction */
 function addTransRecord(form_data,onSuccess){
-	rawAjaxCall(addTransRecord_URL,"POST",form_data,onSuccess,onFailure);
+	rawAjaxCall(addTransRecord_URL,"POST",true,form_data,onSuccess,onFailure);
 }
 
 /* alert */
 function addAlert(form_data,onSuccess){
-	rawAjaxCall(addAlert_URL,"POST",form_data,onSuccess,onFailure);
+	rawAjaxCall(addAlert_URL,"POST",true,form_data,onSuccess,onFailure);
 }
 
 function getAlerts(onSuccess){
-	rawAjaxCall(getAlerts_URL,"GET",null,onSuccess,onFailure);
+	rawAjaxCall(getAlerts_URL,"GET",false,null,onSuccess,onFailure);
 }
 
 
 // helpers ======================================================
 /** generic ajax call */
 /** other calls are just build onto this */
-function rawAjaxCall(relativeURL,type,data,onSuccess,onFailure){
+function rawAjaxCall(relativeURL,type,async_setting,data,onSuccess,onFailure){
 
 	$.ajax({
         url: apiDomain + relativeURL,
         contentType:false,
 		processData: false,
 		cache: false,
+		async:async_setting,
         data:data,
         headers : {"X-session-token":localStorage.getItem("X-WealthVis-session-token"),"X-email":localStorage.getItem("X-WealthVis-email"),"X-user-type":localStorage.getItem("X-WealthVis-user-type")},
         type: type, 
