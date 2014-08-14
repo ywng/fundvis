@@ -1257,7 +1257,7 @@ returns true if plugin should continue with sending AJAX request, false will abo
             }
 
             //Add handler to the inline delete buttons
-            $(".table-action-deletelink", oTable).live("click", _fnOnRowDeleteInline);
+            //$(".table-action-deletelink", oTable).live("click", _fnOnRowDeleteInline);
 
             if (!properties.bUseKeyTable) {
             //Set selected class on row that is clicked
