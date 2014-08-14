@@ -385,30 +385,21 @@
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
-                                            <th>Rendering engine</th>
-                                            <th>Browser</th>
-                                            <th>Platform(s)</th>
-                                            <th>Engine version</th>
-                                            <th>CSS grade</th>
+                                            <th><input type="checkbox" id="toggleAll" name="toggleAll" value="toggleAll"></input></th>
+                                            <!-- If you change the table column name here, the name in the db corresponding to the cell update need to be changed-->
+                                            <!-- controller/alert/updateTableCell_post()-->
+                                            <th>ID</th>
+                                            <th>Stock</th>
+                                            <th>Type</th>
+                                            <th>Alert Level</th>
+                                            <th>Renotify Level</th>
+                                            <th><input type="checkbox" id="toggleAllEnable" name="toggleAll" value="toggleAll">Enable</input></th>
+                                            <th>Valid Till</th>
+                        
+
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr class="odd gradeX">
-                                            <td>Trident</td>
-                                            <td>Internet Explorer 4.0</td>
-                                            <td>Win 95+</td>
-                                            <td class="center">4</td>
-                                            <td class="center">X</td>
-                                        </tr>
-                                        <tr class="even gradeC">
-                                            <td>Trident</td>
-                                            <td>Internet Explorer 5.0</td>
-                                            <td>Win 95+</td>
-                                            <td class="center">5</td>
-                                            <td class="center">C</td>
-                                        </tr>
-                                       
-                                    </tbody>
+                                    
                                 </table>
                             </div>
                             <!-- /.table-responsive -->
@@ -787,7 +778,7 @@
                                     </div>
 
                                     <div class="form-group input-group" style="margin-bottom:20px;">
-                                        <input id="renotify_percent" class="form-control" placeholder="Renotify Val (% Chg)" style="width:50%;">
+                                        <input id="renotify_percent" class="form-control" placeholder="Renotify Level (% Chg)" style="width:50%;">
                                         <div id="datetimepicker" class="input-append date form-group input-group">
                                                 <span class="input-group-btn add-on" style="height:34px;">
                                                     <button class="btn btn-default" type="button" style="height:34px;"><i class="fa fa-calendar"></i>
