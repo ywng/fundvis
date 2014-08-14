@@ -388,11 +388,10 @@
                                             <th><input type="checkbox" id="toggleAll" name="toggleAll" value="toggleAll"></input></th>
                                             <!-- If you change the table column name here, the name in the db corresponding to the cell update need to be changed-->
                                             <!-- controller/alert/updateTableCell_post()-->
-                                            <th>ID</th>
                                             <th>Stock</th>
                                             <th>Type</th>
                                             <th>Alert Level</th>
-                                            <th>Renotify Level</th>
+                                            <th>Renotify Level(%)</th>
                                             <th><input type="checkbox" id="toggleAllEnable" name="toggleAll" value="toggleAll">Enable</input></th>
                                             <th>Valid Till</th>
                         
@@ -834,53 +833,31 @@
         var loadAlertsOnSuccess=function (data, textStatus, jqXHR){
             if(data.status_code=='1'){
                   alerts_arr=new Array(); 
-                  for(var i=0;i<data.alert.length;i++){
-                     var file=new Array(); 
-                     file[0]="<input type=\"checkbox\" id=\"file"+data.files[i].ID+"\"></input>";
-                     file[1]=buildCategoryChainStr(data.files[i].Category);
-                     file[2]=data.files[i].File_Name;
-                     file[3]=data.files[i].Tags;
+                  var alert_types=data.alert_type;
+                  for(var i=0;i<data.alerts.length;i++){
+                     var alert=new Array(); 
+                     alert[0]="<input type=\"checkbox\" id=\"alert"+data.alerts[i].id+"\"></input>";
+                     //mouse over to show alert id
+                     alert[1]="["+data.alerts[i].sid+"] "+data.alerts[i].name;
+                     alert[2]=alert_type[data.alerts[i].type].type;
+                     //alert[3]=;
                      
-                     file[4]=data.files[i].Header_Line;
-                     file[5]=data.files[i].Description;
                      
-                     //cover_photo
-                     var coverPhotoPath= data.files[i].Image;
-                     if(coverPhotoPath==null){
-                         file[6]="<a href=#></a><input id=\"imageReupload"+data.files[i].ID+"\" onchange=\"handleImageReupload("+data.files[i].ID+");\" type=\"file\" name=\"cover_photo\">";
-                     }else{
-                        var coverPhotoRawName =data.files[i].Image_Raw_Name;
-                        file[6]="<a href="+serverDomain+coverPhotoPath+" target=\"_blank\">"+coverPhotoRawName+"</a><input id=\"imageReupload"+data.files[i].ID+"\" onchange=\"handleImageReupload("+data.files[i].ID+");\" type=\"file\" name=\"cover_photo\">";
-                     }
-
                      
-                     file[8]=data.files[i].Comment;
-
-                     var filePath= data.files[i].url;
-                     if(filePath==null){
-                         file[7]="<a href=#></a><input id=\"fileReupload"+data.files[i].ID+"\" onchange=\"handleFileReupload("+data.files[i].ID+");\" type=\"file\" name=\"userfile\">";
-                     }else{
-                         var fileName =data.files[i].Raw_Name;
-                         file[7]="<a href="+serverDomain+filePath+" target=\"_blank\">"+fileName+"</a><input id=\"fileReupload"+data.files[i].ID+"\" onchange=\"handleFileReupload("+data.files[i].ID+");\" type=\"file\" name=\"userfile\">";
-                     }
-
-                     file[9]=data.files[i].Last_Modified;
+                     //========hidden fields=========================//
+                     //alert id , not displayed but use as row id for matching 
+                     alert[15]=data.alerts[i].id;
+                     file[16]="old";//identify the alerts are old record, not newly added
                      
-                     //====================================================================hidden fields=========================//
-                     //file id , not displayed but use as row id for matching 
-                     file[15]=data.files[i].ID;
-                     
-                     file[16]=data.files[i].Category;//save the category for later use
-                     
-                     file[17]="old";//identify the files are old one
-                     
-                     files_arr[i]=file;
+                     alerts_arr[i]=alert;
             }else{
                 checkRedirectNeeded_status_code(data.status_code);
             }
         }
 
-        $('#dataTables-example').dataTable()
+        $('#dataTables-example').dataTable({
+            "aaData":alerts_arr
+        })
         .makeEditable({
             //...
             sUpdateURL: function(value, settings){
