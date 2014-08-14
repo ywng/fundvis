@@ -839,7 +839,7 @@
                      alert[0]="<input type=\"checkbox\" id=\"alert"+data.alerts[i].id+"\"></input>";
                      //mouse over to show alert id
                      alert[1]="["+data.alerts[i].sid+"] "+data.alerts[i].name;
-                     alert[2]=alert_type[data.alerts[i].type-1].type;
+                     alert[2]=alert_type[parseInt(data.alerts[i].type)-1].type;
                      if(data.alerts[i].type=="3"||data.alerts[i].type=="4"){
                         alert[3]=data.alerts[i].specified_price;
                      }else{
