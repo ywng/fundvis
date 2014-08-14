@@ -17,6 +17,7 @@ function checkRedirectNeeded(){
 
 function checkRedirectNeeded_status_code(status_code){
 	if(status_code!=null && status_code=="-1"){//credential check failed, redirect to login
+		localStorage.setItem("X-WealthVis-loggedIn", "false");
 		$(location).attr('href', serverDomain + 'login.html');
 	}
 }

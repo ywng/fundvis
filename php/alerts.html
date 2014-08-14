@@ -830,10 +830,58 @@
 
     $(document).ready(function() {
 
+        var alerts_arr = new Array();
         var loadAlertsOnSuccess=function (data, textStatus, jqXHR){
-             if(data.status_code=='1'){
-                
-             }
+            if(data.status_code=='1'){
+                        //console.log(data);
+                  var len=0;
+                  if(data.files)
+                    len=data.files.length;
+                  files_arr=new Array(); 
+                  for(var i=0;i<len;i++){
+                     var file=new Array(); 
+                     file[0]="<input type=\"checkbox\" id=\"file"+data.files[i].ID+"\"></input>";
+                     file[1]=buildCategoryChainStr(data.files[i].Category);
+                     file[2]=data.files[i].File_Name;
+                     file[3]=data.files[i].Tags;
+                     
+                     file[4]=data.files[i].Header_Line;
+                     file[5]=data.files[i].Description;
+                     
+                     //cover_photo
+                     var coverPhotoPath= data.files[i].Image;
+                     if(coverPhotoPath==null){
+                         file[6]="<a href=#></a><input id=\"imageReupload"+data.files[i].ID+"\" onchange=\"handleImageReupload("+data.files[i].ID+");\" type=\"file\" name=\"cover_photo\">";
+                     }else{
+                        var coverPhotoRawName =data.files[i].Image_Raw_Name;
+                        file[6]="<a href="+serverDomain+coverPhotoPath+" target=\"_blank\">"+coverPhotoRawName+"</a><input id=\"imageReupload"+data.files[i].ID+"\" onchange=\"handleImageReupload("+data.files[i].ID+");\" type=\"file\" name=\"cover_photo\">";
+                     }
+
+                     
+                     file[8]=data.files[i].Comment;
+
+                     var filePath= data.files[i].url;
+                     if(filePath==null){
+                         file[7]="<a href=#></a><input id=\"fileReupload"+data.files[i].ID+"\" onchange=\"handleFileReupload("+data.files[i].ID+");\" type=\"file\" name=\"userfile\">";
+                     }else{
+                         var fileName =data.files[i].Raw_Name;
+                         file[7]="<a href="+serverDomain+filePath+" target=\"_blank\">"+fileName+"</a><input id=\"fileReupload"+data.files[i].ID+"\" onchange=\"handleFileReupload("+data.files[i].ID+");\" type=\"file\" name=\"userfile\">";
+                     }
+
+                     file[9]=data.files[i].Last_Modified;
+                     
+                     //====================================================================hidden fields=========================//
+                     //file id , not displayed but use as row id for matching 
+                     file[15]=data.files[i].ID;
+                     
+                     file[16]=data.files[i].Category;//save the category for later use
+                     
+                     file[17]="old";//identify the files are old one
+                     
+                     files_arr[i]=file;
+            }else{
+                checkRedirectNeeded_status_code(data.status_code);
+            }
         }
 
         $('#dataTables-example').dataTable()
