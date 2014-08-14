@@ -832,9 +832,9 @@
         var alerts_arr;
         var loadAlertsOnSuccess=function (data, textStatus, jqXHR){
             if(data.status_code=='1'){
-                  alerts_arr=new Array(); 
-                  var alert_types=data.alert_type;
-                  for(var i=0;i<data.alerts.length;i++){
+                alerts_arr=new Array(); 
+                var alert_types=data.alert_type;
+                for(var i=0;i<data.alerts.length;i++){
                      var alert=new Array(); 
                      alert[0]="<input type=\"checkbox\" id=\"alert"+data.alerts[i].id+"\"></input>";
                      //mouse over to show alert id
@@ -845,7 +845,7 @@
                      }else{
                         alert[3]=data.alerts[i].daily_percent;
                      }
-                    
+
                      alert[4]=data.alerts[i].renotify_diff_percent;
                      if(data.alerts[i].enable=="1"){
                         alert[5]="Yes";
@@ -867,6 +867,8 @@
                 checkRedirectNeeded_status_code(data.status_code);
             }
         };
+
+        getAlerts(loadAlertsOnSuccess);
 
         $('#dataTables-example').dataTable({
             "aaData":alerts_arr
