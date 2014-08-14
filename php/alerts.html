@@ -840,8 +840,20 @@
                      //mouse over to show alert id
                      alert[1]="["+data.alerts[i].sid+"] "+data.alerts[i].name;
                      alert[2]=alert_type[data.alerts[i].type].type;
-                     //alert[3]=;
+                     if(data.alerts[i].type=="3"||data.alerts[i].type=="4"){
+                        alert[3]=data.alerts[i].specified_price;
+                     }else{
+                        alert[3]=data.alerts[i].daily_percent;
+                     }
+                    
+                     alert[4]=data.alerts[i].renotify_diff_percent;
+                     if(data.alerts[i].enable=="1"){
+                        alert[5]="Yes";
+                     }else{
+                        alert[5]="No";
+                     }
                      
+                     alert[6]=data.alerts[i].valid_till;
                      
                      
                      //========hidden fields=========================//
@@ -853,7 +865,7 @@
             }else{
                 checkRedirectNeeded_status_code(data.status_code);
             }
-        }
+        };
 
         $('#dataTables-example').dataTable({
             "aaData":alerts_arr
