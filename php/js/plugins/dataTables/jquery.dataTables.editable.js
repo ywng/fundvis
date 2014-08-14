@@ -727,7 +727,7 @@ returns true if plugin should continue with sending AJAX request, false will abo
             //To refresh table with preserver pagination on cell edit
             //if (oSettings.oFeatures.bServerSide === false) {
                 oSettings._iDisplayStart = iDisplayStart;
-                oSettings.oApi._fnCalculateEnd(oSettings);
+              //  oSettings.oApi._fnCalculateEnd(oSettings);
                 //draw the 'current' page
                 oSettings.oApi._fnDraw(oSettings);
             //}
