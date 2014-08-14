@@ -48,7 +48,7 @@ class Alert_model extends CI_Model{
 
    public function get_all_alerts_by_uid($uid){
        $this->db->select('*');
-       $this->db->join($this->stock_model->Table_name_stock, $this->stock_model->Table_name_stock.'\.'.$this->stock_model->KEY_stock_id= $this->Table_name_alert.'\.'.$this->alert_model->KEY_stock_id);
+       $this->db->join($this->stock_model->Table_name_stock, $this->stock_model->Table_name_stock.'.'.$this->stock_model->KEY_stock_id .'='. $this->Table_name_alert.'.'.$this->alert_model->KEY_stock_id);
 
        $this->db->where($this->KEY_user_id,$uid);
        $q=$this->db->get($this->Table_name_alert);
