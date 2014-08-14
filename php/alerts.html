@@ -830,15 +830,11 @@
 
     $(document).ready(function() {
 
-        var alerts_arr = new Array();
+        var alerts_arr;
         var loadAlertsOnSuccess=function (data, textStatus, jqXHR){
             if(data.status_code=='1'){
-                        //console.log(data);
-                  var len=0;
-                  if(data.files)
-                    len=data.files.length;
-                  files_arr=new Array(); 
-                  for(var i=0;i<len;i++){
+                  alerts_arr=new Array(); 
+                  for(var i=0;i<data.alert.length;i++){
                      var file=new Array(); 
                      file[0]="<input type=\"checkbox\" id=\"file"+data.files[i].ID+"\"></input>";
                      file[1]=buildCategoryChainStr(data.files[i].Category);
