@@ -379,8 +379,8 @@
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <p>
-                                  <button id='btnAddRow' type="button" class="btn btn-outline btn-primary" onclick="$('#resetForm').click();window.location.href='#addAlertsDialog'">Add</button>
-                                  <button id='btnDeleteRow' type="button" class="btn btn-outline btn-danger">Delete</button>
+                                  <button id='btnAddAlert' type="button" class="btn btn-outline btn-primary" onclick="$('#resetForm').click();window.location.href='#addAlertsDialog'">Add</button>
+                                  <button id='btnDeleteAlert' type="button" class="btn btn-outline btn-danger">Delete</button>
                                 </p>
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
@@ -840,10 +840,7 @@
     $(document).ready(function() {
         $('#dataTables-example').dataTable()
         .makeEditable({
-             sUpdateURL: function(value, settings){
-                //
-              
-            },
+        
        
         }); 
 
