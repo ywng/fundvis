@@ -66,7 +66,7 @@ function addAlert(form_data,onSuccess){
 }
 
 function getAlerts(onSuccess){
-	rawAjaxCall(getAlerts_URL,"GET",onSuccess,onFailure);
+	rawAjaxCall(getAlerts_URL,"GET",null,onSuccess,onFailure);
 }
 
 
