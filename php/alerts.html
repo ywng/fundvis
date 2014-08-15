@@ -836,7 +836,7 @@
                 var alert_types=data.alert_type;
                 for(var i=0;i<data.alerts.length;i++){
                      var alert=new Array(); 
-                     alert[0]="<input type=\"checkbox\" id=\"alert"+data.alerts[i].id+"\"></input>";
+                     alert[0]="<input type=\"checkbox\" id=\"alert"+data.alerts[i].id+"\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Alert id:"+data.alerts[i].id+"\"></input>";
                      //mouse over to show alert id
                      alert[1]="["+data.alerts[i].sid+"] "+data.alerts[i].name;
                      alert[2]=alert_types[parseInt(data.alerts[i].type)-1].type;
