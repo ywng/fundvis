@@ -24,6 +24,8 @@
     <link href="css/modalDialog.css" rel="stylesheet">
     <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
 
+    <link href="css/bootstrap-switch.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -823,6 +825,8 @@
     <script src="js/stock.js"></script>
     <script src="js/bootstrap-datetimepicker.min.js"></script>
 
+    <script src="js/bootstrap-switch.js"></script>
+
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
     var stockname="";
@@ -849,7 +853,8 @@
 
                      alert[4]=data.alerts[i].renotify_diff_percent;
                      if(data.alerts[i].enable=="1"){
-                        alert[5]="Yes";
+
+                        alert[5]="<input type=\"checkbox\" name=\"enable-checkbox\" checked data-size=\"mini\" data-on-text=\"Y\" data-off-text=\"N\" data-on-color=\"primary\" data-off-color=\"warning\">";
                      }else{
                         alert[5]="No";
                      }
