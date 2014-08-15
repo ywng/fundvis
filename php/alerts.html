@@ -394,7 +394,7 @@
                                             <th>Type</th>
                                             <th>Alert Level</th>
                                             <th>Renotify Level(&plusmn%)</th>
-                                            <th><input type="checkbox" id="toggleAllEnable" name="toggleAll" value="toggleAll">Enable</input></th>
+                                            <th>Enable</th>
                                             <th>Valid Till</th>
                         
 
@@ -854,7 +854,7 @@
                      alert[4]=data.alerts[i].renotify_diff_percent;
                      if(data.alerts[i].enable=="1"){
 
-                        alert[5]="<input type=\"checkbox\" name=\"enable-checkbox\" checked data-size=\"mini\" data-on-text=\"Y\" data-off-text=\"N\" data-on-color=\"primary\" data-off-color=\"warning\">";
+                        alert[5]="<div class=\"tooltip-demo\"><input type=\"checkbox\" name=\"enable-checkbox\" checked data-size=\"mini\" data-on-text=\"Y\" data-off-text=\"N\" data-on-color=\"primary\" data-off-color=\"warning\"></div>";
                      }else{
                         alert[5]="No";
                      }
