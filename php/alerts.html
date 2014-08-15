@@ -878,7 +878,21 @@
         getAlerts(loadAlertsOnSuccess);
 
         $('#dataTables-example').dataTable({
-            "aaData":alerts_arr
+            "iDisplayLength": 50,
+            "aaData":alerts_arr,
+            "aoColumns": [
+                { "bSortable": false, "bSearchable": false, "sWidth": "1px" },
+                { "bSortable": true, "bSearchable": true, "sWidth": "60px" },
+                null,
+                { "bSortable": true, "bSearchable": true, "sWidth": "60px" },
+                { "bSortable": true, "bSearchable": true, "sWidth": "60px" },
+                { "bSortable": true, "bSearchable": true, "sWidth": "60px" },
+                null
+            ],
+            "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
+                
+            },
+            "bAutoWidth": false
         })
         .makeEditable({
             //...
