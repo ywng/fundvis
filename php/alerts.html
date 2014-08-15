@@ -391,7 +391,7 @@
                                             <th>Stock</th>
                                             <th>Type</th>
                                             <th>Alert Level</th>
-                                            <th>Renotify Level(%)</th>
+                                            <th>Renotify Level(&plusmn%)</th>
                                             <th><input type="checkbox" id="toggleAllEnable" name="toggleAll" value="toggleAll">Enable</input></th>
                                             <th>Valid Till</th>
                         
@@ -838,12 +838,13 @@
                      var alert=new Array(); 
                      alert[0]="<input type=\"checkbox\" id=\"alert"+data.alerts[i].id+"\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Alert id:"+data.alerts[i].id+"\"></input>";
                      //mouse over to show alert id
+                     //add price, 52 w l h...for info purpose
                      alert[1]="["+data.alerts[i].sid+"] "+data.alerts[i].name;
                      alert[2]=alert_types[parseInt(data.alerts[i].type)-1].type;
                      if(data.alerts[i].type=="3"||data.alerts[i].type=="4"){
                         alert[3]=data.alerts[i].specified_price;
                      }else{
-                        alert[3]=data.alerts[i].daily_percent;
+                        alert[3]=data.alerts[i].daily_percent+"%";
                      }
 
                      alert[4]=data.alerts[i].renotify_diff_percent;
