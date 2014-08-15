@@ -889,6 +889,10 @@
        
         }); 
 
+        $('.tooltip-demo').tooltip({
+            selector: "[data-toggle=tooltip]",
+            container: "body"
+        })
         $("[name='enable-checkbox']").bootstrapSwitch();
         $('input[name="enable-checkbox"]').on('switchChange.bootstrapSwitch', function(event, state) {
             if(state==true){
