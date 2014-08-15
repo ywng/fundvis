@@ -876,17 +876,6 @@
 
         getAlerts(loadAlertsOnSuccess);
 
-        $("[name='enable-checkbox']").bootstrapSwitch();
-        $('input[name="enable-checkbox"]').on('switchChange.bootstrapSwitch', function(event, state) {
-            if(state==true){
-
-            }else{
-
-            }
-
-
-        });//end switch listener 
-
         $('#dataTables-example').dataTable({
             "aaData":alerts_arr
         })
@@ -898,6 +887,17 @@
             },
        
         }); 
+
+        $("[name='enable-checkbox']").bootstrapSwitch();
+        $('input[name="enable-checkbox"]').on('switchChange.bootstrapSwitch', function(event, state) {
+            if(state==true){
+
+            }else{
+
+            }
+
+
+        });//end switch listener 
 
         $('#datetimepicker').datetimepicker({
           language: 'pt-BR'
