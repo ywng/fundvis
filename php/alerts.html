@@ -761,10 +761,10 @@
 
                                     <div class="form-group input-group">
                                         <select id="alert_type" class="form-control" placeholder="Alert Type" disabled style="width:50%;">
-                                                <option value="3"> &gt; Specified Price</option>
-                                                <option value="4"> &lt; Specified Price</option>
-                                                <option value="5"> Daily % Increase &gt; </option>
-                                                <option value="6"> Daily % Decrease &gt; </option>
+                                                <option value="3">Specified Price &gt;</option>
+                                                <option value="4">Specified Price &lt;</option>
+                                                <option value="5">Daily % Increase &gt; </option>
+                                                <option value="6">Daily % Decrease &gt; </option>
                                         </select>
                                         <input id="alert_trigger_condition" class="form-control" placeholder="" style="width:50%;">
                                     </div> 
@@ -876,9 +876,19 @@
 
                      alert[3]="current price & 52 w l h vis";
 
-                    //=alert_types[parseInt(data.alerts[i].type)-1].type;
-
-                     alert[4]="<select id=\"type-"+data.alerts[i].id+"\"class=\"form-control\"><option value=\"3\" selected> &gt; Specified Price</option><option value=\"4\"> &lt; Specified Price</option><option value=\"5\"> Daily % Increase &gt; </option><option value=\"6\"> Daily % Decrease &gt; </option></select>";
+                    var option1Str="<option value=\"3\">Specified Price &gt;</option>";
+                    var option2Str="<option value=\"4\">Specified Price &lt;</option>";
+                    var option3Str="<option value=\"5\">Daily % Increase &gt;</option>";
+                    var option4Str="<option value=\"6\">Daily % Decrease &gt;</option>";
+                    if(data.alerts[i].type=="3")
+                        option1Str="<option value=\"3\" selected>Specified Price &gt;</option>";
+                    if(data.alerts[i].type=="4")
+                        option2Str="<option value=\"4\" selected>Specified Price &lt;</option>";
+                    if(data.alerts[i].type=="5")
+                        option3Str="<option value=\"5\" selected>Daily % Increase &gt;</option>";
+                    if(data.alerts[i].type=="6")
+                        option4Str="<option value=\"6\" selected>Daily % Decrease &gt;</option>";
+                    alert[4]="<select id=\"type-"+data.alerts[i].id+"\"class=\"form-control\">"+option1Str+option2Str+option3Str+option4Str+"</select>";
                                         
                                       
                      if(data.alerts[i].type=="3"||data.alerts[i].type=="4"){
