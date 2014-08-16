@@ -860,7 +860,7 @@
                         alert[5]="<input type=\"checkbox\" id=\"enable-"+data.alerts[i].id+"\" name=\"enable-checkbox\" data-size=\"mini\" data-on-text=\"Y\" data-off-text=\"N\" data-on-color=\"primary\" data-off-color=\"warning\">";
                      }
                      
-                     alert[6]="<div name=\"datetimepicker\" id=\"valid_till-\""+data.alerts[i].id+" class=\"input-append date input-group\"><span class=\"input-group-btn add-on\" style=\"height:27px; width:38px;\"><button class=\"btn btn-default\" type=\"button\" style=\"height:27px; width:38px;\"><i class=\"fa fa-calendar\"></i></button></span><input id=\"datetime\" type=\"text\" class=\"form-control\" data-format=\"yyyy/MM/dd\" placeholder=\"Valid Till\" style=\"height:27px; width:100px;\" value=\""+data.alerts[i].valid_till;+"\"></div>";
+                     alert[6]="<div name=\"datetimepicker\" id=\"valid_till-\""+data.alerts[i].id+" class=\"input-append date input-group\"><span class=\"input-group-btn add-on\" style=\"height:27px; width:38px;\"><button class=\"btn btn-default\" type=\"button\" style=\"height:27px; width:38px;\"><i class=\"fa fa-calendar\"></i></button></span><input id=\"datetime\" type=\"text\" class=\"form-control\" data-format=\"yyyy/MM/dd\" placeholder=\"Valid Till\" style=\"height:27px; width:100px;\" value=\""+data.alerts[i].valid_till+"\"></div>";
                    
                      //========hidden fields=========================//
                      //alert id , not displayed but use as row id for matching 
@@ -874,9 +874,10 @@
             }
         };
 
+        //get & load the alerts on page load, asyn=false to prevent the datatables is initialised before data is ready
         getAlerts(loadAlertsOnSuccess);
 
-        $('#dataTables-example').dataTable({
+        $('#dataTables-example').dataTable({ //init alerts table after loading the alerts data
             "iDisplayLength": 50,
             "aaData":alerts_arr,
             "aoColumns": [
