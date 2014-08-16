@@ -878,7 +878,7 @@
 
                     //=alert_types[parseInt(data.alerts[i].type)-1].type;
 
-                     alert[4]="<div class=\"form-group\"><select id=\"type-"+data.alerts[i].id+"\" multiple class=\"form-control\"><option value=\"3\" selected> &gt; Specified Price</option><option value=\"4\"> &lt; Specified Price</option><option value=\"5\"> Daily % Increase &gt; </option><option value=\"6\"> Daily % Decrease &gt; </option></select></div>";
+                     alert[4]="<select id=\"type-"+data.alerts[i].id+"\"class=\"form-control\"><option value=\"3\" selected> &gt; Specified Price</option><option value=\"4\"> &lt; Specified Price</option><option value=\"5\"> Daily % Increase &gt; </option><option value=\"6\"> Daily % Decrease &gt; </option></select>";
                                         
                                       
                      if(data.alerts[i].type=="3"||data.alerts[i].type=="4"){
@@ -1048,7 +1048,7 @@
         $('input[name="enable-checkbox"]').on('switchChange.bootstrapSwitch', function(event, state) {
           
             if(state==true){
-                console.log(event);
+                console.log(event.id);
             }else{
 
             }
