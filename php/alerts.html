@@ -780,7 +780,7 @@
 
                                     <div class="form-group input-group" style="margin-bottom:20px;">
                                         <input id="renotify_percent" class="form-control" placeholder="Renotify Level (% Chg)" style="width:50%;">
-                                        <div id="datetimepicker" class="input-append date form-group input-group">
+                                        <div name="datetimepicker" class="input-append date form-group input-group">
                                                 <span class="input-group-btn add-on" style="height:34px;">
                                                     <button class="btn btn-default" type="button" style="height:34px;"><i class="fa fa-calendar"></i>
                                                     </button>
@@ -908,9 +908,9 @@
         });
         $("[name='enable-checkbox']").bootstrapSwitch();
         $('input[name="enable-checkbox"]').on('switchChange.bootstrapSwitch', function(event, state) {
-            console.log(event);
+          
             if(state==true){
-
+                console.log(event.target);
             }else{
 
             }
