@@ -836,7 +836,49 @@
 
     $(document).ready(function() {
 
+        var alertsTable;
         var alerts_arr;
+        
+        alertsTable=$('#dataTables-example').dataTable({ //init alerts table after loading the alerts data
+            "iDisplayLength": 50,
+            "aaData":alerts_arr,
+            "aoColumns": [
+                {"bVisible": false},
+                { "bSortable": false, "bSearchable":false, "sWidth": "5px" },
+                { "bSortable": true, "bSearchable": true, "sWidth": "50px" },
+                { "bSortable": false },
+                null,
+                { "bSortable": true, "bSearchable": true, "sWidth": "50px" },
+                { "bSortable": true, "bSearchable": true, "sWidth": "50px" },
+                { "bSortable": true, "bSearchable": true, "iDataSort": 9, "sWidth": "50px" },
+                { "bSortable": true, "bSearchable": true, "iDataSort": 10, "sWidth": "140px" },
+                {"bVisible": false},
+                {"bVisible": false},
+            ],
+            "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
+                
+            },
+            "bAutoWidth": false
+        })
+        .makeEditable({
+            //...
+            sUpdateURL: function(value, settings){
+                
+                return value;
+            },
+            "aoColumns": [
+                null,
+                null,
+                null,
+                null,
+                {}, 
+                {},
+                null,
+                null
+            ]
+       
+        }); 
+
         var loadAlertsOnSuccess=function (data, textStatus, jqXHR){
             if(data.status_code=='1'){
                 alerts_arr=new Array(); 
@@ -888,7 +930,11 @@
                      alert[10]=date_valid_till;
                      
                      alerts_arr[i]=alert;
+
                 }
+
+                doTableRefresh(alertsTable,alerts_arr);
+                doTableUISetUp();
             }else{
                 checkRedirectNeeded_status_code(data.status_code);
             }
@@ -896,69 +942,6 @@
 
         //get & load the alerts on page load, asyn=false to prevent the datatables is initialised before data is ready
         getAlerts(loadAlertsOnSuccess);
-
-        $('#dataTables-example').dataTable({ //init alerts table after loading the alerts data
-            "iDisplayLength": 50,
-            "aaData":alerts_arr,
-            "aoColumns": [
-                {"bVisible": false},
-                { "bSortable": false, "bSearchable":false, "sWidth": "5px" },
-                { "bSortable": true, "bSearchable": true, "sWidth": "50px" },
-                { "bSortable": false },
-                null,
-                { "bSortable": true, "bSearchable": true, "sWidth": "50px" },
-                { "bSortable": true, "bSearchable": true, "sWidth": "50px" },
-                { "bSortable": true, "bSearchable": true, "iDataSort": 9, "sWidth": "50px" },
-                { "bSortable": true, "bSearchable": true, "iDataSort": 10, "sWidth": "140px" },
-                {"bVisible": false},
-                {"bVisible": false},
-            ],
-            "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
-                
-            },
-            "bAutoWidth": false
-        })
-        .makeEditable({
-            //...
-            sUpdateURL: function(value, settings){
-                
-                return value;
-            },
-            "aoColumns": [
-                null,
-                null,
-                null,
-                null,
-                {}, 
-                {},
-                null,
-                null
-            ]
-       
-        }); 
-
-        $('.tooltip-demo').tooltip({
-            selector: "[data-toggle=tooltip]",
-            container: "body"
-        });
-        $("[name='enable-checkbox']").bootstrapSwitch();
-        $('input[name="enable-checkbox"]').on('switchChange.bootstrapSwitch', function(event, state) {
-          
-            if(state==true){
-                console.log(event);
-            }else{
-
-            }
-            return;
-
-
-        });//end switch listener 
-
-        $('div[name="datetimepicker"]').datetimepicker({
-          language: 'pt-BR',
-          pickTime: false
-        });
-    
 
         $( "#stockcode_inputbox" ).change(function() {
              if($( "#stockcode_inputbox").val()==""){
@@ -1064,6 +1047,39 @@
         checkRedirectNeeded();
     });
 
+
+    function doTableRefresh(table,data) {
+        table.fnClearTable();
+        table.fnAddData(data);
+       
+        table.fnDraw();
+    }
+
+    function doTableUISetUp(){
+        
+        $('.tooltip-demo').tooltip({
+            selector: "[data-toggle=tooltip]",
+            container: "body"
+        });
+        $("[name='enable-checkbox']").bootstrapSwitch();
+        $('input[name="enable-checkbox"]').on('switchChange.bootstrapSwitch', function(event, state) {
+          
+            if(state==true){
+                console.log(event);
+            }else{
+
+            }
+            return;
+
+
+        });//end switch listener 
+
+        $('div[name="datetimepicker"]').datetimepicker({
+          language: 'pt-BR',
+          pickTime: false
+        });
+    
+    }
 
     </script>
 
