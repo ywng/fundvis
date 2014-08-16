@@ -859,25 +859,8 @@
                 
             },
             "bAutoWidth": false
-        })
-        .makeEditable({
-            //...
-            sUpdateURL: function(value, settings){
-                
-                return value;
-            },
-            "aoColumns": [
-                null,
-                null,
-                null,
-                null,
-                {}, 
-                {},
-                null,
-                null
-            ]
-       
-        }); 
+        });
+        tableMakeEditable(alertsTable);
 
         var loadAlertsOnSuccess=function (data, textStatus, jqXHR){
             if(data.status_code=='1'){
@@ -1051,12 +1034,12 @@
     function doTableRefresh(table,data) {
         table.fnClearTable();
         table.fnAddData(data);
-       
+        tableMakeEditable(table);
         table.fnDraw();
     }
 
     function doTableUISetUp(){
-        
+
         $('.tooltip-demo').tooltip({
             selector: "[data-toggle=tooltip]",
             container: "body"
@@ -1079,6 +1062,27 @@
           pickTime: false
         });
     
+    }
+
+    function tableMakeEditable(table){
+        table.makeEditable({
+            //...
+            sUpdateURL: function(value, settings){
+                
+                return value;
+            },
+            "aoColumns": [
+                null,
+                null,
+                null,
+                null,
+                {}, 
+                {},
+                null,
+                null
+            ]
+       
+        }); 
     }
 
     </script>
