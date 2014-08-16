@@ -394,11 +394,10 @@
                                             <th>Current Price</th>
                                             <th>Alert Type</th>
                                             <th>Alert Level</th>
-                                            <th>Renotify Level(&plusmn%)</th>
+                                            <th><div class="tooltip-demo"><div data-toggle="tooltip" data-placement="top" title="&plusmn%)" >Renotify Level</div></div></th>
                                             <th>Enable</th>
                                             <th>Valid Till</th>
                         
-
                                         </tr>
                                     </thead>
                                     
@@ -889,13 +888,13 @@
         $('#dataTables-example').dataTable({ //init alerts table after loading the alerts data
             "iDisplayLength": 50,
             "aaData":alerts_arr,
-            "aoColumns": [
-                {  "sWidth": "15px" },
+            "aoColumnDefs": [
+                { "bSortable": false, "bSearchable": false, "sWidth": "15px" },
                 { "bSortable": true, "bSearchable": true, "sWidth": "50px" },
                 null,
                 null,
-                { "bSortable": true, "bSearchable": true, "sWidth": "70px" },
-                { "bSortable": true, "bSearchable": true, "sWidth": "70px" },
+                { "bSortable": true, "bSearchable": true, "sWidth": "60px" },
+                { "bSortable": true, "bSearchable": true, "sWidth": "60px" },
                 { "bSortable": true, "bSearchable": true, "sWidth": "60px" },
                 { "bSortable": true, "bSearchable": true, "sWidth": "140px" },
             ],
