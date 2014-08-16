@@ -851,7 +851,11 @@
 
                      alert[3]="current price & 52 w l h vis";
 
-                     alert[4]=alert_types[parseInt(data.alerts[i].type)-1].type;
+                    //=alert_types[parseInt(data.alerts[i].type)-1].type;
+
+                     alert[4]="<select id=\"type-"+data.alerts[i].id+" multiple class=\"form-control\"><option value="3" selected> &gt; Specified Price</option><option value="4"> &lt; Specified Price</option><option value="5"> Daily % Increase &gt; </option><option value="6"> Daily % Decrease &gt; </option></select>"
+                                        
+                                      
                      if(data.alerts[i].type=="3"||data.alerts[i].type=="4"){
                         alert[5]=data.alerts[i].specified_price;
                      }else{
