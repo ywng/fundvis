@@ -843,7 +843,7 @@
                      alert[0]="<div class=\"tooltip-demo\"><input type=\"checkbox\" id=\"alert"+data.alerts[i].id+"\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Alert id:"+data.alerts[i].id+"\"></input></div>";
                      //mouse over to show alert id
                      //add price, 52 w l h...for info purpose
-                     alert[1]= "<div class=\"tooltip-demo\"><button type=\"button\" class=\"btn btn-default\" data-toggle=\"tooltip\" data-placement=\"top\" title=\""+data.alerts[i].name+"\" style=\"width: 57px; height: 17px;\">"+data.alerts[i].sid+"</button></div>";
+                     alert[1]= "<div class=\"tooltip-demo\"><button type=\"button\" class=\"btn btn-default\" data-toggle=\"tooltip\" data-placement=\"top\" title=\""+data.alerts[i].name+"\" style=\"width: 50px; height: 23px; padding:1px 5px;\">"+data.alerts[i].sid+"</button></div>";
 
                      alert[2]=alert_types[parseInt(data.alerts[i].type)-1].type;
                      if(data.alerts[i].type=="3"||data.alerts[i].type=="4"){
@@ -860,7 +860,15 @@
                         alert[5]="No";
                      }
                      
-                     alert[6]=data.alerts[i].valid_till;
+                     alert[6]="<div name=\"datetimepicker\" id=\"datetimepicker\" class=\"input-append date form-group input-group\">
+                                                <span class=\"input-group-btn add-on\" style=\"height:34px;\">
+                                                    <button class=\"btn btn-default\" type=\"button\" style=\"height:34px;\"><i class=\"fa fa-calendar\"></i>
+                                                    </button>
+                                                </span>
+                                                <input id=\"datetime\" type=\"text\" class=\"form-control\" data-format=\"yyyy/MM/dd\" placeholder=\"Valid Till\">
+                                                 
+                                        </div>"
+                     //data.alerts[i].valid_till;
                      
                      
                      //========hidden fields=========================//
@@ -920,6 +928,10 @@
         });//end switch listener 
 
         $('#datetimepicker').datetimepicker({
+          language: 'pt-BR'
+        });
+
+        $('div[name="datetimepicker"]').datetimepicker({
           language: 'pt-BR'
         });
 
