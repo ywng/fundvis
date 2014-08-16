@@ -876,6 +876,8 @@
                      //alert id , not displayed but use as row id for matching 
                      
                      alert[16]="old";//identify the alerts are old record, not newly added
+                     alert[17]=date_valid_till;
+                     alert[18]=data.alerts[i].enable;
                      
                      alerts_arr[i]=alert;
                 }
@@ -898,8 +900,8 @@
                 null,
                 { "bSortable": true, "bSearchable": true, "sWidth": "50px" },
                 { "bSortable": true, "bSearchable": true, "sWidth": "50px" },
-                { "bSortable": true, "bSearchable": true, "sWidth": "50px" },
-                { "bSortable": true, "bSearchable": true, "sWidth": "140px" }
+                { "bSortable": true, "bSearchable": true, "iDataSort": 17, "sWidth": "50px" },
+                { "bSortable": true, "bSearchable": true, "iDataSort": 18, "sWidth": "140px" }
             ],
             "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
                 
