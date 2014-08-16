@@ -51,7 +51,7 @@ class Alert_model extends CI_Model{
        $this->db->join($this->stock_model->Table_name_stock, $this->stock_model->Table_name_stock.'.'.$this->stock_model->KEY_stock_id .'='. $this->Table_name_alert.'.'.$this->alert_model->KEY_stock_id);
 
        $this->db->where($this->KEY_user_id,$uid);
-       $this->db->group_by($this->KEY_stock_id); 
+       $this->db->order_by($this->KEY_stock_id,"asc"); 
        $q=$this->db->get($this->Table_name_alert);
        if( $q->num_rows() >0){
             return $q->result_array();
