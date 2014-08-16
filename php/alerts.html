@@ -910,10 +910,11 @@
         $('input[name="enable-checkbox"]').on('switchChange.bootstrapSwitch', function(event, state) {
           
             if(state==true){
-                //console.log(event.target.attr("id"));
+                console.log(event.target.attr("id"));
             }else{
 
             }
+            return;
 
 
         });//end switch listener 
@@ -921,12 +922,7 @@
         $('div[name="datetimepicker"]').datetimepicker({
           language: 'pt-BR'
         });
-
-        $('#datetimepicker').datetimepicker({
-          language: 'pt-BR'
-        });
-
-       
+    
 
         $( "#stockcode_inputbox" ).change(function() {
              if($( "#stockcode_inputbox").val()==""){
