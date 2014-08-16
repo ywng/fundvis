@@ -881,7 +881,7 @@
             "aaData":alerts_arr,
             "aoColumns": [
                 { "bSortable": "false", "bSearchable": "false", "sWidth": "15px" },
-                { "bSortable": true, "bSearchable": true, "sWidth": "60px" },
+                { "bSortable": true, "bSearchable": true, "sWidth": "50px" },
                 null,
                 { "bSortable": true, "bSearchable": true, "sWidth": "90px" },
                 { "bSortable": true, "bSearchable": true, "sWidth": "135px" },
@@ -919,7 +919,7 @@
         $('input[name="enable-checkbox"]').on('switchChange.bootstrapSwitch', function(event, state) {
           
             if(state==true){
-                console.log(event.target);
+                console.log(event.target.prop("id"));
             }else{
 
             }
