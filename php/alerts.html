@@ -899,6 +899,15 @@
                 
                 return value;
             },
+            "aoColumns": [
+                null,
+                null,
+                null,
+                {}, 
+                {},
+                null,
+                null
+            ]
        
         }); 
 
@@ -910,7 +919,7 @@
         $('input[name="enable-checkbox"]').on('switchChange.bootstrapSwitch', function(event, state) {
           
             if(state==true){
-                console.log(event.target.attr("id"));
+                console.log(event.target);
             }else{
 
             }
