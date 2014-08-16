@@ -860,7 +860,7 @@
                         alert[5]="No";
                      }
                      
-                     alert[6]="<div name=\"datetimepicker\" id=\"datetimepicker\" class=\"input-append date form-group input-group\"><span class=\"input-group-btn add-on\" style=\"height:34px;\"><button class=\"btn btn-default\" type=\"button\" style=\"height:34px;\"><i class=\"fa fa-calendar\"></i></button></span><input id=\"datetime\" type=\"text\" data-format=\"yyyy/MM/dd\" placeholder=\"Valid Till\"></div>";
+                     alert[6]="<div name=\"datetimepicker\" id=\"datetimepicker\" class=\"input-append date form-group input-group\"><span class=\"input-group-btn add-on\" style=\"height:23px;\"><button class=\"btn btn-default\" type=\"button\" style=\"height:23px; width:40px;\"><i class=\"fa fa-calendar\"></i></button></span><input id=\"datetime\" type=\"text\" class=\"form-control\" data-format=\"yyyy/MM/dd\" placeholder=\"Valid Till\"></div>";
                      //data.alerts[i].valid_till;
                      
                      
@@ -910,7 +910,7 @@
         });
         $("[name='enable-checkbox']").bootstrapSwitch();
         $('input[name="enable-checkbox"]').on('switchChange.bootstrapSwitch', function(event, state) {
-            console.log(event.attr("id"));
+            console.log(event);
             if(state==true){
 
             }else{
