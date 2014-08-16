@@ -888,14 +888,14 @@
         $('#dataTables-example').dataTable({ //init alerts table after loading the alerts data
             "iDisplayLength": 50,
             "aaData":alerts_arr,
-            "aoColumnDefs": [
+            "aoColumns": [
                 { "bSortable": false, "bSearchable": false, "sWidth": "15px" },
                 { "bSortable": true, "bSearchable": true, "sWidth": "50px" },
                 null,
                 null,
                 { "bSortable": true, "bSearchable": true, "sWidth": "60px" },
                 { "bSortable": true, "bSearchable": true, "sWidth": "60px" },
-                { "bSortable": true, "bSearchable": true, "sWidth": "60px" },
+                { "bSortable": true, "bSearchable": true, "sWidth": "50px" },
                 { "bSortable": true, "bSearchable": true, "sWidth": "140px" },
             ],
             "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
