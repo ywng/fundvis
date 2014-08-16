@@ -843,7 +843,7 @@
             "iDisplayLength": 50,
             "aaData":alerts_arr,
             "aoColumns": [
-                {"bVisible": false},
+                {"bSortable": false, "bVisible": false},
                 { "bSortable": false, "bSearchable":false, "sWidth": "5px" },
                 { "bSortable": true, "bSearchable": true, "sWidth": "50px" },
                 { "bSortable": false },
@@ -1054,7 +1054,8 @@
             selector: "[data-toggle=tooltip]",
             container: "body"
         });
-        $("[name='enable-checkbox']").bootstrapSwitch();
+
+        $("input[name='enable-checkbox']").bootstrapSwitch();
         $('input[name="enable-checkbox"]').on('switchChange.bootstrapSwitch', function(event, state) {
           
             if(state==true){
