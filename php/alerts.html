@@ -843,7 +843,7 @@
                      alert[0]="<div class=\"tooltip-demo\"><input type=\"checkbox\" id=\"alert"+data.alerts[i].id+"\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Alert id:"+data.alerts[i].id+"\"></input></div>";
                      //mouse over to show alert id
                      //add price, 52 w l h...for info purpose
-                     alert[1]= "<div class=\"tooltip-demo\"><button type=\"button\" class=\"btn btn-default\" data-toggle=\"tooltip\" data-placement=\"top\" title=\""+data.alerts[i].name+"\" style=\"width: 57px;\">"+data.alerts[i].sid+"</button></div>";
+                     alert[1]= "<div class=\"tooltip-demo\"><button type=\"button\" class=\"btn btn-default\" data-toggle=\"tooltip\" data-placement=\"top\" title=\""+data.alerts[i].name+"\" style=\"width: 57px; height: 17px;\">"+data.alerts[i].sid+"</button></div>";
 
                      alert[2]=alert_types[parseInt(data.alerts[i].type)-1].type;
                      if(data.alerts[i].type=="3"||data.alerts[i].type=="4"){
@@ -855,7 +855,7 @@
                      alert[4]=data.alerts[i].renotify_diff_percent;
                      if(data.alerts[i].enable=="1"){
 
-                        alert[5]="<input type=\"checkbox\" name=\"enable-checkbox\" checked data-size=\"mini\" data-on-text=\"Y\" data-off-text=\"N\" data-on-color=\"primary\" data-off-color=\"warning\">";
+                        alert[5]="<input type=\"checkbox\" id=\"enable-"+alerts[i].id+"\" name=\"enable-checkbox\" checked data-size=\"mini\" data-on-text=\"Y\" data-off-text=\"N\" data-on-color=\"primary\" data-off-color=\"warning\">";
                      }else{
                         alert[5]="No";
                      }
@@ -909,6 +909,7 @@
         });
         $("[name='enable-checkbox']").bootstrapSwitch();
         $('input[name="enable-checkbox"]').on('switchChange.bootstrapSwitch', function(event, state) {
+            console.log(self.attr("id"));
             if(state==true){
 
             }else{
