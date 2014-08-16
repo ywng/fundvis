@@ -855,9 +855,9 @@
                      alert[4]=data.alerts[i].renotify_diff_percent;
                      if(data.alerts[i].enable=="1"){
 
-                        alert[5]="<input type=\"checkbox\" id=\"enable-"+data.alerts[i].id+"\" name=\"enable-checkbox\" checked data-size=\"mini\" data-on-text=\"Y\" data-off-text=\"N\" data-on-color=\"primary\" data-off-color=\"warning\" checked>";
+                        alert[5]="<input type=\"checkbox\" id=\"enable-"+data.alerts[i].id+"\" name=\"enable-checkbox\" checked data-size=\"mini\" data-on-text=\"Y\" data-off-text=\"N\" data-on-color=\"primary\" data-off-color=\"warning\">";
                      }else{
-                        alert[5]="No";
+                        alert[5]="<input type=\"checkbox\" id=\"enable-"+data.alerts[i].id+"\" name=\"enable-checkbox\" data-size=\"mini\" data-on-text=\"Y\" data-off-text=\"N\" data-on-color=\"primary\" data-off-color=\"warning\">";
                      }
                      
                      alert[6]="<div name=\"datetimepicker\" id=\"valid_till-\""+data.alerts[i].id+" class=\"input-append date input-group\"><span class=\"input-group-btn add-on\" style=\"height:27px; width:38px;\"><button class=\"btn btn-default\" type=\"button\" style=\"height:27px; width:38px;\"><i class=\"fa fa-calendar\"></i></button></span><input id=\"datetime\" type=\"text\" class=\"form-control\" data-format=\"yyyy/MM/dd\" placeholder=\"Valid Till\" style=\"height:27px; width:100px;\"></div>";
