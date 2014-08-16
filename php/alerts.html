@@ -398,6 +398,8 @@
                                             <th data-toggle="tooltip" data-placement="top" title="When the current price is changed more than specified level (&plusmn%) compared to the price that was last notified, user is renotified about the change.">Renotify Level</th>
                                             <th>Enable</th>
                                             <th>Valid Till</th>
+                                            <th>Enable_sort</th>
+                                            <th>Valid_till_sort</th>
                         
                                         </tr>
                                     </thead>
@@ -876,8 +878,10 @@
                      //alert id , not displayed but use as row id for matching 
                      
                      alert[16]="old";//identify the alerts are old record, not newly added
-                     alert[17]=date_valid_till;
-                     alert[18]=data.alerts[i].enable;
+                 
+                     //data for sort
+                     alert[9]=data.alerts[i].enable;
+                     alert[10]=date_valid_till;
                      
                      alerts_arr[i]=alert;
                 }
@@ -900,8 +904,10 @@
                 null,
                 { "bSortable": true, "bSearchable": true, "sWidth": "50px" },
                 { "bSortable": true, "bSearchable": true, "sWidth": "50px" },
-                { "bSortable": true, "bSearchable": true, "iDataSort": 17, "sWidth": "50px" },
-                { "bSortable": true, "bSearchable": true, "iDataSort": 18, "sWidth": "140px" }
+                { "bSortable": true, "bSearchable": true, "iDataSort": 9, "sWidth": "50px" },
+                { "bSortable": true, "bSearchable": true, "iDataSort": 10, "sWidth": "140px" },
+                {"bVisible": false},
+                {"bVisible": false},
             ],
             "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
                 
