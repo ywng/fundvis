@@ -107,7 +107,7 @@ class Alert extends REST_Controller {
 			);
 		}else if ($field=="type"){
 			$data = array(
-		  	  $this->alert_model->KEY_type=>$value,
+		  	  $this->alert_model->KEY_type=>intval($value),
 			);
 		}else{
 			
