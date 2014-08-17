@@ -1082,8 +1082,20 @@
         table.makeEditable({
             //...
             sUpdateURL: function(value, settings){
-                
-                return value;
+                var rowId = table.fnGetPosition(this)[0];
+                var columnPosition = table.fnGetPosition(this)[1];
+                var aData = table.fnGetData(rowId);
+
+                var formdata = new FormData();
+                formdata.append( 'alert_id',aData[0]);
+                if(columnPosition==5){
+
+                }else if (columnPosition==6){
+                    formdata.append( 'field',"renotify_diff_percent");
+                    formdata.append( 'value',aData[columnPosition]); 
+                }
+
+                updateAlert(formdata,null);
             },
             "aoColumns": [
                 null,
