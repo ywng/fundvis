@@ -10,7 +10,6 @@
 
     <!-- Core CSS - Include with every page -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/bootstrap-responsive.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
 
     <!-- Page-Level Plugin CSS - Tables -->
@@ -812,7 +811,7 @@
 
     <!-- Core Scripts - Include with every page -->
     <script src="js/jquery-1.10.2.js"></script>
-    <script src="js/bootstrap.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
 
     <!-- Page-Level Plugin Scripts - Tables -->
@@ -901,9 +900,9 @@
                      alert[6]=data.alerts[i].renotify_diff_percent;
                      if(data.alerts[i].enable=="1"){
 
-                        alert[7]="<input type=\"checkbox\" id=\"enable-"+data.alerts[i].id+"\" name=\"my-checkbox\" checked data-size=\"mini\" data-on-text=\"Y\" data-off-text=\"N\" data-on-color=\"primary\" data-off-color=\"warning\">";
+                        alert[7]="<input type=\"checkbox\" id=\"enable-"+data.alerts[i].id+"\" name=\"enable-checkbox\" checked data-size=\"mini\" data-on-text=\"Y\" data-off-text=\"N\" data-on-color=\"primary\" data-off-color=\"warning\">";
                      }else{
-                        alert[7]="<input type=\"checkbox\" id=\"enable-"+data.alerts[i].id+"\" name=\"my-checkbox\" data-size=\"mini\" data-on-text=\"Y\" data-off-text=\"N\" data-on-color=\"primary\" data-off-color=\"warning\">";
+                        alert[7]="<input type=\"checkbox\" id=\"enable-"+data.alerts[i].id+"\" name=\"enable-checkbox\" data-size=\"mini\" data-on-text=\"Y\" data-off-text=\"N\" data-on-color=\"primary\" data-off-color=\"warning\">";
                      }
                      
                      var date_valid_till;
@@ -1056,16 +1055,16 @@
             container: "body"
         });
 
-        $("[name='my-checkbox']").bootstrapSwitch();
-        $('input[name="my-checkbox"]').on('switchChange.bootstrapSwitch', function(event, state) {
+        $("input[name='enable-checkbox']").bootstrapSwitch();
+        $('input[name="enable-checkbox"]').on('switchChange.bootstrapSwitch', function(event, state) {
           
             if(state==true){
-                console.log(event.target.id);
-                console.log(state);
+                console.log(event.id);
             }else{
-                console.log(event.target.id);
-                console.log(state);
+
             }
+            return;
+
 
         });//end switch listener 
 
