@@ -900,9 +900,9 @@
                      alert[6]=data.alerts[i].renotify_diff_percent;
                      if(data.alerts[i].enable=="1"){
 
-                        alert[7]="<input type=\"checkbox\" id=\"sw"+data.alerts[i].id+"\" name=\"enable-checkbox\" checked data-size=\"mini\" data-on-text=\"Y\" data-off-text=\"N\" data-on-color=\"primary\" data-off-color=\"warning\">";
+                        alert[7]="<div id=\"enable"+data.alerts[i].id+"\" ><input type=\"checkbox\" name=\"enable-checkbox\" checked data-size=\"mini\" data-on-text=\"Y\" data-off-text=\"N\" data-on-color=\"primary\" data-off-color=\"warning\"></div>";
                      }else{
-                        alert[7]="<input type=\"checkbox\" id=\"sw"+data.alerts[i].id+"\" name=\"enable-checkbox\" data-size=\"mini\" data-on-text=\"Y\" data-off-text=\"N\" data-on-color=\"primary\" data-off-color=\"warning\">";
+                        alert[7]="<div id=\"enable"+data.alerts[i].id+"\" ><input type=\"checkbox\" name=\"enable-checkbox\" data-size=\"mini\" data-on-text=\"Y\" data-off-text=\"N\" data-on-color=\"primary\" data-off-color=\"warning\"></div>";
                      }
                      
                      var date_valid_till;
@@ -1059,9 +1059,9 @@
         $('input[name="enable-checkbox"]').on('switchChange.bootstrapSwitch', function(event, state) {
           
             if(state==true){
-                console.log(event.target.id);
+                console.log(event.target.parent.id);
             }else{
-                console.log(event.target.id);
+                console.log(event.target.parent.id);
             }
 
         });//end switch listener 
