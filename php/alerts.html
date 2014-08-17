@@ -1085,19 +1085,20 @@
                 var rowId = table.fnGetPosition(this)[0];
                 var columnPosition = table.fnGetPosition(this)[1];
                 var aData = table.fnGetData(rowId);
-
+                console.log(rowID+"  "+columnPosition);
+                
                 var formdata = new FormData();
                 formdata.append( 'alert_id',aData[0]);
-                if(columnPosition==5){
+                if(columnPosition==4){
 
-                }else if (columnPosition==6){
+                }else if (columnPosition==5){
                     formdata.append( 'field',"renotify_diff_percent");
-                    formdata.append( 'value',aData[columnPosition]); 
+                    formdata.append( 'value',value); 
                 }
 
                 updateAlert(formdata,null);
 
-                return aData[columnPosition];
+                return value
             },
             "aoColumns": [
                 null,
