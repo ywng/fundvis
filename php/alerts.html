@@ -900,9 +900,9 @@
                      alert[6]=data.alerts[i].renotify_diff_percent;
                      if(data.alerts[i].enable=="1"){
 
-                        alert[7]="<div id=\"enable"+data.alerts[i].id+"\" ><input type=\"checkbox\" name=\"enable-checkbox\" checked data-size=\"mini\" data-on-text=\"Y\" data-off-text=\"N\" data-on-color=\"primary\" data-off-color=\"warning\"></div>";
+                        alert[7]="<div id=\"enable-"+data.alerts[i].id+"\" ><input type=\"checkbox\" name=\"enable-checkbox\" checked data-size=\"mini\" data-on-text=\"Y\" data-off-text=\"N\" data-on-color=\"primary\" data-off-color=\"warning\"></div>";
                      }else{
-                        alert[7]="<div id=\"enable"+data.alerts[i].id+"\" ><input type=\"checkbox\" name=\"enable-checkbox\" data-size=\"mini\" data-on-text=\"Y\" data-off-text=\"N\" data-on-color=\"primary\" data-off-color=\"warning\"></div>";
+                        alert[7]="<div id=\"enable-"+data.alerts[i].id+"\" ><input type=\"checkbox\" name=\"enable-checkbox\" data-size=\"mini\" data-on-text=\"Y\" data-off-text=\"N\" data-on-color=\"primary\" data-off-color=\"warning\"></div>";
                      }
                      
                      var date_valid_till;
@@ -1057,12 +1057,17 @@
 
         $("input[name='enable-checkbox']").bootstrapSwitch();
         $('input[name="enable-checkbox"]').on('switchChange.bootstrapSwitch', function(event, state) {
-          
+            var formdata = new FormData();
+            formdata.append( 'alert_id',event.target.parentNode.parentNode.parentNode.id.replace('enable-',''));
+            formdata.append( 'field',"enable");
+
             if(state==true){
-                console.log(event.target.parentNode.parentNode.parentNode.id);
+                formdata.append( 'value', 1);
             }else{
-                console.log(event.target.parentNode.parentNode.parentNode.id);
+                formdata.append( 'value', 0);
             }
+
+            updateAlert(formdata,null);
 
         });//end switch listener 
 

@@ -31,6 +31,10 @@ $config['error'][200] = 'Insert transaction failed!';
 $config['error'][201] = 'You have not bought any of such stock before!';
 $config['error'][202] = 'The quantity is larger than what you have!';
 
+//alerts
+$config['error'][300] = 'Update alert failed!';
+
+
 
 
 /* End of file error_message.php */

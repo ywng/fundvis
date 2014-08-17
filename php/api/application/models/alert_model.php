@@ -61,6 +61,17 @@ class Alert_model extends CI_Model{
 
    }
 
+   public function get_alert_by_alert_id($id){
+       $this->db->where($this->KEY_alert_id,$id);
+       $q=$this->db->get($this->Table_name_alert);
+        if( $q->num_rows() >0){
+            return $q->result_array();
+        } else{
+            return null;
+        }
+
+   }
+
    public function add_alert($data){
         $this->db->insert($this->Table_name_alert, $data); 
         if ($this->db->affected_rows() > 0) {
@@ -70,6 +81,15 @@ class Alert_model extends CI_Model{
         }
    }
 
+   public function update_alert($data,$id){
+      $this->db->where($this->KEY_alert_id, $id);
+      $this->db->update($this->Table_name_alert, $data); 
+    
+      if($this->db->affected_rows() > 0)
+        return 1 ;
+      else
+        return -1;
+   }
    //===========================================================
    //notification type
    public function get_notification_type_by_id($id){

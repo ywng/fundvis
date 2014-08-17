@@ -12,8 +12,9 @@ var addTransRecord_URL='transaction/addTransactionRecord';
 var getSellableQuantity_URL='transaction/getSellableQuantity';
 
 /* alert */
-var addAlert_URL='alert/addAlert'
-var getAlerts_URL='alert/getAlerts'
+var addAlert_URL='alert/addAlert';
+var getAlerts_URL='alert/getAlerts';
+var updateAlert_URL='alert/updateAlert';
 
 //functions ==================================================
 
@@ -67,6 +68,10 @@ function addAlert(form_data,onSuccess){
 
 function getAlerts(onSuccess){
 	rawAjaxCall(getAlerts_URL,"GET",true,null,onSuccess,onFailure);
+}
+
+function updateAlert(form_data,onSuccess){
+	rawAjaxCall(updateAlert_URL,"POST",true,form_data,onSuccess,onFailure);
 }
 
 

@@ -80,6 +80,51 @@ class Alert extends REST_Controller {
 
 	}
 
+	public function updateAlert_post(){
+		$alert_id=$this->input->post('alert_id');
+		$field=$this->input->post('field');
+		$value=$this->input->post('value');
+
+		if($field=="enable"){
+			$data = array(
+		  	  $this->alert_model->KEY_enable=>$value,
+			);
+		}else if ($field=="specified_price"){
+			$data = array(
+		  	  $this->alert_model->KEY_specified_price=>$value,
+			);
+		}else if ($field=="daily_percent"){
+			$data = array(
+		  	  $this->alert_model->KEY_daily_percent=>$value,
+			);
+		}else if ($field=="renotify_diff_percent"){
+			$data = array(
+		  	  $this->alert_model->KEY_renotify_diff_percent=>$value,
+			);
+		}else if ($field=="valid_till"){
+			$data = array(
+		  	  $this->alert_model->KEY_valid_till=>$value,
+			);
+		}else if ($field=="type"){
+			$data = array(
+		  	  $this->alert_model->KEY_type=>$value,
+			);
+		}else{
+			
+		}
+
+		if($this->alert_model->update_alert($data,$alert_id)==-1){
+			$this->core_controller->fail_response(300);
+		}else{
+			$this->core_controller->add_return_data('updated_alert',$this->alert_model->get_alert_by_alert_id($alert_id)); 
+			$this->core_controller->successfully_processed();
+		}
+
+		
+
+
+	}
+
 	
 	
 
