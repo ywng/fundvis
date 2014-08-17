@@ -1059,9 +1059,9 @@
         $('input[name="enable-checkbox"]').on('switchChange.bootstrapSwitch', function(event, state) {
           
             if(state==true){
-                console.log(event.target.parentNode.id);
+                console.log(event.target.parentNode.parentNode.parentNode.id);
             }else{
-                console.log(event.target.parentNode.id);
+                console.log(event.target.parentNode.parentNode.parentNode.id);
             }
 
         });//end switch listener 
