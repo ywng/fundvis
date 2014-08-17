@@ -1059,12 +1059,12 @@
         $('input[name="enable-checkbox"]').on('switchChange.bootstrapSwitch', function(event, state) {
           
             if(state==true){
-                console.log(event.id);
+                console.log(event);
+                console.log(state);
             }else{
-
+                console.log(event);
+                console.log(state);
             }
-            return;
-
 
         });//end switch listener 
 
