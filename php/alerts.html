@@ -911,7 +911,7 @@
                      }else{
                         date_valid_till=data.alerts[i].valid_till;
                      }
-                     alert[8]="<div name=\"datetimepicker\" id=\"valid_till-\""+data.alerts[i].id+" class=\"input-append date input-group\"><span class=\"input-group-btn add-on\" style=\"height:27px; width:38px;\"><button class=\"btn btn-default\" type=\"button\" style=\"height:27px; width:38px;\"><i class=\"fa fa-calendar\"></i></button></span><input id=\"datetime\" type=\"text\" class=\"form-control\" data-format=\"yyyy-MM-dd\" placeholder=\"Valid Till\" style=\"height:27px; width:100px;\" value=\""+date_valid_till+"\"></div>";
+                     alert[8]="<div name=\"datetimepicker\" id=\"valid_till-\""+data.alerts[i].id+" class=\"input-append date input-group\"><span class=\"input-group-btn add-on\" style=\"height:27px; width:38px;\"><button class=\"btn btn-default\" type=\"button\" style=\"height:27px; width:38px;\"><i class=\"fa fa-calendar\"></i></button></span><input name=\"datetime\" id=\"datetime-"+data.alerts[i].id+"\" type=\"text\" class=\"form-control\" data-format=\"yyyy-MM-dd\" placeholder=\"Valid Till\" style=\"height:27px; width:100px;\" value=\""+date_valid_till+"\"></div>";
                    
                      //========hidden fields=========================//
                      //alert id , not displayed but use as row id for matching 
