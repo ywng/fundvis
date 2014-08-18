@@ -1078,7 +1078,7 @@
 
         $('div[name="datetimepicker"]').on("changeDate",function (e) {
                var alert_id=e.target.id.replace("valid_till-","");
-               var date=$('datetime-'+alert_id).text();
+               var date=$('#datetime-'+alert_id).val();
                console.log(alert_id+"  "+date);
         });
     
