@@ -1076,9 +1076,9 @@
           pickTime: false
         });
 
-        $('div[name="datetimepicker"]').on("dp.change",function (e) {
+        $('div[name="datetimepicker"]').on("changeDate",function (e) {
               
-               console.log($(this).data("DateTimePicker").getDate());
+               console.log($(this).date);
         });
     
     }
