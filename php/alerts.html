@@ -1077,8 +1077,8 @@
         });
 
         $('div[name="datetimepicker"]').on("changeDate",function (e) {
-              
-               console.log(e.date);
+               var alert_id=e.id;
+               console.log(e.id+"  "+e.date.toString());
         });
     
     }
