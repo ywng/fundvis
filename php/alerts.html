@@ -1071,15 +1071,14 @@
 
         });//end switch listener 
 
+        $('div[name="datetimepicker"]').datetimepicker({
+          language: 'pt-BR',
+          pickTime: false
+        });
 
         $('div[name="datetimepicker"]').on("dp.change",function (e) {
               
                console.log($(this).data("DateTimePicker").getDate());
-        });
-
-        $('div[name="datetimepicker"]').datetimepicker({
-          language: 'pt-BR',
-          pickTime: false
         });
     
     }
