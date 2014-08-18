@@ -1071,9 +1071,11 @@
 
         });//end switch listener 
 
-        $("input[name='datetime']").change(function() { 
-           alert($(this).val());  
-        }); 
+
+        $('div[name="datetimepicker"]').on("dp.change",function (e) {
+              
+               console.log($(this).data("DateTimePicker").getDate());
+        });
 
         $('div[name="datetimepicker"]').datetimepicker({
           language: 'pt-BR',
