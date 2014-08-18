@@ -1071,6 +1071,10 @@
 
         });//end switch listener 
 
+        $("input[name='datetime']").change(function() { 
+           alert($(this).val());  
+        }); 
+
         $('div[name="datetimepicker"]').datetimepicker({
           language: 'pt-BR',
           pickTime: false
