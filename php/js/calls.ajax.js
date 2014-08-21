@@ -6,6 +6,7 @@ var login_URL='user/login';
 
 /* stock */
 var getStock_URL='stock/getStock';
+var recordStockVisit_URL='stock/recordStockVisit';
 
 /* transaction */
 var addTransRecord_URL='transaction/addTransactionRecord';
@@ -54,6 +55,13 @@ function getStock(code,onSuccess){
 	data.append( 'code', code);
 
 	rawAjaxCall(getStock_URL,"POST",true,data,onSuccess,onFailure);
+}
+
+function recordStockVisit(code){
+	var data=new FormData();
+	data.append( 'code', code);
+
+	rawAjaxCall(recordStockVisit_URL,"POST",true,data,null,onFailure);
 }
 
 /* transaction */
