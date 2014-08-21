@@ -35,6 +35,13 @@ class Stock extends REST_Controller {
 		}
 		
 		$price_arr=$this->stock_model->get_stock_price_by_id($code);
+
+		//record the stock visit history
+		$this->load->model('user_model'); 
+		$user=$this->core_controller->get_current_user();
+		$uid=$user[$this->user_model->KEY_user_id];
+		$price_arr=$this->stock_model->recordStockVisitHistory($uid,$code);
+
 		$this->core_controller->add_return_data('stock_info', $stock); 
 		$this->core_controller->add_return_data('price', $price_arr); 
 

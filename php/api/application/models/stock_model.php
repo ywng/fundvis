@@ -39,6 +39,12 @@ class Stock_model extends CI_Model{
     var $KEY_category= 'category';
     var $Table_name_category = 'StockCategory';
 
+    //stock visit history / freq
+    var $KEY_stock_visit_history_sid = 'sid';
+    var $KEY_stock_visit_history_uid = 'uid';
+    var $KEY_freq= 'freq';
+    var $Table_name_stock_visit_history = 'StockVisitHistory';
+
     function __construct() {
         parent::__construct();
     }
@@ -177,6 +183,35 @@ class Stock_model extends CI_Model{
     }
 
 
+
+
+
+    //stock visit history related functions
+    //====================================================//
+
+    public function recordStockVisitHistory($uid, $sid){
+        $this->db->where($this->KEY_stock_visit_history_uid,$uid);
+        $this->db->where($this->KEY_stock_visit_history_sid,$sid);
+        $q = $this->db->get($this->Table_name_stock_visit_history);
+        if ( $q->num_rows() == 0 ) {
+            $data = array(
+               $this->KEY_stock_visit_history_uid => $uid,
+               $this->KEY_stock_visit_history_sid => $sid,
+               $this->KEY_freq => 1 
+            );
+
+            $this->db->insert($this->Table_name_stock_visit_history, $data); 
+        }else{
+            $data = array(
+               $this->KEY_freq => $q->result_array()[0][$this->KEY_freq]+1
+            );
+
+            $this->db->where($this->KEY_stock_visit_history_uid,$uid);
+            $this->db->where($this->KEY_stock_visit_history_sid,$sid);
+            $this->db->update($this->Table_name_stock_visit_history, $data); 
+        }
+
+    }
 
 
 }
