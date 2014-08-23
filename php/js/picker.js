@@ -83,11 +83,11 @@
 		DateLbl.select('text').remove();
 
 		DateLbl.append("text")
-			.attr("x",width-230)
+			.attr("x",width-210)
             .attr("y", 0)
 			.text(convertDate(dateToShow))
             .attr("font-family", "sans-serif")
-            .attr("font-size", "12px")
+            .attr("font-size", "16px")
             .attr("fill", "Gray");
 	}
 
