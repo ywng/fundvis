@@ -205,7 +205,7 @@ class Stock_model extends CI_Model{
                $this->KEY_freq => 1 
             );
 
-            $this->db->insert($this->Table_name_stock_visit_history, $data); 
+            $this->db->insert($this->Table_name_stock_visit_history_freq, $data); 
         }else{
             $data = array(
                $this->KEY_freq => $q->result_array()[0][$this->KEY_freq]+1
@@ -213,7 +213,7 @@ class Stock_model extends CI_Model{
 
             $this->db->where($this->KEY_stock_visit_history_uid,$uid);
             $this->db->where($this->KEY_stock_visit_history_sid,$sid);
-            $this->db->update($this->Table_name_stock_visit_history, $data); 
+            $this->db->update($this->Table_name_stock_visit_history_freq, $data); 
         }
 
     }
