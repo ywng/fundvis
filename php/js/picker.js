@@ -80,14 +80,14 @@
 		
 		var dateToShow=x.invert(xPosition);
 		var date=new Date(dateToShow);
-		console.log(date.toDateString());
+		//console.log(date.toDateString());
 		
 		DateLbl.select('text').remove();
 
 		DateLbl.append("text")
-			.attr("x",width-350)
+			.attr("x",width-150)
             .attr("y", 0)
-			.text(dateToShow)
+			.text(date.toDateString())
             .attr("font-family", "sans-serif")
             .attr("font-size", "10px")
             .attr("fill", "Gray");
