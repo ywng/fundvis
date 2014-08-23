@@ -400,6 +400,13 @@
     x.domain(brush.empty() ? x2.domain() : brush.extent());
 
     //rebase percentage
+    /* need to rebase after change of brush extent??? */
+    /* right now, the implementation is not rebased, change brushed just changed the view only */
+    /* if the user doesn't move the slider bar for selecting a new date as base comparison, then keep the original one */
+    /* if the user does select a new date, the date is selected according to the pos of the spot and the context of x-axis */
+    
+
+
     fund.select("path").transition()//update curve 
       .attr("d", function(d) { if(d.vis=="True"){return line(d.price_array);} else{ return null;} })
     focus.select(".x.axis").call(xAxis);
@@ -427,4 +434,4 @@
   }
 
 
-  //?????need to rebase after change of brush extent??
+
