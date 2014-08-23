@@ -39,11 +39,16 @@ class Stock_model extends CI_Model{
     var $KEY_category= 'category';
     var $Table_name_category = 'StockCategory';
 
-    //stock visit history / freq
+    /** stock visit history **/
+    // freq
     var $KEY_stock_visit_history_sid = 'sid';
     var $KEY_stock_visit_history_uid = 'uid';
     var $KEY_freq= 'freq';
-    var $Table_name_stock_visit_history = 'StockVisitHistory';
+    var $Table_name_stock_visit_history_freq = 'StockVisitHistoryFreq';
+    // LRU
+    var $KEY_LRU_stocks = 'LRU_stocks';
+    var $num_cache_blocks=10;
+    var $Table_name_stock_visit_history_LRU = 'StockVisitHistoryLRU';
 
     function __construct() {
         parent::__construct();
@@ -189,10 +194,10 @@ class Stock_model extends CI_Model{
     //stock visit history related functions
     //====================================================//
 
-    public function recordStockVisitHistory($uid, $sid){
+    public function recordStockVisitHistoryFreq($uid, $sid){
         $this->db->where($this->KEY_stock_visit_history_uid,$uid);
         $this->db->where($this->KEY_stock_visit_history_sid,$sid);
-        $q = $this->db->get($this->Table_name_stock_visit_history);
+        $q = $this->db->get($this->Table_name_stock_visit_history_freq);
         if ( $q->num_rows() == 0 ) {
             $data = array(
                $this->KEY_stock_visit_history_uid => $uid,
@@ -213,6 +218,40 @@ class Stock_model extends CI_Model{
 
     }
 
+    public function recordStockVisitHistoryLRU($uid, $sid){
+        $this->db->where($this->KEY_stock_visit_history_uid,$uid);
+        $q = $this->db->get($this->Table_name_stock_visit_history_LRU);
+        if ( $q->num_rows() == 0 ) {
+            $data = array(
+               $this->KEY_LRU_stocks => $sid
+            );
+            $this->db->where($this->KEY_stock_visit_history_uid,$uid);
+            $this->db->update($this->Table_name_stock_visit_history_LRU, $data); 
+        }else{
+            $sotck_array = explode(",",$q->result_array()[0][$this->KEY_LRU_stocks]);
+            $key = array_search($sid, $stock_array);
+            if($key!=null){
+                unset($stock_array[$key]);//delete element
+            }
+            array_unshift($stock_array,$sid);
+
+            $array_str="";
+            for($i=0;$i<$this->num_cache_blocks;$i++){
+                if($stock_array[$i]){
+                    $array_str+=$stock_array[$i]+",";
+                }
+            }
+
+            $data = array(
+               $this->KEY_LRU_stocks => $array_str
+            );
+
+            $this->db->where($this->KEY_stock_visit_history_uid,$uid);
+            $this->db->update($this->Table_name_stock_visit_history_LRU, $data); 
+
+        }
+
+    }
 
 }
 
