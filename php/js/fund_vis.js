@@ -9,6 +9,8 @@
       height2 = 585 - margin2.top - margin2.bottom;
 
   var slider;
+  var date_base_price;
+  var x;//x-axis; d3 obj
 
   /**
   * Document Ready: Dom Setup & Init
@@ -24,10 +26,12 @@
      * That means we can find out the percentage change of price relative to whichever day we want
      */  
     slider=$('#ex1').slider('setValue', 0);
+    date_base_price=x.invert(slider.data('slider').getValue());
     //invisible on init, it is visible on during percent mode only
     $("#ex1Slider").attr("style","width: 950px;display:none");
     $("#ex1").on('slideStop', function(slideEvt) {
         percentageRebase(slideEvt.value);
+        date_base_price=x.invert(slider.data('slider').getValue());
     });
 
     /**
@@ -112,7 +116,7 @@
 
   //**************** Constructing Vis Main Components ******************************//
   //********************************************************************************//   
-  var x = d3.time.scale()
+  x = d3.time.scale()
     .range([0, width-150]),
     x2 = d3.time.scale()      //for the time selection bar at the bottom
     .range([0, width-150]);
@@ -400,7 +404,6 @@
   //for brusher of the slider bar at the bottom
   function brushed() {
 
-    var date_base_price=x.invert(slider.data('slider').getValue());
     //console.log(date_base_price);
 
     x.domain(brush.empty() ? x2.domain() : brush.extent());
@@ -411,8 +414,7 @@
     /* if the user does select a new date, the date is selected according to the pos of the spot and the context of x-axis */
     
     //see if the date_base_price still in the interval of the new x-axis, if no, hide the dot, if yes, show it*/
-    console.log(x(date_base_price));
-    if(x(date_base_price)<=0 || x(date_base_price)>=(width-150)){
+    if(x(date_base_price)<0 || x(date_base_price)>(width-150)){
       //out of range ... hide the dot
       $('.slider-handle').attr("style","display:none;");
     }else{
