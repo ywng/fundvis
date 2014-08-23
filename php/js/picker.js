@@ -87,7 +87,7 @@
 		DateLbl.append("text")
 			.attr("x",width-230)
             .attr("y", 0)
-			.text(date.toDateString())
+			.text(date.format('d-m-y').toDateString())
             .attr("font-family", "sans-serif")
             .attr("font-size", "12px")
             .attr("fill", "Gray");
