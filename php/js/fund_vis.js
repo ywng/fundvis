@@ -421,7 +421,7 @@
       //out of range ... hide the dot
       $('.slider-handle').attr("style","display:none;");
       if(x(date_base_price)>(width-150))
-         $('.slider-selection').attr("style","left:100%;display:none;");
+         $('.slider-selection').attr("style","left:0%;width:100%;");
       else
          $('.slider-selection').attr("style","display:none;");
     }else{
