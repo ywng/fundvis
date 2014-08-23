@@ -51,7 +51,7 @@ class Stock extends REST_Controller {
 		$user=$this->core_controller->get_current_user();
 		$uid=$user[$this->user_model->KEY_user_id];
 
-		$this->stock_model->recordStockVisitHistoryLRU($uid,$code);
+		$this->stock_model->recordStockVisitHistoryLRU($uid,(string)$code);
 		$this->stock_model->recordStockVisitHistoryFreq($uid,$code);
 
 		$this->core_controller->successfully_processed();

@@ -223,7 +223,7 @@ class Stock_model extends CI_Model{
         $q = $this->db->get($this->Table_name_stock_visit_history_LRU);
         if ( $q->num_rows() == 0 ) {
             $data = array(
-               $this->KEY_LRU_stocks => (string)$sid.",",
+               $this->KEY_LRU_stocks => $sid.",",
                $this->KEY_stock_visit_history_uid => $uid
             );
             
@@ -234,7 +234,7 @@ class Stock_model extends CI_Model{
             if($key!=null){
                 unset($stock_array[$key]);//delete element
             }
-            array_unshift($stock_array,(string)$sid);
+            array_unshift($stock_array,$sid);
 
             $array_str="";
             for($i=0;$i<$this->num_cache_blocks;$i++){
