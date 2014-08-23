@@ -397,7 +397,7 @@
 
   //for brusher of the slider bar at the bottom
   function brushed() {
-    console.log($('#basePriceSliderDiv').data('slider').getValue());
+    console.log($('#basePriceSliderDiv'));
     var date_base_price=x.invert($("#ex1Slider").slider('getValue'));
     console.log(date_base_price);
 
