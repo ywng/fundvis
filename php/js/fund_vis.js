@@ -412,7 +412,7 @@
     
     //see if the date_base_price still in the interval of the new x-axis, if no, hide the dot, if yes, show it*/
     console.log(x(date_base_price));
-    if(x(date_base_price)<0 || x(date_base_price)>(width-150)){
+    if(x(date_base_price)<=0 || x(date_base_price)>=(width-150)){
       //out of range ... hide the dot
       $('.slider-handle').attr("style","display:none;");
     }else{
