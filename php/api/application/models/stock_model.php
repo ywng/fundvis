@@ -224,10 +224,10 @@ class Stock_model extends CI_Model{
         if ( $q->num_rows() == 0 ) {
             $data = array(
                $this->KEY_LRU_stocks => $sid,
-               $this->KEY_stock_visit_history_uid => $uid,
+               $this->KEY_stock_visit_history_uid => $uid
             );
-            $this->db->where($this->KEY_stock_visit_history_uid,$uid);
-            $this->db->update($this->Table_name_stock_visit_history_LRU, $data); 
+            
+            $this->db->insert($this->Table_name_stock_visit_history_LRU, $data);
         }else{
             $sotck_array = explode(",",$q->result_array()[0][$this->KEY_LRU_stocks]);
             $key = array_search($sid, $stock_array);
