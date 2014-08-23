@@ -31,8 +31,9 @@
     $("#ex1Slider").attr("style","width: 950px;display:none");
     $("#ex1").on('slideStop', function(slideEvt) {
         percentageRebase(slideEvt.value);
-        $('.slider-handle').attr("style",$('.slider-handle').attr("style")+"display:auto;");
-        $('.slider-selection').attr("style",$('.slider-selection').attr("style")+"display:auto;");
+        $('.slider-handle').attr("style","display:auto;");
+        $('.slider-selection').attr("style","display:auto;");
+        $('#ex1').slider('setValue',slideEvt.value);
         date_base_price=x.invert(slider.data('slider').getValue());
     });
 
