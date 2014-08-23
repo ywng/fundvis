@@ -12,6 +12,9 @@
   * Document Ready: Dom Setup & Init
   */  
   $(function() {
+    //load other html content
+    $('#disclaimerDialog').load("disclaimer.html");
+
 
     /**
      * Slider bar just under the x-axis, which is visible only on percent change mode
