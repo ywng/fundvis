@@ -413,10 +413,10 @@
     //see if the date_base_price still in the interval of the new x-axis, if no, hide the dot, if yes, show it*/
     if(x(date_base_price)<0 || x(date_base_price)>(width-150)){
       //out of range ... hide the dot
-      $('.slider-handle round').attr("class","slider-handle round hide");
+      $('div[class="slider-handle round"]').attr("class","slider-handle round hide");
     }else{
       //the old base price date, in the range, show the dot
-      $('.slider-handle round hide').attr("class","slider-handle round");
+      $('div[class="slider-handle round hide"]').attr("class","slider-handle round");
       $('#ex1').slider('setValue', x(date_base_price));
     }
 
