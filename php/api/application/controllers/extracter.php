@@ -281,10 +281,23 @@ class Extracter extends REST_Controller {
 
 		$element_div=$html->find('div[class=daily_price_box]')[0];
 		$raw_str=$element_div->children(1)->children(0)->children(0)->plaintext;
-		var_dump($raw_str);
+		//var_dump($raw_str);
 		$data=explode(" ",$raw_str);
-		$price=preg_replace("/[\t]/", '',$data[16]);
-		$date_str=preg_replace("/[\t]/", '',$data[2]);
+		$raw_price=null;
+		$raw_date=null;
+		for($i=0;$i<count($data);$i++){
+			if (preg_match('/[A-Za-z]/', $data[$i]) || preg_match('/[0-9]/', $data[$i]))
+			{
+			    if($raw_price==null){
+			    	$raw_price=$data[$i];
+			    }else{
+			    	$raw_date=$data[$i];
+			    }
+			}
+		}
+
+		$price=preg_replace("/[\t]/", '',$raw_price);
+		$date_str=preg_replace("/[\t]/", '',$raw_date);
 		$date_arr=explode(".",$date_str);
 		$date_str="20".$date_arr[2]."-".$date_arr[1]."-".$date_arr[0];
 
