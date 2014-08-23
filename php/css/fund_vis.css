@@ -37,8 +37,8 @@ text {
 div.D3tooltip {
   position: absolute;
   text-align: center;
-  width: 120px;
-  height: 40px;
+  width: 140px;
+  height: 35px;
   padding: 5px;
   font: 10px sans-serif;
   background: #ddd;
