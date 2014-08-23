@@ -288,10 +288,10 @@ class Extracter extends REST_Controller {
 		for($i=0;$i<count($data);$i++){
 			if (preg_match('/[A-Za-z]/', $data[$i]) || preg_match('/[0-9]/', $data[$i]))
 			{
-			    if($raw_price==null){
-			    	$raw_price=$data[$i];
-			    }else{
+			    if($raw_date==null){
 			    	$raw_date=$data[$i];
+			    }else{
+			    	$raw_price=$data[$i];
 			    }
 			}
 		}
