@@ -79,7 +79,8 @@
 	var displayDateForPositionX = function(xPosition) {
 		
 		var dateToShow=x.invert(xPosition);
-		console.log(dateToShow);
+		var date=new Date(dateToShow);
+		console.log(date.toDateString());
 		
 		DateLbl.select('text').remove();
 
