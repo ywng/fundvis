@@ -64,11 +64,16 @@
  }
 
  #addTransactionsDialog,
- #disclaimerDialog,
  #addAlertsDialog {
  	top:-85px;
  	
 
  }
 
+#disclaimerDialog,
+{
+ 	top:-45px;
+ 	
+
+ }
  
