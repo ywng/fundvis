@@ -281,7 +281,7 @@ class Extracter extends REST_Controller {
 
 		$element_div=$html->find('div[class=daily_price_box]')[0];
 		$raw_str=$element_div->children(1)->children(0)->children(0)->plaintext;
-		//var_dump($raw_str);
+		var_dump($raw_str);
 		$data=explode(" ",$raw_str);
 		$price=preg_replace("/[\t]/", '',$data[16]);
 		$date_str=preg_replace("/[\t]/", '',$data[2]);
