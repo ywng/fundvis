@@ -237,7 +237,11 @@ class Stock_model extends CI_Model{
             array_unshift($stock_array,$sid);
 
             $array_str="";
-            for($i=0;$i<$this->num_cache_blocks;$i++){
+            $num=$this->num_cache_blocks;
+            if(count($stock_array)<$this->num_cache_blocks){
+                $num=count($stock_array);
+            }
+            for($i=0;$i<$num;$i++){
                 if($stock_array[$i]){
                     $array_str=$array_str.$stock_array[$i].",";
                 }
