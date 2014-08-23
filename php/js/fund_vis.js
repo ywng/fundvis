@@ -8,6 +8,8 @@
       height = 570 - margin.top - margin.bottom,
       height2 = 585 - margin2.top - margin2.bottom;
 
+  var slider;
+
   /**
   * Document Ready: Dom Setup & Init
   */  
@@ -21,7 +23,7 @@
      * We use this bar to select a date's price as the base level for calculating the percentage
      * That means we can find out the percentage change of price relative to whichever day we want
      */  
-    var slider=$('#ex1').slider('setValue', 0);
+    slider=$('#ex1').slider('setValue', 0);
     //invisible on init, it is visible on during percent mode only
     $("#ex1Slider").attr("style","width: 950px;display:none");
     $("#ex1").on('slideStop', function(slideEvt) {
