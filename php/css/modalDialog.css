@@ -58,6 +58,7 @@
  }
 
  #addTransactionsDialog >div,
+ #disclaimerDialog >div,
  #addAlertsDialog >div {
  	width: 60%;
  	min-height: 82%
