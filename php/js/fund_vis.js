@@ -397,6 +397,9 @@
 
   //for brusher of the slider bar at the bottom
   function brushed() {
+    var date_base_price=x.invert($('#ex1').slider());
+    console.log(date_base_price);
+
     x.domain(brush.empty() ? x2.domain() : brush.extent());
 
     //rebase percentage
@@ -405,7 +408,14 @@
     /* if the user doesn't move the slider bar for selecting a new date as base comparison, then keep the original one */
     /* if the user does select a new date, the date is selected according to the pos of the spot and the context of x-axis */
     
-
+    //see if the date_base_price still in the interval of the new x-axis, if no, hide the dot, if yes, show it*/
+    if(x(date_base_price)<0 || x(date_base_price)>(width-150)){
+      //out of range ... hide the dot
+      $('#ex1').slider('setValue', -100000);
+    }else{
+      //the old base price date, in the range, show the dot
+      $('#ex1').slider('setValue', x(date_base_price));
+    }
 
     fund.select("path").transition()//update curve 
       .attr("d", function(d) { if(d.vis=="True"){return line(d.price_array);} else{ return null;} })
