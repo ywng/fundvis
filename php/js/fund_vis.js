@@ -399,13 +399,12 @@
 
   //for brusher of the slider bar at the bottom
   function brushed() {
-    console.log(slider.data('slider').getValue());
+
     var date_base_price=x.invert(slider.data('slider').getValue());
-    console.log(date_base_price);
+    //console.log(date_base_price);
 
     x.domain(brush.empty() ? x2.domain() : brush.extent());
 
-    //rebase percentage
     /* need to rebase after change of brush extent??? */
     /* right now, the implementation is not rebased, change brushed just changed the view only */
     /* if the user doesn't move the slider bar for selecting a new date as base comparison, then keep the original one */
@@ -414,9 +413,10 @@
     //see if the date_base_price still in the interval of the new x-axis, if no, hide the dot, if yes, show it*/
     if(x(date_base_price)<0 || x(date_base_price)>(width-150)){
       //out of range ... hide the dot
-      $('#ex1').slider('setValue', -100000);
+      $('.slider-handle round').attr("class","slider-handle round hide");
     }else{
       //the old base price date, in the range, show the dot
+      $('.slider-handle round hide').attr("class","slider-handle round");
       $('#ex1').slider('setValue', x(date_base_price));
     }
 
