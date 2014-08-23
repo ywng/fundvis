@@ -229,7 +229,7 @@ class Stock_model extends CI_Model{
             
             $this->db->insert($this->Table_name_stock_visit_history_LRU, $data);
         }else{
-            $sotck_array = explode(",",$q->result_array()[0][$this->KEY_LRU_stocks]);
+            $stock_array = explode(",",$q->result_array()[0][$this->KEY_LRU_stocks]);
             $key = array_search($sid, $stock_array);
             if($key!=null){
                 unset($stock_array[$key]);//delete element
