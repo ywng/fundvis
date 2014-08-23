@@ -21,3 +21,9 @@ function checkRedirectNeeded_status_code(status_code){
 		$(location).attr('href', serverDomain + 'login.html');
 	}
 }
+
+function convertDate(inputFormat) {
+  function pad(s) { return (s < 10) ? '0' + s : s; }
+  var d = new Date(inputFormat);
+  return [pad(d.getDate()), pad(d.getMonth()+1), d.getFullYear()].join('-');
+}

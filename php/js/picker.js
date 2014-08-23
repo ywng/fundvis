@@ -79,15 +79,13 @@
 	var displayDateForPositionX = function(xPosition) {
 		
 		var dateToShow=x.invert(xPosition);
-		var date=new Date(dateToShow);
-		//console.log(date.toDateString());
 		
 		DateLbl.select('text').remove();
 
 		DateLbl.append("text")
 			.attr("x",width-230)
             .attr("y", 0)
-			.text(date.format('d-m-y').toDateString())
+			.text(convertDate(dateToShow))
             .attr("font-family", "sans-serif")
             .attr("font-size", "12px")
             .attr("fill", "Gray");
