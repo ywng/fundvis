@@ -31,6 +31,8 @@
     $("#ex1Slider").attr("style","width: 950px;display:none");
     $("#ex1").on('slideStop', function(slideEvt) {
         percentageRebase(slideEvt.value);
+        $('.slider-handle').attr("style","display:auto;");
+        $('.slider-selection').attr("style","display:auto;");
         date_base_price=x.invert(slider.data('slider').getValue());
     });
 
@@ -417,9 +419,11 @@
     if(x(date_base_price)<0 || x(date_base_price)>(width-150)){
       //out of range ... hide the dot
       $('.slider-handle').attr("style","display:none;");
+      $('.slider-selection').attr("style","display:none;");
     }else{
       //the old base price date, in the range, show the dot
       $('.slider-handle').attr("style","display:auto;");
+      $('.slider-selection').attr("style","display:auto;");
       $('#ex1').slider('setValue', x(date_base_price));
     }
 
