@@ -223,7 +223,8 @@ class Stock_model extends CI_Model{
         $q = $this->db->get($this->Table_name_stock_visit_history_LRU);
         if ( $q->num_rows() == 0 ) {
             $data = array(
-               $this->KEY_LRU_stocks => $sid
+               $this->KEY_LRU_stocks => $sid,
+               $this->KEY_stock_visit_history_uid => $uid,
             );
             $this->db->where($this->KEY_stock_visit_history_uid,$uid);
             $this->db->update($this->Table_name_stock_visit_history_LRU, $data); 
