@@ -25,8 +25,7 @@
   *
   */
 
-var parseDate = d3.time.format("%Y-%m-%d").parse;
-var parseDateTime = d3.time.format("%Y-%m-%d %H:%M:%S").parse;
+var parseDate = d3.time.format("%Y-%m-%d %H:%M:%S").parse;
 var funds_actual=new Array();
 var funds_percent=new Array();
 var maxDate;
@@ -89,7 +88,7 @@ function find_max_min_selected_funds(data){
 function findIndexGivenDateTime(xAxisPos,price_array){
 	
 	for(var i=price_array.length-1;i>=0;i--){
-		var date=parseDateTime(price_array[i].datetime+" 12:00:00");
+		var date=parseDate(price_array[i].datetime+" 12:00:00");
 		
 		//console.log(date);
 		//console.log(x(date));

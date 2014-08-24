@@ -139,13 +139,13 @@
     .scale(y)
     .orient("left");
 
-  x.domain([parseDate(minDate),parseDate(maxDate)]).nice(d3.time.day).ticks(d3.time.day, 1); 
+  x.domain([parseDate(minDate+" 12:00:00"),parseDate(maxDate+" 12:00:00")]).nice(d3.time.day).ticks(d3.time.day, 1); 
   y.domain([find_max_min_selected_funds(funds_actual).min-1,find_max_min_selected_funds(funds_actual).max+1]);
   x2.domain(x.domain());//the domain axis for the bar at the bottom
   
   var line = d3.svg.line()
     .interpolate("linear")
-    .x(function(d) { return x(parseDate(d.datetime)); })
+    .x(function(d) { return x(parseDate(d.datetime+" 12:00:00")); })
     .y(function(d) { return y(parseFloat(d.price));   });
 
   var svg = d3.select("#graph").append("svg")
@@ -374,7 +374,7 @@
     
   var contextArea = d3.svg.area()
     .interpolate("monotone")
-    .x(function(d) { return x2(parseDate(d.datetime)); })
+    .x(function(d) { return x2(parseDate(d.datetime+" 12:00:00")); })
     .y0(height2)//the height is always max height, just to plot a rectangle rather than an actual path of the data
     .y1(0);
   

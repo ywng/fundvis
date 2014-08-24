@@ -101,10 +101,10 @@
 		fund.select("circle").transition().duration(0)
 			 .attr("cx",  function(d) {
 			 	 var index=findIndexGivenDateTime(xPosition,d.price_array);
-			 	 if(x(parseDate(d.price_array[index].datetime))>950){
+			 	 if(x(parseDate(d.price_array[index].datetime+" 12:00:00"))>950){
 					return -999999; //not display
 				 }
-			 	 return x(parseDate(d.price_array[index].datetime));
+			 	 return x(parseDate(d.price_array[index].datetime+" 12:00:00"));
 			 })
 	         .attr("cy",  function(d) {
 	         	 var index=findIndexGivenDateTime(xPosition,d.price_array);
