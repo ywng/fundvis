@@ -23,7 +23,7 @@ function checkRedirectNeeded_status_code(status_code){
 }
 
 function convertDate(inputFormat) {
-  console.log(inputFormat);
+  //console.log(inputFormat);
   function pad(s) { return (s < 10) ? '0' + s : s; }
   var d = new Date(inputFormat);
   return [pad(d.getDate()), pad(d.getMonth()+1), d.getFullYear()].join('-');
