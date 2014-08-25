@@ -78,7 +78,8 @@ class Fund extends REST_Controller {
 			$fund_price_object = array(
                "price_array" => $this->fund_model->get_fund_price_by_id($fund[$this->fund_model->KEY_fund_id]),
                "id" =>$fund[$this->fund_model->KEY_fund_id],
-               "name"=> $fund[$this->fund_model->KEY_name]
+               "name"=> $fund[$this->fund_model->KEY_name],
+               "link" => $fund[$this->fund_model->KEY_link]
             );
 			
 			array_push($funds_price,$fund_price_object);
