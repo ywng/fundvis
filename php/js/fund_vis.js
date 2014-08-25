@@ -311,12 +311,7 @@
       .on("mouseout", function(d){hideTooltip();})
       .on('contextmenu', function (d) { //right click then open detailed official page about the fund
           d3.event.preventDefault();
-          // create an anchor, add to body, trigger click
-          var a = document.createElement('a');
-          a.setAttribute('href', d.link);
-          a.setAttribute('target', '_blank');
-          document.body.appendChild(a);
-          a.click();
+          window.open(d.link);
       });
 
 
