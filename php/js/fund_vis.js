@@ -314,7 +314,7 @@
           // create an anchor, add to body, trigger click
           var a = document.createElement('a');
           a.setAttribute('href', d.link);
-          a.setAttribute('target', '_blank');
+          a.setAttribute('target', '_newtab');
           document.body.appendChild(a);
           a.click();
       });
