@@ -90,12 +90,22 @@ class Alert extends REST_Controller {
 		  	  $this->alert_model->KEY_enable=>$value,
 			);
 		}else if ($field=="specified_price"){
+			if($value==""||$value==" "){
+				$specified_price=null;
+			}else{
+				$specified_price=$value;
+			}
 			$data = array(
-		  	  $this->alert_model->KEY_specified_price=>$value,
+		  	  $this->alert_model->KEY_specified_price=>$specified_price,
 			);
 		}else if ($field=="daily_percent"){
+			if($value==""||$value==" "){
+				$daily_percent=null;
+			}else{
+				$daily_percent=$value;
+			}
 			$data = array(
-		  	  $this->alert_model->KEY_daily_percent=>$value,
+		  	  $this->alert_model->KEY_daily_percent=>$daily_percent,
 			);
 		}else if ($field=="renotify_diff_percent"){
 			$data = array(
