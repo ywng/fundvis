@@ -27,7 +27,7 @@ class Notification extends REST_Controller {
 	{
 		$this->load->model('stock_model'); 
 
-		$alerts=$this->alert_model->get_all_alerts_all_users();
+		$alerts=$this->alert_model->get_all_active_alerts_all_users();
 		if($alerts!=null){
 
 			foreach($alerts as $alert){

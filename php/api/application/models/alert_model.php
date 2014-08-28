@@ -36,8 +36,10 @@ class Alert_model extends CI_Model{
    
     //====================================================//
   
-   public function get_all_alerts_all_users(){
+   public function get_all_active_alerts_all_users(){
+       $this->db->where($this->KEY_enable,"1");
        $q=$this->db->get($this->Table_name_alert);
+
         if( $q->num_rows() >0){
             return $q->result_array();
         } else{
