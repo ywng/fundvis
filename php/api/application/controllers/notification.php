@@ -58,7 +58,7 @@ class Notification extends REST_Controller {
 				$stock=$this->stock_model->get_stock_by_id($stock_code);
 				$stock_previous_close=$stock[$this->stock_model->KEY_previous_close];
 				if($stock_previous_close==null || $stock_code_curr_price==null ){
-					$daily_percent_chg=0;
+					continue;//meaningless to have alert if stock dont's have previous close / current price, mean the stock is suspended or ...not in our db
 				}else{
 					$daily_percent_chg=($stock_code_curr_price-$stock_previous_close)/($stock_previous_close*1.0)*100;
 				}
