@@ -57,8 +57,12 @@ class Notification extends REST_Controller {
 				$stock_code_curr_price=$this->stock_model->get_curr_stock_price_by_id($stock_code)["price"];
 				$stock=$this->stock_model->get_stock_by_id($stock_code);
 				$stock_previous_close=$stock[$this->stock_model->KEY_previous_close];
-				$daily_percent_chg=($stock_code_curr_price-$stock_previous_close)/($stock_previous_close*1.0)*100;
-
+				if($stock_previous_close==null || $stock_code_curr_price==null ){
+					$daily_percent_chg=0;
+				}else{
+					$daily_percent_chg=($stock_code_curr_price-$stock_previous_close)/($stock_previous_close*1.0)*100;
+				}
+				
 				//notify rules according to types
 			
 				$msg="Stock Code: ".$stock_code."\r\n";
