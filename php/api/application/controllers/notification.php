@@ -37,7 +37,7 @@ class Notification extends REST_Controller {
 				 */
 				$expire_date = new DateTime($alert[$this->alert_model->KEY_enable]." 23:59:59");
 				$now_date = new DateTime("now");
-				if($now_date>$expire_date){
+				if($now_date > $expire_date){
 					$data = array(
 				  	  $this->alert_model->KEY_enable=>"0"
 					);
