@@ -102,8 +102,13 @@ class Alert extends REST_Controller {
 		  	  $this->alert_model->KEY_renotify_diff_percent=>$value,
 			);
 		}else if ($field=="valid_till"){
+			if($value==""||$value==" "){
+				$valid_till_date=null;
+			}else{
+				$valid_till_date=$value;
+			}
 			$data = array(
-		  	  $this->alert_model->KEY_valid_till=>$value,
+		  	  $this->alert_model->KEY_valid_till=>$valid_till_date,
 			);
 		}else if ($field=="type"){
 			$data = array(
