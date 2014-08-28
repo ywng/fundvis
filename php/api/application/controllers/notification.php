@@ -35,17 +35,18 @@ class Notification extends REST_Controller {
 				 *  if expired, skip the loop and set the alert to disable too
 				 *  if no expiration date set, assume never expire
 				 */
-				$db_alert_expire_date=$alert[$this->alert_model->KEY_enable];
-				if($db_alert_expire_date==null) continue;
-				$expire_date = new DateTime($alert[$this->alert_model->KEY_enable]." 23:59:59");
-				$now_date = new DateTime("now");
-				//dump($now_date > $expire_date);
-				if($now_date > $expire_date){
-					$data = array(
-				  	  $this->alert_model->KEY_enable=>"0"
-					);
-					$this->alert_model->update_alert($data,$alert[$this->alert_model->KEY_alert_id]);
-					continue;
+				$db_alert_expire_date=$alert[$this->alert_model->KEY_valid_till];
+				if($db_alert_expire_date!=null){
+					$expire_date = new DateTime($alert[$this->alert_model->KEY_valid_till]." 23:59:59");
+					$now_date = new DateTime("now");
+					//dump($now_date > $expire_date);
+					if($now_date > $expire_date){
+						$data = array(
+					  	  $this->alert_model->KEY_enable=>"0"
+						);
+						$this->alert_model->update_alert($data,$alert[$this->alert_model->KEY_alert_id]);
+						continue;
+					}
 				}
 
 				$notify_type=$alert[$this->alert_model->KEY_type];
