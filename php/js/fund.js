@@ -90,15 +90,14 @@ function findIndexGivenDateTime(xAxisPos,price_array){
 	for(var i=price_array.length-1;i>=0;i--){
 		var date=parseDate(price_array[i].datetime+" 23:59:59");
 		var mousePosDate=x.invert(xAxisPos);
-		var diff_days=Math.floor(mousePosDate.getTime()-date.getTime()/(1000*60*60*24));//in days
+		var diff_days=Math.floor((mousePosDate.getTime()-date.getTime())/(1000*60*60*24));//in days
 
 		console.log(diff_days);
 		if(diff_days>2){
 			i=i+diff_days;
 			continue;
 		}
-		//console.log(date);
-		//console.log(x(date));
+	
 		var diff=xAxisPos-x(date);
 		//console.log(diff);
 		if(diff<=0){
