@@ -95,13 +95,13 @@ function findIndexGivenDateTime(xAxisPos,price_array){
 		var diff_days=Math.floor((mousePosDate.getTime()-date.getTime())/(1000*60*60*24)*1/2);//in days
 
 		//console.log(date+"  "+mousePosDate+"  "+diff_days);
-		/* if the days diff more than 5 days, we fastforward the index i to the destinated index pos */
-		if(diff_days>10){ 
+		/* if the days diff more than 15 days, we fastforward the index i to the destinated index pos */
+		if(diff_days>15){ 
 			i=i-diff_days;
 			continue;
 		}
 	
-		//it will get executed where diff in days <=5, to get more precise position caculation when we are almost there
+		//it will get executed where diff in days <=15, to get more precise position caculation when we are almost there
 		var diff_xAxis_pos=xAxisPos-x(date);
 		if(diff_xAxis_pos<=0){//it means the date of that index (i) is equal or just greater than the date of the mouse position
 			return i;
