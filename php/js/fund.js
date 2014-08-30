@@ -90,17 +90,20 @@ function findIndexGivenDateTime(xAxisPos,price_array){
 	for(var i=price_array.length-1;i>=0;i--){
 		var date=parseDate(price_array[i].datetime+" 23:59:59");
 		var mousePosDate=x.invert(xAxisPos);
-		var diff_days=Math.floor((mousePosDate.getTime()-date.getTime())/(1000*60*60*24)*2/3);//in days
 
-		console.log(date+"  "+mousePosDate+"  "+diff_days);
-		if(diff_days>10){
-			i=i-diff_days;//because the index doesn't include Sat, Sun or public holiday, *2/3 getting an estimate to speed up the search
+		//because the index doesn't include Sat, Sun or public holiday, *5/9 getting an estimate to speed up the search
+		var diff_days=Math.floor((mousePosDate.getTime()-date.getTime())/(1000*60*60*24)*5/9);//in days
+
+		//console.log(date+"  "+mousePosDate+"  "+diff_days);
+		/* if the days diff more than 5 days, we fastforward the index i to the destinated index pos */
+		if(diff_days>5){ 
+			i=i-diff_days;
 			continue;
 		}
 	
-		var diff=xAxisPos-x(date);
-		//console.log(diff);
-		if(diff<=0){
+		//it will get executed where diff in days <=5, to get more precise position caculation when we are almost there
+		var diff_xAxis_pos=xAxisPos-x(date);
+		if(diff_xAxis_pos<=0){//it means the date of that index (i) is equal or just greater than the date of the mouse position
 			return i;
 		}
 
