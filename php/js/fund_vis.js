@@ -12,6 +12,10 @@
   var date_base_price;
   var x;//x-axis; d3 obj
 
+  //other var for preference settings
+  var shownAllFidelity=false;
+  var shownAllJPM=false;
+
   /**
   * Document Ready: Dom Setup & Init
   */  
@@ -178,6 +182,20 @@
     .attr("x", function(d) { return width-100; })
     .attr("y", 65)
     .text( "JPMorgan Funds")
+    .on("click", function(){
+      //on click allow select all JPM Funds
+      if(mode=="actual") return;
+      var vis="";
+      if(shownAllJPM){
+        vis="False";
+      }else{
+        vis="True";
+      }
+      for(var i=0;i<13;i++)
+        funds_percent[i].vis=vis;
+      update(funds_percent);
+          
+    })
     .attr("font-family", "sans-serif")
     .attr("font-size", "30px")
     .attr("fill", "black");  
@@ -187,7 +205,17 @@
     .attr("y", 300)
     .text( "Fidelity Funds")
     .on("click", function(){
-          console.log(funds_percent);
+      //on click allow select all Fidelity Funds
+      if(mode=="actual") return;
+      var vis="";
+      if(shownAllFidelity){
+        vis="False";
+      }else{
+        vis="True";
+      }
+      for(var i=13;i<20;i++)
+        funds_percent[i].vis=vis;
+      update(funds_percent);
           
     })
     .attr("font-family", "sans-serif")
