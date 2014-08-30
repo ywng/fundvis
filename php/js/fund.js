@@ -96,7 +96,7 @@ function findIndexGivenDateTime(xAxisPos,price_array){
 
 		//console.log(date+"  "+mousePosDate+"  "+diff_days);
 		/* if the days diff more than 5 days, we fastforward the index i to the destinated index pos */
-		if(diff_days>5){ 
+		if(diff_days>10){ 
 			i=i-diff_days;
 			continue;
 		}
