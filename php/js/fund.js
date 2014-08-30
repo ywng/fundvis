@@ -89,7 +89,9 @@ function findIndexGivenDateTime(xAxisPos,price_array){
 	
 	for(var i=price_array.length-1;i>=0;i--){
 		var date=parseDate(price_array[i].datetime+" 23:59:59");
-		
+		var mousePosDate=x.invert(xAxisPos);
+		var diff=mousePosDate.getTime()-date.getTime();
+		console.log(diff);
 		//console.log(date);
 		//console.log(x(date));
 		var diff=xAxisPos-x(date);
