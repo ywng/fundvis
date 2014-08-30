@@ -186,8 +186,8 @@
     .attr("x", function(d) { return width-100; })
     .attr("y", 300)
     .text( "Fidelity Funds")
-    .on("click", function(d){
-          console.log(d);
+    .on("click", function(){
+          console.log(data);
           
     })
     .attr("font-family", "sans-serif")
