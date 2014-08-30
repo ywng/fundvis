@@ -93,8 +93,8 @@ function findIndexGivenDateTime(xAxisPos,price_array){
 		var diff_days=Math.floor((mousePosDate.getTime()-date.getTime())/(1000*60*60*24));//in days
 
 		console.log(date+"  "+mousePosDate+"  "+diff_days);
-		if(diff_days>2){
-			i=i-diff_days;
+		if(diff_days>10){
+			i=i-Math.floor(diff_days*2/3);//because the index doesn't include Sat, Sun or public holiday, *2/3 getting an estimate to speed up the search
 			continue;
 		}
 	
