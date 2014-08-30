@@ -187,7 +187,7 @@
     .attr("y", 300)
     .text( "Fidelity Funds")
     .on("click", function(){
-          console.log(data);
+          console.log(funds_percent);
           
     })
     .attr("font-family", "sans-serif")
