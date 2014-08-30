@@ -186,6 +186,10 @@
     .attr("x", function(d) { return width-100; })
     .attr("y", 300)
     .text( "Fidelity Funds")
+    .on("click", function(d){
+          console.log(d);
+          
+    })
     .attr("font-family", "sans-serif")
     .attr("font-size", "30px")
     .attr("fill", "black");  
