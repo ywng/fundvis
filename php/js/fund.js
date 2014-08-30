@@ -94,7 +94,7 @@ function findIndexGivenDateTime(xAxisPos,price_array){
 
 		console.log(diff_days);
 		if(diff_days>2){
-			i=i+diff_days;
+			i=i-diff_days;
 			continue;
 		}
 	
