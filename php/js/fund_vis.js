@@ -188,8 +188,10 @@
       var vis="";
       if(shownAllJPM){
         vis="False";
+        shownAllJPM=false;
       }else{
         vis="True";
+        shownAllJPM=true;
       }
       for(var i=0;i<13;i++)
         funds_percent[i].vis=vis;
@@ -210,8 +212,10 @@
       var vis="";
       if(shownAllFidelity){
         vis="False";
+        shownAllFidelity=false;
       }else{
         vis="True";
+        shownAllFidelity=true;
       }
       for(var i=13;i<20;i++)
         funds_percent[i].vis=vis;
