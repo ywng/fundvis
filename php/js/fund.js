@@ -90,11 +90,11 @@ function findIndexGivenDateTime(xAxisPos,price_array){
 	for(var i=price_array.length-1;i>=0;i--){
 		var date=parseDate(price_array[i].datetime+" 23:59:59");
 		var mousePosDate=x.invert(xAxisPos);
-		var diff_days=Math.floor((mousePosDate.getTime()-date.getTime())/(1000*60*60*24));//in days
+		var diff_days=Math.floor((mousePosDate.getTime()-date.getTime())/(1000*60*60*24)*2/3);//in days
 
 		console.log(date+"  "+mousePosDate+"  "+diff_days);
 		if(diff_days>10){
-			i=i-Math.floor(diff_days*2/3);//because the index doesn't include Sat, Sun or public holiday, *2/3 getting an estimate to speed up the search
+			i=i-diff_days;//because the index doesn't include Sat, Sun or public holiday, *2/3 getting an estimate to speed up the search
 			continue;
 		}
 	
