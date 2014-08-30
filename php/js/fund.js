@@ -91,8 +91,8 @@ function findIndexGivenDateTime(xAxisPos,price_array){
 		var date=parseDate(price_array[i].datetime+" 23:59:59");
 		var mousePosDate=x.invert(xAxisPos);
 
-		//because the index doesn't include Sat, Sun or public holiday, *5/9 getting an estimate to speed up the search
-		var diff_days=Math.floor((mousePosDate.getTime()-date.getTime())/(1000*60*60*24)*5/9);//in days
+		//because the index doesn't include Sat, Sun or public holiday, *1/2 getting an estimate to speed up the search
+		var diff_days=Math.floor((mousePosDate.getTime()-date.getTime())/(1000*60*60*24)*1/2);//in days
 
 		//console.log(date+"  "+mousePosDate+"  "+diff_days);
 		/* if the days diff more than 5 days, we fastforward the index i to the destinated index pos */
