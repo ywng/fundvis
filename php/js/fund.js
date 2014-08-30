@@ -92,7 +92,7 @@ function findIndexGivenDateTime(xAxisPos,price_array){
 		var mousePosDate=x.invert(xAxisPos);
 		var diff_days=Math.floor((mousePosDate.getTime()-date.getTime())/(1000*60*60*24));//in days
 
-		console.log(diff_days);
+		console.log(date+"  "+mousePosDate+"  "+diff_days);
 		if(diff_days>2){
 			i=i-diff_days;
 			continue;
