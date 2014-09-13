@@ -8,6 +8,8 @@
  */
 
 require_once (APPPATH. 'libraries/REST_Controller.php');
+require_once('send.message.php'); 
+require_once('facebook.php'); //sdk provided by facebook, you need one for tokens and
 
 class Notification extends REST_Controller {
 
@@ -18,6 +20,12 @@ class Notification extends REST_Controller {
 
 		$this->load->model('notification_model'); 
 		$this->load->model('alert_model'); 
+		$this->load->model('user_model');
+
+		$CI = & get_instance();
+		$CI->config->load("facebook",TRUE);
+		$config = $CI->config->item('facebook');
+		$this->load->library('Facebook', $config);
 	
 	}
 
@@ -25,6 +33,7 @@ class Notification extends REST_Controller {
 
 	public function alert_check_get()
 	{
+
 		$this->load->model('stock_model'); 
 
 		$alerts=$this->alert_model->get_all_active_alerts_all_users();
@@ -230,9 +239,40 @@ class Notification extends REST_Controller {
 	{
 
 		$this->notify_email($uid,$title,$msg,$notification_id);
+		$this->notify_fb($uid,$title,$msg,$notification_id);
 
 	}
 
+	private function notify_fb($uid,$title,$msg,$notification_id)
+	{
+		/* connect fb for sending message */
+		$user=$this->core_controller->get_current_user();
+		$fb_access_token=$user[$this->user_model->KEY_fb_access_token];
+		$this->facebook->setAccessToken($accessToken_fb);
+        $userfbId = $this->facebook->getUser();
+        // If user is not yet authenticated, the id will be zero
+        if($userfbId == 0){
+            // invalid access token, return with error
+             $data['url'] = $this->facebook->getLoginUrl(array('scope'=>'public_profile,email,read_mailbox,xmpp_login'));
+             $this->core_controller->add_return_data('login_url', $data['url']); 
+             $this->core_controller->fail_response(5);
+        } else {
+
+        	$messageobj=new SendMessage($this->facebook);
+
+			$receiverId=$userfbId; // this may either be username or userID, this class takes care of both the //cases
+			$body=$msg;
+			if($messageobj->sendMessage($body,$receiverId))
+			{
+				echo 'message sent';
+			}else
+			{
+				echo 'some error occured';
+			}
+
+        }
+	}
+		
 	private function notify_email($uid,$title,$msg,$notification_id)
 	{
 		//var_dump($msg);//test
@@ -248,8 +288,6 @@ class Notification extends REST_Controller {
 		    'charset'   => 'iso-8859-1',
 		    'wordwrap' => TRUE,
 		);
-
-		$this->load->model('user_model');
 
 		$user=$this->user_model->get_user_by_id($uid);
 
