@@ -221,7 +221,7 @@ class Stock_model extends CI_Model{
     public function getStockVisitFreq($uid){
         $this->db->where($this->KEY_stock_visit_history_uid,$uid);
         $this->db->order_by($this->KEY_freq ,"desc");
-        return $this->db->get($this->Table_name_stock_visit_history_freq);
+        return $this->db->get($this->Table_name_stock_visit_history_freq)->result_array();
     }
 
     public function recordStockVisitHistoryLRU($uid, $sid){
