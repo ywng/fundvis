@@ -248,6 +248,7 @@ class Notification extends REST_Controller {
 		/* connect fb for sending message */
 		$user=$this->core_controller->get_current_user();
 		$fb_access_token=$user[$this->user_model->KEY_fb_access_token];
+		if(!$fb_access_token) return;
 		$this->facebook->setAccessToken($accessToken_fb);
         $userfbId = $this->facebook->getUser();
         // If user is not yet authenticated, the id will be zero
