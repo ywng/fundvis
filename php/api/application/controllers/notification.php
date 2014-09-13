@@ -9,7 +9,7 @@
 
 require_once (APPPATH. 'libraries/REST_Controller.php');
 require_once (APPPATH. 'libraries/send.message.php'); 
-require_once (APPPATH. 'libraries/facebook.php'); //sdk provided by facebook, you need one for tokens and
+require_once (APPPATH. 'libraries/Facebook.php'); //sdk provided by facebook, you need one for tokens and
 
 class Notification extends REST_Controller {
 
