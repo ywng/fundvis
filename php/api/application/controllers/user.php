@@ -249,7 +249,7 @@ class User extends REST_Controller {
 	        }
 
 	        //update fb access token for application use
-	        $this->user_model->update_fb_access_token($user_data[$this->user_model->KEY_user_id],$accessToken_fb)
+	        $this->user_model->update_fb_access_token($user_data[$this->user_model->KEY_user_id],$accessToken_fb);
 
 	        foreach ($this->hide_user_data($user_data) as $key => $value) {
 				$this->core_controller->add_return_data($key, $value);
