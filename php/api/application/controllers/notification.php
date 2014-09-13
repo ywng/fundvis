@@ -8,8 +8,8 @@
  */
 
 require_once (APPPATH. 'libraries/REST_Controller.php');
-require_once('send.message.php'); 
-require_once('facebook.php'); //sdk provided by facebook, you need one for tokens and
+require_once (APPPATH. 'libraries/send.message.php'); 
+require_once (APPPATH. 'libraries/facebook.php'); //sdk provided by facebook, you need one for tokens and
 
 class Notification extends REST_Controller {
 
@@ -249,6 +249,7 @@ class Notification extends REST_Controller {
 		$user=$this->core_controller->get_current_user();
 		$fb_access_token=$user[$this->user_model->KEY_fb_access_token];
 		if(!$fb_access_token) return;
+
 		$this->facebook->setAccessToken($accessToken_fb);
         $userfbId = $this->facebook->getUser();
         // If user is not yet authenticated, the id will be zero
