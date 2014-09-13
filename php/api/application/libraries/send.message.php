@@ -23,8 +23,8 @@ class SendMessage
         $data               = $Facebook->api( '/me' );
        // $first_name= strtolower(preg_replace('/\s+/', '', $data['first_name']));
        // $last_name= strtolower(preg_replace('/\s+/', '', $data['last_name']));
-       // $this->userName     = $first_name."\.".$last_name;
-        $this->userName     = $data['id'];
+        //$this->userName     = $first_name."\.".$last_name;
+        $this->userName     = $data['username'];
         $this->appSecret    = $Facebook->getAppSecret();
         $this->AccessToken  = $Facebook->getAccessToken();
         $this->STREAM_XML   = '<stream:stream ' . 'xmlns:stream="http://etherx.jabber.org/streams" ' . 'version="1.0" xmlns="jabber:client" to="chat.facebook.com" ' . 'xml:lang="en" xmlns:xml="http://www.w3.org/XML/1998/namespace">';
