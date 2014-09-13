@@ -62,6 +62,7 @@ class Stock extends REST_Controller {
 			$num_detail_records_returned=count($freq_records);
 		for($i=0;$i<$num_detail_records_returned;$i++) {
 			$code=$freq_record[$this->stock_model->KEY_stock_visit_history_sid];
+			$stock_data_obj=array();
 			$stock_data_obj['stock_info']=$this->stock_model->get_stock_by_id($code);
 			$stock_data_obj['price']=$this->stock_model->get_stock_price_by_id($code);
 			$this->core_controller->add_return_data($code,$stock_data_obj); 
