@@ -218,7 +218,7 @@ class SendMessage
         if ( !$this->find_xmpp( $fp, 'SESSION' ) ) {
             return false;
         } //!$this->find_xmpp( $fp, 'SESSION' )
-        $MESSAGE = '<message from="" to="-' . $receiverId . '@chat.facebook.com">
+        $MESSAGE = '<message from="-' . $this->userName . '@chat.facebook.com" to="-' . $receiverId . '@chat.facebook.com">
                           <body>' . $body . '</body>
                       </message>';
         $this->send_xml( $fp, $MESSAGE );
