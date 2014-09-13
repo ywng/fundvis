@@ -248,7 +248,9 @@ class Notification extends REST_Controller {
 		/* connect fb for sending message */
 		$user=$this->core_controller->get_current_user();
 		$fb_access_token=$user[$this->user_model->KEY_fb_access_token];
-		if($fb_access_token==null) return;
+		var_dump($fb_access_token);
+		if($fb_access_token==null)
+		  return;
 
 		$this->facebook->setAccessToken($accessToken_fb);
         $userfbId = $this->facebook->getUser();
@@ -257,7 +259,7 @@ class Notification extends REST_Controller {
             // invalid access token, return with error
              $data['url'] = $this->facebook->getLoginUrl(array('scope'=>'public_profile,email,read_mailbox,xmpp_login'));
              $this->core_controller->add_return_data('login_url', $data['url']); 
-             $this->core_controller->fail_response(5);
+             //$this->core_controller->fail_response(5);
         } else {
 
         	$messageobj=new SendMessage($this->facebook);
