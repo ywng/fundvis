@@ -47,6 +47,17 @@ class Stock extends REST_Controller {
 	public function getStockLRU_get(){
 		$user=$this->core_controller->get_current_user();
 		$uid=$user[$this->user_model->KEY_user_id];
+		$LRU_records=$this->stock_model->getStockVisitHistoryLRU($uid);
+		$this->core_controller->add_return_data('LRUStocks',$LRU_records); 
+
+		foreach($LRU_records as $code){
+			$stock_data_obj=array();
+			$stock_data_obj['stock_info']=$this->stock_model->get_stock_by_id($code);
+			$stock_data_obj['price']=$this->stock_model->get_stock_price_by_id($code);
+			$this->core_controller->add_return_data($code,$stock_data_obj); 
+		}
+
+		$this->core_controller->successfully_processed();
 
 	}
 
@@ -57,8 +68,8 @@ class Stock extends REST_Controller {
 		$freq_records=$this->stock_model->getStockVisitFreq($uid);
 		$this->core_controller->add_return_data('visitedStocksFreq',$freq_records); 
 
-		if(count($freq_records)>20)
-			$num_detail_records_returned=20;
+		if(count($freq_records)>12)
+			$num_detail_records_returned=12;
 		else
 			$num_detail_records_returned=count($freq_records);
 

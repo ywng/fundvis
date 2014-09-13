@@ -264,6 +264,19 @@ class Stock_model extends CI_Model{
 
     }
 
+    public function getStockVisitHistoryLRU($uid){
+        $this->db->where($this->KEY_stock_visit_history_uid,$uid);
+        $q = $this->db->get($this->Table_name_stock_visit_history_LRU);
+        if ( $q->num_rows() == 0 ) {
+            return null;
+        }else{
+            $stock_array = explode(",",$q->result_array()[0][$this->KEY_LRU_stocks]);
+            return $stock_array;
+        }
+
+    }
+
+
 }
 
 /* end of file stock_model.php */
