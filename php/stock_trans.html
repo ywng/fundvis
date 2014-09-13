@@ -527,7 +527,8 @@
     var stockname="";
 
     $(document).ready(function() {
-        $('#nav_bar').load("nav.html");
+        //load common side bar & init the side bar by callback function
+        $('#nav_bar').load("nav.html",sideBarInit);
         checkRedirectNeeded();
 
         $('#dataTables-example').dataTable();
