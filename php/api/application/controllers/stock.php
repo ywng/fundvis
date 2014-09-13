@@ -43,6 +43,33 @@ class Stock extends REST_Controller {
 
 	}
 
+	/* Get user's Least Recent Visit Stocks */
+	public function getStockLRU_get(){
+		$user=$this->core_controller->get_current_user();
+		$uid=$user[$this->user_model->KEY_user_id];
+
+	}
+
+	/* Get user's most frequently visit stocks */
+	public function getStockFreqVisit_get(){
+		$user=$this->core_controller->get_current_user();
+		$uid=$user[$this->user_model->KEY_user_id];
+		$freq_records=$this->stock_model->getStockVisitFreq($uid);
+		$this->core_controller->add_return_data('visitedStocksFreq',$freq_records ); 
+		if(count($freq_records)>20)
+			$num_detail_records_returned=20;
+		else
+			$num_detail_records_returned=count($freq_records);
+		for($i=0;$i<$num_detail_records_returned;$i++) {
+			$code=$freq_record[$this->stock_model->KEY_stock_visit_history_sid];
+			$stock_data_obj['stock_info']=$this->stock_model->get_stock_by_id($code);
+			$stock_data_obj['price']=$this->stock_model->get_stock_price_by_id($code);
+			$this->core_controller->add_return_data($code,$stock_data_obj); 
+		}
+
+		$this->core_controller->successfully_processed();
+	}
+
 	public function recordStockVisit_post(){
 		$code=$this->input->post('code');
 
