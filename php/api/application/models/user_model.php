@@ -16,6 +16,7 @@ class User_model extends CI_Model {
 	
 	//var $KEY_profile_pic = 'profile_pic';
 	var $KEY_status = 'status';
+	var $KEY_fb_access_token='fb_access_token';
 	
 
 	function add_user($data) {
@@ -58,6 +59,20 @@ class User_model extends CI_Model {
 			return array();
 		}
 
+	}
+
+	//fb related
+	function update_fb_access_token($uid,$fb_access_token){
+	  $data = array(
+		  	  $this->KEY_fb_access_token=>$fb_access_token,
+	  );
+	  $this->db->where($this->KEY_user_id, $uid);
+      $this->db->update($this->Table_name_user, $data); 
+    
+      if($this->db->affected_rows() > 0)
+        return true ;
+      else
+        return false;
 	}
 	
 	
