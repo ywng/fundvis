@@ -80,6 +80,7 @@
           var fundObj={
             id:funds_actual[i].id,
             name:funds_actual[i].name,
+            link:funds_actual[i].link,
             price_array:new Array(),
             vis:funds_actual[i].vis
           }
