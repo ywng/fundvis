@@ -27,7 +27,7 @@
 
 var parseDate = d3.time.format("%Y-%m-%d %H:%M:%S").parse;
 var funds_actual=new Array();
-var funds_percent=new Array();
+var funds_percent;//null initially, will create object when percent mode is triggered
 var maxDate;
 var minDate;
 
