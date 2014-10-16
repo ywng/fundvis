@@ -72,35 +72,37 @@
         focus.select(".y.axis").select(".yaxisLabel").transition()
         .text("Percentage Change %");//update axis label
 
-        funds_percent=new Array();
-        var sliderXPos=slider.data('slider').getValue();
-        //console.log(sliderXPos);
+        //create the percent object only if we haven't calculated it
+        if(funds_percent==null){
+            funds_percent=new Array();
+            var sliderXPos=slider.data('slider').getValue();
 
-        for(var i=0;i<funds_actual.length;i++){
-          var fundObj={
-            id:funds_actual[i].id,
-            name:funds_actual[i].name,
-            link:funds_actual[i].link,
-            price_array:new Array(),
-            vis:funds_actual[i].vis
-          }
+            for(var i=0;i<funds_actual.length;i++){
+              var fundObj={
+                id:funds_actual[i].id,
+                name:funds_actual[i].name,
+                link:funds_actual[i].link,
+                price_array:new Array(),
+                vis:funds_actual[i].vis
+              }
 
-          funds_percent.push(fundObj);
+              funds_percent.push(fundObj);
 
-          var basePriceIndex=findIndexGivenDateTime(sliderXPos,funds_actual[i].price_array);
-          var basePrice=parseFloat(funds_actual[i].price_array[basePriceIndex].price);
+              var basePriceIndex=findIndexGivenDateTime(sliderXPos,funds_actual[i].price_array);
+              var basePrice=parseFloat(funds_actual[i].price_array[basePriceIndex].price);
 
-          for(var j=0;j<funds_actual[i].price_array.length;j++){
-            var percentageChange=((parseFloat(funds_actual[i].price_array[j].price)/basePrice)-1)*100;
-            var priceObj={
-              datetime:funds_actual[i].price_array[j].datetime,
-              price:percentageChange.toString()
-            };
-            funds_percent[i].price_array.push(priceObj);
-          } //end for price array
+              for(var j=0;j<funds_actual[i].price_array.length;j++){
+                var percentageChange=((parseFloat(funds_actual[i].price_array[j].price)/basePrice)-1)*100;
+                var priceObj={
+                  datetime:funds_actual[i].price_array[j].datetime,
+                  price:percentageChange.toString()
+                };
+                funds_percent[i].price_array.push(priceObj);
+              } //end for price array
 
-        }//end for whole fund
-
+            }//end for fund loop
+        } 
+  
         update(funds_percent);
 
       }//end mode if
