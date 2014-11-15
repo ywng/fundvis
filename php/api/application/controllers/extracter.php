@@ -267,6 +267,9 @@ class Extracter extends REST_Controller {
 			$date_str = $regs[0];
 	    } 
 
+	    if($price==null || $date_str==null)
+	    	return; //invalid values, skip insert
+
 	    $fund_daily_price = array(
                $this->fund_model->KEY_name => $fund[$this->fund_model->KEY_name],
                $this->fund_model->KEY_price => $price ,
@@ -300,6 +303,9 @@ class Extracter extends REST_Controller {
 		$date_str=preg_replace("/[\t]/", '',$raw_date);
 		$date_arr=explode(".",$date_str);
 		$date_str="20".$date_arr[2]."-".$date_arr[1]."-".$date_arr[0];
+
+		if($price==null || $date_str==null)
+	    	return; //invalid values, skip insert
 
  		$fund_daily_price = array(
                $this->fund_model->KEY_name => $fund[$this->fund_model->KEY_name],
