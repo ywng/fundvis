@@ -13,7 +13,7 @@ $(document).ready(function() {
     }); 
 
     $(".alertCheckBox").each(function(){
-         $(this).onClick(function(){
+         $(this).click(function(){
             if (!$(this).prop('checked')){
                 $("#checkAll").prop('checked',false);
             }
