@@ -35,8 +35,8 @@ function transDataTableInit(){
             {},
             {},
             {},
-            {},
-            {},
+            {"bSortable": false, "bSearchable": true, "sWidth": "250px" },
+            {"bSortable": false, "bSearchable": true, "sWidth": "250px" },
             {},
             {}
 
@@ -46,7 +46,7 @@ function transDataTableInit(){
         },
         "bAutoWidth": false
     });
-
+    tableMakeEditable(transactionTable);
 
     var loadUserTransOnSuccess=function (data, textStatus, jqXHR){
         if(data.status_code=='1'){
@@ -64,7 +64,7 @@ function transDataTableInit(){
                  transaction[8]=data.user_trans_record[i].stop_loss_price_renotify_percent;
                  transaction[9]=data.user_trans_record[i].quantity;
                  transaction[10]=data.user_trans_record[i].trans_fee;
-                 transaction[11]=data.user_trans_record[i].datetime;
+                 transaction[11]=data.user_trans_record[i].datetime.split(" ")[0];
                  transaction[12]=data.user_trans_record[i].rationale;
                  transaction[13]=data.user_trans_record[i].review;
                  transaction[14]=data.user_trans_record[i].closed_quantity;
@@ -140,7 +140,7 @@ function tableMakeEditable(table){
 
             updateAlert(formdata,null);*/
 
-            return value
+            return value;
         },
         "aoColumns": [
             null,
