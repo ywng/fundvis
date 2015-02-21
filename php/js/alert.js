@@ -374,10 +374,11 @@ function tableMakeEditable(table){
 
 function deleteSelectedAlerts(){
      var selectedDeleteAlertIdArray=new Array();
-     var alertsDataInDataTables=alertsTable.rows().data();
-     for(var i=0;i<alertsDataInDataTables.length;i++){
-        if(alertsDataInDataTables[i][0].prop('checked')){
-            selectedDeleteAlertIdArray.push(alerts_arr[i][0]);
+     var alertRows = alertsTable.fnGetNodes();
+    
+     for(var i=0;i<alertRows.length;i++){
+        if($(alertRows[i]).find("td:eq(1)").prop('checked')){
+            selectedDeleteAlertIdArray.push($(alertRows[i]).find("td:eq(0)").getText());
         }
 
      }
