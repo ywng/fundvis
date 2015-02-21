@@ -1,4 +1,4 @@
-.table-content-div.table{
+.table-content-div.dataTables_wrapper.table{
 	display:block;
 	overflow:scroll;
 }
