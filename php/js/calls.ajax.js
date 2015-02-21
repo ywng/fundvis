@@ -11,11 +11,13 @@ var recordStockVisit_URL='stock/recordStockVisit';
 /* transaction */
 var addTransRecord_URL='transaction/addTransactionRecord';
 var getSellableQuantity_URL='transaction/getSellableQuantity';
+var getUserTransRecord_URL='transaction/getUserTransRecord';
 
 /* alert */
 var addAlert_URL='alert/addAlert';
 var getAlerts_URL='alert/getAlerts';
 var updateAlert_URL='alert/updateAlert';
+
 
 //functions ==================================================
 
@@ -64,10 +66,18 @@ function recordStockVisit(code){
 	rawAjaxCall(recordStockVisit_URL,"POST",true,data,null,onFailure);
 }
 
+
+
 /* transaction */
 function addTransRecord(form_data,onSuccess){
 	rawAjaxCall(addTransRecord_URL,"POST",true,form_data,onSuccess,onFailure);
 }
+function getUserTransRecord(onSuccess){
+	rawAjaxCall(getUserTransRecord_URL,"GET",true,null,onSuccess,onFailure);
+}
+
+
+
 
 /* alert */
 function addAlert(form_data,onSuccess){

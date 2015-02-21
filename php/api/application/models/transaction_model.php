@@ -45,6 +45,12 @@ class Transaction_model extends CI_Model{
         
     }
 
+    public function get_all_trans_record_by_uid($uid){
+        $this->db->where($this->KEY_user_id,$uid);
+        return $this->db->get($this->Table_name_trans)->result_array();  
+        
+    }
+
     public function get_all_open_buy_record_with_uid_sid($stock_id,$uid){
         $this->db->where($this->KEY_stock_id,$stock_id);
         $this->db->where($this->KEY_user_id,$uid);

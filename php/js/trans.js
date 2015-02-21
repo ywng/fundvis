@@ -20,7 +20,7 @@ var transactions_arr=null;
 function transDataTableInit(){
 
     transactionTable=$('#dataTables-trans').dataTable({ 
-        "iDisplayLength": 50,
+        "iDisplayLength": 10,
         "aaData":transactions_arr,
        // "aoColumns": [
             
@@ -30,6 +30,17 @@ function transDataTableInit(){
         },
         "bAutoWidth": false
     });
+
+
+    var loadUserTransOnSuccess=function (data, textStatus, jqXHR){
+        if(data.status_code=='1'){
+            
+        }else{
+            checkRedirectNeeded_status_code(data.status_code);
+        }
+    };
+
+    getUserTransRecord(loadUserTransOnSuccess);
 
 
 }

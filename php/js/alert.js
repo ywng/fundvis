@@ -20,7 +20,7 @@ var alerts_arr;
 function alertDataTableInit(){
 
     alertsTable=$('#dataTables-example').dataTable({ //init alerts table after loading the alerts data
-        "iDisplayLength": 50,
+        "iDisplayLength": 10,
         "aaData":alerts_arr,
         "aoColumns": [
             {"bSortable": false, "bVisible": false},

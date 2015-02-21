@@ -31,6 +31,17 @@ class Transaction extends REST_Controller {
 
 		$this->core_controller->successfully_processed();
 	}
+
+	public function getUserTransRecord_get(){
+		$this->load->model('user_model'); 
+		$user=$this->core_controller->get_current_user();
+		$uid=$user[$this->user_model->KEY_user_id];
+
+		$user_trans_record=$this->get_all_trans_record_by_uid($uid);
+		$this->core_controller->add_return_data('user_trans_record', $user_trans_record); 
+
+		$this->core_controller->successfully_processed();
+	}
 	
 	public function addTransactionRecord_post(){
 		
