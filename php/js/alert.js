@@ -44,7 +44,8 @@ function alertDataTableInit(){
         },
         "fnDrawCallback": function(){
             doTableUISetUp();
-            $(".alertCheckBox").prop('checked',$("#checkAll").prop('checked'));
+            $(".alertCheckBox").prop('checked',false);
+            $("#checkAll").prop('checked',false);
         }, 
         "bAutoWidth": false
     });
