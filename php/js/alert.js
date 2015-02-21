@@ -44,6 +44,7 @@ function alertDataTableInit(){
         },
         "fnDrawCallback": function(){
             doTableUISetUp();
+            $(".alertCheckBox").prop('checked',$(this).prop('checked'));
         }, 
         "bAutoWidth": false
     });
@@ -130,11 +131,6 @@ function doTableRefresh(table,data) {
     table.fnAddData(data);
     tableMakeEditable(table);
     table.fnDraw();
-    $(".paginate_button").each(function( index ) {
-        $( this ).click(function () {
-            
-        });
-    });
 }
 
 function doTableUISetUp(){
@@ -350,7 +346,7 @@ function deleteSelectedAlerts(){
         }
 
      }
-     //console.log(selectedDeleteAlertIdArray);
+     console.log(selectedDeleteAlertIdArray);
 
 }
 
