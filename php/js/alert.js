@@ -52,6 +52,7 @@ function alertDataTableInit(){
         },
         "fnDrawCallback": function(){
             doTableUISetUp();
+            $("#checkAll").prop('checked',true);
             $(".alertCheckBox").each(function(){
                 if (!$(this).prop('checked')){
                     $("#checkAll").prop('checked',false);
