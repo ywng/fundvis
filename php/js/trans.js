@@ -82,7 +82,7 @@ function transDataTableInit(){
 
             }
 
-            doTableRefresh(alertsTable,alerts_arr);
+            doTableRefresh(transactionTable,transactions_arr);
             doTableUISetUp();
         }else{
             checkRedirectNeeded_status_code(data.status_code);
@@ -147,7 +147,15 @@ function tableMakeEditable(table){
             null,
             null,
             null,
-            {}, 
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            null,
+            {},
             {},
             null,
             null
