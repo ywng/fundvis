@@ -65,7 +65,7 @@ function alertDataTableInit(){
                     $("#checkAll").prop('checked',false);
                 }
             });
-            
+
             $(".alertCheckBox").click(function(){
                 if (!$(this).prop('checked')){ // if not check a single box
                      $("#checkAll").prop('checked',false); // then select all will be not selected
@@ -374,8 +374,9 @@ function tableMakeEditable(table){
 
 function deleteSelectedAlerts(){
      var selectedDeleteAlertIdArray=new Array();
-     for(var i=0;i<alerts_arr.length;i++){
-        if($("#alert"+alerts_arr[i][0]).prop('checked')){
+     var alertsDataInDataTables=alertsTable.rows().data();
+     for(var i=0;i<alertsDataInDataTables.length;i++){
+        if(alertsDataInDataTables[i][0].prop('checked')){
             selectedDeleteAlertIdArray.push(alerts_arr[i][0]);
         }
 
