@@ -55,7 +55,7 @@
                                   <button id='btnAddRow' type="button" class="btn btn-outline btn-primary" onclick="$('#resetForm').click();window.location.href='#addTransactionsDialog'">Add</button>
                                   <button id='btnDeleteRow' type="button" class="btn btn-outline btn-danger">Delete</button>
                                 </p>
-                            
+                                <div class="table-content-div">
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-trans">
                                     <thead>
                                         <tr class="tooltip-demo" >
@@ -76,12 +76,12 @@
                                             <th data-toggle="tooltip" data-placement="top" title="The reasons that the transaction was made and any supporting evidences.">Rationale</th>
                                             <th data-toggle="tooltip" data-placement="top" title="Review whether the reasons / rationale are correct or not. Provide learning points for later reference.">Review</th>
                                             <th data-toggle="tooltip" data-placement="top" title="Applicable to buy transactions, the quantity that has sold out.">Closed Quantity</th>
-                                            <th data-toggle="tooltip" data-placement="top" title="Applicable to buy transactions, the average execution price of the quantity sold.">Closed Avg Price</th>
+                                            <th data-toggle="tooltip" data-placement="top" title="Applicable to buy transactions, the average execution price of the quantity sold.">Avg Closed Price</th>
                         
                                         </tr>
                                     </thead>                                 
                                 </table>
-
+                                </div>
                             </div>
                             <!-- /.table-responsive -->
                         </div>
