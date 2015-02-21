@@ -332,7 +332,7 @@ function tableMakeEditable(table){
 
   function deleteSelectedAlerts(){
      var selectedDeleteAlertIdArray=new Array();
-     for (int i=0;i<alerts_arr.length;i++){
+     for(var i=0;i<alerts_arr.length;i++){
         if($("#alert"+alerts_arr[i][0]).attr('checked')){
             selectedDeleteAlertIdArray.push(i);
         }
