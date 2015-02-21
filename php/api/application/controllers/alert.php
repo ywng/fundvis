@@ -68,7 +68,7 @@ class Alert extends REST_Controller {
 	public function deleteAlert_post(){
 		
 		$user=$this->core_controller->get_current_user();
-		$alert_id_array=$this->input->post('alert_id_array');
+		$alert_id_array=serialize($this->input->post('alert_id_array'));
 
 		$uid=$user[$this->user_model->KEY_user_id];
 
