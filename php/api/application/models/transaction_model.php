@@ -22,7 +22,7 @@ class Transaction_model extends CI_Model{
     var $KEY_target_price_renotify_percent = 'target_price_renotify_percent';
     var $KEY_stop_loss_price_renotify_percent= 'stop_loss_price_renotify_percent';
 
-    var $KEY_is_closed= 'closed';
+    var $KEY_is_closed= 'is_closed';
    
     var $Table_name_trans = 'Transaction';
 
