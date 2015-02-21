@@ -12,13 +12,13 @@ $(document).ready(function() {
         $(".alertCheckBox").prop('checked',$(this).prop('checked'));
     }); 
 
-    $(".alertCheckBox").click(function () {
-        $(".alertCheckBox").each(function(){
+    $(".alertCheckBox").each(function(){
+         $(this).onClick(function(){
             if (!$(this).prop('checked')){
                 $("#checkAll").prop('checked',false);
             }
-        });
-    }); 
+         });  
+    });
 
     checkRedirectNeeded();
 });
