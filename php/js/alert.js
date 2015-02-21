@@ -381,7 +381,7 @@ function deleteSelectedAlerts(){
      console.log(selectedDeleteAlertIdArray);
 
      var formdata = new FormData();
-     formdata.append( 'alert_id_array',selectedDeleteAlertIdArray.toString());
+     formdata.append( 'alert_id_array',selectedDeleteAlertIdArray);
 
      deleteAlert(formdata,null);
 
