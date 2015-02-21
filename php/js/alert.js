@@ -44,7 +44,7 @@ function alertDataTableInit(){
         },
         "fnDrawCallback": function(){
             doTableUISetUp();
-        } 
+        }, 
         "bAutoWidth": false
     });
     tableMakeEditable(alertsTable);
