@@ -15,6 +15,7 @@ var getUserTransRecord_URL='transaction/getUserTransRecord';
 
 /* alert */
 var addAlert_URL='alert/addAlert';
+var deleteAlert_URL='alert/deleteAlert';
 var getAlerts_URL='alert/getAlerts';
 var updateAlert_URL='alert/updateAlert';
 
@@ -82,6 +83,10 @@ function getUserTransRecord(onSuccess){
 /* alert */
 function addAlert(form_data,onSuccess){
 	rawAjaxCall(addAlert_URL,"POST",true,form_data,onSuccess,onFailure);
+}
+
+function deleteAlert(form_data,onSuccess){
+	rawAjaxCall(deleteAlert_URL,"POST",true,form_data,onSuccess,onFailure);
 }
 
 function getAlerts(onSuccess){

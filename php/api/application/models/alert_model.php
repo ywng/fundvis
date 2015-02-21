@@ -83,6 +83,13 @@ class Alert_model extends CI_Model{
         }
    }
 
+   public function delete_alert($alert_id_array,$uid){
+        $this->db->or_where_in($this->KEY_alert_id, $alert_id_array);
+        $this->db->where($this->KEY_user_id, $uid);
+        $this->db->delete($this->Table_name_alert); 
+      
+   }
+
    public function update_alert($data,$id){
       $this->db->where($this->KEY_alert_id, $id);
       $this->db->update($this->Table_name_alert, $data); 
