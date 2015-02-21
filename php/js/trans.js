@@ -22,9 +22,25 @@ function transDataTableInit(){
     transactionTable=$('#dataTables-trans').dataTable({ 
         "iDisplayLength": 10,
         "aaData":transactions_arr,
-       // "aoColumns": [
-            
-       //  ],
+        "aoColumns": [
+            {"bSortable": false, "bVisible": false},
+            { "bSortable": false, "bSearchable":false, "sWidth": "5px" },
+            { "bSortable": true, "bSearchable": true, "sWidth": "50px" },
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {}
+
+        ],
         "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
             
         },
@@ -34,7 +50,28 @@ function transDataTableInit(){
 
     var loadUserTransOnSuccess=function (data, textStatus, jqXHR){
         if(data.status_code=='1'){
+            transactions_arr=new Array(); 
+            for(var i=0;i<data.user_trans_record.length;i++){
+                 var transaction=new Array(); 
+                 transaction[0]=data.user_trans_record[i].id;
+                 transaction[1]="<div class=\"tooltip-demo\"><input type=\"checkbox\" id=\"alert"+data.user_trans_record[i].id+"\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Transaction id:"+data.user_trans_record[i].id+"\"></input></div>";
+                 transaction[2]= "<div class=\"tooltip-demo\"><button type=\"button\" class=\"btn btn-default\" data-toggle=\"tooltip\" data-placement=\"top\" title=\""+data.user_trans_record[i].name+"\" style=\"width: 50px; height: 23px; padding:1px 5px;\">"+data.user_trans_record[i].sid+"</button></div>";
+
+                 
+                 //========hidden fields=========================//
+                 //alert id , not displayed but use as row id for matching 
+                 
+                 transaction[16]="old";//identify the alerts are old record, not newly added
+             
+                 //data for sort
             
+                 
+                 transactions_arr[i]=transaction;
+
+            }
+
+            doTableRefresh(alertsTable,alerts_arr);
+            doTableUISetUp();
         }else{
             checkRedirectNeeded_status_code(data.status_code);
         }

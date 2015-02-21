@@ -28,6 +28,7 @@ class Transaction_model extends CI_Model{
 
     function __construct() {
         parent::__construct();
+        $this->load->model('stock_model');
     }
     
     
@@ -47,6 +48,7 @@ class Transaction_model extends CI_Model{
 
     public function get_all_trans_record_by_uid($uid){
         $this->db->where($this->KEY_user_id,$uid);
+        $this->db->join($this->stock_model->Table_name_stock, $this->stock_model->Table_name_stock.'.'.$this->stock_model->KEY_stock_id .'='. $this->Table_name_trans.'.'.$this->KEY_stock_id);
         return $this->db->get($this->Table_name_trans)->result_array();  
         
     }
