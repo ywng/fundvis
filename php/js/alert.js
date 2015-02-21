@@ -14,7 +14,7 @@ $(document).ready(function() {
 
     $(".alertCheckBox").click(function () {
         $(".alertCheckBox").each(function(){
-            if (!($this).prop('checked')){
+            if (!(this).prop('checked')){
                 $("#checkAll").prop('checked',false);
             }
         });
@@ -53,7 +53,7 @@ function alertDataTableInit(){
         "fnDrawCallback": function(){
             doTableUISetUp();
             $(".alertCheckBox").each(function(){
-                if (!($this).prop('checked')){
+                if (!(this).prop('checked')){
                     $("#checkAll").prop('checked',false);
                 }
             });
