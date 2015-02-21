@@ -629,14 +629,14 @@
 
 //******* trans data table****
         var transactionTable;
-        var transactions_arr;
+        var transactions_arr=null;
         
         transactionTable=$('#dataTables-trans').dataTable({ 
             "iDisplayLength": 50,
             "aaData":transactions_arr,
-            "aoColumns": [
+           // "aoColumns": [
                 
-            ],
+          //  ],
             "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
                 
             },
@@ -645,7 +645,7 @@
 
 //**trans datatable
 
-
+        checkRedirectNeeded();
 
     });
 
