@@ -127,7 +127,8 @@ function doTableRefresh(table,data) {
     table.fnAddData(data);
     tableMakeEditable(table);
     table.fnDraw();
-    $(".paginate_button").click(function () {
+    $(".paginate_button").each(function( index ) {
+        $( this ).click(function () {
         doTableUISetUp();
     });
 }
