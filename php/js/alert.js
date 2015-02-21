@@ -377,10 +377,9 @@ function deleteSelectedAlerts(){
      var alertRows = alertsTable.fnGetNodes();
     
      for(var i=0;i<alertRows.length;i++){
-        console.log((alertRows[i]).getElementsByTagName('input')[0]);
-        console.log((alertRows[i]).find("td:eq(0)"));
-        if($(alertRows[i]).find("td:eq(1)").prop('checked')){
-            selectedDeleteAlertIdArray.push($(alertRows[i]).find("td:eq(0)").getText());
+    
+        if((alertRows[i]).getElementsByTagName('input')[0].prop('checked')){
+            selectedDeleteAlertIdArray.push((alertRows[i]).getElementsByTagName('input')[0].prop("id").split("alert")[1]);
         }
 
      }
