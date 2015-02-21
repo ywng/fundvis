@@ -59,11 +59,9 @@ function alertDataTableInit(){
         "fnDrawCallback": function(){
             doTableUISetUp();
 
-            $("#checkAll").prop('checked',true);
+            $("#checkAll").prop('checked',false);
             $(".alertCheckBox").each(function(){
-                if (!$(this).prop('checked')){
-                    $("#checkAll").prop('checked',false);
-                }
+               $(this).prop('checked',false);
             });
 
             $(".alertCheckBox").click(function(){
@@ -374,12 +372,9 @@ function tableMakeEditable(table){
 
 function deleteSelectedAlerts(){
      var selectedDeleteAlertIdArray=new Array();
-     var alertRows = alertsTable.fnGetNodes();
-    
-     for(var i=0;i<alertRows.length;i++){
-    
-        if((alertRows[i]).getElementsByTagName('input')[0].prop('checked')){
-            selectedDeleteAlertIdArray.push((alertRows[i]).getElementsByTagName('input')[0].prop("id").split("alert")[1]);
+     for(var i=0;i<alerts_arr.length;i++){
+        if($("#alert"+alerts_arr[i][0]).prop('checked')){
+            selectedDeleteAlertIdArray.push(alerts_arr[i][0]);
         }
 
      }
