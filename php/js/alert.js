@@ -45,9 +45,6 @@ function alertDataTableInit(){
         "bAutoWidth": false
     });
     tableMakeEditable(alertsTable);
-    $("paginate_button").click(function () {
-        doTableUISetUp();
-    });
 
     var loadAlertsOnSuccess=function (data, textStatus, jqXHR){
         if(data.status_code=='1'){
@@ -130,6 +127,9 @@ function doTableRefresh(table,data) {
     table.fnAddData(data);
     tableMakeEditable(table);
     table.fnDraw();
+    $(".paginate_button").click(function () {
+        doTableUISetUp();
+    });
 }
 
 function doTableUISetUp(){
