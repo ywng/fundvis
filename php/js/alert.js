@@ -24,7 +24,7 @@ var alerts_arr;
 function alertDataTableInit(){
 
     alertsTable=$('#dataTables-example').dataTable({ //init alerts table after loading the alerts data
-        "iDisplayLength": 10,
+        "iDisplayLength": 5,
         "aaData":alerts_arr,
         "aoColumns": [
             {"bSortable": false, "bVisible": false},
@@ -56,7 +56,7 @@ function alertDataTableInit(){
                  alert[1]="<div class=\"tooltip-demo\"><input type=\"checkbox\" class=\"alertCheckBox\" id=\"alert"+data.alerts[i].id+"\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Alert id:"+data.alerts[i].id+"\"></input></div>";
                  //mouse over to show alert id
                  //add price, 52 w l h...for info purpose
-                 alert[2]= "<div class=\"tooltip-demo\"><button type=\"button\" class=\"btn btn-default\" data-toggle=\"tooltip\" data-placement=\"top\" title=\""+data.alerts[i].name+"\" style=\"width: 50px; height: 23px; padding:1px 5px;\">"+data.alerts[i].sid+"</button></div>";
+                 alert[2]= "<div class=\"tooltip-demo\"><button type=\"button\" class=\"btn btn-default\" onClick=\"window.open('"+data.alerts[i].link+"', '_blank')\" data-toggle=\"tooltip\" data-placement=\"top\" title=\""+data.alerts[i].name+"\" style=\"width: 50px; height: 23px; padding:1px 5px;\">"+data.alerts[i].sid+"</button></div>";
 
                  alert[3]="current price & 52 w l h vis";
 
