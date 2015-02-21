@@ -12,6 +12,14 @@ $(document).ready(function() {
         $(".alertCheckBox").prop('checked',$(this).prop('checked'));
     }); 
 
+    $(".alertCheckBox").click(function () {
+        $(".alertCheckBox").each(function(){
+            if (!($this).prop('checked')){
+                $("#checkAll").prop('checked',false);
+            }
+        });
+    }); 
+
     checkRedirectNeeded();
 });
 
@@ -47,7 +55,6 @@ function alertDataTableInit(){
             $(".alertCheckBox").each(function(){
                 if (!($this).prop('checked')){
                     $("#checkAll").prop('checked',false);
-                    break;
                 }
             });
         }, 
