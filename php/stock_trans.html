@@ -627,7 +627,26 @@
              $("#msg_heading").text("Add a New Transaction");
         });
 
-        checkRedirectNeeded();
+//******* trans data table****
+        var transactionTable;
+        var transactions_arr;
+        
+        transactionTable=$('#dataTables-trans').dataTable({ 
+            "iDisplayLength": 50,
+            "aaData":transactions_arr,
+            "aoColumns": [
+                
+            ],
+            "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
+                
+            },
+            "bAutoWidth": false
+        });
+
+//**trans datatable
+
+
+
     });
 
     function showSellableQuantity(){
