@@ -377,6 +377,8 @@ function deleteSelectedAlerts(){
      var alertRows = alertsTable.fnGetNodes();
     
      for(var i=0;i<alertRows.length;i++){
+        console.log(alertRows[i]).find("td:eq(1)"));
+        console.log(alertRows[i]).find("td:eq(0)"));
         if($(alertRows[i]).find("td:eq(1)").prop('checked')){
             selectedDeleteAlertIdArray.push($(alertRows[i]).find("td:eq(0)").getText());
         }
