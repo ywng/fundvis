@@ -42,6 +42,9 @@ function alertDataTableInit(){
         "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
             
         },
+        "fnDrawCallback": function(){
+            doTableUISetUp();
+        } 
         "bAutoWidth": false
     });
     tableMakeEditable(alertsTable);
@@ -129,7 +132,7 @@ function doTableRefresh(table,data) {
     table.fnDraw();
     $(".paginate_button").each(function( index ) {
         $( this ).click(function () {
-            doTableUISetUp();
+            
         });
     });
 }
