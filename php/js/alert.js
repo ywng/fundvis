@@ -129,7 +129,8 @@ function doTableRefresh(table,data) {
     table.fnDraw();
     $(".paginate_button").each(function( index ) {
         $( this ).click(function () {
-        doTableUISetUp();
+            doTableUISetUp();
+        });
     });
 }
 
