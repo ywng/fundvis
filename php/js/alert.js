@@ -8,6 +8,10 @@ $(document).ready(function() {
     alertDataTableInit();
     addAlertInit();
 
+    $("#checkAll").click(function () {
+        $(".check").prop('checked',$(this).prop('checked'));
+    });
+
     checkRedirectNeeded();
 });
 
@@ -49,7 +53,7 @@ function alertDataTableInit(){
             for(var i=0;i<data.alerts.length;i++){
                  var alert=new Array(); 
                  alert[0]=data.alerts[i].id;
-                 alert[1]="<div class=\"tooltip-demo\"><input type=\"checkbox\" id=\"alert"+data.alerts[i].id+"\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Alert id:"+data.alerts[i].id+"\"></input></div>";
+                 alert[1]="<div class=\"tooltip-demo\"><input type=\"checkbox\" class=\"check\" id=\"alert"+data.alerts[i].id+"\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Alert id:"+data.alerts[i].id+"\"></input></div>";
                  //mouse over to show alert id
                  //add price, 52 w l h...for info purpose
                  alert[2]= "<div class=\"tooltip-demo\"><button type=\"button\" class=\"btn btn-default\" data-toggle=\"tooltip\" data-placement=\"top\" title=\""+data.alerts[i].name+"\" style=\"width: 50px; height: 23px; padding:1px 5px;\">"+data.alerts[i].sid+"</button></div>";
@@ -330,16 +334,18 @@ function tableMakeEditable(table){
   */
 
 
-  function deleteSelectedAlerts(){
+function deleteSelectedAlerts(){
      var selectedDeleteAlertIdArray=new Array();
      for(var i=0;i<alerts_arr.length;i++){
 
         if($("#alert"+alerts_arr[i][0]).attr('checked')){
-             console.log($("#alert"+alerts_arr[i][0]).attr('checked'));
+             console.log($("#alert"+alerts_arr[i][0]).prop('checked'));
             selectedDeleteAlertIdArray.push(i);
         }
 
      }
      console.log(selectedDeleteAlertIdArray);
 
-  }
+}
+
+
