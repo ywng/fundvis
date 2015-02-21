@@ -58,13 +58,19 @@ function alertDataTableInit(){
                     $("#checkAll").prop('checked',false);
                 }
             });
-            
-            $(".alertCheckBox").each(function(){
-                $(this).click(function(){
-                     if (!$(this).prop('checked')){
-                         $("#checkAll").prop('checked',false);
-                    }
-                  });  
+
+            $(".alertCheckBox").click(function(){
+                if (!$(this).prop('checked')){
+                     $("#checkAll").prop('checked',false);
+                }else{
+                    $("#checkAll").prop('checked',true);
+                    $(".alertCheckBox").each(function(){
+                        if (!$(this).prop('checked')){
+                            $("#checkAll").prop('checked',false);
+                        }
+                    });
+                }
+                
             });
         }, 
         "bAutoWidth": false
