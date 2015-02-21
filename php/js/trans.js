@@ -35,8 +35,8 @@ function transDataTableInit(){
             {},
             {},
             {},
-            {"bSortable": false, "bSearchable": true, "sWidth": "250px" },
-            {"bSortable": false, "bSearchable": true, "sWidth": "250px" },
+            {"bSortable": false, "bSearchable": true, "sWidth": "450px" },
+            {"bSortable": false, "bSearchable": true, "sWidth": "450px" },
             {},
             {}
 
