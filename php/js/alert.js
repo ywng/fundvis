@@ -12,12 +12,18 @@ $(document).ready(function() {
         $(".alertCheckBox").prop('checked',$(this).prop('checked'));
     }); 
 
-    $(".alertCheckBox").each(function(){
-         $(this).click(function(){
-            if (!$(this).prop('checked')){
-                $("#checkAll").prop('checked',false);
-            }
-         });  
+   $(".alertCheckBox").click(function(){
+        if (!$(this).prop('checked')){ // if not check a single box
+             $("#checkAll").prop('checked',false); // then select all will be not selected
+        }else{                         //if that check box is checked, need to check whether all are checked
+            $("#checkAll").prop('checked',true);
+            $(".alertCheckBox").each(function(){
+                if (!$(this).prop('checked')){
+                    $("#checkAll").prop('checked',false);
+                }
+            });
+        }
+        
     });
 
     checkRedirectNeeded();
@@ -52,17 +58,18 @@ function alertDataTableInit(){
         },
         "fnDrawCallback": function(){
             doTableUISetUp();
+
             $("#checkAll").prop('checked',true);
             $(".alertCheckBox").each(function(){
                 if (!$(this).prop('checked')){
                     $("#checkAll").prop('checked',false);
                 }
             });
-
+            
             $(".alertCheckBox").click(function(){
-                if (!$(this).prop('checked')){
-                     $("#checkAll").prop('checked',false);
-                }else{
+                if (!$(this).prop('checked')){ // if not check a single box
+                     $("#checkAll").prop('checked',false); // then select all will be not selected
+                }else{                         //if that check box is checked, need to check whether all are checked
                     $("#checkAll").prop('checked',true);
                     $(".alertCheckBox").each(function(){
                         if (!$(this).prop('checked')){
