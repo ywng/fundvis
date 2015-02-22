@@ -25,26 +25,27 @@ function transDataTableInit(){
         "aoColumns": [
             {"bSortable": false, "bVisible": false},//id 
             { "bSortable": false, "bSearchable":false, "sWidth": "5px" },//select
-            { "bSortable": true, "bSearchable": true, "sWidth": "50px" },//stock rectangle
-            {},
-            {},
-            {},
-            {},
-            {},
-            {},
-            {},
-            {},
-            {},
-            {"bSortable": false, "bSearchable": true, "sWidth": "450px" },
-            {"bSortable": false, "bSearchable": true, "sWidth": "450px" },
-            {},
-            {}
+            { "bSortable": true, "bSearchable": true, "sWidth": "50px" },//stock 
+            {},//Transaction Type
+            {},//Transaction Price
+            {},//Target Price
+            {},//Target Price Renoti
+            {},//Stop Loss Price
+            {},//Stop Loss Price Renoti
+            {},//Quantity
+            {},//Transaction Fee
+            {},//Date
+            {"bSortable": false, "bSearchable": true, "sWidth": "450px" },//Rationale
+            {"bSortable": false, "bSearchable": true, "sWidth": "450px" },//Review
+            {},//Closed Quantity
+            {}//Avg Closed Price
 
         ],
         "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
             
         },
-        "bAutoWidth": false
+        "bAutoWidth": false,
+        "scrollX": true
     });
     tableMakeEditable(transactionTable);
 
