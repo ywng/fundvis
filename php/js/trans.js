@@ -34,7 +34,7 @@ function transDataTableInit(){
             {},//Stop Loss Price Renoti
             {},//Quantity
             {},//Transaction Fee
-            {},//Date
+            {"bSortable": true, "bSearchable": true, "sWidth": "80px" },//Date
             {"bSortable": false, "bSearchable": true, "sWidth": "450px" },//Rationale
             {"bSortable": false, "bSearchable": true, "sWidth": "450px" },//Review
             {},//Closed Quantity
