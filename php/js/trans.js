@@ -8,6 +8,24 @@ $(document).ready(function() {
     addTransactionsOperationInit();
     transDataTableInit();
 
+    $("#checkAll").click(function () {
+        $(".transCheckBox").prop('checked',$(this).prop('checked'));
+    }); 
+
+   $(".transCheckBox").click(function(){
+        if (!$(this).prop('checked')){ // if not check a single box
+             $("#checkAll").prop('checked',false); // then select all will be not selected
+        }else{                         //if that check box is checked, need to check whether all are checked
+            $("#checkAll").prop('checked',true);
+            $(".transCheckBox").each(function(){
+                if (!$(this).prop('checked')){
+                    $("#checkAll").prop('checked',false);
+                }
+            });
+        }
+        
+    });
+
     checkRedirectNeeded();
 });
 
@@ -44,6 +62,28 @@ function transDataTableInit(){
         "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
             
         },
+        "fnDrawCallback": function(){
+            doTableUISetUp();
+
+            $("#checkAll").prop('checked',false);
+            $(".transCheckBox").each(function(){
+               $(this).prop('checked',false);
+            });
+
+            $(".transCheckBox").click(function(){
+                if (!$(this).prop('checked')){ // if not check a single box
+                     $("#checkAll").prop('checked',false); // then select all will be not selected
+                }else{                         //if that check box is checked, need to check whether all are checked
+                    $("#checkAll").prop('checked',true);
+                    $(".transCheckBox").each(function(){
+                        if (!$(this).prop('checked')){
+                            $("#checkAll").prop('checked',false);
+                        }
+                    });
+                }
+                
+            });
+        }, 
         "bAutoWidth": false,
         "sDom":'r<"H"lf><"datatable-scroll"t><"F"ip>',
     });
@@ -55,7 +95,7 @@ function transDataTableInit(){
             for(var i=0;i<data.user_trans_record.length;i++){
                  var transaction=new Array(); 
                  transaction[0]=data.user_trans_record[i].id;
-                 transaction[1]="<div class=\"tooltip-demo\"><input type=\"checkbox\" id=\"alert"+data.user_trans_record[i].id+"\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Transaction id:"+data.user_trans_record[i].id+"\"></input></div>";
+                 transaction[1]="<div class=\"tooltip-demo\"><input type=\"checkbox\"  class=\"transCheckBox\" id=\"trans"+data.user_trans_record[i].id+"\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Transaction id:"+data.user_trans_record[i].id+"\"></input></div>";
                  transaction[2]="<div class=\"tooltip-demo\"><button type=\"button\" class=\"btn btn-default\" data-toggle=\"tooltip\" data-placement=\"top\" title=\""+data.user_trans_record[i].name+"\" onClick=\"window.open('"+data.user_trans_record[i].link+"', '_blank')\" style=\"width: 50px; height: 23px; padding:1px 5px;\">"+data.user_trans_record[i].sid+"</button></div>";
                  transaction[3]=data.user_trans_record[i].type;
                  transaction[4]=data.user_trans_record[i].price;
