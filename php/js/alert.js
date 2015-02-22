@@ -402,8 +402,9 @@ function deleteSelectedAlerts(){
         }
     };
 
+    deleteAlert(formdata,deleteAlertsOnSuccess);
 
-     deleteAlert(formdata,deleteAlertsOnSuccess);
+    $('#dataTables-example').click();
 
 }
 
