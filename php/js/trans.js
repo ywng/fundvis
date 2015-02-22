@@ -45,8 +45,7 @@ function transDataTableInit(){
             
         },
         "bAutoWidth": false,
-        "scrollX": true,
-        "sScrollXInner": "100%",
+        "sDom":'r<"H"lf><"datatable-scroll"t><"F"ip>',
     });
     tableMakeEditable(transactionTable);
 
