@@ -366,7 +366,7 @@ function deleteSelectedTrans(){
         }
     };
 
-    deleteTrans(formdata,deleteTransOnSuccess);
+    deleteTransRecord(formdata,deleteTransOnSuccess);
 
 }
 
