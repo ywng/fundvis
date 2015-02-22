@@ -18,7 +18,7 @@
     // positions of a container. It doesn't handle rightmost or bottom,
     // and Lion scroll can be triggered by scrolling right (or bottom) and then
     // scrolling left without raising your fingers from the scroll position.
-    $(window).onmousewheel(function (e, d, x, y) {
+    $(window).mousewheel(function (e, d, x, y) {
 
       var prevent_left, prevent_up;
 
