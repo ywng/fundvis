@@ -1,5 +1,5 @@
 #dataTables-trans{
-	width:180%;
+	width:200%;
 }
 
 /**
@@ -8,4 +8,5 @@
 .datatable-scroll {
     overflow-x: auto;
     overflow-y: visible;
+    width:100%;
 }
