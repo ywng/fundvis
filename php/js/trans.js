@@ -20,12 +20,12 @@ var transactions_arr=null;
 function transDataTableInit(){
 
     transactionTable=$('#dataTables-trans').dataTable({ 
-        "iDisplayLength": 10,
+        "iDisplayLength": 5,
         "aaData":transactions_arr,
         "aoColumns": [
-            {"bSortable": false, "bVisible": false},
-            { "bSortable": false, "bSearchable":false, "sWidth": "5px" },
-            { "bSortable": true, "bSearchable": true, "sWidth": "50px" },
+            {"bSortable": false, "bVisible": false},//id 
+            { "bSortable": false, "bSearchable":false, "sWidth": "5px" },//select
+            { "bSortable": true, "bSearchable": true, "sWidth": "50px" },//stock rectangle
             {},
             {},
             {},
@@ -55,7 +55,7 @@ function transDataTableInit(){
                  var transaction=new Array(); 
                  transaction[0]=data.user_trans_record[i].id;
                  transaction[1]="<div class=\"tooltip-demo\"><input type=\"checkbox\" id=\"alert"+data.user_trans_record[i].id+"\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Transaction id:"+data.user_trans_record[i].id+"\"></input></div>";
-                 transaction[2]="<div class=\"tooltip-demo\"><button type=\"button\" class=\"btn btn-default\" data-toggle=\"tooltip\" data-placement=\"top\" title=\""+data.user_trans_record[i].name+"\" style=\"width: 50px; height: 23px; padding:1px 5px;\" href=\""+data.user_trans_record[i].link+"\">"+data.user_trans_record[i].sid+"</button></div>";
+                 transaction[2]="<div class=\"tooltip-demo\"><button type=\"button\" class=\"btn btn-default\" data-toggle=\"tooltip\" data-placement=\"top\" title=\""+data.user_trans_record[i].name+"\" onClick=\"window.open('"+data.user_trans_record[i].link+"', '_blank')\" style=\"width: 50px; height: 23px; padding:1px 5px;\">"+data.user_trans_record[i].sid+"</button></div>";
                  transaction[3]=data.user_trans_record[i].type;
                  transaction[4]=data.user_trans_record[i].price;
                  transaction[5]=data.user_trans_record[i].target_price;
