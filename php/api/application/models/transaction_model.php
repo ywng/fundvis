@@ -41,6 +41,18 @@ class Transaction_model extends CI_Model{
         }
     }
 
+    public function delete_trans_record($trans_id_array,$uid){
+        $this->db->or_where_in($this->KEY_trans_id, $trans_id_array);
+        $this->db->where($this->KEY_user_id, $uid);
+        $this->db->delete($this->Table_name_trans); 
+
+        if($this->db->affected_rows() > 0)
+          return 1 ;
+        else
+          return -1;
+      
+    }
+
     public function get_all_trans_record(){
         return $this->db->get($this->Table_name_trans)->result_array();  
         

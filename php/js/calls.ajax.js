@@ -10,6 +10,7 @@ var recordStockVisit_URL='stock/recordStockVisit';
 
 /* transaction */
 var addTransRecord_URL='transaction/addTransactionRecord';
+var deleteTransRecord_URL='transaction/deleteTransactionRecord';
 var getSellableQuantity_URL='transaction/getSellableQuantity';
 var getUserTransRecord_URL='transaction/getUserTransRecord';
 
@@ -73,10 +74,12 @@ function recordStockVisit(code){
 function addTransRecord(form_data,onSuccess){
 	rawAjaxCall(addTransRecord_URL,"POST",true,form_data,onSuccess,onFailure);
 }
+function deleteTransRecord(form_data,onSuccess){
+	rawAjaxCall(deleteTransRecord_URL,"POST",true,form_data,onSuccess,onFailure);
+}
 function getUserTransRecord(onSuccess){
 	rawAjaxCall(getUserTransRecord_URL,"GET",true,null,onSuccess,onFailure);
 }
-
 
 
 

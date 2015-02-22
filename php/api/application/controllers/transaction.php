@@ -102,6 +102,18 @@ class Transaction extends REST_Controller {
 
 	}
 
+	public function deleteTransactionRecord_post(){
+		
+		$user=$this->core_controller->get_current_user();
+		$trans_id_array=explode(",",$this->input->post('trans_id_array'));
+
+		$uid=$user[$this->user_model->KEY_user_id];
+
+		$this->core_controller->add_return_data('delete_success',$this->transaction_model->delete_trans_record($trans_id_array,$uid)); 
+		$this->core_controller->successfully_processed();
+
+	}
+
 	//helper functions
 	private function check_hold_sell_conditions($stock_id,$uid,$quantity){
 		if($this->get_all_open_buys_quantity($stock_id,$uid)==-1){

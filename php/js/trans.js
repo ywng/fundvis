@@ -332,3 +332,41 @@ function showSellableQuantity(){
  * End of Add Transactions Modal Diag Related
  */
 
+
+
+function deleteSelectedTrans(){
+     var selectedDeleteTransIdArray=new Array();
+     var newTransArray=new Array();
+     for(var i=0;i<transactions_arr.length;i++){
+        if($("#trans"+transactions_arr[i][0]).prop('checked')){
+            selectedDeleteTransIdArray.push(transactions_arr[i][0]);
+        }else{
+            newTransArray.push(transactions_arr[i]);
+        }
+
+     }
+     //console.log(selectedDeleteTransIdArray);
+
+     var formdata = new FormData();
+     formdata.append( 'trans_id_array',selectedDeleteTransIdArray);
+
+     var deleteTransOnSuccess=function (data, textStatus, jqXHR){
+        if(data.status_code=='1'){
+            if(data.delete_success==1){
+                transactions_arr=newTransArray;
+                doTableRefresh(transactionTable,transactions_arr);
+                doTableUISetUp();
+            }else{
+                //do nth to update UI as delete failed.
+                //instead, refresh the whole page
+                location.reload();
+            }
+        }else{
+            checkRedirectNeeded_status_code(data.status_code);
+        }
+    };
+
+    deleteTrans(formdata,deleteTransOnSuccess);
+
+}
+

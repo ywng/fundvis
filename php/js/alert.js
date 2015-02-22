@@ -404,8 +404,6 @@ function deleteSelectedAlerts(){
 
     deleteAlert(formdata,deleteAlertsOnSuccess);
 
-    $('#dataTables-example').click();
-
 }
 
 
