@@ -45,7 +45,8 @@ function transDataTableInit(){
             
         },
         "bAutoWidth": false,
-        "scrollX": true
+        "scrollX": true,
+        "sScrollXInner": "100%",
     });
     tableMakeEditable(transactionTable);
 
