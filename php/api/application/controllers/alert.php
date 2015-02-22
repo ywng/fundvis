@@ -72,7 +72,7 @@ class Alert extends REST_Controller {
 
 		$uid=$user[$this->user_model->KEY_user_id];
 
-		$this->alert_model->delete_alert($alert_id_array,$uid);
+		$this->core_controller->add_return_data('delete_success',$this->alert_model->delete_alert($alert_id_array,$uid)); 
 		$this->core_controller->successfully_processed();
 
 	}

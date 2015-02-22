@@ -372,18 +372,38 @@ function tableMakeEditable(table){
 
 function deleteSelectedAlerts(){
      var selectedDeleteAlertIdArray=new Array();
+     var newAlertsArray=new Array();
      for(var i=0;i<alerts_arr.length;i++){
         if($("#alert"+alerts_arr[i][0]).prop('checked')){
             selectedDeleteAlertIdArray.push(alerts_arr[i][0]);
+        }else{
+            newAlertsArray.push(alerts_arr[i]);
         }
 
      }
-     console.log(selectedDeleteAlertIdArray);
+     //console.log(selectedDeleteAlertIdArray);
 
      var formdata = new FormData();
      formdata.append( 'alert_id_array',selectedDeleteAlertIdArray);
 
-     deleteAlert(formdata,null);
+     var deleteAlertsOnSuccess=function (data, textStatus, jqXHR){
+        if(data.status_code=='1'){
+            if(data.delete_success==1){
+                alerts_arr=newAlertsArray;
+                doTableRefresh(alertsTable,alerts_arr);
+                doTableUISetUp();
+            }else{
+                //do nth to update UI as delete failed.
+                //instead, refresh the whole page
+                location.reload();
+            }
+        }else{
+            checkRedirectNeeded_status_code(data.status_code);
+        }
+    };
+
+
+     deleteAlert(formdata,deleteAlertsOnSuccess);
 
 }
 
