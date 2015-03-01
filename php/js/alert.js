@@ -226,7 +226,7 @@ function tableMakeEditable(table){
                 formdata2.append( 'alert_id',aData[0]);
                 formdata2.append( 'field',"type");
                 formdata2.append( 'value',alert_type);
-                updateAlert(formdata2,null);//first reset the alert type first
+                updateAlert(formdata2,null);//first reset the alert type first, do it in a seperate ajax call
 
                 if(alert_type=="3"||alert_type=="4"){
                     formdata.append( 'field',"specified_price");
@@ -239,6 +239,7 @@ function tableMakeEditable(table){
             }
             formdata.append( 'value',value);
 
+            /**** on success handling is missing ****/
             updateAlert(formdata,null);
 
             return value

@@ -161,27 +161,16 @@ function tableMakeEditable(table){
             console.log(rowId+"  "+columnPosition);
 
             var formdata = new FormData();
-           /*formdata.append( 'alert_id',aData[0]);
-            if(columnPosition==4){
-                var alert_type=$( '#type-'+aData[0]+' option:selected').val();
-                var formdata2 = new FormData();
-                formdata2.append( 'alert_id',aData[0]);
-                formdata2.append( 'field',"type");
-                formdata2.append( 'value',alert_type);
-                updateAlert(formdata2,null);//first reset the alert type first
-
-                if(alert_type=="3"||alert_type=="4"){
-                    formdata.append( 'field',"specified_price");
-                }else if(alert_type=="5"||alert_type=="6"){
-                    formdata.append( 'field',"daily_percent");
-                }
-
-            }else if (columnPosition==5){
-                formdata.append( 'field',"renotify_diff_percent");
+            formdata.append( 'trans_id',aData[0]);
+            if(columnPosition==11){
+                formdata.append( 'field',"rationale");
+            }else if (columnPosition==12){
+                formdata.append( 'field',"review");
             }
             formdata.append( 'value',value);
 
-            updateAlert(formdata,null);*/
+            /**** on success handling is missing ****/
+            updateTransRecord(formdata,null);
 
             return value;
         },

@@ -35,6 +35,11 @@ $config['error'][202] = 'The quantity is larger than what you have!';
 $config['error'][300] = 'Update alert failed!';
 
 
+//Transactions
+$config['error'][400] = 'Update transaction failed!';
+
+
+
 
 
 /* End of file error_message.php */

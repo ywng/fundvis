@@ -13,6 +13,7 @@ var addTransRecord_URL='transaction/addTransactionRecord';
 var deleteTransRecord_URL='transaction/deleteTransactionRecord';
 var getSellableQuantity_URL='transaction/getSellableQuantity';
 var getUserTransRecord_URL='transaction/getUserTransRecord';
+var updateTransactionRecord_URL='updateTransactionRecord';
 
 /* alert */
 var addAlert_URL='alert/addAlert';
@@ -25,11 +26,6 @@ var updateAlert_URL='alert/updateAlert';
 
 
 /* user related */
-function logout(access_token){
-	localStorage.clear();
-	checkRedirectNeeded();
-}
-
 function login(email, password){
 	var data=new FormData();
 	data.append( 'email', email);
@@ -37,16 +33,24 @@ function login(email, password){
 
 	rawAjaxCall(login_URL,"POST",true,data,loginOnSuccess,onFailure);
 }
-
 function fblogin(access_token){
 	var data=new FormData();
 	data.append( 'access_token', access_token);
 
 	rawAjaxCall(fblogin_URL,"POST",true,data,loginOnSuccess,onFailure);
 }
+function logout(access_token){
+	localStorage.clear();
+	checkRedirectNeeded();
+}
 
 /* stock */
+function getStock(code,onSuccess){
+	var data=new FormData();
+	data.append( 'code', code);
 
+	rawAjaxCall(getStock_URL,"POST",true,data,onSuccess,onFailure);
+}
 function getSellableQuantity(code,onSuccess){
 	var data=new FormData();
 	data.append( 'code', code);
@@ -54,50 +58,39 @@ function getSellableQuantity(code,onSuccess){
 	rawAjaxCall(getSellableQuantity_URL,"POST",true,data,onSuccess,onFailure);
 }
 
-function getStock(code,onSuccess){
-	var data=new FormData();
-	data.append( 'code', code);
-
-	rawAjaxCall(getStock_URL,"POST",true,data,onSuccess,onFailure);
-}
-
-function recordStockVisit(code){
-	var data=new FormData();
-	data.append( 'code', code);
-
-	rawAjaxCall(recordStockVisit_URL,"POST",true,data,null,onFailure);
-}
-
-
-
 /* transaction */
+function getUserTransRecord(onSuccess){
+	rawAjaxCall(getUserTransRecord_URL,"GET",true,null,onSuccess,onFailure);
+}
 function addTransRecord(form_data,onSuccess){
 	rawAjaxCall(addTransRecord_URL,"POST",true,form_data,onSuccess,onFailure);
 }
 function deleteTransRecord(form_data,onSuccess){
 	rawAjaxCall(deleteTransRecord_URL,"POST",true,form_data,onSuccess,onFailure);
 }
-function getUserTransRecord(onSuccess){
-	rawAjaxCall(getUserTransRecord_URL,"GET",true,null,onSuccess,onFailure);
+function updateTransRecord(form_data,onSuccess){
+	rawAjaxCall(updateTransactionRecord_URL,"POST",true,form_data,onSuccess,onFailure);
 }
-
-
 
 /* alert */
-function addAlert(form_data,onSuccess){
-	rawAjaxCall(addAlert_URL,"POST",true,form_data,onSuccess,onFailure);
-}
-
-function deleteAlert(form_data,onSuccess){
-	rawAjaxCall(deleteAlert_URL,"POST",true,form_data,onSuccess,onFailure);
-}
-
 function getAlerts(onSuccess){
 	rawAjaxCall(getAlerts_URL,"GET",true,null,onSuccess,onFailure);
 }
-
+function addAlert(form_data,onSuccess){
+	rawAjaxCall(addAlert_URL,"POST",true,form_data,onSuccess,onFailure);
+}
+function deleteAlert(form_data,onSuccess){
+	rawAjaxCall(deleteAlert_URL,"POST",true,form_data,onSuccess,onFailure);
+}
 function updateAlert(form_data,onSuccess){
 	rawAjaxCall(updateAlert_URL,"POST",true,form_data,onSuccess,onFailure);
+}
+
+/* user behaviors / frequency recording */
+function recordStockVisit(code){
+	var data=new FormData();
+	data.append( 'code', code);
+	rawAjaxCall(recordStockVisit_URL,"POST",true,data,null,onFailure);
 }
 
 
@@ -121,7 +114,6 @@ function rawAjaxCall(relativeURL,type,async_setting,data,onSuccess,onFailure){
     }); // end of the ajax call
 
 }
-
 
 /* common onFailure / onSuccess callback **/
 var onFailure=function(jqHXR, textStatus, errorThrown){

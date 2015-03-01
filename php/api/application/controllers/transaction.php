@@ -114,6 +114,35 @@ class Transaction extends REST_Controller {
 
 	}
 
+	public function updateTransactionRecord_post(){
+		$alert_id=$this->input->post('trans_id');
+		$field=$this->input->post('field');
+		$value=$this->input->post('value');
+
+		if($field=="rationale"){
+			$data = array(
+		  	  $this->transaction_model->KEY_rationale=>$value,
+			);
+		}else if ($field=="review"){
+			$data = array(
+		  	  $this->transaction_model->KEY_review=>$value,
+			);
+		}else{
+			
+		}
+
+		if($this->transaction_model->update_trans($data,$trans_id)==-1){
+			$this->core_controller->fail_response(400);
+		}else{
+			$this->core_controller->add_return_data('updated_trans',$this->transaction_model->get_trans_record_by_trans_id($trans_id)); 
+			$this->core_controller->successfully_processed();
+		}
+
+		
+
+
+	}
+
 	//helper functions
 	private function check_hold_sell_conditions($stock_id,$uid,$quantity){
 		if($this->get_all_open_buys_quantity($stock_id,$uid)==-1){
