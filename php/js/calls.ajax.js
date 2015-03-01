@@ -13,7 +13,7 @@ var addTransRecord_URL='transaction/addTransactionRecord';
 var deleteTransRecord_URL='transaction/deleteTransactionRecord';
 var getSellableQuantity_URL='transaction/getSellableQuantity';
 var getUserTransRecord_URL='transaction/getUserTransRecord';
-var updateTransactionRecord_URL='updateTransactionRecord';
+var updateTransactionRecord_URL='transaction/updateTransactionRecord';
 
 /* alert */
 var addAlert_URL='alert/addAlert';
