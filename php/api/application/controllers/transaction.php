@@ -127,6 +127,22 @@ class Transaction extends REST_Controller {
 			$data = array(
 		  	  $this->transaction_model->KEY_review=>$value,
 			);
+		}else if ($field=="target_price"){
+			$data = array(
+		  	  $this->transaction_model->KEY_target_price=>$value,
+			);
+		}else if ($field=="target_price_renotify_percent"){
+			$data = array(
+		  	  $this->transaction_model->KEY_target_price_renotify_percent=>$value,
+			);
+		}else if ($field=="stop_loss_price"){
+			$data = array(
+		  	  $this->transaction_model->KEY_stop_loss_price=>$value,
+			);
+		}else if ($field=="stop_loss_price_renotify_percent"){
+			$data = array(
+		  	  $this->transaction_model->KEY_stop_loss_price_renotify_percent=>$value,
+			);
 		}else{
 			
 		}
