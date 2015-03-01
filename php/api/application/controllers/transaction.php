@@ -115,7 +115,7 @@ class Transaction extends REST_Controller {
 	}
 
 	public function updateTransactionRecord_post(){
-		$alert_id=$this->input->post('trans_id');
+		$trans_id=$this->input->post('trans_id');
 		$field=$this->input->post('field');
 		$value=$this->input->post('value');
 
