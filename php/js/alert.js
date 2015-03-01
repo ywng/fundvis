@@ -86,6 +86,8 @@ function alertDataTableInit(){
         if(data.status_code=='1'){
             alerts_arr=new Array(); 
             var alert_types=data.alert_type;
+            if(data.alerts==null) 
+                return;
             for(var i=0;i<data.alerts.length;i++){
                  var alert=new Array(); 
                  alert[0]=data.alerts[i].id;
