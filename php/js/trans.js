@@ -166,13 +166,13 @@ function tableMakeEditable(table){
                 formdata.append( 'field',"rationale");
             }else if (columnPosition==12){
                 formdata.append( 'field',"review");
-            }else if (columnPosition==5){
+            }else if (columnPosition==4){
                 formdata.append( 'field',"target_price");
-            }else if (columnPosition==6){
+            }else if (columnPosition==5){
                 formdata.append( 'field',"target_price_renotify_percent");
-            }else if (columnPosition==7){
+            }else if (columnPosition==6){
                 formdata.append( 'field',"stop_loss_price");
-            }else if (columnPosition==8){
+            }else if (columnPosition==7){
                 formdata.append( 'field',"stop_loss_price_renotify_percent");
             }
             formdata.append( 'value',value);
