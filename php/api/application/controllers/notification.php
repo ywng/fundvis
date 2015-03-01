@@ -155,7 +155,7 @@ class Notification extends REST_Controller {
 			$msg=$msg."Current Price: ".$stock_code_curr_price."\r\n\r\n";
 			$renotify_val;
 
-			if($stock_code_curr_price>=$target_price){
+			if($target_price!=0 && $stock_code_curr_price>=$target_price){
 
 				// rule 1: greater than target price
 				// & 
@@ -166,7 +166,7 @@ class Notification extends REST_Controller {
 			
 				$renotify_val=$trans[$this->transaction_model->KEY_target_price_renotify_percent];
 
-			}else if($stock_code_curr_price<=$stop_loss_price){
+			}else if($stop_loss_price!=0 && $stock_code_curr_price<=$stop_loss_price){
 			
 				// rule 2: smaller than stop loss price
 				// & 
