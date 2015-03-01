@@ -92,6 +92,8 @@ function transDataTableInit(){
     var loadUserTransOnSuccess=function (data, textStatus, jqXHR){
         if(data.status_code=='1'){
             transactions_arr=new Array(); 
+            if(data.user_trans_record==null) 
+                return;
             for(var i=0;i<data.user_trans_record.length;i++){
                  var transaction=new Array(); 
                  transaction[0]=data.user_trans_record[i].id;
