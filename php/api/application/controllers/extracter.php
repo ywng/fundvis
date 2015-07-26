@@ -144,8 +144,14 @@ class Extracter extends REST_Controller {
 		//go to the data section
 		$data_table=$html->find('table[class=tb-c]')[0];
 
-		// price span
-		$price_e_array=$data_table->find('span[class=neg bold]');
+		try {
+			// price span
+			$price_e_array=$data_table->find('span[class=neg bold]');
+		}
+		// if the price is not positive
+		catch(Exception $e) {
+		  	//echo 'Message: ' .$e->getMessage();
+		}
 	
 		if(!$price_e_array){
 
