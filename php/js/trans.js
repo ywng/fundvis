@@ -38,7 +38,7 @@ var transactions_arr=null;
 function transDataTableInit(){
 
     transactionTable=$('#dataTables-trans').dataTable({ 
-        "iDisplayLength": 5,
+        "iDisplayLength": 15,
         "aaData":transactions_arr,
         "aoColumns": [
             {"bSortable": false, "bVisible": false},//id 
@@ -59,6 +59,7 @@ function transDataTableInit(){
             {}//Avg Closed Price
 
         ],
+        "order": [[ 12, "desc" ]],
         "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
             
         },
