@@ -166,6 +166,7 @@ class Extracter extends REST_Controller {
 				if(!$price_e_array){
 					return;//invalid stock code..
 				}else{
+					$price_e=$price_e_array[0];
 					$price_chg=0;
 				}
 
