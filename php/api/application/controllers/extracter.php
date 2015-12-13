@@ -145,121 +145,127 @@ class Extracter extends REST_Controller {
 		//log 
 		var_dump($stock);
 
-		$data_table=$html->find('table[class=tb-c]')[0];
+		try{
 
-		try {
-			// price span
-			$price_e_array=$data_table->find('span[class=neg bold]');
-		}
-		// if the price is not positive
-		catch(Exception $e) {
-		  	//echo 'Message: ' .$e->getMessage();
-		}
-	
-		if(!$price_e_array){
+			$data_table=$html->find('table[class=tb-c]')[0];
 
-			$price_e_array=$data_table->find('span[class=pos bold]');
-			//var_dump($price_e->plaintext);
-
+			try {
+				// price span
+				$price_e_array=$data_table->find('span[class=neg bold]');
+			}
+			// if the price is not positive
+			catch(Exception $e) {
+			  	//echo 'Message: ' .$e->getMessage();
+			}
+		
 			if(!$price_e_array){
-				$price_e=$data_table->find('span[class=unc bold]')[0];
-				$price_chg=0;
+
+				$price_e_array=$data_table->find('span[class=pos bold]');
+				//var_dump($price_e->plaintext);
+
+				if(!$price_e_array){
+					$price_e=$data_table->find('span[class=unc bold]')[0];
+					$price_chg=0;
+
+				}else{
+
+					$price_e=$price_e_array[0];
+					$price_chg_e=$price_e_array[1];
+					$price_chg=(float)preg_replace("/[^0-9.]/", '',$price_chg_e->plaintext);
+					$price_chg=$price_chg*-1;
+				}
 
 			}else{
-
 				$price_e=$price_e_array[0];
 				$price_chg_e=$price_e_array[1];
 				$price_chg=(float)preg_replace("/[^0-9.]/", '',$price_chg_e->plaintext);
-				$price_chg=$price_chg*-1;
 			}
+			
+			$price=(float)preg_replace("/[^0-9.]/", '',$price_e->plaintext);
+			
+			//date span
+			$datetime_e=$html->find('div[style=font-size: 10px;]')[0];
+			if (strlen(strstr($datetime_e->plaintext,"Suspension"))>0 || strlen(strstr($datetime_e->plaintext,"暫停買賣"))>0){
+				return null;
+			}
+			//var_dump($datetime_e->plaintext);
+			if (preg_match('/(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2})/',$datetime_e->plaintext, $regs)) {
+				$datetime_str = $regs[0];
+		    } 
 
-		}else{
-			$price_e=$price_e_array[0];
-			$price_chg_e=$price_e_array[1];
-			$price_chg=(float)preg_replace("/[^0-9.]/", '',$price_chg_e->plaintext);
+		    if(!$price || !$datetime_str){
+		    	echo $stock;
+		    	$this->core_controller->fail_response(100);
+		    }
+
+		    //daily range
+			$daily_range_e=$html->find('strong')[0];
+			$daily_range=explode("-",$daily_range_e->plaintext);
+
+		    //vol
+			$vol_e=$html->find('strong')[1];
+			$vol=preg_replace("/[^0-9.a-zA-Z]/", '',$vol_e->plaintext);
+			//var_dump($vol);
+
+			//mkt cap
+			$mkt_cap_e=$html->find('strong')[2];
+			$mkt_cap=preg_replace("/[^0-9.a-zA-Z]/", '',$mkt_cap_e->plaintext);
+
+			//turnover
+			$turnover_e=$html->find('strong')[3];
+			$turnover=preg_replace("/[^0-9.a-zA-Z]/", '',$turnover_e->plaintext);
+
+			//EPS
+			$EPS_e=$html->find('strong')[4];
+			$EPS=preg_replace("/[^0-9.]/", '',$EPS_e->plaintext);
+
+			//PE Ratio
+			$PE_Ratio_e=$html->find('strong')[5];
+			$PE_Ratio=preg_replace("/[^0-9.]/", '',$PE_Ratio_e->plaintext);
+
+			//Yield
+			$yield_e=$html->find('strong')[6];
+			$yield=preg_replace("/[^0-9.]/", '',$yield_e->plaintext);
+
+			//Lot size
+			$lot_size_e=$html->find('strong')[7];
+			$lot_size=preg_replace("/[^0-9]/", '',$lot_size_e->plaintext);
+
+			//52 week range
+			$week52_range_e=$html->find('strong')[8];
+			$week52_range=explode("-",$week52_range_e->plaintext);
+
+			$stock_updated_info = array(
+				  $this->stock_model->KEY_daily_low => preg_replace("/[^0-9.]/", '',$daily_range[0]),
+				  $this->stock_model->KEY_daily_high => preg_replace("/[^0-9.]/", '',$daily_range[1]),
+				  $this->stock_model->KEY_vol => $vol,
+				  $this->stock_model->KEY_mkt_capital => $mkt_cap,
+				  $this->stock_model->KEY_turnover => $turnover,
+				  $this->stock_model->KEY_EPS => $EPS,
+				  $this->stock_model->KEY_PE_Ratio => $PE_Ratio,
+				  $this->stock_model->KEY_yield => $yield,
+				  $this->stock_model->KEY_lot_size => $lot_size,
+				  $this->stock_model->KEY_52week_low => preg_replace("/[^0-9.]/", '',$week52_range[0]),
+				  $this->stock_model->KEY_52week_high =>  preg_replace("/[^0-9.]/", '',$week52_range[1]),
+
+				  $this->stock_model->KEY_previous_close => ($price+$price_chg),
+			);
+			$this->core_controller->add_return_data($stock[$this->stock_model->KEY_stock_id].".info",$stock_updated_info); 
+			$this->stock_model->update_stock_info($stock[$this->stock_model->KEY_stock_id],$stock_updated_info);
+
+
+		    $stock_price = array(
+	               $this->stock_model->KEY_name => $stock[$this->stock_model->KEY_name],
+	               $this->stock_model->KEY_price => $price ,
+	               $this->stock_model->KEY_datetime => $datetime_str
+	        );
+	        $this->core_controller->add_return_data($stock[$this->stock_model->KEY_stock_id].".price",$stock_price); 
+		    $this->stock_model->insert_stock_price($stock[$this->stock_model->KEY_stock_id],$price,$datetime_str);
 		}
-		
-		$price=(float)preg_replace("/[^0-9.]/", '',$price_e->plaintext);
-		
-		//date span
-		$datetime_e=$html->find('div[style=font-size: 10px;]')[0];
-		if (strlen(strstr($datetime_e->plaintext,"Suspension"))>0 || strlen(strstr($datetime_e->plaintext,"暫停買賣"))>0){
-			return null;
+		catch(Exception $e) {
+			var_dump($e);
+			// if it is invalid, properly incorrect stock code... suspended/ change to other code...
 		}
-		//var_dump($datetime_e->plaintext);
-		if (preg_match('/(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2})/',$datetime_e->plaintext, $regs)) {
-			$datetime_str = $regs[0];
-	    } 
-
-	    if(!$price || !$datetime_str){
-	    	echo $stock;
-	    	$this->core_controller->fail_response(100);
-	    }
-
-	    //daily range
-		$daily_range_e=$html->find('strong')[0];
-		$daily_range=explode("-",$daily_range_e->plaintext);
-
-	    //vol
-		$vol_e=$html->find('strong')[1];
-		$vol=preg_replace("/[^0-9.a-zA-Z]/", '',$vol_e->plaintext);
-		//var_dump($vol);
-
-		//mkt cap
-		$mkt_cap_e=$html->find('strong')[2];
-		$mkt_cap=preg_replace("/[^0-9.a-zA-Z]/", '',$mkt_cap_e->plaintext);
-
-		//turnover
-		$turnover_e=$html->find('strong')[3];
-		$turnover=preg_replace("/[^0-9.a-zA-Z]/", '',$turnover_e->plaintext);
-
-		//EPS
-		$EPS_e=$html->find('strong')[4];
-		$EPS=preg_replace("/[^0-9.]/", '',$EPS_e->plaintext);
-
-		//PE Ratio
-		$PE_Ratio_e=$html->find('strong')[5];
-		$PE_Ratio=preg_replace("/[^0-9.]/", '',$PE_Ratio_e->plaintext);
-
-		//Yield
-		$yield_e=$html->find('strong')[6];
-		$yield=preg_replace("/[^0-9.]/", '',$yield_e->plaintext);
-
-		//Lot size
-		$lot_size_e=$html->find('strong')[7];
-		$lot_size=preg_replace("/[^0-9]/", '',$lot_size_e->plaintext);
-
-		//52 week range
-		$week52_range_e=$html->find('strong')[8];
-		$week52_range=explode("-",$week52_range_e->plaintext);
-
-		$stock_updated_info = array(
-			  $this->stock_model->KEY_daily_low => preg_replace("/[^0-9.]/", '',$daily_range[0]),
-			  $this->stock_model->KEY_daily_high => preg_replace("/[^0-9.]/", '',$daily_range[1]),
-			  $this->stock_model->KEY_vol => $vol,
-			  $this->stock_model->KEY_mkt_capital => $mkt_cap,
-			  $this->stock_model->KEY_turnover => $turnover,
-			  $this->stock_model->KEY_EPS => $EPS,
-			  $this->stock_model->KEY_PE_Ratio => $PE_Ratio,
-			  $this->stock_model->KEY_yield => $yield,
-			  $this->stock_model->KEY_lot_size => $lot_size,
-			  $this->stock_model->KEY_52week_low => preg_replace("/[^0-9.]/", '',$week52_range[0]),
-			  $this->stock_model->KEY_52week_high =>  preg_replace("/[^0-9.]/", '',$week52_range[1]),
-
-			  $this->stock_model->KEY_previous_close => ($price+$price_chg),
-		);
-		$this->core_controller->add_return_data($stock[$this->stock_model->KEY_stock_id].".info",$stock_updated_info); 
-		$this->stock_model->update_stock_info($stock[$this->stock_model->KEY_stock_id],$stock_updated_info);
-
-
-	    $stock_price = array(
-               $this->stock_model->KEY_name => $stock[$this->stock_model->KEY_name],
-               $this->stock_model->KEY_price => $price ,
-               $this->stock_model->KEY_datetime => $datetime_str
-        );
-        $this->core_controller->add_return_data($stock[$this->stock_model->KEY_stock_id].".price",$stock_price); 
-	    $this->stock_model->insert_stock_price($stock[$this->stock_model->KEY_stock_id],$price,$datetime_str);
-	
 	}
 	
 
