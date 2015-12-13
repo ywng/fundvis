@@ -164,8 +164,12 @@ class Extracter extends REST_Controller {
 				//var_dump($price_e->plaintext);
 
 				if(!$price_e_array){
-					$price_e=$data_table->find('span[class=unc bold]')[0];
-					$price_chg=0;
+					$price_e_array=$data_table->find('span[class=unc bold]');
+					if(!$price_e_array){
+						return;//invalid stock code..
+					}else{
+						$price_chg=0;
+					}
 
 				}else{
 
