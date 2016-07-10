@@ -1,5 +1,8 @@
 curl http://fundvis-ywng.rhcloud.com/api/extracter/AASTOCK_fetch_stock_name_Chinese
 
+#JPM ORSO proce extract
+curl http://fundvis-ywng.rhcloud.com/api/extracter/extract
+
 #stock price extract
 curl http://fundvis-ywng.rhcloud.com/api/extracter/stock_extract_batch1 
 curl http://fundvis-ywng.rhcloud.com/api/extracter/stock_extract_batch2
