@@ -277,9 +277,10 @@ class Extracter extends REST_Controller {
 		//date span
 		$date_e=$html->find('div[class=price-datetime]')[0];
 		//var_dump($date_e);
-		if (preg_match('/[0-9]{2}/[0-9]{2}/[0-9]{4}/',$date_e->plaintext, $regs)) {
+		/*if (preg_match('/(0[1-9]|1[012])[\/](0[1-9]|[12][0-9]|3[01])[\/](19|20)[0-9]{2}/',$date_e->plaintext, $regs)) {
 			$date_str = $regs[0];
-	    } 
+	    } */
+	    $date_str =explode(" EDT ", $date_e->plaintext)[1];
 
 	    if($price==null || $date_str==null)
 	    	return; //invalid values, skip insert
