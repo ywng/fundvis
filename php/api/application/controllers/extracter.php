@@ -143,7 +143,7 @@ class Extracter extends REST_Controller {
 	private function AASTOCK_stock_extract($html,$stock){
 		//go to the data section
 		//log 
-		var_dump($stock);
+		//var_dump($stock);
 
 		$data_table=$html->find('table[class=tb-c]')[0];
 
