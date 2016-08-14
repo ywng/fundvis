@@ -31,7 +31,7 @@ class Extracter_lantau_driving extends REST_Controller {
 		
 		$html = file_get_html($url);
 		$odd_rows=$html->find('tr[class=RECORD_ODD]');
-		echo $odd_rows;
+		
 		foreach($odd_rows as $odd_row) {
 			echo $odd_row;
 		    echo $odd_row->find('td', 2)->plaintext;
