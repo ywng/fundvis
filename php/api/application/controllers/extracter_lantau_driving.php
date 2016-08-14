@@ -30,7 +30,7 @@ class Extracter_lantau_driving extends REST_Controller {
 		
 		
 		$html = file_get_html("https://lantaupermit1.td.gov.hk/lcrp/application/main.jsp");
-		
+		$html = file_get_html($url);
 		
 		echo $html->plaintext;
 		$odd_rows=$html->find('tr[class=RECORD_ODD]');
