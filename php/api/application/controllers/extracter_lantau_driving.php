@@ -29,9 +29,9 @@ class Extracter_lantau_driving extends REST_Controller {
 		$url="https://lantaupermit1.td.gov.hk/lcrp/application/application.do?method=viewLatestQuotasAvailability&month=".$month."&year=".$year;
 		
 		
-		$html = file_get_html($url);
-		$html->find('.defaultBtn', 0)->onclick;
-		$html = file_get_html($url);
+		$html = file_get_html("https://lantaupermit1.td.gov.hk/lcrp/application/main.jsp");
+		
+		
 		echo $html->plaintext;
 		$odd_rows=$html->find('tr[class=RECORD_ODD]');
 		
