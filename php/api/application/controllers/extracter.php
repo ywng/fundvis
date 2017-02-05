@@ -280,7 +280,7 @@ class Extracter extends REST_Controller {
 		/*if (preg_match('/(0[1-9]|1[012])[\/](0[1-9]|[12][0-9]|3[01])[\/](19|20)[0-9]{2}/',$date_e->plaintext, $regs)) {
 			$date_str = $regs[0];
 	    } */
-	    $date_str =explode(" EDT ", $date_e->plaintext)[1];
+	    $date_str =explode(" EST ", $date_e->plaintext)[1];
 
 	    if($price==null || $date_str==null)
 	    	return; //invalid values, skip insert
