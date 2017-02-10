@@ -12,7 +12,7 @@ class CORE_Controller {
     protected $current_user_obj = null;
 
     private $white_list_uri = array(
-	'fund/getAllFunds','extracter_lantau_driving/extract','extracter/extract','extracter/stock_extract_batch1','extracter/stock_extract_batch2','extracter/stock_extract_batch3','extracter/AASTOCK_fetch_stock_name_Chinese','fund/getAllPrice','fund/getAllPriceJPMORSO',
+	'fund/getAllFunds','extracter_lantau_driving/extract','extracter/extract','extracter/stock_extract_in_any_portfolio','extracter/stock_extract_batch1','extracter/stock_extract_batch2','extracter/stock_extract_batch3','extracter/AASTOCK_fetch_stock_name_Chinese','fund/getAllPrice','fund/getAllPriceJPMORSO',
     'stock/getAllStocks','stock/getStock','stock/getAllPrice','stock/addStockByCode','stock/getCurrentStockPrice',
     'user/fblogin','user/login',
     'notification/routine_trans_target_stop_loss_check','notification/alert_check',); // this will indicate the script not to run security check
