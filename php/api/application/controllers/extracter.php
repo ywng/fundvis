@@ -48,8 +48,9 @@ class Extracter extends REST_Controller {
 	public function stock_extract_in_any_portfolio_get(){
 
 		$this->load->model('portfolio_model'); 
+		$this->load->model('stock_model'); 
 		$stocks = $this->portfolio_model->get_all_stock_code_in_any_portfolio();
-		var_dump($stocks);
+		//var_dump($stocks);
 		$this->stock_extract_given_stocks($stocks);
 
 	}
