@@ -151,7 +151,7 @@ class Extracter extends REST_Controller {
 	private function AASTOCK_stock_extract($html,$stock){
 		//go to the data section
 		//log 
-		var_dump($stock);
+		//var_dump($stock);
 
 		$data_table=$html->find('table[class=tb-c]')[0];
 
@@ -167,7 +167,7 @@ class Extracter extends REST_Controller {
 		if(!$price_e_array){
 
 			$price_e_array=$data_table->find('span[class=pos bold]');
-			var_dump($price_e_array->plaintext);
+			
 
 			if(!$price_e_array){
 				$price_e_array=$data_table->find('span[class=unc bold]');
@@ -181,18 +181,19 @@ class Extracter extends REST_Controller {
 			}else{
 
 				$price_e=$price_e_array[0];
-				$price_chg_e=$price_e_array[1];
-				$price_chg=(float)preg_replace("/[^0-9.]/", '',$price_chg_e->plaintext);
-				$price_chg=$price_chg*-1;
+				//$price_chg_e=$price_e_array[1];
+				//$price_chg=(float)preg_replace("/[^0-9.]/", '',$price_chg_e->plaintext);
+				//$price_chg=$price_chg*-1;
 			}
 
 		}else{
 			$price_e=$price_e_array[0];
-			$price_chg_e=$price_e_array[1];
-			$price_chg=(float)preg_replace("/[^0-9.]/", '',$price_chg_e->plaintext);
+			//$price_chg_e=$price_e_array[1];
+			//$price_chg=(float)preg_replace("/[^0-9.]/", '',$price_chg_e->plaintext);
 		}
 		
 		$price=(float)preg_replace("/[^0-9.]/", '',$price_e->plaintext);
+		var_dump($price);
 		
 		//date span
 		$datetime_e=$html->find('div[style=font-size: 10px;]')[0];
