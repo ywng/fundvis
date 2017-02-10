@@ -1,0 +1,12 @@
+#dataTables-trans{
+	width:200%;
+}
+
+/**
+ * Makes the table have horizontal scroll bar if its too wide for its container
+ */
+.datatable-scroll {
+    overflow-x: auto;
+    overflow-y: visible;
+    width:100%;
+}

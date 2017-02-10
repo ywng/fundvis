@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Transactions</title>
+
+    <!-- Core CSS - Include with every page -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <!-- Page-Level Plugin CSS - Tables -->
+    <link href="css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- SB Admin CSS - Include with every page -->
+    <link href="css/sb-admin.css" rel="stylesheet">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <script src="config/config.js"></script>
+
+    <link href="css/modalDialog.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+
+    <link href="css/bootstrap-switch.css" rel="stylesheet">
+
+    <link href="css/trans.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <div id="nav_bar">
+                <!-- /html of the top & side nav bar is loaded when document ready -->
+        </div>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="page-header">Transactions</h2>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Stock Transaction History
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <p>
+                                  <button id='btnAddTrans' type="button" class="btn btn-outline btn-primary" onclick="$('#resetForm').click();window.location.href='#addTransactionsDialog'">Add</button>
+                                  <button id='btnDeleteTrans' type="button" class="btn btn-outline btn-danger" onclick="deleteSelectedTrans();">Delete</button>
+                                </p>
+                                <div class="table-content-div">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-trans">
+                                    <thead>
+                                        <tr class="tooltip-demo" >
+                                            <th></th>
+                                            <th class="sorting_disabled"><input type="checkbox" id="checkAll" name="toggleAll" value="toggleAll"></input></th>
+                                            <!-- If you change the table column name here, the name in the db corresponding to the cell update need to be changed-->
+                                            <!-- controller/transaction/updateTableCell_post()-->
+                                            <th>Stock</th>
+                                            <th>Transaction Type</th>
+                                            <th>Transaction Price</th>
+                                            <th>Target Price</th>
+                                            <th data-toggle="tooltip" data-placement="top" title="When the current price is larger than Target Price and is changed more than specified level (&plusmn%) compared to the price that was last notified, user is renotified about the change.">Target Price Renoti</th>
+                                            <th>Stop Loss Price</th>
+                                            <th data-toggle="tooltip" data-placement="top" title="When the current price lower than Stop Loss Price and is changed more than specified level (&plusmn%) compared to the price that was last notified, user is renotified about the change.">Stop Loss Price Renoti</th>
+                                            <th>Quantity</th>
+                                            <th>Transaction Fee</th>
+                                            <th>Date</th>
+                                            <th data-toggle="tooltip" data-placement="top" title="The reasons that the transaction was made and any supporting evidences.">Rationale</th>
+                                            <th data-toggle="tooltip" data-placement="top" title="Review whether the reasons / rationale are correct or not. Provide learning points for later reference.">Review</th>
+                                            <th data-toggle="tooltip" data-placement="top" title="Applicable to buy transactions, the quantity that has sold out.">Closed Quantity</th>
+                                            <th data-toggle="tooltip" data-placement="top" title="Applicable to buy transactions, the average execution price of the quantity sold.">Avg Closed Price</th>
+                        
+                                        </tr>
+                                    </thead>                                 
+                                </table>
+                                </div>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+     <!-- ## Modal Dialogs ## -->
+    <div id="stockSearchDialog" class="modalDialog">
+    <div>
+        <a href="#close" title="Close" class="close">X</a>
+        <h2>Modal Box</h2>
+        <p>This is a sample modal box that can be created using the powers of CSS3.</p>
+        <p>You could do a lot of things here like have a pop-up ad that shows when your website loads, or create a login/register form for users.</p>
+    </div>
+    </div>
+
+    <div id="addTransactionsDialog" class="modalDialog">
+    <div style="overflow:auto;">
+        <a href="#close" title="Close" class="close" style="top: 5px;right: 5px;">X</a>
+        
+       
+          
+                <div class="col-lg-12">
+                    <h3 class="page-header">Transactions</h3>
+                </div>
+                <!-- /.col-lg-12 -->
+         
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div  class="panel-heading" style="height:40px;">
+                            <div id="msg_div" class="form-group has-success" style="height:20px;">
+                                <label id="msg_heading" class="control-label">Add a New Transaction</label>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <form role="form">
+                        
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input id="stockcode_inputbox" class="form-control" placeholder="Enter Stock Code ...">
+                                    </div>
+                                    <div class="form-group">
+                                    
+                                        <select id="trans_type" class="form-control" placeholder="Type" disabled>
+                                                <option>Type</option>
+                                                <option>Buy</option>
+                                                <option>Sell</option>
+                                                <option>Hold</option>
+                                                
+                                        </select>
+                                       
+                                    </div>
+                                   
+                                    <div class="form-group">
+                                        <input id="price" class="form-control" placeholder="Price">
+                                    </div>
+                                    <div class="form-group input-group">
+                                        <input id="target_price" class="form-control" placeholder="Target Price" disabled style="width:50%;">
+                                        <input id="target_price_renotify_percent" class="form-control" placeholder="Renotify Val (% Chg)" disabled style="width:50%;">
+                                    </div>
+                                    <div class="form-group input-group">
+                                        <input id="stop_loss_price" class="form-control" placeholder="Stop Loss Price" disabled style="width:50%;">
+                                        <input id="stop_loss_price_renotify_percent" class="form-control" placeholder="Renotify Val (% Chg)" disabled style="width:50%;">
+                                    </div>
+                                    
+
+                                     <textarea id="rationale" class="form-control" rows="3" placeholder="Rationale" ></textarea>
+                                  
+                                    </br>
+                                    <p>
+                                        <button id="resetForm" type="reset" class="btn btn-default">Reset</button>
+                                        <button id="addTransRecord" class="btn btn-default">Submit</button>
+                                    </p>
+                                </div>
+
+                                <div class="col-lg-6">
+
+                                    <div class="form-group">
+                                         <input class="form-control" id="stock_info_box_name" type="text" placeholder="Stock Name" disabled>
+                                    </div>
+                                     <div class="form-group">
+                                         <input class="form-control" id="stock_info_box_price" type="text" placeholder="Stock Current Price ; Lot Size" disabled>
+                                    </div>
+                                    <div id="datetimepicker1" class="input-append date form-group input-group">
+                                            <span class="input-group-btn add-on" style="height:34px;">
+                                                <button class="btn btn-default" type="button" style="height:34px;"><i class="fa fa-calendar"></i>
+                                                </button>
+                                            </span>
+                                            <input id="datetime" type="text" class="form-control" data-format="yyyy/MM/dd" placeholder="Date">
+                                             
+                                    </div>
+                                  
+                                    <div class="form-group">
+                                        <input id="quantity" class="form-control" placeholder="Quantity">
+                                    </div>
+                                    <div class="form-group">
+                                        <input id="trans_fee" class="form-control" placeholder="Any Transaction Fee">
+                                    </div>
+                                  
+                                    <textarea id="review" class="form-control" rows="3" placeholder="Review"></textarea>
+                                    
+                               
+                                 
+                                </div>
+                                </form>
+                             </div>
+                            <!-- /.row (nested) -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+           
+     
+
+    </div>
+    </div>
+
+    <!-- Core Scripts - Include with every page -->
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+
+    <!-- Page-Level Plugin Scripts - Tables -->
+    <script src="js/plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="js/plugins/dataTables/dataTables.bootstrap.js"></script>
+
+    <script src="js/plugins/dataTables/jquery.dataTables.editable.js"></script>
+    <script src="js/plugins/dataTables/jquery.jeditable.js"></script>
+
+    <!-- SB Admin Scripts - Include with every page -->
+    <script src="js/sb-admin.js"></script>
+    <script src="js/helper.js"></script>
+    <script src="js/calls.ajax.js"></script>
+    <script src="js/stock.js"></script>
+    <script src="js/bootstrap-datetimepicker.min.js"></script>
+    <script src="js/bootstrap-switch.js"></script>
+
+    <script src="js/trans.js"></script>
+
+
+
+</body>
+
+</html>

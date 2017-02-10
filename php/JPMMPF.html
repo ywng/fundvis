@@ -1,0 +1,77 @@
+<!--
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * -->
+ 
+<!--
+ * Author: NG, Yik-wai Jason
+ * Contact & Support: ywng@ust.hk
+ * The Hong Kong University of Science and Technology
+ * Data Visualization, CSE, HKUST
+ * -->
+ 
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+	<title>JPM MPF</title>
+</head>
+
+<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+<link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/bootstrap-switch.css" rel="stylesheet">
+<link href="css/slider.css" rel="stylesheet">
+<link href="css/fund_vis.css" rel="stylesheet">
+<link rel="stylesheet" href="css/gh-fork-ribbon.css">
+
+
+
+<body> 
+
+<h4 class="page_header">JPMorgan Mandatory Provident Fund (MPF) &nbsp&nbsp&nbsp&nbsp
+	<input type="checkbox" name="my-checkbox" checked data-size="mini" data-on-text="$" data-off-text="%" data-on-color="primary" data-off-color="success">
+</h4>
+
+<div class="github-fork-ribbon-wrapper right">
+    <div class="github-fork-ribbon">
+        <a href="https://github.com/ywng/fundvis">Fork me on GitHub</a>
+    </div>
+</div>
+
+<div id="graph" class="graph" style="position:relative;width:100%;height:630px"></div>
+
+<!--
+ * Slider bar for selecting the base price date
+ * -->
+ <div id="basePriceSliderDiv" style="position:relative;width:100%;margin-left:50px;margin-top:-147px;margin-bottom:150px">
+<input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="950" data-slider-step="1" data-slider-value="0" data-slider-tooltip="hide" />
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <p class="pull-right"><a href="#">Back to top</a></p>
+    <p>&copy; 2014 <a href="http://www.linkedin.com/pub/jason-ng/5a/a85/a0a">Jason Ng </a>&middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a> &middot; <a href="#">Manul</a> &middot; <a href="#">Disclaimer</a></p>
+</footer>
+
+</body>
+
+
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="js/bootstrap-switch.js"></script>
+<script src="js/bootstrap-slider.js"></script>
+
+<script src="js/fund.js"></script>
+<script src="js/color.js"></script>
+<script src="js/picker.js"></script>
+<script src="config/config.js"></script>
+<script src="js/fund_vis.js"></script>
+
