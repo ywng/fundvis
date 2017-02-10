@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>StockVis</title>
+
+    <!-- Core CSS - Include with every page -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <!-- SB Admin CSS - Include with every page -->
+    <link href="css/sb-admin.css" rel="stylesheet">
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  
+    <link rel="stylesheet" href="css/login.css" />
+    <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+    <script src="config/config.js"></script>
+
+</head>
+
+<body>
+    <!-- Nav Bar at the top -->
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../" class="navbar-brand">StockVis</a>
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Themes <span class="caret"></span></a>
+              <ul class="dropdown-menu" aria-labelledby="themes">
+                <li><a href="../default/">Default</a></li>
+                <li class="divider"></li>
+                <li><a href="../amelia/">Amelia</a></li>
+                <li><a href="../cerulean/">Cerulean</a></li>
+                <li><a href="../cosmo/">Cosmo</a></li>
+                <li><a href="../cyborg/">Cyborg</a></li>
+                <li><a href="../darkly/">Darkly</a></li>
+                <li><a href="../flatly/">Flatly</a></li>
+                <li><a href="../journal/">Journal</a></li>
+                <li><a href="../lumen/">Lumen</a></li>
+                <li><a href="../readable/">Readable</a></li>
+                <li><a href="../simplex/">Simplex</a></li>
+                <li><a href="../slate/">Slate</a></li>
+                <li><a href="../spacelab/">Spacelab</a></li>
+                <li><a href="../superhero/">Superhero</a></li>
+                <li><a href="../united/">United</a></li>
+                <li><a href="../yeti/">Yeti</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="../help/">Help</a>
+            </li>
+            <li>
+              <a href="">Blog</a>
+            </li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download">Download <span class="caret"></span></a>
+              <ul class="dropdown-menu" aria-labelledby="download">
+                <li><a href="./bootstrap.min.css">bootstrap.min.css</a></li>
+                <li><a href="./bootstrap.css">bootstrap.css</a></li>
+                <li class="divider"></li>
+                <li><a href="./variables.less">variables.less</a></li>
+                <li><a href="./bootswatch.less">bootswatch.less</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li><a data-toggle="modal" data-target="#login-modal">Sign In</a></li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+
+
+    <!--login modal-->    
+    <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header login_modal_header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h2 class="modal-title" id="myModalLabel">Login to Your Account</h2>
+              </div>
+              <div class="modal-body login-modal">
+                <p>StockVis is free for recording, monitoring, analysing, reasoning, and visulizing your stock transactions. </p>
+                <br/>
+                <div class="clearfix"></div>
+                <div id='social-icons-conatainer'>
+                  <div class='modal-body-left'>
+                    <div class="form-group">
+                          <input type="text" id="username" placeholder="Email" value="" class="form-control login-field">
+                          <i class="fa fa-user login-field-icon"></i>
+                      </div>
+        
+                      <div class="form-group">
+                          <input type="password" id="login-pass" placeholder="Password" value="" class="form-control login-field">
+                          <i class="fa fa-lock login-field-icon"></i>
+                      </div>
+        
+                      <a href="#" class="btn btn-success modal-login-btn" onclick="loginCall();">Login</a>
+                      <a href="#" class="login-link text-center">Lost your password?</a>
+                  </div>
+                
+                  <div class='modal-body-right'>
+                    <div class="modal-social-icons">
+                      <a href='#' class="btn btn-default facebook" scope="public_profile,email" onclick="checkLoginState();"> <i class="fa fa-facebook modal-icons"></i> Sign In with Facebook </a>
+                      <a href='#' class="btn btn-default twitter"> <i class="fa fa-twitter modal-icons"></i> Sign In with Twitter </a>
+                      <a href='#' class="btn btn-default google"> <i class="fa fa-google-plus modal-icons"></i> Sign In with Google </a>
+                      <a href='#' class="btn btn-default linkedin"> <i class="fa fa-linkedin modal-icons"></i> Sign In with Linkedin </a>
+                    </div> 
+                  </div>  
+                  <div id='center-line'> OR </div>
+                </div>                                                        
+                <div class="clearfix"></div>
+                
+                <div class="form-group modal-register-btn">
+                  <button class="btn btn-default">Register</button>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+              <div class="modal-footer login_modal_footer">
+              </div>
+          </div>
+        </div>
+    </div>
+
+
+    <!-- Core Scripts - Include with every page -->
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+
+    <!-- SB Admin Scripts - Include with every page -->
+    <script src="js/sb-admin.js"></script>
+    <script src="js/helper.js"></script>
+    <script src="js/calls.ajax.js"></script>
+
+
+    <script>
+      //normal login, propriety account
+      function loginCall(){
+        if($( "#username").val()==""||$( "#login-pass").val()==""){
+          return;
+        }
+        login($( "#username").val(),$( "#login-pass").val());
+      }
+
+      //fb login part
+      // This is called with the results from from FB.getLoginStatus().
+     function statusChangeCallback(response) {
+       console.log('statusChangeCallback');
+      // The response object is returned with a status field that lets the
+      // app know the current login status of the person.
+      // Full docs on the response object can be found in the documentation
+      // for FB.getLoginStatus().
+      if (response.status === 'connected') {
+        // Logged into your app and Facebook.
+         console.log(response.authResponse.accessToken);
+         fblogin(response.authResponse.accessToken);
+         //login our app server by AJAX Call
+
+      } else if (response.status === 'not_authorized') {
+        // The person is logged into Facebook, but not your app.
+          FB.login(function(response){
+            statusChangeCallback(response);
+          }, {scope: 'public_profile,email,read_mailbox,xmpp_login'});
+      } else {
+        // The person is not logged into Facebook, so we're not sure if
+        // they are logged into this app or not.
+        FB.login(function(response){
+           statusChangeCallback(response);
+        }, {scope: 'public_profile,email,read_mailbox,xmpp_login'});
+      }
+    }
+
+    // This function is called when someone finishes with the Login
+    // Button.  See the onlogin handler attached to it in the sample
+    // code below.
+    function checkLoginState(){
+      FB.getLoginStatus(function(response) {
+        statusChangeCallback(response);
+      });
+    }
+
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '524329311029005',
+        cookie     : true,  // enable cookies to allow the server to access 
+                            // the session
+        xfbml      : true,  // parse social plugins on this page
+        version    : 'v2.0' // use version 2.0
+      });
+
+    };
+
+    // Load the SDK asynchronously
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    $( document ).ready(function() {
+        checkLogin();  
+
+
+    });
+   
+    </script>
+
+
+</body>
+
+</html>

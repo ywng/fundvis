@@ -1,0 +1,58 @@
+body {
+  padding-bottom: 40px;
+  margin:10px 5px 30px 40px;
+  width: 1200px;
+}
+
+.fundCategory{
+	font: 14px sans-serif;
+}
+
+text {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.line {
+  fill: none;
+  stroke: url(#temperature-gradient);
+  stroke-width: 1.5px;
+}
+
+#ex1Slider .slider-selection {
+	background: #BABABA;
+
+}
+
+div.D3tooltip {
+  position: absolute;
+  text-align: center;
+  width: 145px;
+  height: 35px;
+  padding: 5px;
+  font: 10px sans-serif;
+  background: #ddd;
+  border: solid 0.5px #aaa;
+  border-radius: 5px;
+  pointer-events: none;
+}
+
+ /* The default background color is #c00 */
+.right  .github-fork-ribbon {
+    background-color: #090; /* change the color of the fork me on github ribbon*/
+}
+
+.page_header{
+  font-family:"sans-serif";
+  font-size: 16px;
+}
