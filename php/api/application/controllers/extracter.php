@@ -167,7 +167,7 @@ class Extracter extends REST_Controller {
 		if(!$price_e_array){
 
 			$price_e_array=$data_table->find('span[class=pos bold]');
-			var_dump($price_e->plaintext);
+			var_dump($price_e_array->plaintext);
 
 			if(!$price_e_array){
 				$price_e_array=$data_table->find('span[class=unc bold]');
