@@ -26,7 +26,7 @@ class Portfolio_model extends CI_Model{
         $this->db->select('*');
         $this->db->from($this->Table_name_portfolio_stock.' portStock');
         $this->db->join($this->Table_name_stock.' stock', 
-            'stock\.'.$this->$KEY_stock_code.' = '.'portStock\.'.$this->KEY_portfolio_stock_id, 'inner');
+            'stock\.'.$this->KEY_stock_code.' = '.'portStock\.'.$this->KEY_portfolio_stock_id, 'inner');
 
         $this->db->group_by($this->KEY_portfolio_stock_id);
         var_dump($this->db->query);
