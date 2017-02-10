@@ -151,7 +151,7 @@ class Extracter extends REST_Controller {
 	private function AASTOCK_stock_extract($html,$stock){
 		//go to the data section
 		//log 
-		//var_dump($stock);
+		var_dump($stock);
 
 		$data_table=$html->find('table[class=tb-c]')[0];
 
@@ -161,13 +161,13 @@ class Extracter extends REST_Controller {
 		}
 		// if the price is not positive
 		catch(Exception $e) {
-		  	//echo 'Message: ' .$e->getMessage();
+		  	echo 'Message: ' .$e->getMessage();
 		}
 	
 		if(!$price_e_array){
 
 			$price_e_array=$data_table->find('span[class=pos bold]');
-			//var_dump($price_e->plaintext);
+			var_dump($price_e->plaintext);
 
 			if(!$price_e_array){
 				$price_e_array=$data_table->find('span[class=unc bold]');
