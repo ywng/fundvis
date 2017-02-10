@@ -154,7 +154,7 @@ class Extracter extends REST_Controller {
 		//var_dump($stock);
 
 		$data_table=$html->find('table[class=tb-c]')[0];
-
+		var_dump($data_table);
 		try {
 			// price span
 			$price_e_array=$data_table->find('span[class=neg bold]');
@@ -194,7 +194,7 @@ class Extracter extends REST_Controller {
 		
 		$price=(float)preg_replace("/[^0-9.]/", '',$price_e->plaintext);
 		var_dump($price);
-		
+
 		//date span
 		$datetime_e=$html->find('div[style=font-size: 10px;]')[0];
 		if (strlen(strstr($datetime_e->plaintext,"Suspension"))>0 || strlen(strstr($datetime_e->plaintext,"暫停買賣"))>0){
