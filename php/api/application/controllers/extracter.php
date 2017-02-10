@@ -49,7 +49,7 @@ class Extracter extends REST_Controller {
 
 		$this->load->model('portfolio_model'); 
 		$stocks = $this->portfolio_model->get_all_stock_code_in_any_portfolio();
-
+		var_dump($stocks);
 		$this->stock_extract_given_stocks($stocks);
 
 	}
