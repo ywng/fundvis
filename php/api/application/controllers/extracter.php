@@ -165,7 +165,7 @@ class Extracter extends REST_Controller {
 		}
 	
 		if(!$price_e_array){
-			echo "Invalid stock code... Extraction failed for stock: ".$stock[$this->stock_model->KEY_stock_id];
+			echo "action:stockExtraction, stage=getPriceTag message: Extraction failed for stock: ".$stock[$this->stock_model->KEY_stock_id];
 			return;//invalid stock code..
 
 		}else{
@@ -174,12 +174,15 @@ class Extracter extends REST_Controller {
 			//$price_chg_e=$price_e_array[1];
 			//$price_chg=(float)preg_replace("/[^0-9.]/", '',$price_chg_e->plaintext);
 		}
-		var_dump($price_e_array);
+		
 		$price=(float)preg_replace("/[^0-9.]/", '',$price_e->plaintext);
-		var_dump($price);
 
 		//date span
 		$datetime_e=$html->find('div[style=font-size: 10px;]')[0];
+		if(!$datetime_e){
+			echo "action:stockExtraction, stage=getDateTimeTag message: Extraction failed for stock: ".$stock[$this->stock_model->KEY_stock_id];
+			return;
+		}
 		if (strlen(strstr($datetime_e->plaintext,"Suspension"))>0 || strlen(strstr($datetime_e->plaintext,"暫停買賣"))>0){
 			return null;
 		}
@@ -187,7 +190,6 @@ class Extracter extends REST_Controller {
 		if (preg_match('/(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2})/',$datetime_e->plaintext, $regs)) {
 			$datetime_str = $regs[0];
 	    } 
-	    var_dump($datetime_str);
 
 	    if(!$price || !$datetime_str){
 	    	echo $stock;
@@ -247,6 +249,7 @@ class Extracter extends REST_Controller {
 
 			  $this->stock_model->KEY_previous_close => ($price+$price_chg),
 		);
+		var_dump($stock_updated_info);
 		$this->core_controller->add_return_data($stock[$this->stock_model->KEY_stock_id].".info",$stock_updated_info); 
 		$this->stock_model->update_stock_info($stock[$this->stock_model->KEY_stock_id],$stock_updated_info);
 
