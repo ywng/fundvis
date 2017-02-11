@@ -172,6 +172,7 @@ class Extracter extends REST_Controller {
 			if(!$price_e_array){
 				$price_e_array=$data_table->find('span[class=unc bold]');
 				if(!$price_e_array){
+					echo "Invalid stock code... Extraction failed for stock: ".$stock[$this->stock_model->KEY_stock_id];
 					return;//invalid stock code..
 				}else{
 					$price_e=$price_e_array[0];
