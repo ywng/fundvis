@@ -157,7 +157,7 @@ class Extracter extends REST_Controller {
 		//var_dump($data_table);
 		try {
 			// price span
-			$price_e_array=$data_table->find('span[class=neg bold]');
+			$price_e_array=$data_table->find('div[class=C font28 C bold]');
 		}
 		// if the price is not positive
 		catch(Exception $e) {
@@ -165,30 +165,12 @@ class Extracter extends REST_Controller {
 		}
 	
 		if(!$price_e_array){
-
-			$price_e_array=$data_table->find('span[class=pos bold]');
-			
-
-			if(!$price_e_array){
-				$price_e_array=$data_table->find('span[class=unc bold]');
-				if(!$price_e_array){
-					echo "Invalid stock code... Extraction failed for stock: ".$stock[$this->stock_model->KEY_stock_id];
-					return;//invalid stock code..
-				}else{
-					$price_e=$price_e_array[0];
-					$price_chg=0;
-				}
-
-			}else{
-
-				$price_e=$price_e_array[0];
-				//$price_chg_e=$price_e_array[1];
-				//$price_chg=(float)preg_replace("/[^0-9.]/", '',$price_chg_e->plaintext);
-				//$price_chg=$price_chg*-1;
-			}
+			echo "Invalid stock code... Extraction failed for stock: ".$stock[$this->stock_model->KEY_stock_id];
+			return;//invalid stock code..
 
 		}else{
 			$price_e=$price_e_array[0];
+			$price_chg=0;
 			//$price_chg_e=$price_e_array[1];
 			//$price_chg=(float)preg_replace("/[^0-9.]/", '',$price_chg_e->plaintext);
 		}
