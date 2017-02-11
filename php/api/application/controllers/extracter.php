@@ -191,7 +191,7 @@ class Extracter extends REST_Controller {
 			//$price_chg_e=$price_e_array[1];
 			//$price_chg=(float)preg_replace("/[^0-9.]/", '',$price_chg_e->plaintext);
 		}
-		
+		var_dump($price_e_array);
 		$price=(float)preg_replace("/[^0-9.]/", '',$price_e->plaintext);
 		var_dump($price);
 
