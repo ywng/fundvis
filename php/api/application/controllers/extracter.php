@@ -154,7 +154,7 @@ class Extracter extends REST_Controller {
 		//var_dump($stock);
 
 		$data_table=$html->find('table[class=tb-c]')[0];
-		var_dump($data_table);
+		//var_dump($data_table);
 		try {
 			// price span
 			$price_e_array=$data_table->find('span[class=neg bold]');
@@ -204,6 +204,7 @@ class Extracter extends REST_Controller {
 		if (preg_match('/(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2})/',$datetime_e->plaintext, $regs)) {
 			$datetime_str = $regs[0];
 	    } 
+	    var_dump($datetime_str);
 
 	    if(!$price || !$datetime_str){
 	    	echo $stock;
@@ -213,6 +214,7 @@ class Extracter extends REST_Controller {
 	    //daily range
 		$daily_range_e=$html->find('strong')[0];
 		$daily_range=explode("-",$daily_range_e->plaintext);
+		var_dump($daily_range);
 
 	    //vol
 		$vol_e=$html->find('strong')[1];
