@@ -165,7 +165,7 @@ var Game = React.createClass({
     this.replaceState(this.getInitialState());
   },
   randomNumber: function() {
-    return Math.floor(Math.random()*9) + 1;
+    return Math.floor(Math.random()*MaxNum) + 1;
   },
   selectNumber: function(clickedNumber) {
     if (this.state.selectedNumbers.indexOf(clickedNumber) < 0) {
@@ -231,7 +231,7 @@ var Game = React.createClass({
     return possibleCombinationSum(possibleNumbers, numberOfStars);
   },
   updateDoneStatus: function() {
-    if (this.state.usedNumbers.length ===9) {
+    if (this.state.usedNumbers.length ===MaxNum) {
       this.setState({ doneStatus: 'Done. Nice!' });
       return;
     }
