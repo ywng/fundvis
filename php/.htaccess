@@ -1,7 +1,0 @@
-<Directory ./i-love-u>
-Allow from all
-</Directory>
-
-<Directory ./>
-Allow from all
-</Directory>
