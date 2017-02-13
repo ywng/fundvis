@@ -1,3 +1,5 @@
+var MaxNum=20;
+
 var possibleCombinationSum = function(arr, n) {
   if (arr.indexOf(n) >= 0) { return true; }
   if (arr[0] > n) { return false; }
@@ -114,7 +116,7 @@ var NumberFrame = React.createClass({
         usedNumbers = this.props.usedNumbers,
         selectedNumbers = this.props.selectedNumbers;
         
-    for (var i=1; i <= 9; i++) {
+    for (var i=1; i <= MaxNum; i++) {
       className = "number selected-" + (selectedNumbers.indexOf(i)>=0);
       className += " used-" + (usedNumbers.indexOf(i)>=0);
       numbers.push(
@@ -220,7 +222,7 @@ var Game = React.createClass({
         possibleNumbers = [],
         usedNumbers = this.state.usedNumbers;
     
-    for (var i=1; i<=9; i++) {
+    for (var i=1; i<=MaxNum; i++) {
       if (usedNumbers.indexOf(i) <0) {
         possibleNumbers.push(i);
       }
