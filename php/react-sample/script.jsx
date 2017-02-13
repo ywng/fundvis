@@ -1,5 +1,3 @@
-var MaxNum=20;
-
 var possibleCombinationSum = function(arr, n) {
   if (arr.indexOf(n) >= 0) { return true; }
   if (arr[0] > n) { return false; }
@@ -116,7 +114,7 @@ var NumberFrame = React.createClass({
         usedNumbers = this.props.usedNumbers,
         selectedNumbers = this.props.selectedNumbers;
         
-    for (var i=1; i <= MaxNum; i++) {
+    for (var i=1; i <= 9; i++) {
       className = "number selected-" + (selectedNumbers.indexOf(i)>=0);
       className += " used-" + (usedNumbers.indexOf(i)>=0);
       numbers.push(
@@ -165,7 +163,7 @@ var Game = React.createClass({
     this.replaceState(this.getInitialState());
   },
   randomNumber: function() {
-    return Math.floor(Math.random()*MaxNum) + 1;
+    return Math.floor(Math.random()*9) + 1;
   },
   selectNumber: function(clickedNumber) {
     if (this.state.selectedNumbers.indexOf(clickedNumber) < 0) {
@@ -222,7 +220,7 @@ var Game = React.createClass({
         possibleNumbers = [],
         usedNumbers = this.state.usedNumbers;
     
-    for (var i=1; i<=MaxNum; i++) {
+    for (var i=1; i<=9; i++) {
       if (usedNumbers.indexOf(i) <0) {
         possibleNumbers.push(i);
       }
@@ -231,7 +229,7 @@ var Game = React.createClass({
     return possibleCombinationSum(possibleNumbers, numberOfStars);
   },
   updateDoneStatus: function() {
-    if (this.state.usedNumbers.length ===MaxNum) {
+    if (this.state.usedNumbers.length ===9) {
       this.setState({ doneStatus: 'Done. Nice!' });
       return;
     }
