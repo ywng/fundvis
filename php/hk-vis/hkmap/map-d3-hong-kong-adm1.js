@@ -34,8 +34,8 @@ features = svg.append("g");
 d3.json("HKG_adm.json", function(t, e) {
     if (t) return console.error(t);
     console.log(e);
-    topojson.feature(e, e.objects.HKG_adm1-1);
-    features.selectAll("path").data(topojson.feature(e, e.objects.HKG_adm1).features).enter()
+    topojson.feature(e, e.objects.HKG_adm0-1);
+    features.selectAll("path").data(topojson.feature(e, e.objects.HKG_adm0-1).features).enter()
             .append("path").attr("d", path)
             .attr("fill", "#e8d8c3")
             .attr("stroke", "#404040")
