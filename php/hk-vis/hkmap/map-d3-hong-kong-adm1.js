@@ -23,7 +23,7 @@ var margin = {
     height = width * mapRatio,
     mapRatioAdjuster = 3;
     hongKongCenter = [50, 0];
-var projection = d3.geo.mercator().center(northKoreaCenter).translate([width / 2, height / 2]).scale(width * [mapRatio + mapRatioAdjuster]),
+var projection = d3.geo.mercator().center(hongKongCenter).translate([width / 2, height / 2]).scale(width * [mapRatio + mapRatioAdjuster]),
     zoom = d3.behavior.zoom().translate([0, 0]).scale(1).scaleExtent([1, 10]).on("zoom", zoomed);
 
 d3.select(window).on("resize", resize);
