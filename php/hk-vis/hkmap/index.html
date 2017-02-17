@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>D3.js - Hong Kong Map </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Here is a D3.js map of Hong Kong and its 18 districts. I made it with data from a TopoJSON file.">
+    <meta charset="utf-8"> 
+    <link href='http://fonts.googleapis.com/css?family=Share+Tech' rel='stylesheet' type='text/css'>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="main.css" rel="stylesheet" media="all">
+
+  
+  </head>
+  <body>
+  
+  <!-- Tooltip box that appears when mouse hovers over a province on Pakistan map.  -->
+  <div id="tooltip" class="hidden">
+    <div><strong>Region:</strong> <span id="region-name-tooltip">100</span></div>
+    <div><strong>Type:</strong> <span id="region-type-tooltip">200</span></div>
+  </div>
+
+  <!-- ADD D3.JS VISUALIZATION IN #VIZ.-->        
+  <div class='container-fluid'>
+    <div class='row well well-lg'>
+      <div id="viz" class='col-md-8 text-center'>
+      
+    </div>    
+
+      <div class='col-md-4'>
+      <h1>Hong Kong</h1>
+        <p>
+      Here is a D3.js map of Hong Kong and its 18 main districts. I made it with a TopoJSON file that I converted from a Shapefile downloaded at <a href="http://www.gadm.org/">http://www.gadm.org.</a>
+      </p>
+        <div>
+          <strong>Region:</strong> <span id="region-name"></span>
+        </div>
+        <div>
+          <strong>Type:</strong> <span id="region-type"></span>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+         
+    </div>    
+    </div>  
+  
+  </div>
+
+    <div class="footer">
+      <div class="container">
+          <div class="row" style="text-align: center;">
+              <a href="https://www.linkedin.com/pub/ngy01">
+                  <i class="fa fa-linkedin-square fa-3x"></i>
+              </a>
+              <a href="https://github.com/ywng">
+                  <i class="fa fa-github fa-3x"></i>
+              </a>
+       
+              <h4>Jason Ng 2017</h4>
+          </div>
+      </div>  
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>  
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="/public/assets/css/tooltip-d3-js-map.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+  <script src="//d3js.org/topojson.v1.min.js"></script>
+
+  <!-- D3.js code creates map of Hong Kong. -->
+  <script src="map-d3-hong-kong-adm1.js"></script>
+  </body>
+</html>
