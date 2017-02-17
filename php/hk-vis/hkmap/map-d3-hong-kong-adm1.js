@@ -24,7 +24,7 @@ var margin = {
     mapRatioAdjuster = 3;
     hongKongCenter = [114.15, 22.33];
 var projection = d3.geo.mercator().center(hongKongCenter).translate([width / 2, height / 2]).scale(width * [mapRatio + mapRatioAdjuster]),
-    zoom = d3.behavior.zoom().translate([0, 0]).scale(12).scaleExtent([1, 10]).on("zoom", zoomed);
+    zoom = d3.behavior.zoom().translate([0, 0]).scale(10).scaleExtent([1, 10]).on("zoom", zoomed);
 
 d3.select(window).on("resize", resize);
 var svg = d3.select("#viz").append("svg").attr("width", width).attr("height", height).call(zoom),
