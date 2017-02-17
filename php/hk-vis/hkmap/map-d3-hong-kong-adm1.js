@@ -33,6 +33,7 @@ var svg = d3.select("#viz").append("svg").attr("width", width).attr("height", he
 features = svg.append("g");
 d3.json("HKG_adm.json", function(t, e) {
     if (t) return console.error(t);
+    console.log(e);
     topojson.feature(e, e.objects.HKG_adm1);
     features.selectAll("path").data(topojson.feature(e, e.objects.HKG_adm1).features).enter()
             .append("path").attr("d", path)
