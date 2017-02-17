@@ -45,14 +45,18 @@ d3.json("HKG_adm.json", function(t, e) {
                 d3.select("#tooltip").style("top", d3.event.pageY + 20 + "px")
                   .style("left", d3.event.pageX + 20 + "px")
                   .select("#region-name-tooltip")
-                  .text(t.properties.NAME_1), 
+                  .text(t.properties.NAME_1);
+
                 d3.select("#tooltip").select("#region-type-tooltip")
-                  .text(t.properties.ENGTYPE_1), d3.select("#region-name")
+                  .text(t.properties.ENGTYPE_1);
+
+                d3.select("#region-name")
                   .text(t.properties.NAME_1), d3.select("#region-type")
-                  .text(t.properties.ENGTYPE_1 + " (" + t.properties.TYPE_1 + ")"), 
-                d3.select("#tooltip").classed("hidden", !1)
+                  .text(t.properties.ENGTYPE_1 + " (" + t.properties.TYPE_1 + ")");
+
+                d3.select("#tooltip").classed("hidden", !1);
             })
             .on("mouseout", function() {
-                d3.select("#tooltip").classed("hidden", !0)
+                d3.select("#tooltip").classed("hidden", !0);
             })
 });
