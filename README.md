@@ -1,6 +1,6 @@
-Fund Performance Visualisation (Ver. 2.0)
+# Fund Performance Visualisation
 =======
-[Collaborators are welcome, if interested, please email: victor.not.to.yield@gmail.com]
+##### [Collaborators are welcome, if interested, please email: jason.ng.yw@gmail.com]
 
 ![alt tag](https://raw.github.com/ywng/fundvis/master/scr_shot.png)
 
