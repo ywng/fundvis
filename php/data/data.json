@@ -1,6 +1,6 @@
 {
-	"max_date":"2017-01-01",
-	"min_date":"2018-01-31",
+	"max_date":"2017/01/01",
+	"min_date":"2018/01/31",
 	"funds": 
 	[
 		{
@@ -9,9 +9,9 @@
 			"link":"",
 			"price_array":
 			[
-				{"datetime":"2017-01-01", "price":17},
-				{"datetime":"2017-01-02", "price":17.1},
-				{"datetime":"2017-01-03", "price":17.3}
+				{"datetime":"2017/01/01", "price":17},
+				{"datetime":"2017/01/02", "price":17.1},
+				{"datetime":"2017/01/03", "price":17.3}
 			]
 		},
 		{
