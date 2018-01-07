@@ -453,7 +453,7 @@
 		},
 		{
 			"id":7,
-			"name":"",
+			"name":"JF Provident Capital Fund",
 			"link":"",
 			"price_array":
 			[
@@ -462,7 +462,7 @@
 		},
 		{
 			"id":8,
-			"name":"",
+			"name":"JF Provident Stable Capital Fund",
 			"link":"",
 			"price_array":
 			[
@@ -471,7 +471,7 @@
 		},
 		{
 			"id":9,
-			"name":"",
+			"name":"JF SAR Global Bond Fund",
 			"link":"",
 			"price_array":
 			[
@@ -480,7 +480,7 @@
 		},
 		{
 			"id":10,
-			"name":"",
+			"name":"JPM USD",
 			"link":"",
 			"price_array":
 			[
@@ -489,7 +489,7 @@
 		},
 		{
 			"id":11,
-			"name":"",
+			"name":"FAP Asia Pacific Equity Fund",
 			"link":"",
 			"price_array":
 			[
@@ -498,7 +498,7 @@
 		},
 		{
 			"id":12,
-			"name":"",
+			"name":"FAP Growth Fund",
 			"link":"",
 			"price_array":
 			[
@@ -507,7 +507,7 @@
 		},
 		{
 			"id":13,
-			"name":"",
+			"name":"FAP Balanced Fund",
 			"link":"",
 			"price_array":
 			[
@@ -516,7 +516,16 @@
 		},
 		{
 			"id":14,
-			"name":"",
+			"name":"FAP Stable Growth Fund",
+			"link":"",
+			"price_array":
+			[
+				
+			]
+		},
+		{
+			"id":15,
+			"name":"FAP Capital Stable Fund",
 			"link":"",
 			"price_array":
 			[
