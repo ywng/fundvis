@@ -429,6 +429,7 @@
     datetime:maxDate,
     price:"0"
   };
+  colsole.log(funds_actual);
   var sampleFundPriceArray=funds_actual[0].price_array.slice();
   sampleFundPriceArray.push(dummyObjToIncludeMaxdate);
   sampleFundPriceArray.push(dummyObjToIncludeMindate);
