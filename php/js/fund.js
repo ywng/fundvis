@@ -33,7 +33,7 @@ var minDate;
 
 function _init_funds(url){
 	// fetch data from database
-	/*$.ajax({
+	$.ajax({
 		url: serverDomain+url,
 		context: document.body,
 		dataType: "json", 
@@ -56,7 +56,8 @@ function _init_funds(url){
 			console.log('ajax error in get survey ID call:' +textStatus + ' ' + errorThrown);
 		}
 
-	 }); // end of the ajax call */
+	 }); 
+
 
 }
 

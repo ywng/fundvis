@@ -121,24 +121,7 @@
   /**
     * Initialization: loading funds data onto the dom, and construct obj: funds_actual
     */  
-  //_init_funds("api/fund/getAllPriceJPMORSO"); 
-
-  //hard-coded static data due to lack of hosting server
-
-  d3.json("data/data.json", function(error, data) {
-      if (error) throw error;
-    funds_actual=data.funds;
-    maxDate=data.max_date;
-    minDate=data.min_date;
-
-    console.log(data.funds);
-
-    for(var i=0; i < funds_actual.length; i++) {
-      funds_actual[i].vis="False";
-    }
-
-    funds_actual[0].vis="True";//when start, only visible the first one, other funds, let user set it later.  
-  });
+  _init_funds("/data/data.json"); 
 
 
   //**************** Constructing Vis Main Components ******************************//
