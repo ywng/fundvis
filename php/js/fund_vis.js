@@ -23,10 +23,6 @@
     //load other html content
     $('#disclaimerDialog').load("disclaimer.html");
 
-    /**
-    * Initialization: loading funds data onto the dom, and construct obj: funds_actual
-    */  
-    _init_funds("api/fund/getAllPriceJPMORSO"); 
 
     /**
      * Slider bar just under the x-axis, which is visible only on percent change mode
@@ -119,6 +115,29 @@
     //on init, by default, we are in actual price mode
     update(funds_actual);
     
+  });
+
+
+  /**
+    * Initialization: loading funds data onto the dom, and construct obj: funds_actual
+    */  
+  //_init_funds("api/fund/getAllPriceJPMORSO"); 
+
+  //hard-coded static data due to lack of hosting server
+
+  d3.json("data/data.json", function(error, data) {
+      if (error) throw error;
+    funds_actual=data.funds;
+    maxDate=data.max_date;
+    minDate=data.min_date;
+
+    console.log(data.funds);
+
+    for(var i=0; i < funds_actual.length; i++) {
+      funds_actual[i].vis="False";
+    }
+
+    funds_actual[0].vis="True";//when start, only visible the first one, other funds, let user set it later.  
   });
 
 
@@ -429,7 +448,6 @@
     datetime:maxDate,
     price:"0"
   };
-  console.log(funds_actual);
   var sampleFundPriceArray=funds_actual[0].price_array.slice();
   sampleFundPriceArray.push(dummyObjToIncludeMaxdate);
   sampleFundPriceArray.push(dummyObjToIncludeMindate);

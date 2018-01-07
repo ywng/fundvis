@@ -58,23 +58,6 @@ function _init_funds(url){
 
 	 }); // end of the ajax call */
 
-	 //hard-coded static data due to lack of hosting server
-
-	d3.json("data/data.json", function(error, data) {
-	    if (error) throw error;
-	 	funds_actual=data.funds;
-		maxDate=data.max_date;
-		minDate=data.min_date;
-
-		console.log(data.funds);
-
-		for(var i=0; i < funds_actual.length; i++) {
-			funds_actual[i].vis="False";
-		}
-
-		funds_actual[0].vis="True";//when start, only visible the first one, other funds, let user set it later.	
-	});
-
 }
 
 function find_max_min_selected_funds(data){
