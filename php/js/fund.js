@@ -66,6 +66,8 @@ function _init_funds(url){
 		maxDate=data.max_date.datetime;
 		minDate=data.min_date.datetime;
 
+		console.log(data.funds);
+
 		for(var i=0; i < funds_actual.length; i++) {
 			funds_actual[i].vis="False";
 		}
