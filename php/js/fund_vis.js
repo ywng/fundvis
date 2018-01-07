@@ -220,7 +220,7 @@
         vis="True";
         shownAllFidelity=true;
       }
-      for(var i=13;i<20;i++)
+      for(var i=13;i<funds_actual.length;i++)
         funds_percent[i].vis=vis;
       update(funds_percent);
           
