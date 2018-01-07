@@ -1,6 +1,6 @@
 {
-	"max_date":"2017-01-01",
-	"min_date":"2017-01-03",
+	"max_date":{"datetime":"2017-01-01"},
+	"min_date":{"datetime":"2017-01-03"},
 	"funds": 
 	[
 		{
