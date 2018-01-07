@@ -23,6 +23,10 @@
     //load other html content
     $('#disclaimerDialog').load("disclaimer.html");
 
+    /**
+    * Initialization: loading funds data onto the dom, and construct obj: funds_actual
+    */  
+    _init_funds("api/fund/getAllPriceJPMORSO"); 
 
     /**
      * Slider bar just under the x-axis, which is visible only on percent change mode
@@ -116,12 +120,6 @@
     update(funds_actual);
     
   });
-
-
-  /**
-    * Initialization: loading funds data onto the dom, and construct obj: funds_actual
-    */  
-  _init_funds("api/fund/getAllPriceJPMORSO"); 
 
 
   //**************** Constructing Vis Main Components ******************************//
