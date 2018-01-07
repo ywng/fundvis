@@ -1,0 +1,56 @@
+{
+	"max_date.datetime":"2017-01-01",
+	"max_date.datetime":"2018-01-31",
+	"funds": 
+	[
+		{
+			"id":1,
+			"name":"JPM Emerging Markets Equity",
+			"link":"",
+			"price_array":
+			[
+			]
+		},
+		{
+			"id":2,
+			"name":"JF Provident Greater China",
+			"link":"",
+			"price_array":
+			[
+			]
+		},
+		{
+			"id":3,
+			"name":"JF Pacific Securities",
+			"link":"",
+			"price_array":
+			[
+			]
+		},
+		{
+			"id":4,
+			"name":"JPMF Global Equity Fund",
+			"link":"",
+			"price_array":
+			[
+			]
+		},
+		{
+			"id":5,
+			"name":"JF Provident Balanced Fund",
+			"link":"",
+			"price_array":
+			[
+			]
+		},
+		{
+			"id":6,
+			"name":"JPM Evergreen",
+			"link":"",
+			"price_array":
+			[
+			]
+		},
+
+	]
+}

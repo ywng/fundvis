@@ -33,7 +33,7 @@ var minDate;
 
 function _init_funds(url){
 	// fetch data from database
-	$.ajax({
+	/*$.ajax({
 		url: serverDomain+url,
 		context: document.body,
 		dataType: "json", 
@@ -56,7 +56,22 @@ function _init_funds(url){
 			console.log('ajax error in get survey ID call:' +textStatus + ' ' + errorThrown);
 		}
 
-	 }); // end of the ajax call
+	 }); // end of the ajax call */
+
+	 //hard-coded static data due to lack of hosting server
+
+	d3.json("data/data.json", function(error, data) {
+	    if (error) throw error;
+	 	funds_actual=data.funds;
+		maxDate=data.max_date.datetime;
+		minDate=data.min_date.datetime;
+
+		for(var i=0; i < funds_actual.length; i++) {
+			funds_actual[i].vis="False";
+		}
+
+		funds_actual[0].vis="True";//when start, only visible the first one, other funds, let user set it later.	
+	});
 
 }
 
