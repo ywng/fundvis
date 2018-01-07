@@ -121,7 +121,7 @@
   /**
     * Initialization: loading funds data onto the dom, and construct obj: funds_actual
     */  
-  _init_funds("/data/data.json"); 
+  _init_funds("data/data.json"); 
 
 
   //**************** Constructing Vis Main Components ******************************//
