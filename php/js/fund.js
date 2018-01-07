@@ -63,8 +63,8 @@ function _init_funds(url){
 	d3.json("data/data.json", function(error, data) {
 	    if (error) throw error;
 	 	funds_actual=data.funds;
-		maxDate=data.max_date.datetime;
-		minDate=data.min_date.datetime;
+		maxDate=data.max_date;
+		minDate=data.min_date;
 
 		console.log(data.funds);
 
